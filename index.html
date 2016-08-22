@@ -1,0 +1,64 @@
+---
+layout: page
+title: Getting Started
+permalink: /
+category: top-level
+top-level: gettingstarted
+---
+
+
+{% include sidebar.html %}
+
+<div class="home">
+<!-- 
+  {% assign sorted_pages = (site.gettingstarted | sort: 'title') %}
+  {% for item in sorted_pages %}
+    {% if item.title %}
+    <a class="page--link" href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
+    {% endif %}
+  {% endfor %} -->
+
+
+{% include sidebar.html %}
+
+  {% for page in site.gettingstarted %}
+    {% if page.title == 'User Guides' %}
+    <ul class="page--list">
+      <li><a class="page--title" href="{{ '/gettingstarted/' | prepend: site.baseurl }}">{{ page.title }}</a></li>
+      {% for item in site.userguides %}
+        {% if item.title %}
+        <li><a class="page--link" href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% elsif page.title == 'Common Administrative Questions' %}
+    <ul class="page--list">
+      <li><a class="page--title" href="{{ '/gettingstarted/' | prepend: site.baseurl }}">{{ page.title }}</a></li>
+      {% for item in site.commonadmin %}
+        {% if item.title %}
+        <li><a class="page--link" href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% elsif page.title == 'Common Technical Questions' %}
+    <ul class="page--list">
+      <li><a class="page--title" href="{{ '/gettingstarted/' | prepend: site.baseurl }}">{{ page.title }}</a></li>
+      {% for item in site.commontech %}
+        {% if item.title %}
+        <li><a class="page--link" href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% elsif page.title == 'API'  %}
+    <ul class="page--list">
+        <li><a class="page--title" href="{{ '/gettingstarted/' | prepend: site.baseurl }}">{{ page.title }}</a></li>
+        {% assign gapi = site.api | sort:"weight" %}
+        {% for item in gapi %}
+        {% if item.title %}
+        <li><a class="page--link" href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+  {% endfor %}
+</div>

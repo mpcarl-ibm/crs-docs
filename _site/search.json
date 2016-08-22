@@ -1,0 +1,115 @@
+[
+  
+   {
+     
+   } ,
+  
+   {
+     
+        "title"    : "Troubleshooting",
+        "tags"     : "",
+        "url"      : "/docs/troubleshooting/"
+     
+   } ,
+  
+   {
+     
+        "title"    : "IBM Cloud Object Storage Documentation (Beta)",
+        "tags"     : "",
+        "url"      : "/docs/beta/"
+     
+   } ,
+  
+   {
+     
+        "title"    : "Getting Started",
+        "tags"     : "",
+        "url"      : "/docs/"
+     
+   } ,
+  
+   {
+     
+   } ,
+  
+   {
+     
+   } ,
+  
+   {
+     
+   } 
+  
+  ,
+  
+  ,
+  
+   {
+     
+       "title"    : "Best practices",
+       "tags"     : "",
+       "url"      : "/docs/beta/api/best-practices/"
+     
+   } ,
+  
+   {
+     
+       "title"    : "Overview",
+       "tags"     : "",
+       "url"      : "/docs/beta/api/overview/"
+     
+   } ,
+  
+   {
+     
+       "title"    : "Reference &amp; Examples",
+       "tags"     : "",
+       "url"      : "/docs/beta/api/reference/"
+     
+   } 
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+   {
+     
+       "title"    : "How-to guides",
+       "tags"     : "",
+       "url"      : "/docs/beta/gettingstarted/how-to/"
+     
+   } ,
+  
+   {
+     
+       "title"    : "Using the portal",
+       "tags"     : "",
+       "url"      : "/docs/beta/gettingstarted/using-the-portal/"
+     
+   } 
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+]

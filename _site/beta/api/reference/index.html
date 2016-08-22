@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Reference & Examples</title>
+  <meta name="description" content="Table of Contents  Overview  Prerequisites  Common Headers and Error Responses  Access Control Lists  Operations on the Service  Operations on Objects">
+
+  <link rel="stylesheet" href="/docs/css/main.css">
+  <link rel="canonical" href="http://ibm-public-cos.github.io/docs/beta/api/reference/">
+  <link rel="alternate" type="application/rss+xml" title="IBM Public Cloud Object Storage Documentation" href="http://ibm-public-cos.github.io/docs/feed.xml">
+  
+</head>
+
+
+  <body>
+
+  
+    <header class="site-header">
+
+  <div class="header-wrapper">
+
+    <a class="site-title" href="/docs/"><img src="/docs/img/logo.png" alt="" height="44px"></a>
+
+    <div class="search--pageview">
+
+  <div class="full-view__search hide">
+    <a href="" class="x hide">X</a>
+    <ul id="results-container"></ul>
+    <ul class="results--container"></ul>
+
+  </div>
+  <div class="input-container">
+    <label for="search__fullview" class="hide search--label">Search Cloud Object Storage Help</label>
+    <input type="text" id="search-input" placeholder="" name="search" class="search__minview--page">
+    <img src="/docs/img/search.svg" class="search-icon" />
+  </div>
+</div>
+
+
+    <a href="" class="header--request" >
+      <p>
+        Submit A Request
+      </p>
+      <img src="/docs/img/user.svg">
+    </a>
+    <a id="nav-toggle" href="#"><span></span></a>
+  </div>
+
+</header>
+
+  
+
+  
+  <div class="page-content">
+  
+
+      <div class="main-wrapper">
+        
+<div class="sidebar sidebar--toggled">
+  <ul class="sidebar__nav">
+    <li>
+      
+
+      
+
+      <ul class="article__list"  class="article__list">
+        <h4 class="sub__head">Getting Started</h4>
+        
+        
+        
+          
+          <li>
+              <a class="page-link" href="/docs/beta/gettingstarted/using-the-portal/">Using the portal</a>
+          </li>
+     
+           
+          
+        
+          
+          <li>
+              <a class="page-link" href="/docs/beta/gettingstarted/how-to/">How-to guides</a>
+          </li>
+     
+           
+          
+        
+        
+      </ul>
+      
+            <ul class="article__list"  class="article__list">
+        <h4 class="sub__head">API & Reference</h4>
+        
+        
+        
+          
+          <li>
+              <a class="page-link" href="/docs/beta/api/overview/">Overview</a>
+          </li>
+     
+           
+          
+        
+          
+          <li>
+              <a class="page-link" href="/docs/beta/api/best-practices/">Best practices</a>
+          </li>
+     
+           
+          
+        
+          
+          <li>
+              <a class="page-link--active"  href="/docs/beta/api/reference/">Reference & Examples</a>
+          </li>
+     
+           
+          
+        
+        
+      </ul>
+    
+
+    </li>
+  </ul>
+</div>
+
+
+<article>
+
+  <div class="page-container">
+
+    <div class="main-content">
+      <header class="post-header">
+
+        <h1 class="post-title">
+        
+
+        
+
+        Reference & Examples
+
+        
+        </h1>
+
+
+
+
+        
+      </header>
+
+      <div class="post-content">
+        <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#prerequisite">Prerequisites</a></li>
+  <li><a href="#headers-and-error-response">Common Headers and Error Responses</a></li>
+  <li><a href="#access-control-list">Access Control Lists</a></li>
+  <li><a href="#operations-on-service">Operations on the Service</a></li>
+  <li><a href="#operations-on-objects">Operations on Objects</a></li>
+</ul>
+
+<h3 id="overview">Overview</h3>
+
+<p>The IBM Cloud Object Storage (COS) Application Programming Interface (API) enables application developers to use existing Amazon Simple Storage Service (S3) applications to access object buckets.</p>
+
+<p>COS supports the most commonly used subset of Amazon S3 API operations. This document details the subset of the S3 API that COS API supports. Any undocumented methods are unsupported.</p>
+
+<h3 id="prerequisite">Prerequisites</h3>
+<p>Ensure you have an account with sufficient permissions.</p>
+
+<h4 id="headers-and-error-response">Common Headers and Error Responses</h4>
+
+<h4 id="common-request-headers">Common Request Headers</h4>
+<p>The following are the common request headers used in S3, and supported by COS. Unsupported headers will be ignored if sent in a request.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Header</th>
+      <th>Supported</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Authorization</td>
+      <td>Yes</td>
+      <td>AWS, AWS4, or BASIC authentication.</td>
+    </tr>
+    <tr>
+      <td>Content-Length</td>
+      <td>Yes</td>
+      <td>Chunked encoding also supported.</td>
+    </tr>
+    <tr>
+      <td>Content-Type</td>
+      <td>Yes</td>
+      <td>Stored as object metadata.</td>
+    </tr>
+    <tr>
+      <td>Content-MD5</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td>Required</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Expect</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Host</td>
+      <td>Supported</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>x-amz-content-sha256</td>
+      <td>Yes</td>
+      <td>Used with signature version 4 authenticated requests.</td>
+    </tr>
+    <tr>
+      <td>x-amz-date</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>User-Agent</td>
+      <td>Ignored</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>x-amz-security-token</td>
+      <td>Ignored</td>
+      <td>Tokens are not supported.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="common-response-headers">Common Response Headers</h4>
+<p>The following are the common response headers used in S3 supported by COS Dedicated IBM Managed. <br />
+|  Header        | Supported | Note |<br />
+|—————-|———–|——|<br />
+| Content-Length | Yes       |      |<br />
+|Connection     | Yes       |      | <br />
+| Date           | Yes       |      |<br />
+| ETag           | Yes       | Contains MD5 checksum. |<br />
+| Server         | Yes       |      | <br />
+|x-amz-request-id| Yes       |      |<br />
+|X-Clv-Request-Id|           | Unique identifier per response a COS Dedicated IBM Managed Support Engineer uses for diagnostics and troubleshooting purposes. |<br />
+|x-amz-version-id| Yes       |      |<br />
+|X-Clv-S3-Version|           | S3 version the COS Dedicated IBM Managed API used for the request. |</p>
+
+<h4 id="error-responses">Error Responses</h4>
+
+<p>In addition, the following COS Dedicated IBM Managed unique response code might be used.<br />
+| Error Code  | Description  | HTTP Status Code  |<br />
+|————-|————–|——————-|<br />
+| VaultQuotaExceeded | The capacity used on the target bucket has exceeded a hard quota |507 |</p>
+
+<h3 id="access-control-list">Access Control Lists</h3>
+
+<p>COS Dedicated IBM Managed supports ACLs for both buckets and objects. ACL grantees can be specified using any of the following methods:<br />
+<strong>Methods of Specifying Grantees for ACLs in COS Dedicated IBM Managed API:</strong><br />
+| Method | Description | Example |<br />
+|——–|————-|———|<br />
+| Canonical ID | User account UUID (found on Manager node) | 43a89ab8-a5e9-44bf-9671-d23a8729b2e0  |<br />
+| Email Address | Account username of user account (NOTE: Email address is an optional account attribute, so the account username is used in its place) | user1 |<br />
+| URI | Used for Amazon’s pre-defined groups. COS Dedicated IBM Managed supports the All Users Group for bucket ACLs and the All Users Group and Authenticated Users URIs for Object ACLs. All other predefined groups are unsupported. | http://acs.amazonaws.com/groups/global/AllUsers |<br />
+<strong>Behavior of Permissions for ACLs in COS Dedicated IBM Managed API:</strong><br />
+| Permission | When granted on a bucket | When granted on an object |<br />
+|————|————————–|—————————|<br />
+| READ | Allows grantee to list and read all objects in bucket | Allows grantee to read object data and metadata |<br />
+| WRITE | Allows grantee to create, overwrite and delete any object in bucket. Cannot be granted independently from READ permission. | N/A |<br />
+| READ_ACP | This permission does not exist for buckets; default setting is FULL_CONTROL | Allows grantee to read object ACL |<br />
+| WRITE_ACP | Default setting is FULL_CONTROL| Allows grantee to write ACL for applicable object |<br />
+| FULL_CONTROL | Allows grantee READ, WRITE, READ_ACP and WRITE_ACP permissions on bucket | Allows grantee READ, READ_ACP and WRITE_ACP permissions on object |</p>
+
+<p id="operations-on-service"><strong>Note:</strong> The <code class="highlighter-rouge">READ_ACP</code>, <code class="highlighter-rouge">WRITE_ACP</code>, and <code class="highlighter-rouge">FULL_CONTROL</code> permissions are implied by the bucket “own” permission. When any of these permissions are assigned to a grantee in a bucket ACL, that grantee will be granted the bucket “own” permission.<br />
+<strong>Canned ACL Support:</strong><br />
+| Canned ACL | Applies to | Supported |<br />
+|————|————|———–|<br />
+| private | Bucket and object | Yes. When set on a bucket, the requestor is interpreted as the bucket owner. |<br />
+| public-read | Bucket and object | Yes. When set on a bucket, the requestor is interpreted as the bucket owner. |<br />
+| public-read-write | Bucket and object |Yes. When set on a bucket, the requestor is interpreted as the bucket owner. |<br />
+| authenticated-read  | Bucket and object | Supported when set on an object only. Not supported as a bucket ACL. |<br />
+| bucket-owner-read | Object  | No |<br />
+| bucket-owner-full-control | Object | No |<br />
+| log-delivery-write | Bucket | No. Bucket access logging feature not supported |<br />
+### Operations on the Service</p>
+
+<p>The following table describes the service operation supported by the COS Dedicated IBM Managed API. <br />
+<strong>Service operation supported by COS Dedicated IBM Managed:</strong></p>
+
+<p>| Operation | Supported |<br />
+|———–|—————-|<br />
+| GET Service (List Buckets) | Yes | <br />
+#### GET Service</p>
+
+<p>Unless otherwise noted in the following table, all parameters, operation-specific request and response headers and the response body conform to the S3 API.<br />
+This <code class="highlighter-rouge">GET</code> operation lists all buckets the authenticated requestor owns. Authenticating this request requires a valid S3 registered AWS Access Key ID. Lists cannot be generated by anonymous requests nor can they include buckets owned by other users.</p>
+
+<p><strong>GET services supported by COS Dedicated IBM Managed:</strong></p>
+
+<p>| Operation | Supported | Notes |<br />
+|———–|———–|——-|<br />
+| Request Headers | Yes | |<br />
+| Response Headers | Yes | |<br />
+| Response Elements | Yes |Bucket Owner and Bucket Creation Date not supported. A date of Thu, 01 Jan 1970 00:00:00 GMT will be returned. |<br />
+For more information, see <a href="#headers-and-error-response">Common Headers</a>.<br />
+### Operations on Buckets</p>
+
+<p>The following table describes which bucket operations are supported in COS Dedicated IBM Managed API. It also indicates some operations that, while not supported, can be accomplished using another mechanism such as the Manager Web Interface or are planned for inclusion in future API versions. Any S3 API operation that is not present is not supported.<br />
+<strong>Bucket operations supported by COS Dedicated IBM Managed:</strong><br />
+| Operation | Supported | Note |<br />
+|———–|———–|——|<br />
+| DELETE Bucket | Yes | Requestor must have Bucket Provisioner role assigned and be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket. Provisioning API configuration must be enabled and set to <code class="highlighter-rouge">CREATE</code> and <code class="highlighter-rouge">DELETE</code> |<br />
+| DELETE Bucket CORS | Yes | Requestor must be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket. |<br />
+| DELETE Bucket lifecycle | No | |<br />
+| DELETE Bucket policy | No | Use Manager API. |<br />
+| DELETE Bucket tagging | Yes | |<br />
+| DELETE Bucket website | No | |<br />
+| GET Bucket (List Objects) | Yes | |<br />
+| GET Bucket ACL | Yes |Requestor must be granted <code class="highlighter-rouge">READ_ACL</code> permission for bucket. |<br />
+| GET Bucket CORS | Yes |Requestor must be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket. |<br />
+| GET Bucket lifecycle | No | |<br />
+| GET Bucket policy | No | Use Manager API. |<br />
+| GET Bucket location | Yes | Response will always contain a location constraint of empty string, consistent with Amazon’s representation of the US Classic Region. |<br />
+| GET Bucket Logging | No | Contact COS Dedicated IBM Managed Support to get audit logs.|<br />
+| GET Bucket Notification | No |  |<br />
+| GET Bucket Tagging | Yes | |<br />
+| GET Bucket Object Versions | Yes |  |<br />
+| GET Bucket Request Payment | Yes |  |<br />
+| GET Bucket Versioning |Yes | Requestor must be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket. |<br />
+| GET Bucket Website | No |  |<br />
+| HEAD Bucket | Yes |  |<br />
+| List Multipart Uploads | Yes |  |<br />
+| PUT Bucket | Yes | Requester must have the Bucket Provisioner role assigned. Before using this operation, a Bucket Template must exist. If the S3 <code class="highlighter-rouge">LocationConstraint</code> parameter (as documented by Amazon) is used, it must correspond to the provisioning code for the template. If omitted, the default template will be used. |<br />
+| PUT Bucket ACL | Yes | Requestor must be granted <code class="highlighter-rouge">WRITE_ACL</code> permission for bucket. |<br />
+| PUT Bucket CORS | Yes | Requestor must be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket. |<br />
+| PUT Bucket Lifecycle | No |  |<br />
+| PUT Bucket Policy | No |  Use Manager API. |<br />
+| PUT Bucket Logging | No | Contact COS Dedicated IBM Managed Support to get audit logs. |<br />
+| PUT Bucket Notification | No | |<br />
+| PUT Bucket Tagging | Yes | |<br />
+| PUT Bucket Request Payment | Yes | |<br />
+| PUT Bucket Versioning | Yes | Requestor must be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket. |<br />
+| PUT Bucket Website | No | |</p>
+
+<p>For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketOps.html">S3 API Operations on Buckets</a>.<br />
+#### GET Bucket</p>
+
+<p>All parameters, operation-specific request and response headers and the response body conform to the S3 API under normal operations when the name index is enabled.</p>
+
+<p>When Recovery Listing is enabled, the results of a <code class="highlighter-rouge">GET</code> Bucket (List Objects) operation are returned in non-lexicographical order. Pagination is supported using the normal convention by utilizing the marker parameter and <code class="highlighter-rouge">nextMarker</code> response element. A search using the prefix and delimiter parameters in recovery listing mode will result in an HTTP <code class="highlighter-rouge">405 Method Not Allowed</code> response code.<br />
+If the name index is disabled for a bucket and recovery mode listing is not enabled, all listing operation requests also will result in an HTTP <code class="highlighter-rouge">405 Method Not Allowed</code> response code.</p>
+
+<p>COS Dedicated IBM Managed ignores any value greater than 1,000 for <code class="highlighter-rouge">max-keys</code> and returns only up to 1,000 keys.</p>
+
+<p>For more information, see <a href="#headers-and-error-response">Common Headers</a>.<br />
+#### HEAD Bucket<br />
+There are no operation specific request headers or response headers for this operation.<br />
+For more information, see <a href="#headers-and-error-response">Common Headers</a>.</p>
+
+<h3 id="operations-on-objects">Operations on Objects</h3>
+<p>The following table describes which object operations are supported in the COS Dedicated IBM Managed API. It describes all operations on objects available as part of the S3 API. Versioning is supported for <code class="highlighter-rouge">DELETE</code>, <code class="highlighter-rouge">GET</code> and <code class="highlighter-rouge">PUT</code> where the user can provide a version ID to delete and get a specific version.<br />
+<strong>Object Operations supported by COS Dedicated IBM Managed:</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Operation</td>
+      <td>Supported</td>
+      <td>Note</td>
+    </tr>
+    <tr>
+      <td>DELETE Object</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>DELETE Multiple Objects</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>GET Object</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>GET Object ACL</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>GET Object torrent</td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>HEAD Object</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>OPTIONS Object</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>POST Object</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>POST Object restore</td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>PUT Object</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>PUT Object ACL</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>PUT Object (Copy)</td>
+      <td>Yes</td>
+      <td>Copying objects results in a full-Width read and then a full-Width write. These full copies will result in high bandwidth utilization within the system until the copy is complete.</td>
+    </tr>
+    <tr>
+      <td>Initiate Multipart Upload</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Upload Part</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Upload Part (Copy)</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Complete Multipart Upload</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Abort Multipart Upload</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>List Parts</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectOps.html">S3 API Operations on Objects.</a> and <a href="#headers-and-error-response">Common Headers</a>.</p>
+
+<h4 id="get-object">GET Object</h4>
+<p>Unless otherwise noted in the following table, all parameters, operation-specific request and response headers and the response body conform to the S3 API.<br />
+<strong>GET object support with COS Dedicated IBM Managed:</strong></p>
+
+<p>| Operation | Supported |<br />
+|———–|———–|<br />
+| Request Parameters | Yes |<br />
+| Request Headers | Yes |<br />
+| Response Headers | Yes |<br />
+#### HEAD Object</p>
+
+<p>Unless otherwise noted in the following table, all parameters, operation-specific request and response headers and the response body conform to the S3 API.</p>
+
+<p><strong>GET object support with COS Dedicated IBM Managed:</strong><br />
+| Operation | Supported |<br />
+|———–|———–|<br />
+| Request Parameters | Yes |<br />
+| Request Headers | Yes |<br />
+| Response Headers | Yes |<br />
+#### POST Object</p>
+
+<p>Unless otherwise noted in the following tables, all parameters, operation specific request and response headers and the response body conform to the S3 API.</p>
+
+<p><strong>POST object support with COS Dedicated IBM Managed - Form Fields:</strong><br />
+| Form Field | Supported |<br />
+|————|———–|<br />
+| AWSAccessKeyId | Yes   | <br />
+| acl  | Yes |<br />
+| Cache-Control | Ignored |<br />
+| Content-Type | Ignored |<br />
+| Content-Disposition  | Ignored |<br />
+| Content-Encoding  | Ignored |<br />
+| Expires | Ignored |<br />
+| key | Yes |<br />
+| policy | Yes |<br />
+| success_action_redirect, redirect | Ignored |<br />
+| success_action_status | Yes |<br />
+| signature | Yes |<br />
+| x-amz-security-token | Ignored |<br />
+| Other field names prefixed with x-amz-meta- | Yes |<br />
+| file | Yes |</p>
+
+<p><strong>POST object support with COS Dedicated IBM Managed - Response Headers:</strong></p>
+
+<p>| Response Header | Supported |<br />
+|—————–|———–|<br />
+| X-Amz-Expiration | No |<br />
+| X-Amz-Server-Side-Encryption | No |<br />
+#### DELETE Object</p>
+
+<p>Unless otherwise noted in the following table, all parameters, operation specific request and response headers and the response body conform to the S3 API.</p>
+
+<p><strong>DELETE object support with COS Dedicated IBM Managed:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Header</th>
+      <th>Supported</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Request Headers</td>
+      <td>x-amz-mfa</td>
+      <td>Ignored</td>
+    </tr>
+    <tr>
+      <td>Response Headers</td>
+      <td>x-amz-delete-marker</td>
+      <td>Yes</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="put-object">PUT Object</h4>
+<p>Unless otherwise noted in in the following table, all parameters, operation specific request and response headers and the response body conform to the S3 API.</p>
+
+      </div>
+    </div>
+
+  </div>
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+<!--
+  <div class="footer__wrapper--light">
+    <ul class="footer--nav">
+      <li class="footer--nav__header">
+        <a href="https://www.blueboxcloud.com/products/openstack-private-cloud">Products</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/products/openstack-private-cloud" class="nav--item__link">Blue Box Cloud</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/products/hybrid-cloud" class="nav--item__link">Hybrid Cloud</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/products/pricing" class="nav--item__link">Pricing</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/products/faqs" class="nav--item__link">FAQs</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/products/our-data-centers" class="nav--item__link">Data Centers</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://blueboxstatus.com/" class="nav--item__link">System Status</a>
+      </li>
+    </ul>
+
+    <ul class="footer--nav">
+      <li class="footer--nav__header">
+        <a href="https://www.blueboxcloud.com/our-story/about-blue-box">Our Story</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/our-story/about-blue-box" class="nav--item__link">About Us</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/our-story/executive-team" class="nav--item__link">Leadership</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/careers/life-at-blue-box" class="nav--item__link">Careers</a>
+      </li>
+    </ul>
+
+    <ul class="footer--nav">
+      <li class="footer--nav__header">
+        <a href="https://www.blueboxcloud.com/resources/videos">Resources
+        </a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/insight/case-studies" class="nav--item__link">Case Studies</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/resources/videos" class="nav--item__link">Resources</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/insight/case-studies" class="nav--item__link">Case Studies</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/resources/datasheets" class="nav--item__link">Datasheets</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/resources/videos" class="nav--item__link">Videos</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/insight/blog" class="nav--item__link">News</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/calendar" class="nav--item__link">Events</a>
+      </li>
+    </ul>
+
+    <ul class="footer--nav">
+      <li class="footer--nav__header">
+        <a href="https://www.blueboxcloud.com/insight/blog">Recent Blog Posts</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/insight/blog-article/from-monolith-to-modular-why-you-should-break-down-your-application" class="nav--item__link">From Monolith to Modular</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/insight/blog-article/ibm-blue-box-watch-and-learn" class="nav--item__link">IBM Blue Box: Watch and Learn</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/insight/blog-article/gartner-data-center-infrastructure-operations-management-2015" class="nav--item__link">Gartner Data Center</a>
+      </li>
+      <li class="footer--nav__item">
+        <a href="https://www.blueboxcloud.com/insight/blog-article/kickin-around-the-cloud" class="nav--item__link">Kick'n around the Cloud</a>
+      </li>
+    </ul>
+  </div>
+  <div class="footer__wrapper--dark">
+    <ul class="footer--list">
+      <li class="list--item">
+        <a href="https://www.facebook.com/BlueBoxGroup/" class="list--item__link">Facebook</a>
+      </li>
+      <li class="list--item">
+        <a href="https://twitter.com/bluebox?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="list--item__link">Twitter</a>
+      </li>
+      <li class="list--item">
+        <a href="https://www.linkedin.com/company/blue-box-group" class="list--item__link">LinkedIn</a>
+      </li>
+      <li class="list--item">
+        <a href="https://plus.google.com/+BlueBoxSeattle/posts" class="list--item__link">Google +</a>
+      </li>
+      <li class="list--item">
+        <a href="https://github.com/blueboxgroup" class="list--item__link">GitHub</a>
+      </li>
+    </ul>
+
+    <ul class="footer--list">
+      <li class="list--item">
+        <a href="https://www.blueboxcloud.com/get-in-touch/contact-us" class="list--item__link">Contact</a>
+      </li>
+      <li class="list--item">
+        <a href="https://www.blueboxcloud.com/legal" class="list--item__link">Legal</a>
+      </li>
+      <li class="list--item">
+        <a href="https://www.blueboxcloud.com/legal/privacy-policy" class="list--item__link">Privacy Policy</a>
+      </li>
+      <li class="list--item">
+        <a href="https://www.blueboxcloud.com/legal/website-terms" class="list--item__link">Terms and Conditions</a>
+      </li>
+
+    </ul>
+ -->
+<div class="footer__wrapper--dark">
+ <!--   <ul class="footer--list">
+        <li class="list--item">
+            <a href="https://www.facebook.com/IBMCloudObjectStorage" class="list--item__link">Facebook</a>
+        </li>
+        <li class="list--item">
+            <a href="https://twitter.com/IBM_COS" class="list--item__link">Twitter</a>
+        </li>
+        <li class="list--item">
+            <a href="https://www.linkedin.com/company/cleversafe" class="list--item__link">LinkedIn</a>
+        </li>
+        <li class="list--item">
+            <a href="https://plus.google.com/+Cleversafe" class="list--item__link">Google +</a>
+        </li>
+        <li class="list--item">
+            <a href="https://www.youtube.com/user/Cleversafe/" class="list--item__link">Youtube</a>
+        </li>
+    </ul> -->
+  </div>
+  <div class="footer__wrapper--black">
+    <p>
+        2016 IBM Cloud Object Storage
+    </p>
+  </div>
+</footer>
+
+
+
+    <script src="/docs/js/vendor/simple-jekyll-search.js" type="text/javascript"></script>
+
+
+    <script>
+        SimpleJekyllSearch({
+          searchInput: document.getElementById('search-input'),
+          resultsContainer: document.getElementById('results-container'),
+          json: '/docs/search.json',
+          searchResultTemplate: '<li class="search-item"><a href="{url}" class="item-title">{title}</a><ul class="tag--list">{tags}</ul></li>'
+        });
+    </script>
+  <script src="/docs/js/scripts.js"></script>
+
+  </body>
+
+</html>
