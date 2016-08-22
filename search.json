@@ -1,0 +1,173 @@
+---
+---
+[
+  {% for page in site.pages %}
+   {
+     {% if page.title != nil %}
+        "title"    : "{{ page.title | escape }}",
+        "tags"     : "{{ page.tags | join: ',' }}",
+        "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.openstack %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.api %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.troubleshooting %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.userdocs %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.userguides %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.commontech %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.commonadmin %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.gettingstarted %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.horizon %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.nova %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.neutron %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.glance %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.cinder %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.keystone %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.heat %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ,
+  {% for page in site.ceilometer %}
+   {
+     {% if page.title != nil %}
+       "title"    : "{{ page.title | escape }}",
+       "tags"     : "{{ page.tags | join: ',' }}",
+       "url"      : "{{ site.baseurl }}{{ page.url }}"
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

@@ -1,0 +1,44 @@
+
+<div class="sidebar sidebar--toggled">
+  <ul class="sidebar__nav">
+    <li>
+      
+
+      
+
+      <ul class="article__list"  class="article__list">
+        <h4 class="sub__head">Getting Started (Beta)</h4>
+        {% assign count = 0 %}
+        {% assign gs = site.gettingstarted | sort:"weight" %}
+        {% for node in gs %}
+          {% if node.featured == true %}
+          <li>
+              <a {% if page.url == node.url %}class="page-link--active" {% else %}class="page-link"{% endif %} href="{{ node.url | prepend: site.baseurl }}">{{ node.title }}</a>
+          </li>
+     
+           
+          {% endif %}
+        {% endfor %}
+        
+      </ul>
+      
+            <ul class="article__list"  class="article__list">
+        <h4 class="sub__head">API & Reference (Beta)</h4>
+        {% assign count = 0 %}
+        {% assign a = site.api | sort:"weight" %}
+        {% for node in a %}
+          {% if node.featured == true %}
+          <li>
+              <a {% if page.url == node.url %}class="page-link--active" {% else %}class="page-link"{% endif %} href="{{ node.url | prepend: site.baseurl }}">{{ node.title }}</a>
+          </li>
+     
+           
+          {% endif %}
+        {% endfor %}
+        
+      </ul>
+    
+
+    </li>
+  </ul>
+</div>
