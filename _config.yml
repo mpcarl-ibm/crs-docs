@@ -42,6 +42,9 @@ sass:
     style: compressed
 
 collections:
+  beta:
+    output: true
+    permalink: /beta/:path/
   gettingstarted:
     output: true
     permalink: /beta/gettingstarted/:path/

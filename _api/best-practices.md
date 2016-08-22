@@ -1,11 +1,11 @@
 ---
 layout: page
 title:  "Best practices"
-featured: true
+featured: false
 weight: 2
 tags: []
 author: Nick
-dateAdded: January 14th, 2016
+dateAdded: August 18th, 2016
 ---
 
-Foo
+To be incorporated into the FAQ later.

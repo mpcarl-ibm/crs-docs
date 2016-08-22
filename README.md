@@ -15,7 +15,7 @@ It is expected to provide basic coverage of:
 * PUT/GET/DELETE Bucket
 * HEAD/PUT/GET/DELETE Object
 
-The completed documentation will also include:
+The completed documentation for general availibilty will also include:
 * More detailed walkthoughs
 * Comprehensive API reference, including:
     * Mulipart uploads
@@ -23,3 +23,9 @@ The completed documentation will also include:
 * More information about supported tools and SDKs (assuming resource availability)
 
 Contact nicholas.lange@ibm.com OR @nicholas.lange on Slack with questions and concerns.
+
+## Outstanding todos ahead of beta release on 8/31
+
+* Check for and insert trademarks where appropriate throughout.
+* Determine domain for hosting and set DNS
+* Set home page redirect to `{ domain }/docs/beta/`
