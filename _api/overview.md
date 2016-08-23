@@ -8,14 +8,11 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-
-
-The following table describes the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.
-
+The following table describes the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage. 
 
 **Bucket operations:**
 
-| Operation | Note |
+| Bucket Operation | Note |
 |:----|:---|
 | DELETE Bucket | Requestor must have Bucket Provisioner role assigned and be granted ``FULL_CONTROL`` permission for bucket. Provisioning API configuration must be enabled and set to ``CREATE`` and ``DELETE`` |
 | DELETE Bucket CORS | Requestor must be granted ``FULL_CONTROL`` permission for bucket. |
@@ -38,7 +35,7 @@ The following table describes the complete set of supported operations when usin
 
 **Object operations**
 
-| Operation | Note |
+| Object Operation | Note |
 | DELETE Object |
 | DELETE Multiple Objects  |
 | GET Object |

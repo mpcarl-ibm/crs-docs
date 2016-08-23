@@ -21,19 +21,18 @@ dateAdded: August 18th, 2016
 ###  Overview
 {: #overview}
 
-The IBM Cloud Object Storage S3 API supports the most commonly used subset of Amazon S3 API operations. Any undocumented S3 methods are unsupported.
+The IBM Cloud Object Storage S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found [here]({{ site.baseurl }}/beta/api/overview/).
 
 ### Common Headers and Error Responses
 {: #headers-and-error-response} 
 
 #### Common Request Headers
-The following are the common request headers supported by COS. Unsupported headers will be ignored if sent in a request.
+The following table describes supported common request headers. Headers not listed here will be ignored if sent in a request.
 
 | Header             | Note                               |
 |--------------------|-------------------------------------|
-| Authorization      |  AWS, AWS4, or BASIC authentication. |
+| Authorization      |  AWS4 authentication. |
 | Content-Length     | Chunked encoding also supported.    |
-| Content-Type       | Stored as object metadata.          |
 | Content-MD5        |                                  |
 | Date               |                                     |
 | Expect             |                                    | 
@@ -44,7 +43,9 @@ The following are the common request headers supported by COS. Unsupported heade
 
 
 ####  Common Response Headers
-The following are the common response headers supported from the S3 API.
+The following table describes common response headers.
+
+```** INTERNAL DRAFT NOTE: ETag and X-Clv-S3-Version might be removed. X-Clv-Request-id should possibly be renamed to X-IBM-Request-id **```
 
 |  Header        | Note |
 |----------------|------|
@@ -57,17 +58,6 @@ The following are the common response headers supported from the S3 API.
 |X-Clv-Request-Id|  Unique identifier per response an IBM COS Support Engineer uses for diagnostics and troubleshooting purposes. |
 |x-amz-version-id|      |
 |X-Clv-S3-Version|  S3 version  used for the request. |
-
-#### Error Responses
-
-In addition, the following COS API unique response code might be used.
-
-| HTTP Status Code | Description  |  Error Code  |
-|-------------|--------------|-------------------|
-| 507 | The capacity used on the target bucket has exceeded a hard quota | VaultQuotaExceeded |
-
-
-
 
 ### Operations on Service
 {: #operations-on-service}
@@ -124,7 +114,7 @@ Authorization: {authorization-string}
 
 ~~~
 PUT /{bucket-name} HTTP/1.1
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Type: text/html
 Host: s3-api.{endpoint}.objectstorage.softlayer.net
 X-Amz-Date: 20160821T052842Z
 Authorization:{authorization-string}
@@ -135,7 +125,7 @@ Authorization:{authorization-string}
 
 ~~~
 DELETE /{bucket-name} HTTP/1.1
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Type: text/html
 Host: s3-api.{endpoint}.objectstorage.softlayer.net
 X-Amz-Date: 20160822T064812Z
 Authorization: {authorization-string}
@@ -216,16 +206,16 @@ Authorization: {authorization-string}
 **Sample Response Headers**
 
 ~~~
-Accept-Ranges →bytes
-Content-Length →12
-Content-Type →application/octet-stream
-Date →Mon, 22 Aug 2016 23:02:50 GMT
-ETag →"3c66102af4bdeb4dc7cc08b6d800b82b"
-Last-Modified →Thu, 18 Aug 2016 16:27:32 GMT
-Server →Cleversafe/3.9.0.115
-X-Clv-Request-Id →f11f3447-cfab-476b-b5da-fa7219d4c7bd
-X-Clv-S3-Version →2.5
-x-amz-request-id →f11f3447-cfab-476b-b5da-fa7219d4c7bd
+Accept-Ranges: bytes
+Content-Length: 12
+Content-Type: application/octet-stream
+Date: Mon, 22 Aug 2016 23:02:50 GMT
+ETag: "3c66102af4bdeb4dc7cc08b6d800b82b"
+Last-Modified: Thu, 18 Aug 2016 16:27:32 GMT
+Server: Cleversafe/3.9.0.115
+X-Clv-Request-Id: f11f3447-cfab-476b-b5da-fa7219d4c7bd
+X-Clv-S3-Version: 2.5
+x-amz-request-id: f11f3447-cfab-476b-b5da-fa7219d4c7bd
 ~~~
 
 #### HEAD Object
