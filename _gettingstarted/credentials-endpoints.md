@@ -19,13 +19,17 @@ dateAdded: August 18th, 2016
 
 #### Endpoints
 
-SoftLayer provides three regional endpoints for connecting to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections between the three regional data centers.  
+SoftLayer provides three regional endpoints for connecting S3 applications or clients to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections between the three regional data centers.  Endpoints can be accessed over either plaintext or SSL depending on security requirements.
+
+```** INTERNAL DRAFT NOTE: will add code examples showing path-based and host-based addressing **```
 
 There are three types of endpoint:
 
 * **Public endpoints** can be accessed from anywhere, and customers are charged for outgoing bandwitdth. Incoming bandwidth is free.
 * **Private endpoints** can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers. 
 * **ADN endpoints** allow customers to bring their own IP addresses. If customer have an ADN account and use an ADN endpoint, they will not be charged for any outgoing or incoming bandwidth.
+
+```** INTERNAL DRAFT NOTE: endpoints list will be formatted in a table **```
 
 **Dallas**
 public: `s3-api.dal-us-geo.objectstorage.softlayer.net`

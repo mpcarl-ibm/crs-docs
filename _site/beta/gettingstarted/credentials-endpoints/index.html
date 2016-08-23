@@ -23,7 +23,7 @@
 
   <div class="header-wrapper">
 
-    <a class="site-title" href="/nicholas-lange/cos-docs/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
+    <a class="site-title" href="/nicholas-lange/cos-docs/beta/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
 
     <div class="search--pageview">
 
@@ -176,7 +176,9 @@
 
 <h4 id="endpoints">Endpoints</h4>
 
-<p>SoftLayer provides three regional endpoints for connecting to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections between the three regional data centers.</p>
+<p>SoftLayer provides three regional endpoints for connecting S3 applications or clients to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections between the three regional data centers.  Endpoints can be accessed over either plaintext or SSL depending on security requirements.</p>
+
+<p><code class="highlighter-rouge">** INTERNAL DRAFT NOTE: will add code examples showing path-based and host-based addressing **</code></p>
 
 <p>There are three types of endpoint:</p>
 
@@ -185,6 +187,8 @@
   <li><strong>Private endpoints</strong> can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers.</li>
   <li><strong>ADN endpoints</strong> allow customers to bring their own IP addresses. If customer have an ADN account and use an ADN endpoint, they will not be charged for any outgoing or incoming bandwidth.</li>
 </ul>
+
+<p><code class="highlighter-rouge">** INTERNAL DRAFT NOTE: endpoints list will be formatted in a table **</code></p>
 
 <p><strong>Dallas</strong><br />
 public: <code class="highlighter-rouge">s3-api.dal-us-geo.objectstorage.softlayer.net</code><br />

@@ -23,7 +23,7 @@
 
   <div class="header-wrapper">
 
-    <a class="site-title" href="/nicholas-lange/cos-docs/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
+    <a class="site-title" href="/nicholas-lange/cos-docs/beta/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
 
     <div class="search--pageview">
 
@@ -165,21 +165,31 @@
       <div class="post-content">
         <h4 id="ordering">Ordering</h4>
 
+<p>When ordering object storage through the SoftLayer portal there are two options to choose from: S3 (IBM Cloud Object Storage) or Swift. If you need integration with OpenStack then a Swift-based object store might be a better choice, although it won’t take advantage of the innovative technologies that power IBM Cloud Object Storage.  This documentation assumes the user selects the S3 interface.</p>
+
 <ol>
   <li>Login to <a href="https://control.softlayer.com/">https://control.softlayer.com/</a></li>
-  <li>Navigate to the object storage page by clicking on Storage -&gt; Object Storage in the Navigation menu. <br />
- <img src="/nicholas-lange/cos-docs/img/ob1.png" alt="Ordering" /></li>
-  <li>Click on the ‘order object storage’ link on the top right to open the order menu.<br />
- <img src="/nicholas-lange/cos-docs/img/ob2.png" alt="Ordering" /></li>
-  <li>Select ‘IBM Cloud Object Storage’ in the Storage Type menu.<br />
- <img src="/nicholas-lange/cos-docs/img/ob3.png" alt="Ordering" /></li>
+  <li>
+    <p>Navigate to the object storage page by clicking on Storage -&gt; Object Storage in the Navigation menu. <br />
+ <img src="/nicholas-lange/cos-docs/img/ob1.png" alt="Ordering" /></p>
+  </li>
+  <li>
+    <p>Click on the ‘order object storage’ link on the top right to open the order menu.<br />
+ <img src="/nicholas-lange/cos-docs/img/ob2.png" alt="Ordering" /></p>
+  </li>
+  <li>
+    <p>Select ‘IBM Cloud Object Storage’ in the Storage Type menu.<br />
+ <img src="/nicholas-lange/cos-docs/img/ob3.png" alt="Ordering" /></p>
+  </li>
   <li>Click ‘Continue’ and complete the order after accepting the Master Service Agreement. The New object storage account will be provisioned momentarily and will show up in the objects list when it is done.<br />
  <img src="/nicholas-lange/cos-docs/img/ob4.png" alt="Ordering" /></li>
 </ol>
 
 <h4 id="billing">Billing</h4>
 <ol>
-  <li>Invoices can be found at Account -&gt; Billing -&gt; Invoices in the navigation menu.<br />
+  <li>Information on pricing can be found in the <a href="https://www.softlayer.com/Store/orderService/objectStorage">SoftLayer store</a>.</li>
+  <li>Each account recieves a single bill. If you need seperate billing for different sets of containers, then creating multiple accounts is necessary.</li>
+  <li>Invoices can be found at Account -&gt; Billing -&gt; Invoices in the navigation menu. <br />
  <img src="/nicholas-lange/cos-docs/img/bi1.png" alt="Billing" /><br />
  <img src="/nicholas-lange/cos-docs/img/bi2.png" alt="Billing" /></li>
 </ol>

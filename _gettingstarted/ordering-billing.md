@@ -11,6 +11,8 @@ dateAdded: August 18th, 2016
 
 #### Ordering 
 
+When ordering object storage through the SoftLayer portal there are two options to choose from: S3 (IBM Cloud Object Storage) or Swift. If you need integration with OpenStack then a Swift-based object store might be a better choice, although it won't take advantage of the innovative technologies that power IBM Cloud Object Storage.  This documentation assumes the user selects the S3 interface.
+
 1. Login to [https://control.softlayer.com/](https://control.softlayer.com/)
 2. Navigate to the object storage page by clicking on Storage -> Object Storage in the Navigation menu. 
     ![Ordering]({{ site.baseurl }}/img/ob1.png)
@@ -26,7 +28,9 @@ dateAdded: August 18th, 2016
 
 
 #### Billing
-1. Invoices can be found at Account -> Billing -> Invoices in the navigation menu.
+1. Information on pricing can be found in the [SoftLayer store](https://www.softlayer.com/Store/orderService/objectStorage).
+2. Each account recieves a single bill. If you need seperate billing for different sets of containers, then creating multiple accounts is necessary.
+2. Invoices can be found at Account -> Billing -> Invoices in the navigation menu. 
     ![Billing]({{ site.baseurl }}/img/bi1.png)
     ![Billing]({{ site.baseurl }}/img/bi2.png)
 

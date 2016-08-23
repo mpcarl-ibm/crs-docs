@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Manipulating Buckets & Objects</title>
-  <meta name="description" content="Using buckets  Clicking on the Account Name in the above accounts list will open the details page.   The details page shows the following info on the top Hea...">
+  <meta name="description" content="Using buckets  Clicking on the Account Name in the above accounts list will open the details page for that account.   The details page shows the following in...">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
   <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">
@@ -23,7 +23,7 @@
 
   <div class="header-wrapper">
 
-    <a class="site-title" href="/nicholas-lange/cos-docs/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
+    <a class="site-title" href="/nicholas-lange/cos-docs/beta/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
 
     <div class="search--pageview">
 
@@ -165,7 +165,7 @@
       <div class="post-content">
         <h4 id="using-buckets">Using buckets</h4>
 <ol>
-  <li>Clicking on the Account Name in the above accounts list will open the details page.<br />
+  <li>Clicking on the Account Name in the above accounts list will open the details page for that account.<br />
  <img src="/nicholas-lange/cos-docs/img/bu1.png" alt="Buckets" /></li>
   <li>The details page shows the following info on the top Header bar.
     <ul>
@@ -178,13 +178,16 @@
   <li>The page also shows the list of buckets present in the account.</li>
   <li>A new bucket can be added by clicking on the ‘+’ button at the right of the first row.<br />
  <img src="/nicholas-lange/cos-docs/img/bu2.png" alt="Buckets" /></li>
-  <li>The new bucket name (it should be a globally unique name) can be entered and the new bucket added by clicking on the ‘Add’ button.</li>
+  <li>The new bucket name (it must be a globally unique name) can be entered and the new bucket added by clicking on the ‘Add’ button.</li>
   <li>A bucket can be deleted by clicking on the red ‘-’ button to the extreme right of the bucket name. This opens a confirmation window.<br />
  <img src="/nicholas-lange/cos-docs/img/bu3.png" alt="Buckets" /></li>
-  <li>Clicking the ‘Delete’ button removes the bucket from the account. Note: only empty buckets can be deleted.</li>
+  <li>Clicking the ‘Delete’ button removes the bucket from the account. <strong>Note: only empty buckets can be deleted</strong>.  Attempting to delete a non-empty bucket will result in an error.</li>
 </ol>
 
 <h4 id="using-objects">Using objects</h4>
+
+<p><code class="highlighter-rouge">** INTERNAL DRAFT NOTE: Are there limits to file size that need to be addressed? **</code></p>
+
 <ol>
   <li>The objects present within a bucket can be viewed by clicking on the bucket name on the buckets list.<br />
  <img src="/nicholas-lange/cos-docs/img/obj1.png" alt="Objects" /></li>

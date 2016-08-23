@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Overview</title>
-  <meta name="description" content="The following table describes which bucket operations are supported using the S3 API. It also indicates some operations that, while not supported, can be acc...">
+  <meta name="description" content="The following table describes the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
   <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/api/overview/">
@@ -23,7 +23,7 @@
 
   <div class="header-wrapper">
 
-    <a class="site-title" href="/nicholas-lange/cos-docs/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
+    <a class="site-title" href="/nicholas-lange/cos-docs/beta/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
 
     <div class="search--pageview">
 
@@ -163,7 +163,7 @@
       </header>
 
       <div class="post-content">
-        <p>The following table describes which bucket operations are supported using the S3 API. It also indicates some operations that, while not supported, can be accomplished using another mechanism such as the Manager Web Interface or are planned for inclusion in future API versions. Any S3 API operation that is not present is not supported.</p>
+        <p>The following table describes the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.</p>
 
 <p><strong>Bucket operations:</strong></p>
 
@@ -201,7 +201,7 @@
     </tr>
     <tr>
       <td style="text-align: left">GET Bucket location</td>
-      <td style="text-align: left">Response will always contain a location constraint of empty string, consistent with Amazon’s representation of the US Classic Region.</td>
+      <td style="text-align: left">Response will always contain a location constraint of empty string.</td>
     </tr>
     <tr>
       <td style="text-align: left">GET Bucket Tagging</td>
@@ -229,7 +229,7 @@
     </tr>
     <tr>
       <td style="text-align: left">PUT Bucket</td>
-      <td style="text-align: left">Requester must have the Bucket Provisioner role assigned. Before using this operation, a Bucket Template must exist. If the S3 <code class="highlighter-rouge">LocationConstraint</code> parameter is used, it must correspond to the provisioning code for the template. If omitted, the default template will be used.</td>
+      <td style="text-align: left">Requester must have the Bucket Provisioner role assigned. Before using this operation, a Bucket Template must exist. If the  <code class="highlighter-rouge">LocationConstraint</code> parameter is used, it must correspond to the provisioning code for the template. If omitted, the default template will be used.</td>
     </tr>
     <tr>
       <td style="text-align: left">PUT Bucket ACL</td>
@@ -296,7 +296,7 @@
     </tr>
     <tr>
       <td>PUT Object (Copy)</td>
-      <td>Copying objects results in a full-Width read and then a full-Width write. These full copies will result in high bandwidth utilization within the system until the copy is complete.</td>
+      <td>Copying objects can result in high bandwidth utilization within the system until the copy is complete.</td>
     </tr>
     <tr>
       <td>Initiate Multipart Upload</td>
