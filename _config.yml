@@ -9,8 +9,8 @@
 title: IBM Public Cloud Object Storage Documentation
 email: nicholas.lange@ibm.com
 description: Pre-release documentation for IBM Cloud Object Storage closed beta
-baseurl: "/cos-docs" # the subpath of your site, e.g. /blog
-url: "https://pages.github.ibm.com/nicholas-lange" # the base hostname & protocol for your site
+baseurl: "/nicholas-lange/cos-docs" # the subpath of your site, e.g. /blog
+url: "https://pages.github.ibm.com/" # the base hostname & protocol for your site
 twitter_username: nglange
 github_username:  Nicholas-Lange
 
