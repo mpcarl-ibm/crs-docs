@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IBM Public Cloud Object Storage Documentation</title>
+    <description>Pre-release documentation for IBM Cloud Object Storage closed beta</description>
+    <link>https://pages.github.ibm.com//cos-docs/</link>
+    <atom:link href="https://pages.github.ibm.com//cos-docs/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 22 Aug 2016 19:01:04 -0500</pubDate>
+    <lastBuildDate>Mon, 22 Aug 2016 19:01:04 -0500</lastBuildDate>
+    <generator>Jekyll v3.0.3</generator>
+    
+  </channel>
+</rss>

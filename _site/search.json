@@ -1,0 +1,107 @@
+[
+  
+   {
+     
+   } ,
+  
+   {
+     
+   } ,
+  
+   {
+     
+   } ,
+  
+   {
+     
+   } 
+  
+  ,
+  
+  ,
+  
+   {
+     
+       "title"    : "Best practices",
+       "tags"     : "",
+       "url"      : "/cos-docs/beta/api/best-practices/"
+     
+   } ,
+  
+   {
+     
+       "title"    : "Overview",
+       "tags"     : "",
+       "url"      : "/cos-docs/beta/api/overview/"
+     
+   } ,
+  
+   {
+     
+       "title"    : "API Reference &amp; Examples",
+       "tags"     : "",
+       "url"      : "/cos-docs/beta/api/reference/"
+     
+   } 
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+   {
+     
+       "title"    : "Manipulating Buckets &amp; Objects",
+       "tags"     : "",
+       "url"      : "/cos-docs/beta/gettingstarted/buckets-objects/"
+     
+   } ,
+  
+   {
+     
+       "title"    : "Credentials &amp; Endpoints",
+       "tags"     : "",
+       "url"      : "/cos-docs/beta/gettingstarted/credentials-endpoints/"
+     
+   } ,
+  
+   {
+     
+       "title"    : "Ordering &amp; Billing",
+       "tags"     : "",
+       "url"      : "/cos-docs/beta/gettingstarted/ordering-billing/"
+     
+   } ,
+  
+   {
+     
+       "title"    : "Security overview",
+       "tags"     : "",
+       "url"      : "/cos-docs/beta/gettingstarted/security/"
+     
+   } 
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+  ,
+  
+]
