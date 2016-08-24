@@ -30,7 +30,7 @@
   
    {
      
-       "title"    : "Overview",
+       "title"    : "API Overview",
        "tags"     : "",
        "url"      : "/nicholas-lange/cos-docs/beta/api/overview/"
      
@@ -58,7 +58,7 @@
   
    {
      
-       "title"    : "Manipulating Buckets &amp; Objects",
+       "title"    : "Managing Buckets &amp; Objects",
        "tags"     : "",
        "url"      : "/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/"
      
@@ -82,7 +82,7 @@
   
    {
      
-       "title"    : "Security overview",
+       "title"    : "Data Security Overview",
        "tags"     : "",
        "url"      : "/nicholas-lange/cos-docs/beta/gettingstarted/security/"
      

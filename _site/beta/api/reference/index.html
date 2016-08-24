@@ -90,7 +90,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">Manipulating Buckets & Objects</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">Managing Buckets & Objects</a>
           </li>
      
            
@@ -98,7 +98,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Security overview</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Data Security Overview</a>
           </li>
      
            
@@ -114,7 +114,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/api/overview/">Overview</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/api/overview/">API Overview</a>
           </li>
      
            
@@ -355,6 +355,88 @@ Authorization:{authorization-string}
 </code></pre>
 </div>
 
+<p><strong>Sample Response:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
+Date: Wed, 24 Aug 2016 17:45:25 GMT
+X-Clv-Request-Id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.115
+X-Clv-S3-Version: 2.5
+x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
+Content-Length: 0
+</code></pre>
+</div>
+
+<h4 id="get-bucket-list-objects">GET Bucket (list objects)</h4>
+
+<p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GET http://{endpoint}/{bucket-name}
+</code></pre>
+</div>
+
+<p><strong>Sample Request</strong></p>
+
+<p>This requests lists the objects inside the “raw-photos” bucket.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GET /raw-photos HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: s3-api.us-geo.objectstorage.softlayer.net
+X-Amz-Date: 20160822T225156Z
+Authorization: {authorization-string}
+</code></pre>
+</div>
+
+<p><strong>Sample Response</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
+Date: Wed, 24 Aug 2016 17:36:24 GMT
+X-Clv-Request-Id: 9f39ff2e-55d1-461b-a6f1-2d0b75138861
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.115
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 9f39ff2e-55d1-461b-a6f1-2d0b75138861
+Content-Type: application/xml
+Content-Length: 909
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<span class="nt">&lt;ListBucketResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Name&gt;</span>apiary<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;Prefix&gt;&lt;/Prefix&gt;</span>
+    <span class="nt">&lt;Marker&gt;&lt;/Marker&gt;</span>
+    <span class="nt">&lt;MaxKeys&gt;</span>1000<span class="nt">&lt;/MaxKeys&gt;</span>
+    <span class="nt">&lt;Delimiter&gt;&lt;/Delimiter&gt;</span>
+    <span class="nt">&lt;IsTruncated&gt;</span>false<span class="nt">&lt;/IsTruncated&gt;</span>
+    <span class="nt">&lt;Contents&gt;</span>
+        <span class="nt">&lt;Key&gt;</span>photo_1<span class="nt">&lt;/Key&gt;</span>
+        <span class="nt">&lt;LastModified&gt;</span>2016-08-18T16:27:32.530Z<span class="nt">&lt;/LastModified&gt;</span>
+        <span class="nt">&lt;ETag&gt;</span>"3c66102af4bdeb4dc7cc08b6d800b82b"<span class="nt">&lt;/ETag&gt;</span>
+        <span class="nt">&lt;Size&gt;</span>12<span class="nt">&lt;/Size&gt;</span>
+        <span class="nt">&lt;Owner&gt;</span>
+            <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
+            <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+        <span class="nt">&lt;/Owner&gt;</span>
+        <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
+    <span class="nt">&lt;/Contents&gt;</span>
+    <span class="nt">&lt;Contents&gt;</span>
+        <span class="nt">&lt;Key&gt;</span>photo_2<span class="nt">&lt;/Key&gt;</span>
+        <span class="nt">&lt;LastModified&gt;</span>2016-08-18T16:29:42.261Z<span class="nt">&lt;/LastModified&gt;</span>
+        <span class="nt">&lt;ETag&gt;</span>"329b59153a23e700f4121141facb6c57"<span class="nt">&lt;/ETag&gt;</span>
+        <span class="nt">&lt;Size&gt;</span>104912320<span class="nt">&lt;/Size&gt;</span>
+        <span class="nt">&lt;Owner&gt;</span>
+            <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
+            <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+        <span class="nt">&lt;/Owner&gt;</span>
+        <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
+    <span class="nt">&lt;/Contents&gt;</span>
+<span class="nt">&lt;/ListBucketResult&gt;</span>
+</code></pre>
+</div>
+
 <h4 id="delete-bucket">DELETE Bucket</h4>
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. <em>Only empty buckets can be deleted.</em></p>
@@ -376,56 +458,6 @@ Authorization: {authorization-string}
 </div>
 
 <p>The server responds with <code class="highlighter-rouge">204 No Content</code>.</p>
-
-<h4 id="get-bucket-list-objects">GET Bucket (list objects)</h4>
-
-<p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.</p>
-
-<p><strong>Sample Request</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>GET /{bucket-name} HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
-X-Amz-Date: 20160822T225156Z
-Authorization: {authorization-string}
-</code></pre>
-</div>
-
-<p><strong>Sample Response</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ListBucketResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Name&gt;</span>{bucket-name}<span class="nt">&lt;/Name&gt;</span>
-    <span class="nt">&lt;Prefix&gt;&lt;/Prefix&gt;</span>
-    <span class="nt">&lt;Marker&gt;&lt;/Marker&gt;</span>
-    <span class="nt">&lt;MaxKeys&gt;</span>1000<span class="nt">&lt;/MaxKeys&gt;</span>
-    <span class="nt">&lt;Delimiter&gt;&lt;/Delimiter&gt;</span>
-    <span class="nt">&lt;IsTruncated&gt;</span>false<span class="nt">&lt;/IsTruncated&gt;</span>
-    <span class="nt">&lt;Contents&gt;</span>
-        <span class="nt">&lt;Key&gt;</span>object_1<span class="nt">&lt;/Key&gt;</span>
-        <span class="nt">&lt;LastModified&gt;</span>2016-08-18T16:27:32.530Z<span class="nt">&lt;/LastModified&gt;</span>
-        <span class="nt">&lt;ETag&gt;</span>"3c66102af4bdeb4dc7cc08b6d800b82b"<span class="nt">&lt;/ETag&gt;</span>
-        <span class="nt">&lt;Size&gt;</span>12<span class="nt">&lt;/Size&gt;</span>
-        <span class="nt">&lt;Owner&gt;</span>
-            <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
-            <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
-        <span class="nt">&lt;/Owner&gt;</span>
-        <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
-    <span class="nt">&lt;/Contents&gt;</span>
-    <span class="nt">&lt;Contents&gt;</span>
-        <span class="nt">&lt;Key&gt;</span>object_2<span class="nt">&lt;/Key&gt;</span>
-        <span class="nt">&lt;LastModified&gt;</span>2016-08-18T16:29:42.261Z<span class="nt">&lt;/LastModified&gt;</span>
-        <span class="nt">&lt;ETag&gt;</span>"329b59153a23e700f4121141facb6c57"<span class="nt">&lt;/ETag&gt;</span>
-        <span class="nt">&lt;Size&gt;</span>104912320<span class="nt">&lt;/Size&gt;</span>
-        <span class="nt">&lt;Owner&gt;</span>
-            <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
-            <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
-        <span class="nt">&lt;/Owner&gt;</span>
-        <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
-    <span class="nt">&lt;/Contents&gt;</span>
-<span class="nt">&lt;/ListBucketResult&gt;</span>
-</code></pre>
-</div>
 
 <h3 id="operations-on-objects">Operations on Objects</h3>
 

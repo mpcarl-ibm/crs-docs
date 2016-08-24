@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Manipulating Buckets & Objects"
+title:  "Managing Buckets & Objects"
 featured: true
 weight: 3
 tags: []
@@ -8,7 +8,7 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-
+The user interface portal provides a high level view of a storage account.  It is possible to create buckets and upload objects using the portal, but typically most interaction with the object store is done through the API by a client application.
 
 #### Using buckets
 1. Clicking on the Account Name in the above accounts list will open the details page for that account.

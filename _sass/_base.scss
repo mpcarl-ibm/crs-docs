@@ -126,7 +126,7 @@ pre,
 code {
     font-size: 14px;
     border-radius: 3px;
-    background-color: lighten(#E4F2FD, 2%);
+    background-color: lighten($code-color, 2%); // E4F2FD
 }
 
 code {

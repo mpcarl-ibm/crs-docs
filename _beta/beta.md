@@ -6,12 +6,11 @@ category: top-level
 top-level: gettingstarted
 ---
 
-IBM Cloud Object Storage provides a high performance solution to the problem of managing increasingly vast amounts of unstructured data. Data is stored in the public cloud and accessed using either S3 or Swift interfaces.
+IBM Cloud Object Storage provides a high performance solution to the problem of managing increasingly vast amounts of unstructured data. Information is sliced, encrypted, and dispersed across three regional data centers and accessed using an S3 interface.
 
-Object storage does not use a traditional directory tree. Discrete units of data (objects) exist at the same level in a storage pool. Each object has a unique, identifying name that an application uses to retrieve it. Additionally, each object may have metadata that is retrieved with it.  Objects and metadata are accessed directly by applications using an Representational State Transfer (REST) web services API, rather than being directly manipulated by users.  
+Standard Cross Regional Service provides higher reliability and availability than using a single regional data center at the cost of slightly higher latency.  If a given region is compromised the object store continues to function without impediment.  When the data center comes back online, the information is rebuilt and the system continues to function normally.
 
-When using the S3 interface, information is sliced, encrypted, and dispersed across a system of storage devices.  This decentralized approach provides very high reliability, durability, and scalability, and allows for individual storage devices to be added, removed, or upgraded on the fly with no downtime. 
+Customers can use either a web-based portal, or a RESTful S3 API to interact with their storage. This documentation provides support to get started with provisioning accounts, creating buckets and uploading objects, and a reference of common interactions supported by the API.
 
-
-
+The Standard Cross Regional Service is currently in beta, and only available to registered users.  Please contact IBM sales to enroll if not registered.
 

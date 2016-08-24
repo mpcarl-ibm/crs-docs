@@ -137,6 +137,88 @@ X-Amz-Date: 20160821T052842Z
 Authorization:{authorization-string}
 ~~~
 
+**Sample Response:**
+
+~~~
+HTTP/1.1 200 OK
+Date: Wed, 24 Aug 2016 17:45:25 GMT
+X-Clv-Request-Id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.115
+X-Clv-S3-Version: 2.5
+x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
+Content-Length: 0
+~~~
+
+#### GET Bucket (list objects)
+
+When a `GET` request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.
+
+**Syntax**
+
+~~~
+GET http://{endpoint}/{bucket-name}
+~~~
+
+**Sample Request**
+
+This requests lists the objects inside the "raw-photos" bucket.
+
+~~~
+GET /raw-photos HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: s3-api.us-geo.objectstorage.softlayer.net
+X-Amz-Date: 20160822T225156Z
+Authorization: {authorization-string}
+~~~
+
+**Sample Response**
+
+~~~
+HTTP/1.1 200 OK
+Date: Wed, 24 Aug 2016 17:36:24 GMT
+X-Clv-Request-Id: 9f39ff2e-55d1-461b-a6f1-2d0b75138861
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.115
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 9f39ff2e-55d1-461b-a6f1-2d0b75138861
+Content-Type: application/xml
+Content-Length: 909
+~~~
+~~~
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Name>apiary</Name>
+    <Prefix></Prefix>
+    <Marker></Marker>
+    <MaxKeys>1000</MaxKeys>
+    <Delimiter></Delimiter>
+    <IsTruncated>false</IsTruncated>
+    <Contents>
+        <Key>photo_1</Key>
+        <LastModified>2016-08-18T16:27:32.530Z</LastModified>
+        <ETag>"3c66102af4bdeb4dc7cc08b6d800b82b"</ETag>
+        <Size>12</Size>
+        <Owner>
+            <ID>7dd4f57d38484131999e6739e40279a7</ID>
+            <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+        </Owner>
+        <StorageClass>STANDARD</StorageClass>
+    </Contents>
+    <Contents>
+        <Key>photo_2</Key>
+        <LastModified>2016-08-18T16:29:42.261Z</LastModified>
+        <ETag>"329b59153a23e700f4121141facb6c57"</ETag>
+        <Size>104912320</Size>
+        <Owner>
+            <ID>7dd4f57d38484131999e6739e40279a7</ID>
+            <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+        </Owner>
+        <StorageClass>STANDARD</StorageClass>
+    </Contents>
+</ListBucketResult>
+~~~
+
 #### DELETE Bucket
 
 A `DELETE` issued to an empty bucket deletes the bucket. *Only empty buckets can be deleted.*
@@ -158,58 +240,6 @@ Authorization: {authorization-string}
 ~~~
 
 The server responds with `204 No Content`.
-
-
-#### GET Bucket (list objects)
-
-When a `GET` request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.
-
-**Sample Request**
-
-~~~
-GET /{bucket-name} HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
-X-Amz-Date: 20160822T225156Z
-Authorization: {authorization-string}
-~~~
-
-**Sample Response**
-
-~~~
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-    <Name>{bucket-name}</Name>
-    <Prefix></Prefix>
-    <Marker></Marker>
-    <MaxKeys>1000</MaxKeys>
-    <Delimiter></Delimiter>
-    <IsTruncated>false</IsTruncated>
-    <Contents>
-        <Key>object_1</Key>
-        <LastModified>2016-08-18T16:27:32.530Z</LastModified>
-        <ETag>"3c66102af4bdeb4dc7cc08b6d800b82b"</ETag>
-        <Size>12</Size>
-        <Owner>
-            <ID>7dd4f57d38484131999e6739e40279a7</ID>
-            <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
-        </Owner>
-        <StorageClass>STANDARD</StorageClass>
-    </Contents>
-    <Contents>
-        <Key>object_2</Key>
-        <LastModified>2016-08-18T16:29:42.261Z</LastModified>
-        <ETag>"329b59153a23e700f4121141facb6c57"</ETag>
-        <Size>104912320</Size>
-        <Owner>
-            <ID>7dd4f57d38484131999e6739e40279a7</ID>
-            <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
-        </Owner>
-        <StorageClass>STANDARD</StorageClass>
-    </Contents>
-</ListBucketResult>
-~~~
-
 
 ### Operations on Objects
 {: #operations-on-objects}

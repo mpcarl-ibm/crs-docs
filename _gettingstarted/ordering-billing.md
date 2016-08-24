@@ -11,8 +11,6 @@ dateAdded: August 18th, 2016
 
 #### Ordering 
 
-When ordering object storage through the SoftLayer portal there are two options to choose from: S3 (IBM Cloud Object Storage) or Swift. If you need integration with OpenStack then a Swift-based object store might be a better choice, although it won't take advantage of the innovative technologies that power IBM Cloud Object Storage.  This documentation assumes the user selects the S3 interface.
-
 1. Login to [https://control.softlayer.com/](https://control.softlayer.com/)
 2. Navigate to the object storage page by clicking on Storage -> Object Storage in the Navigation menu. 
     ![Ordering]({{ site.baseurl }}/img/ob1.png)
@@ -21,7 +19,8 @@ When ordering object storage through the SoftLayer portal there are two options 
     ![Ordering]({{ site.baseurl }}/img/ob2.png)
 
 4. Select ‘IBM Cloud Object Storage’ in the Storage Type menu.
-    ![Ordering]({{ site.baseurl }}/img/ob3.png)
+    ![Ordering]({{ site.baseurl }}/img/obthree.png)
+    ```** INTERNAL DRAFT NOTE: Portal will accurately display pricing to 4 decimal places for Beta **```
 
 5. Click ‘Continue’ and complete the order after accepting the Master Service Agreement. The New object storage account will be provisioned momentarily and will show up in the objects list when it is done.
     ![Ordering]({{ site.baseurl }}/img/ob4.png)

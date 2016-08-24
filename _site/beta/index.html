@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>IBM Cloud Object Storage Documentation (Beta)</title>
-  <meta name="description" content="IBM Cloud Object Storage provides a high performance solution to the problem of managing increasingly vast amounts of unstructured data. Data is stored in th...">
+  <meta name="description" content="IBM Cloud Object Storage provides a high performance solution to the problem of managing increasingly vast amounts of unstructured data. Information is slice...">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
   <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/">
@@ -90,7 +90,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">Manipulating Buckets & Objects</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">Managing Buckets & Objects</a>
           </li>
      
            
@@ -98,7 +98,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Security overview</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Data Security Overview</a>
           </li>
      
            
@@ -114,7 +114,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/api/overview/">Overview</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/api/overview/">API Overview</a>
           </li>
      
            
@@ -163,11 +163,13 @@
       </header>
 
       <div class="post-content">
-        <p>IBM Cloud Object Storage provides a high performance solution to the problem of managing increasingly vast amounts of unstructured data. Data is stored in the public cloud and accessed using either S3 or Swift interfaces.</p>
+        <p>IBM Cloud Object Storage provides a high performance solution to the problem of managing increasingly vast amounts of unstructured data. Information is sliced, encrypted, and dispersed across three regional data centers and accessed using an S3 interface.</p>
 
-<p>Object storage does not use a traditional directory tree. Discrete units of data (objects) exist at the same level in a storage pool. Each object has a unique, identifying name that an application uses to retrieve it. Additionally, each object may have metadata that is retrieved with it.  Objects and metadata are accessed directly by applications using an Representational State Transfer (REST) web services API, rather than being directly manipulated by users.</p>
+<p>Standard Cross Regional Service provides higher reliability and availability than using a single regional data center at the cost of slightly higher latency.  If a given region is compromised the object store continues to function without impediment.  When the data center comes back online, the information is rebuilt and the system continues to function normally.</p>
 
-<p>When using the S3 interface, information is sliced, encrypted, and dispersed across a system of storage devices.  This decentralized approach provides very high reliability, durability, and scalability, and allows for individual storage devices to be added, removed, or upgraded on the fly with no downtime.</p>
+<p>Customers can use either a web-based portal, or a RESTful S3 API to interact with their storage. This documentation provides support to get started with provisioning accounts, creating buckets and uploading objects, and a reference of common interactions supported by the API.</p>
+
+<p>The Standard Cross Regional Service is currently in beta, and only available to registered users.  Please contact IBM sales to enroll if not registered.</p>
 
 
       </div>

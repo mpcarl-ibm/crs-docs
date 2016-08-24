@@ -32,7 +32,7 @@
 
 
     .highlighter-rouge & {
-      background-color: lighten(#E4F2FD, 2%);
+      background-color: lighten($code-color, 2%);
     }
 
     .c     { color: #998; font-style: italic } // Comment
