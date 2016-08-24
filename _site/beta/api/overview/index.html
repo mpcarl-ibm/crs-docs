@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Overview</title>
-  <meta name="description" content="The following table describes the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.">
+  <meta name="description" content="The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
   <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/api/overview/">
@@ -163,9 +163,22 @@
       </header>
 
       <div class="post-content">
-        <p>The following table describes the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.</p>
+        <p>The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.</p>
 
-<p><strong>Bucket operations:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Service Operation</th>
+      <th style="text-align: left">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">GET Service (List buckets)</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
 
 <table>
   <thead>
@@ -250,77 +263,77 @@
   </tbody>
 </table>
 
-<p><strong>Object operations</strong></p>
-
 <table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Object Operation</th>
+      <th style="text-align: left">Note</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
-      <td>Object Operation</td>
-      <td>Note</td>
+      <td style="text-align: left">DELETE Object</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>DELETE Object</td>
-      <td> </td>
+      <td style="text-align: left">DELETE Multiple Objects</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>DELETE Multiple Objects</td>
-      <td> </td>
+      <td style="text-align: left">GET Object</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>GET Object</td>
-      <td> </td>
+      <td style="text-align: left">GET Object ACL</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>GET Object ACL</td>
-      <td> </td>
+      <td style="text-align: left">HEAD Object</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>HEAD Object</td>
-      <td> </td>
+      <td style="text-align: left">OPTIONS Object</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>OPTIONS Object</td>
-      <td> </td>
+      <td style="text-align: left">POST Object</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>POST Object</td>
-      <td> </td>
+      <td style="text-align: left">PUT Object</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>PUT Object</td>
-      <td> </td>
+      <td style="text-align: left">PUT Object ACL</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>PUT Object ACL</td>
-      <td> </td>
+      <td style="text-align: left">PUT Object (Copy)</td>
+      <td style="text-align: left">Copying objects can result in high bandwidth utilization within the system until the copy is complete.</td>
     </tr>
     <tr>
-      <td>PUT Object (Copy)</td>
-      <td>Copying objects can result in high bandwidth utilization within the system until the copy is complete.</td>
+      <td style="text-align: left">Initiate Multipart Upload</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>Initiate Multipart Upload</td>
-      <td> </td>
+      <td style="text-align: left">Upload Part</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>Upload Part</td>
-      <td> </td>
+      <td style="text-align: left">Upload Part (Copy)</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>Upload Part (Copy)</td>
-      <td> </td>
+      <td style="text-align: left">Complete Multipart Upload</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>Complete Multipart Upload</td>
-      <td> </td>
+      <td style="text-align: left">Abort Multipart Upload</td>
+      <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td>Abort Multipart Upload</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>List Parts</td>
-      <td> </td>
+      <td style="text-align: left">List Parts</td>
+      <td style="text-align: left"> </td>
     </tr>
   </tbody>
 </table>

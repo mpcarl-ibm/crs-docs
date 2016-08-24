@@ -8,9 +8,11 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-The following table describes the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage. 
+The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage. 
 
-**Bucket operations:**
+| Service Operation | Note |
+|:----|:---|
+| GET Service (List buckets)| | 
 
 | Bucket Operation | Note |
 |:----|:---|
@@ -33,9 +35,8 @@ The following table describes the complete set of supported operations when usin
 | PUT Bucket Tagging | |
 | PUT Bucket Request Payment | |
 
-**Object operations**
-
 | Object Operation | Note |
+| :---------------| :------|
 | DELETE Object |
 | DELETE Multiple Objects  |
 | GET Object |
