@@ -283,13 +283,19 @@
 
 <h4 id="get-list-of-containers">GET list of containers</h4>
 
-<p>A <code class="highlighter-rouge">GET</code> issued to the endpoint root returns a list of containers.</p>
+<p>A <code class="highlighter-rouge">GET</code> issued to the endpoint root returns a list of buckets associated with the requesting account.</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GET http://{endpoint}/
+</code></pre>
+</div>
 
 <p><strong>Sample Request:</strong></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>GET / HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
+Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T030815Z
 Authorization: {authorization-string}
 </code></pre>
@@ -328,22 +334,42 @@ Authorization: {authorization-string}
 <h3 id="operations-on-buckets">Operations on Buckets</h3>
 
 <h4 id="put-bucket">PUT Bucket</h4>
+
+<p>A <code class="highlighter-rouge">PUT</code> issued to the endpoint root will create a bucket when a string is provided.</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT http://{endpoint}/{bucket-name}
+</code></pre>
+</div>
+
 <p><strong>Sample Request:</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PUT /{bucket-name} HTTP/1.1
+<p>This is an example of creating a new bucket called ‘apiary’.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT /apiary HTTP/1.1
 Content-Type: text/html
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
+Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160821T052842Z
 Authorization:{authorization-string}
 </code></pre>
 </div>
 
 <h4 id="delete-bucket">DELETE Bucket</h4>
+
+<p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. <em>Only empty buckets can be deleted.</em></p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>DELETE http://{endpoint}/{bucket-name}
+</code></pre>
+</div>
+
 <p><strong>Sample Request</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DELETE /{bucket-name} HTTP/1.1
+<div class="highlighter-rouge"><pre class="highlight"><code>DELETE /apiary HTTP/1.1
 Content-Type: text/html
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
+Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T064812Z
 Authorization: {authorization-string}
 </code></pre>
@@ -353,7 +379,7 @@ Authorization: {authorization-string}
 
 <h4 id="get-bucket-list-objects">GET Bucket (list objects)</h4>
 
-<p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.</p>
+<p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.</p>
 
 <p><strong>Sample Request</strong></p>
 

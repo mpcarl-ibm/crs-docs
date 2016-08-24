@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Overview</title>
-  <meta name="description" content="The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.">
+  <meta name="description" content="IBM Cloud Object Storage uses two seperate APIs: one for account administration using the SoftLayer API, and a second for interacting with the object store u...">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
   <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/api/overview/">
@@ -163,7 +163,13 @@
       </header>
 
       <div class="post-content">
-        <p>The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.</p>
+        <p>IBM Cloud Object Storage uses two seperate APIs: one for account administration using the SoftLayer API, and a second for interacting with the object store using an S3 API.</p>
+
+<p>More information on using the SoftLayer API can be found at the <a href="http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account">SoftLayer Development Network</a>.</p>
+
+<p>The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.</p>
+
+<h4 id="operations-on-the-service">Operations on the service</h4>
 
 <table>
   <thead>
@@ -174,11 +180,13 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">GET Service (List buckets)</td>
+      <td style="text-align: left">GET Service    (List buckets)</td>
       <td style="text-align: left"> </td>
     </tr>
   </tbody>
 </table>
+
+<h4 id="operations-on-buckets">Operations on buckets</h4>
 
 <table>
   <thead>
@@ -262,6 +270,8 @@
     </tr>
   </tbody>
 </table>
+
+<h4 id="operations-on-objects">Operations on objects</h4>
 
 <table>
   <thead>

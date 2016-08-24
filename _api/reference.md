@@ -64,14 +64,20 @@ The following table describes common response headers.
 
 #### GET list of containers
 
-A `GET` issued to the endpoint root returns a list of containers.
+A `GET` issued to the endpoint root returns a list of buckets associated with the requesting account.
+
+**Syntax**
+
+~~~
+GET http://{endpoint}/
+~~~
 
 **Sample Request:**
 
 ~~~
 GET / HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
+Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T030815Z
 Authorization: {authorization-string}
 ~~~
@@ -110,23 +116,43 @@ Authorization: {authorization-string}
 {: #operations-on-buckets}
 
 #### PUT Bucket
-**Sample Request:**
+
+A `PUT` issued to the endpoint root will create a bucket when a string is provided.
+
+**Syntax**
 
 ~~~
-PUT /{bucket-name} HTTP/1.1
+PUT http://{endpoint}/{bucket-name}
+~~~
+
+**Sample Request:**
+
+This is an example of creating a new bucket called 'apiary'.
+
+~~~
+PUT /apiary HTTP/1.1
 Content-Type: text/html
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
+Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160821T052842Z
 Authorization:{authorization-string}
 ~~~
 
 #### DELETE Bucket
+
+A `DELETE` issued to an empty bucket deletes the bucket. *Only empty buckets can be deleted.*
+
+**Syntax**
+
+~~~
+DELETE http://{endpoint}/{bucket-name}
+~~~
+
 **Sample Request**
 
 ~~~
-DELETE /{bucket-name} HTTP/1.1
+DELETE /apiary HTTP/1.1
 Content-Type: text/html
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
+Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T064812Z
 Authorization: {authorization-string}
 ~~~
@@ -136,7 +162,7 @@ The server responds with `204 No Content`.
 
 #### GET Bucket (list objects)
 
-When a `GET` request is given to a specific container, a list of the contents are returned.
+When a `GET` request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.
 
 **Sample Request**
 

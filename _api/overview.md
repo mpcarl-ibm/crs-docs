@@ -8,11 +8,19 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
+IBM Cloud Object Storage uses two seperate APIs: one for account administration using the SoftLayer API, and a second for interacting with the object store using an S3 API.
+
+More information on using the SoftLayer API can be found at the [SoftLayer Development Network](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account).
+
 The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage. 
+
+#### Operations on the service
 
 | Service Operation | Note |
 |:----|:---|
-| GET Service (List buckets)| | 
+| GET Service    (List buckets)| | 
+
+#### Operations on buckets
 
 | Bucket Operation | Note |
 |:----|:---|
@@ -34,6 +42,8 @@ The following tables describe the complete set of supported operations when usin
 | PUT Bucket CORS | Requestor must be granted ``FULL_CONTROL`` permission for bucket. |
 | PUT Bucket Tagging | |
 | PUT Bucket Request Payment | |
+
+#### Operations on objects
 
 | Object Operation | Note |
 | :---------------| :------|
