@@ -184,7 +184,7 @@
 
 <h3 id="operations-on-the-service">Operations on the service</h3>
 
-<p>The only operation that is applied directly to account level is to get a list of buckets owned by that account. It is recommended to limit accounts to 100 buckets.</p>
+<p>The only operation that is applied directly to account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.</p>
 
 <table>
   <thead>
@@ -195,7 +195,7 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">GET Service    (List buckets)</td>
+      <td style="text-align: left">GET Service (List buckets)</td>
       <td style="text-align: left"> </td>
     </tr>
   </tbody>
@@ -259,7 +259,7 @@
     </tr>
     <tr>
       <td style="text-align: left">PUT Bucket</td>
-      <td style="text-align: left">Requester must have the Bucket Provisioner role assigned. Before using this operation, a Bucket Template must exist. If the  <code class="highlighter-rouge">LocationConstraint</code> parameter is used, it must correspond to the provisioning code for the template. If omitted, the default template will be used.</td>
+      <td style="text-align: left">Buckets must have unique names, and accounts are limited to 100 buckets.</td>
     </tr>
     <tr>
       <td style="text-align: left">PUT Bucket ACL</td>

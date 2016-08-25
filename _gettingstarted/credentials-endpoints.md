@@ -49,3 +49,4 @@ adn: `s3-api.wdc-us-geo.objectstorage.adn.networklayer.com`
 **US Region**
 public: `s3-api.us-geo.objectstorage.softlayer.net`
 private: `s3-api.us-geo.objectstorage.service.networklayer.com`
+adn: `s3-api.us-geo.objectstorage.service.adn.networklayer.com`

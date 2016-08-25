@@ -8,7 +8,9 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-The user interface portal provides a high level view of a storage account.  It is possible to create buckets and upload objects using the portal, but typically most interaction with the object store is done through the API by a client application.
+```** INTERNAL DRAFT NOTE: Screenshots to be updated prior to publishing **```
+
+The user interface portal provides a high level view of a storage account.  It is possible to create buckets and upload objects using the portal, but typically most interaction with the object store is done through the API by a client application. 
 
 #### Using buckets
 1. Clicking on the Account Name in the above accounts list will open the details page for that account.
@@ -28,8 +30,6 @@ The user interface portal provides a high level view of a storage account.  It i
 
 #### Using objects
 
-```** INTERNAL DRAFT NOTE: Are there limits to file size that need to be addressed? **```
-
 1. The objects present within a bucket can be viewed by clicking on the bucket name on the buckets list.
     ![Objects]({{ site.baseurl }}/img/obj1.png)
 2. The header would be updated to include the following info.
@@ -41,7 +41,7 @@ The user interface portal provides a high level view of a storage account.  It i
 4. The grid shows the list of objects in the bucket.
 5. A new object can be added by clicking on the ‘+’ button at the right of the first row. 
     ![Objects]({{ site.baseurl }}/img/obj2.png)
-6. The file can be selected from the file system by clicking on the select button and the new file uploaded by clicking on the ‘Add’ button.
+6. The file can be selected from the file system by clicking on the select button and the new file uploaded by clicking on the ‘Add’ button.  When using the portal to add an object, file size is limited to 20 megabytes.
 7. An object can be deleted by clicking on the red ‘-’ button to the extreme right of the object name. This opens a confirmation window.
     ![Objects]({{ site.baseurl }}/img/obj3.png)
 8. Clicking the ‘Delete’ button removes the object from the bucket.

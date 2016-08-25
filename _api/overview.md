@@ -19,11 +19,11 @@ The following tables describe the complete set of supported operations when usin
 
 ### Operations on the service
 
-The only operation that is applied directly to account level is to get a list of buckets owned by that account. It is recommended to limit accounts to 100 buckets.
+The only operation that is applied directly to account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.
 
 | Service Operation | Note |
 |:----|:---|
-| GET Service    (List buckets)| | 
+| GET Service (List buckets)| | 
 
 ### Operations on buckets
 
@@ -42,7 +42,7 @@ These operations create, destroy, get information about, and control behavior of
 | GET Bucket Request Payment |  |
 | HEAD Bucket |  |
 | List Multipart Uploads |  |
-| PUT Bucket | Requester must have the Bucket Provisioner role assigned. Before using this operation, a Bucket Template must exist. If the  ``LocationConstraint`` parameter is used, it must correspond to the provisioning code for the template. If omitted, the default template will be used. |
+| PUT Bucket | Buckets must have unique names, and accounts are limited to 100 buckets. |
 | PUT Bucket ACL | Requestor must be granted ``WRITE_ACL`` permission for bucket. |
 | PUT Bucket CORS | Requestor must be granted ``FULL_CONTROL`` permission for bucket. |
 | PUT Bucket Tagging | |

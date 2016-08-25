@@ -42,19 +42,16 @@ The following table describes supported common request headers. Headers not list
 ####  Common Response Headers
 The following table describes common response headers.
 
-```** INTERNAL DRAFT NOTE: ETag and X-Clv-S3-Version might be removed. X-Clv-Request-id should possibly be renamed to X-IBM-Request-id **```
 
 |  Header        | Note |
 |----------------|------|
 | Content-Length |      |
 |Connection     |       | 
 | Date           |       |
-| ETag           |  Contains MD5 checksum. |
 | Server         |      | 
 |x-amz-request-id|       |
 |X-Clv-Request-Id|  Unique identifier per response an IBM COS Support Engineer uses for diagnostics and troubleshooting purposes. |
 |x-amz-version-id|      |
-|X-Clv-S3-Version|  S3 version  used for the request. |
 
 ### Operations on Service
 {: #operations-on-service}
@@ -73,7 +70,7 @@ GET http://{endpoint}/
 
 ~~~
 GET / HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
+Content-Type: text/plain
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T030815Z
 Authorization: {authorization-string}
@@ -114,7 +111,7 @@ Authorization: {authorization-string}
 
 #### Create a new bucket
 
-A `PUT` issued to the endpoint root will create a bucket when a string is provided.
+A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.
 
 **Syntax**
 
@@ -128,7 +125,7 @@ This is an example of creating a new bucket called 'images'.
 
 ~~~
 PUT /images HTTP/1.1
-Content-Type: text/html
+Content-Type: text/plain
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160821T052842Z
 Authorization:{authorization-string}
@@ -163,7 +160,7 @@ This requests lists the objects inside the "apiary" bucket.
 
 ~~~
 GET /apiary HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
+Content-Type: text/plain
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T225156Z
 Authorization: {authorization-string}
@@ -240,7 +237,6 @@ DELETE http://{endpoint}/{bucket-name}
 
 ~~~
 DELETE /images HTTP/1.1
-Content-Type: text/html
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T064812Z
 Authorization: {authorization-string}
@@ -297,9 +293,7 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 Connection: close
 Content-Length: 533
 
-"The term "queen bee" is typically used to refer to an adult, mated female that lives in a honey bee colony or hive; she is usually themother of most, if not all, of the bees in the beehive.[1] The queens are developed from larvae selected by worker bees and specially fed in order to become sexually mature. There is normally only one adult, mated queen in a hive, in which case the bees will usually follow and fiercely protect her."
-
-"Queen Bee". 2016. Wikipedia. Accessed August 25 2016. https://en.wikipedia.org/wiki/Queen_bee.
+The 'queen' bee is developed from larvae selected by worker bees and fed a substance referred to as 'royal jelly' to accelerate sexual maturity. After a short while the 'queen' is the mother of nearly every bee in the hive, and the colony will fight fiercly to protect her.
 
 ~~~
 
@@ -387,9 +381,7 @@ Content-Type: text/plain; charset=UTF-8
 Last-Modified: Thu, 25 Aug 2016 17:46:53 GMT
 Content-Length: 467
 
-"A worker bee is any female (eusocial) bee that lacks the full reproductive capacity of the colony's queen bee; under most circumstances, this is correlated to an increase in certain non-reproductive activities relative to a queen, as well. Worker bees occur in many bee species other than honey bees, but this is by far the most familiar colloquial use of the term."
-
-"Worker Bee". 2016. Wikipedia. Accessed August 25 2016. https://en.wikipedia.org/wiki/Worker_bee.
+Female bees that are not fortunate enough to be selected to be the 'queen' while they were still larvae become known as 'worker' bees. These bees lack the ability to reproduce and instead ensure that the hive functions smoothly, acting almost as a single organism in fulfilling their purpose.
 ~~~
 
 #### DELETE Object

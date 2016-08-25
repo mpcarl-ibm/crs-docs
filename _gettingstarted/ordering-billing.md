@@ -8,6 +8,7 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
+```** INTERNAL DRAFT NOTE: Screenshots to be updated prior to publishing **```
 
 #### Ordering 
 
@@ -20,7 +21,6 @@ dateAdded: August 18th, 2016
 
 4. Select ‘IBM Cloud Object Storage’ in the Storage Type menu.
     ![Ordering]({{ site.baseurl }}/img/obthree.png)
-    ```** INTERNAL DRAFT NOTE: Portal will accurately display pricing to 4 decimal places for Beta **```
 
 5. Click ‘Continue’ and complete the order after accepting the Master Service Agreement. The New object storage account will be provisioned momentarily and will show up in the objects list when it is done.
     ![Ordering]({{ site.baseurl }}/img/ob4.png)
