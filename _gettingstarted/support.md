@@ -8,4 +8,4 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-Customers requiring support can open a ticket and check the status of an issue in the [customer portal]((https://control.softlayer.com/). 
+Customers requiring support can open a ticket and check the status of an issue in the [customer portal](https://control.softlayer.com/). 
