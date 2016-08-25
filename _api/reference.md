@@ -15,7 +15,7 @@ dateAdded: August 18th, 2016
 * [Overview](#overview)
 * [Common Headers and Error Responses](#headers-and-error-response)
 * [Operations on Service](#operations-on-service)
-* [Operations on Containers](#operations-on-buckets)
+* [Operations on Buckets](#operations-on-buckets)
 * [Operations on Objects](#operations-on-objects)
 
 ###  Overview
@@ -31,14 +31,13 @@ The following table describes supported common request headers. Headers not list
 
 | Header             | Note                               |
 |--------------------|-------------------------------------|
-| Authorization      |  AWS4 authentication. |
-| Content-Length     | Chunked encoding also supported.    |
+| Authorization      | **Required** for all requests. AWS4 authentication  |
+| Host               | **Required** for all requests.                 |
+| x-amz-date         | **Required** for all requests.                 |
+|x-amz-content-sha256| **Required** for uploading objects. |
+| Content-Length     | **Required** for uploading objects, chunked encoding also supported.    |
 | Content-MD5        |                                  |
-| Date               |                                     |
 | Expect             |                                    | 
-| Host               |                                     |
-|x-amz-content-sha256| Used with signature version 4 authenticated requests. |
-| x-amz-date         |                                    |
 
 
 
@@ -62,7 +61,7 @@ The following table describes common response headers.
 ### Operations on Service
 {: #operations-on-service}
 
-#### GET list of containers
+#### List buckets belonging to an account
 
 A `GET` issued to the endpoint root returns a list of buckets associated with the requesting account.
 
@@ -115,7 +114,7 @@ Authorization: {authorization-string}
 ### Operations on Buckets
 {: #operations-on-buckets}
 
-#### PUT Bucket
+#### Create a new bucket
 
 A `PUT` issued to the endpoint root will create a bucket when a string is provided.
 
@@ -127,10 +126,10 @@ PUT http://{endpoint}/{bucket-name}
 
 **Sample Request:**
 
-This is an example of creating a new bucket called 'apiary'.
+This is an example of creating a new bucket called 'images'.
 
 ~~~
-PUT /apiary HTTP/1.1
+PUT /images HTTP/1.1
 Content-Type: text/html
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160821T052842Z
@@ -150,7 +149,7 @@ x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
 Content-Length: 0
 ~~~
 
-#### GET Bucket (list objects)
+#### List objects in a given bucket
 
 When a `GET` request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.
 
@@ -162,10 +161,10 @@ GET http://{endpoint}/{bucket-name}
 
 **Sample Request**
 
-This requests lists the objects inside the "raw-photos" bucket.
+This requests lists the objects inside the "apiary" bucket.
 
 ~~~
-GET /raw-photos HTTP/1.1
+GET /apiary HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T225156Z
@@ -186,40 +185,50 @@ Content-Type: application/xml
 Content-Length: 909
 ~~~
 ~~~
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-    <Name>apiary</Name>
-    <Prefix></Prefix>
-    <Marker></Marker>
-    <MaxKeys>1000</MaxKeys>
-    <Delimiter></Delimiter>
-    <IsTruncated>false</IsTruncated>
-    <Contents>
-        <Key>photo_1</Key>
-        <LastModified>2016-08-18T16:27:32.530Z</LastModified>
-        <ETag>"3c66102af4bdeb4dc7cc08b6d800b82b"</ETag>
-        <Size>12</Size>
-        <Owner>
-            <ID>7dd4f57d38484131999e6739e40279a7</ID>
-            <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
-        </Owner>
-        <StorageClass>STANDARD</StorageClass>
-    </Contents>
-    <Contents>
-        <Key>photo_2</Key>
-        <LastModified>2016-08-18T16:29:42.261Z</LastModified>
-        <ETag>"329b59153a23e700f4121141facb6c57"</ETag>
-        <Size>104912320</Size>
-        <Owner>
-            <ID>7dd4f57d38484131999e6739e40279a7</ID>
-            <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
-        </Owner>
-        <StorageClass>STANDARD</StorageClass>
-    </Contents>
+  <Name>apiary</Name>
+  <Prefix/>
+  <Marker/>
+  <MaxKeys>1000</MaxKeys>
+  <Delimiter/>
+  <IsTruncated>false</IsTruncated>
+  <Contents>
+    <Key>drone-bee</Key>
+    <LastModified>2016-08-25T17:38:38.549Z</LastModified>
+    <ETag>"0cbc6611f5540bd0809a388dc95a615b"</ETag>
+    <Size>4</Size>
+    <Owner>
+      <ID>7dd4f57d38484131999e6739e40279a7</ID>
+      <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+    </Owner>
+    <StorageClass>STANDARD</StorageClass>
+  </Contents>
+  <Contents>
+    <Key>soldier-bee</Key>
+    <LastModified>2016-08-25T17:49:06.006Z</LastModified>
+    <ETag>"37d4c94839ee181a2224d6242176c4b5"</ETag>
+    <Size>11</Size>
+    <Owner>
+      <ID>7dd4f57d38484131999e6739e40279a7</ID>
+      <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+    </Owner>
+    <StorageClass>STANDARD</StorageClass>
+  </Contents>
+  <Contents>
+    <Key>worker-bee</Key>
+    <LastModified>2016-08-25T17:46:53.288Z</LastModified>
+    <ETag>"d34d8aada2996fc42e6948b926513907"</ETag>
+    <Size>467</Size>
+    <Owner>
+      <ID>7dd4f57d38484131999e6739e40279a7</ID>
+      <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+    </Owner>
+    <StorageClass>STANDARD</StorageClass>
+  </Contents>
 </ListBucketResult>
 ~~~
 
-#### DELETE Bucket
+#### Delete a bucket
 
 A `DELETE` issued to an empty bucket deletes the bucket. *Only empty buckets can be deleted.*
 
@@ -232,7 +241,7 @@ DELETE http://{endpoint}/{bucket-name}
 **Sample Request**
 
 ~~~
-DELETE /apiary HTTP/1.1
+DELETE /images HTTP/1.1
 Content-Type: text/html
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T064812Z
@@ -240,6 +249,8 @@ Authorization: {authorization-string}
 ~~~
 
 The server responds with `204 No Content`.
+
+If a non-empty bucket is requested for deletion, the server responds with `409 Conflict`.
 
 ### Operations on Objects
 {: #operations-on-objects}

@@ -171,7 +171,7 @@
   <li><a href="#overview">Overview</a></li>
   <li><a href="#headers-and-error-response">Common Headers and Error Responses</a></li>
   <li><a href="#operations-on-service">Operations on Service</a></li>
-  <li><a href="#operations-on-buckets">Operations on Containers</a></li>
+  <li><a href="#operations-on-buckets">Operations on Buckets</a></li>
   <li><a href="#operations-on-objects">Operations on Objects</a></li>
 </ul>
 
@@ -194,34 +194,30 @@
   <tbody>
     <tr>
       <td>Authorization</td>
-      <td>AWS4 authentication.</td>
+      <td><strong>Required</strong> for all requests. AWS4 authentication</td>
+    </tr>
+    <tr>
+      <td>Host</td>
+      <td><strong>Required</strong> for all requests.</td>
+    </tr>
+    <tr>
+      <td>x-amz-date</td>
+      <td><strong>Required</strong> for all requests.</td>
+    </tr>
+    <tr>
+      <td>x-amz-content-sha256</td>
+      <td><strong>Required</strong> for uploading objects.</td>
     </tr>
     <tr>
       <td>Content-Length</td>
-      <td>Chunked encoding also supported.</td>
+      <td><strong>Required</strong> for uploading objects, chunked encoding also supported.</td>
     </tr>
     <tr>
       <td>Content-MD5</td>
       <td> </td>
     </tr>
     <tr>
-      <td>Date</td>
-      <td> </td>
-    </tr>
-    <tr>
       <td>Expect</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Host</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>x-amz-content-sha256</td>
-      <td>Used with signature version 4 authenticated requests.</td>
-    </tr>
-    <tr>
-      <td>x-amz-date</td>
       <td> </td>
     </tr>
   </tbody>
@@ -281,7 +277,7 @@
 
 <h3 id="operations-on-service">Operations on Service</h3>
 
-<h4 id="get-list-of-containers">GET list of containers</h4>
+<h4 id="list-buckets-belonging-to-an-account">List buckets belonging to an account</h4>
 
 <p>A <code class="highlighter-rouge">GET</code> issued to the endpoint root returns a list of buckets associated with the requesting account.</p>
 
@@ -333,7 +329,7 @@ Authorization: {authorization-string}
 
 <h3 id="operations-on-buckets">Operations on Buckets</h3>
 
-<h4 id="put-bucket">PUT Bucket</h4>
+<h4 id="create-a-new-bucket">Create a new bucket</h4>
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to the endpoint root will create a bucket when a string is provided.</p>
 
@@ -345,9 +341,9 @@ Authorization: {authorization-string}
 
 <p><strong>Sample Request:</strong></p>
 
-<p>This is an example of creating a new bucket called ‘apiary’.</p>
+<p>This is an example of creating a new bucket called ‘images’.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PUT /apiary HTTP/1.1
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT /images HTTP/1.1
 Content-Type: text/html
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160821T052842Z
@@ -368,7 +364,7 @@ Content-Length: 0
 </code></pre>
 </div>
 
-<h4 id="get-bucket-list-objects">GET Bucket (list objects)</h4>
+<h4 id="list-objects-in-a-given-bucket">List objects in a given bucket</h4>
 
 <p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.</p>
 
@@ -380,9 +376,9 @@ Content-Length: 0
 
 <p><strong>Sample Request</strong></p>
 
-<p>This requests lists the objects inside the “raw-photos” bucket.</p>
+<p>This requests lists the objects inside the “apiary” bucket.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET /raw-photos HTTP/1.1
+<div class="highlighter-rouge"><pre class="highlight"><code>GET /apiary HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T225156Z
@@ -403,41 +399,51 @@ Content-Type: application/xml
 Content-Length: 909
 </code></pre>
 </div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-<span class="nt">&lt;ListBucketResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Name&gt;</span>apiary<span class="nt">&lt;/Name&gt;</span>
-    <span class="nt">&lt;Prefix&gt;&lt;/Prefix&gt;</span>
-    <span class="nt">&lt;Marker&gt;&lt;/Marker&gt;</span>
-    <span class="nt">&lt;MaxKeys&gt;</span>1000<span class="nt">&lt;/MaxKeys&gt;</span>
-    <span class="nt">&lt;Delimiter&gt;&lt;/Delimiter&gt;</span>
-    <span class="nt">&lt;IsTruncated&gt;</span>false<span class="nt">&lt;/IsTruncated&gt;</span>
-    <span class="nt">&lt;Contents&gt;</span>
-        <span class="nt">&lt;Key&gt;</span>photo_1<span class="nt">&lt;/Key&gt;</span>
-        <span class="nt">&lt;LastModified&gt;</span>2016-08-18T16:27:32.530Z<span class="nt">&lt;/LastModified&gt;</span>
-        <span class="nt">&lt;ETag&gt;</span>"3c66102af4bdeb4dc7cc08b6d800b82b"<span class="nt">&lt;/ETag&gt;</span>
-        <span class="nt">&lt;Size&gt;</span>12<span class="nt">&lt;/Size&gt;</span>
-        <span class="nt">&lt;Owner&gt;</span>
-            <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
-            <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
-        <span class="nt">&lt;/Owner&gt;</span>
-        <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
-    <span class="nt">&lt;/Contents&gt;</span>
-    <span class="nt">&lt;Contents&gt;</span>
-        <span class="nt">&lt;Key&gt;</span>photo_2<span class="nt">&lt;/Key&gt;</span>
-        <span class="nt">&lt;LastModified&gt;</span>2016-08-18T16:29:42.261Z<span class="nt">&lt;/LastModified&gt;</span>
-        <span class="nt">&lt;ETag&gt;</span>"329b59153a23e700f4121141facb6c57"<span class="nt">&lt;/ETag&gt;</span>
-        <span class="nt">&lt;Size&gt;</span>104912320<span class="nt">&lt;/Size&gt;</span>
-        <span class="nt">&lt;Owner&gt;</span>
-            <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
-            <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
-        <span class="nt">&lt;/Owner&gt;</span>
-        <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
-    <span class="nt">&lt;/Contents&gt;</span>
-<span class="nt">&lt;/ListBucketResult&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;
+  &lt;Name&gt;apiary&lt;/Name&gt;
+  &lt;Prefix/&gt;
+  &lt;Marker/&gt;
+  &lt;MaxKeys&gt;1000&lt;/MaxKeys&gt;
+  &lt;Delimiter/&gt;
+  &lt;IsTruncated&gt;false&lt;/IsTruncated&gt;
+  &lt;Contents&gt;
+    &lt;Key&gt;drone-bee&lt;/Key&gt;
+    &lt;LastModified&gt;2016-08-25T17:38:38.549Z&lt;/LastModified&gt;
+    &lt;ETag&gt;"0cbc6611f5540bd0809a388dc95a615b"&lt;/ETag&gt;
+    &lt;Size&gt;4&lt;/Size&gt;
+    &lt;Owner&gt;
+      &lt;ID&gt;7dd4f57d38484131999e6739e40279a7&lt;/ID&gt;
+      &lt;DisplayName&gt;7dd4f57d38484131999e6739e40279a7&lt;/DisplayName&gt;
+    &lt;/Owner&gt;
+    &lt;StorageClass&gt;STANDARD&lt;/StorageClass&gt;
+  &lt;/Contents&gt;
+  &lt;Contents&gt;
+    &lt;Key&gt;soldier-bee&lt;/Key&gt;
+    &lt;LastModified&gt;2016-08-25T17:49:06.006Z&lt;/LastModified&gt;
+    &lt;ETag&gt;"37d4c94839ee181a2224d6242176c4b5"&lt;/ETag&gt;
+    &lt;Size&gt;11&lt;/Size&gt;
+    &lt;Owner&gt;
+      &lt;ID&gt;7dd4f57d38484131999e6739e40279a7&lt;/ID&gt;
+      &lt;DisplayName&gt;7dd4f57d38484131999e6739e40279a7&lt;/DisplayName&gt;
+    &lt;/Owner&gt;
+    &lt;StorageClass&gt;STANDARD&lt;/StorageClass&gt;
+  &lt;/Contents&gt;
+  &lt;Contents&gt;
+    &lt;Key&gt;worker-bee&lt;/Key&gt;
+    &lt;LastModified&gt;2016-08-25T17:46:53.288Z&lt;/LastModified&gt;
+    &lt;ETag&gt;"d34d8aada2996fc42e6948b926513907"&lt;/ETag&gt;
+    &lt;Size&gt;467&lt;/Size&gt;
+    &lt;Owner&gt;
+      &lt;ID&gt;7dd4f57d38484131999e6739e40279a7&lt;/ID&gt;
+      &lt;DisplayName&gt;7dd4f57d38484131999e6739e40279a7&lt;/DisplayName&gt;
+    &lt;/Owner&gt;
+    &lt;StorageClass&gt;STANDARD&lt;/StorageClass&gt;
+  &lt;/Contents&gt;
+&lt;/ListBucketResult&gt;
 </code></pre>
 </div>
 
-<h4 id="delete-bucket">DELETE Bucket</h4>
+<h4 id="delete-a-bucket">Delete a bucket</h4>
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. <em>Only empty buckets can be deleted.</em></p>
 
@@ -449,7 +455,7 @@ Content-Length: 909
 
 <p><strong>Sample Request</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DELETE /apiary HTTP/1.1
+<div class="highlighter-rouge"><pre class="highlight"><code>DELETE /images HTTP/1.1
 Content-Type: text/html
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T064812Z
@@ -458,6 +464,8 @@ Authorization: {authorization-string}
 </div>
 
 <p>The server responds with <code class="highlighter-rouge">204 No Content</code>.</p>
+
+<p>If a non-empty bucket is requested for deletion, the server responds with <code class="highlighter-rouge">409 Conflict</code>.</p>
 
 <h3 id="operations-on-objects">Operations on Objects</h3>
 

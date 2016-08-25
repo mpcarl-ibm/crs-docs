@@ -8,19 +8,26 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-IBM Cloud Object Storage uses two seperate APIs: one for account administration using the SoftLayer API, and a second for interacting with the object store using an S3 API.
+IBM Cloud Object Storage uses two seperate APIs:
+
+* Account administration using the SoftLayer API
+* Interacting with the object store using an S3 API
 
 More information on using the SoftLayer API can be found at the [SoftLayer Development Network](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account).
 
 The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage. 
 
-#### Operations on the service
+### Operations on the service
+
+The only operation that is applied directly to account level is to get a list of buckets owned by that account. It is recommended to limit accounts to 100 buckets.
 
 | Service Operation | Note |
 |:----|:---|
 | GET Service    (List buckets)| | 
 
-#### Operations on buckets
+### Operations on buckets
+
+These operations create, destroy, get information about, and control behavior of buckets.
 
 | Bucket Operation | Note |
 |:----|:---|
@@ -32,9 +39,7 @@ The following tables describe the complete set of supported operations when usin
 | GET Bucket CORS |Requestor must be granted ``FULL_CONTROL`` permission for bucket. |
 | GET Bucket location | Response will always contain a location constraint of empty string. |
 | GET Bucket Tagging | |
-| GET Bucket Object Versions |  |
 | GET Bucket Request Payment |  |
-| GET Bucket Versioning | Requestor must be granted ``FULL_CONTROL`` permission for bucket. |
 | HEAD Bucket |  |
 | List Multipart Uploads |  |
 | PUT Bucket | Requester must have the Bucket Provisioner role assigned. Before using this operation, a Bucket Template must exist. If the  ``LocationConstraint`` parameter is used, it must correspond to the provisioning code for the template. If omitted, the default template will be used. |
@@ -44,6 +49,8 @@ The following tables describe the complete set of supported operations when usin
 | PUT Bucket Request Payment | |
 
 #### Operations on objects
+
+These operations create, destroy, get information about, and control behavior of buckets.
 
 | Object Operation | Note |
 | :---------------| :------|
