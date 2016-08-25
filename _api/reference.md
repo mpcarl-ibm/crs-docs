@@ -252,70 +252,179 @@ The server responds with `204 No Content`.
 
 If a non-empty bucket is requested for deletion, the server responds with `409 Conflict`.
 
+**Sample Request**
+
+~~~
+DELETE /apiary HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20160825T174049Z
+Host: s3-api.us-geo.objectstorage.softlayer.net
+~~~
+
+**Sample Response**
+
+~~~
+<Error>
+  <Code>BucketNotEmpty</Code>
+  <Message>The bucket you tried to delete is not empty.</Message>
+  <Resource>/apiary/</Resource>
+  <RequestId>9d2bbc00-2827-4210-b40a-8107863f4386</RequestId>
+  <httpStatusCode>409</httpStatusCode>
+</Error>
+~~~
+
 ### Operations on Objects
 {: #operations-on-objects}
 
+#### Upload an object
 
-#### GET Object
+A `PUT` given a path to an object uploads an object. A SHA256 hash of the object is a required header.
 
-A `GET` given a path to an object, such as `{endpoint}/{bucket-name}/{object-name}` downloads the object.
+
+**Syntax**
+
+~~~
+PUT http://{endpoint}/{bucket-name}/{object-name}
+~~~
 
 **Sample Request**
 
 ~~~
-GET /{bucket-name}/{object-name} HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Host: s3-api.{endpoint}.objectstorage.softlayer.net
-X-Amz-Date: 20160822T230250Z
+PUT /apiary/queen-bee HTTP/1.1
 Authorization: {authorization-string}
+x-amz-date: 20160825T183001Z
+x-amz-content-sha256: 309721641329cf441f3fa16ef996cf24a2505f91be3e752ac9411688e3435429
+Content-Type: text/plain; charset=utf-8
+Host: s3-api.us-geo.objectstorage.softlayer.net
+Connection: close
+Content-Length: 533
+
+"The term "queen bee" is typically used to refer to an adult, mated female that lives in a honey bee colony or hive; she is usually themother of most, if not all, of the bees in the beehive.[1] The queens are developed from larvae selected by worker bees and specially fed in order to become sexually mature. There is normally only one adult, mated queen in a hive, in which case the bees will usually follow and fiercely protect her."
+
+"Queen Bee". 2016. Wikipedia. Accessed August 25 2016. https://en.wikipedia.org/wiki/Queen_bee.
+
 ~~~
 
-**Sample Response Headers**
+**Sample Response**
 
 ~~~
+HTTP/1.1 200 OK
+Date: Thu, 25 Aug 2016 18:30:02 GMT
+X-Clv-Request-Id: 9f0ca49a-ae13-4d2d-925b-117b157cf5c3
 Accept-Ranges: bytes
-Content-Length: 12
-Content-Type: application/octet-stream
-Date: Mon, 22 Aug 2016 23:02:50 GMT
-ETag: "3c66102af4bdeb4dc7cc08b6d800b82b"
-Last-Modified: Thu, 18 Aug 2016 16:27:32 GMT
-Server: Cleversafe/3.9.0.115
-X-Clv-Request-Id: f11f3447-cfab-476b-b5da-fa7219d4c7bd
+Server: Cleversafe/3.9.0.121
 X-Clv-S3-Version: 2.5
-x-amz-request-id: f11f3447-cfab-476b-b5da-fa7219d4c7bd
+x-amz-request-id: 9f0ca49a-ae13-4d2d-925b-117b157cf5c3
+ETag: "3ca744fa96cb95e92081708887f63de5"
+Content-Length: 0
 ~~~
 
-#### HEAD Object
+#### Get an objects headers
 
+A `HEAD` given a path to an object retrieves that object's headers.
 
+**Syntax**
 
+~~~
+HEAD http://{endpoint}/{bucket-name}/{object-name}
+~~~
 
-#### POST Object
+**Sample Request**
 
+~~~
+HEAD /apiary/soldier-bee HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20160825T183244Z
+Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
+Connection: close
+~~~
 
-**Parameters:**
+**Sample Response**
 
-| Form Field |
-|------------|
-| AWSAccessKeyId | 
-| acl  | 
-| key | 
-| policy |
-| success_action_status | 
-| signature |
-| Other field names prefixed with x-amz-meta- | 
-| file | 
+~~~
+HTTP/1.1 200 OK
+Date: Thu, 25 Aug 2016 18:32:44 GMT
+X-Clv-Request-Id: da214d69-1999-4461-a130-81ba33c484a6
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.121
+X-Clv-S3-Version: 2.5
+x-amz-request-id: da214d69-1999-4461-a130-81ba33c484a6
+ETag: "37d4c94839ee181a2224d6242176c4b5"
+Content-Type: text/plain; charset=UTF-8
+Last-Modified: Thu, 25 Aug 2016 17:49:06 GMT
+Content-Length: 11
+~~~
 
+#### Download an object
+
+A `GET` given a path to an object uploads an object.
+
+**Syntax**
+
+~~~
+GET http://{endpoint}/{bucket-name}/{object-name}
+~~~
+
+**Sample Request**
+
+~~~
+GET /apiary/worker-bee HTTP/1.1
+Authorization: {authorization-string}
+Host: s3-api.us-geo.objectstorage.softlayer.net
+Connection: close
+~~~
+
+**Sample Response**
+
+~~~
+HTTP/1.1 200 OK
+Date: Thu, 25 Aug 2016 18:34:25 GMT
+X-Clv-Request-Id: 116dcd6b-215d-4a81-bd30-30291fa38f93
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.121
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 116dcd6b-215d-4a81-bd30-30291fa38f93
+ETag: "d34d8aada2996fc42e6948b926513907"
+Content-Type: text/plain; charset=UTF-8
+Last-Modified: Thu, 25 Aug 2016 17:46:53 GMT
+Content-Length: 467
+
+"A worker bee is any female (eusocial) bee that lacks the full reproductive capacity of the colony's queen bee; under most circumstances, this is correlated to an increase in certain non-reproductive activities relative to a queen, as well. Worker bees occur in many bee species other than honey bees, but this is by far the most familiar colloquial use of the term."
+
+"Worker Bee". 2016. Wikipedia. Accessed August 25 2016. https://en.wikipedia.org/wiki/Worker_bee.
+~~~
 
 #### DELETE Object
 
+#### Download an object
 
-**Parameters:**
+A `DELETE` given a path to an object deletes an object.
 
-| Operation | Header | 
-|-----------|--------|
-| Response Headers | x-amz-delete-marker | 
+**Syntax**
 
+~~~
+DELETE http://{endpoint}/{bucket-name}/{object-name}
+~~~
 
-#### PUT Object
+**Sample Request**
+
+~~~
+DELETE /apiary/soldier-bee HTTP/1.1
+Authorization: {authorization-string}
+Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
+Connection: close
+~~~
+
+**Sample Response**
+
+~~~
+HTTP/1.1 204 No Content
+Date: Thu, 25 Aug 2016 17:44:57 GMT
+X-Clv-Request-Id: 8ff4dc32-a6f0-447f-86cf-427b564d5855
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.121
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 8ff4dc32-a6f0-447f-86cf-427b564d5855
+~~~
+
 
