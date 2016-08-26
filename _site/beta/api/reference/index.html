@@ -279,23 +279,19 @@
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET http://{endpoint}/
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">GET http://<span class="o">{</span>endpoint<span class="o">}</span>/</code></pre></figure>
 
 <p><strong>Sample Request:</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET / HTTP/1.1
-Content-Type: text/plain
-Host: s3-api.us-geo.objectstorage.softlayer.net
-X-Amz-Date: 20160822T030815Z
-Authorization: {authorization-string}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160822T030815Z</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span></code></pre></figure>
 
 <p><strong>Sample Response:</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
 <span class="nt">&lt;ListAllMyBucketsResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Owner&gt;</span>
         <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
@@ -319,9 +315,7 @@ Authorization: {authorization-string}
             <span class="nt">&lt;CreationDate&gt;</span>2016-08-18T14:25:09.599Z<span class="nt">&lt;/CreationDate&gt;</span>
         <span class="nt">&lt;/Bucket&gt;</span>
     <span class="nt">&lt;/Buckets&gt;</span>
-<span class="nt">&lt;/ListAllMyBucketsResult&gt;</span>
-</code></pre>
-</div>
+<span class="nt">&lt;/ListAllMyBucketsResult&gt;</span></code></pre></figure>
 
 <h3 id="operations-on-buckets">Operations on Buckets</h3>
 
@@ -331,34 +325,28 @@ Authorization: {authorization-string}
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PUT http://{endpoint}/{bucket-name}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span></code></pre></figure>
 
 <p><strong>Sample Request:</strong></p>
 
 <p>This is an example of creating a new bucket called ‘images’.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PUT /images HTTP/1.1
-Content-Type: text/plain
-Host: s3-api.us-geo.objectstorage.softlayer.net
-X-Amz-Date: 20160821T052842Z
-Authorization:{authorization-string}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">PUT</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160821T052842Z</span>
+<span class="na">Authorization</span><span class="p">:</span><span class="s">{authorization-string}</span></code></pre></figure>
 
 <p><strong>Sample Response:</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
-Date: Wed, 24 Aug 2016 17:45:25 GMT
-X-Clv-Request-Id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
-Accept-Ranges: bytes
-Server: Cleversafe/3.9.0.115
-X-Clv-S3-Version: 2.5
-x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
-Content-Length: 0
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:45:25 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">dca204eb-72b5-4e2a-a142-808d2a5c2a87</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.115</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">dca204eb-72b5-4e2a-a142-808d2a5c2a87</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span></code></pre></figure>
 
 <h4 id="list-objects-in-a-given-bucket">List objects in a given bucket</h4>
 
@@ -366,78 +354,71 @@ Content-Length: 0
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET http://{endpoint}/{bucket-name}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span></code></pre></figure>
 
 <p><strong>Sample Request</strong></p>
 
 <p>This requests lists the objects inside the “apiary” bucket.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET /apiary HTTP/1.1
-Content-Type: text/plain
-Host: s3-api.us-geo.objectstorage.softlayer.net
-X-Amz-Date: 20160822T225156Z
-Authorization: {authorization-string}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160822T225156Z</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span></code></pre></figure>
 
 <p><strong>Sample Response</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
-Date: Wed, 24 Aug 2016 17:36:24 GMT
-X-Clv-Request-Id: 9f39ff2e-55d1-461b-a6f1-2d0b75138861
-Accept-Ranges: bytes
-Server: Cleversafe/3.9.0.115
-X-Clv-S3-Version: 2.5
-x-amz-request-id: 9f39ff2e-55d1-461b-a6f1-2d0b75138861
-Content-Type: application/xml
-Content-Length: 909
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;
-  &lt;Name&gt;apiary&lt;/Name&gt;
-  &lt;Prefix/&gt;
-  &lt;Marker/&gt;
-  &lt;MaxKeys&gt;1000&lt;/MaxKeys&gt;
-  &lt;Delimiter/&gt;
-  &lt;IsTruncated&gt;false&lt;/IsTruncated&gt;
-  &lt;Contents&gt;
-    &lt;Key&gt;drone-bee&lt;/Key&gt;
-    &lt;LastModified&gt;2016-08-25T17:38:38.549Z&lt;/LastModified&gt;
-    &lt;ETag&gt;"0cbc6611f5540bd0809a388dc95a615b"&lt;/ETag&gt;
-    &lt;Size&gt;4&lt;/Size&gt;
-    &lt;Owner&gt;
-      &lt;ID&gt;7dd4f57d38484131999e6739e40279a7&lt;/ID&gt;
-      &lt;DisplayName&gt;7dd4f57d38484131999e6739e40279a7&lt;/DisplayName&gt;
-    &lt;/Owner&gt;
-    &lt;StorageClass&gt;STANDARD&lt;/StorageClass&gt;
-  &lt;/Contents&gt;
-  &lt;Contents&gt;
-    &lt;Key&gt;soldier-bee&lt;/Key&gt;
-    &lt;LastModified&gt;2016-08-25T17:49:06.006Z&lt;/LastModified&gt;
-    &lt;ETag&gt;"37d4c94839ee181a2224d6242176c4b5"&lt;/ETag&gt;
-    &lt;Size&gt;11&lt;/Size&gt;
-    &lt;Owner&gt;
-      &lt;ID&gt;7dd4f57d38484131999e6739e40279a7&lt;/ID&gt;
-      &lt;DisplayName&gt;7dd4f57d38484131999e6739e40279a7&lt;/DisplayName&gt;
-    &lt;/Owner&gt;
-    &lt;StorageClass&gt;STANDARD&lt;/StorageClass&gt;
-  &lt;/Contents&gt;
-  &lt;Contents&gt;
-    &lt;Key&gt;worker-bee&lt;/Key&gt;
-    &lt;LastModified&gt;2016-08-25T17:46:53.288Z&lt;/LastModified&gt;
-    &lt;ETag&gt;"d34d8aada2996fc42e6948b926513907"&lt;/ETag&gt;
-    &lt;Size&gt;467&lt;/Size&gt;
-    &lt;Owner&gt;
-      &lt;ID&gt;7dd4f57d38484131999e6739e40279a7&lt;/ID&gt;
-      &lt;DisplayName&gt;7dd4f57d38484131999e6739e40279a7&lt;/DisplayName&gt;
-    &lt;/Owner&gt;
-    &lt;StorageClass&gt;STANDARD&lt;/StorageClass&gt;
-  &lt;/Contents&gt;
-&lt;/ListBucketResult&gt;
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:36:24 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">9f39ff2e-55d1-461b-a6f1-2d0b75138861</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.115</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">9f39ff2e-55d1-461b-a6f1-2d0b75138861</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">909</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;ListBucketResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>apiary<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Prefix/&gt;</span>
+  <span class="nt">&lt;Marker/&gt;</span>
+  <span class="nt">&lt;MaxKeys&gt;</span>1000<span class="nt">&lt;/MaxKeys&gt;</span>
+  <span class="nt">&lt;Delimiter/&gt;</span>
+  <span class="nt">&lt;IsTruncated&gt;</span>false<span class="nt">&lt;/IsTruncated&gt;</span>
+  <span class="nt">&lt;Contents&gt;</span>
+    <span class="nt">&lt;Key&gt;</span>drone-bee<span class="nt">&lt;/Key&gt;</span>
+    <span class="nt">&lt;LastModified&gt;</span>2016-08-25T17:38:38.549Z<span class="nt">&lt;/LastModified&gt;</span>
+    <span class="nt">&lt;ETag&gt;</span>"0cbc6611f5540bd0809a388dc95a615b"<span class="nt">&lt;/ETag&gt;</span>
+    <span class="nt">&lt;Size&gt;</span>4<span class="nt">&lt;/Size&gt;</span>
+    <span class="nt">&lt;Owner&gt;</span>
+      <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
+      <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+    <span class="nt">&lt;/Owner&gt;</span>
+    <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
+  <span class="nt">&lt;/Contents&gt;</span>
+  <span class="nt">&lt;Contents&gt;</span>
+    <span class="nt">&lt;Key&gt;</span>soldier-bee<span class="nt">&lt;/Key&gt;</span>
+    <span class="nt">&lt;LastModified&gt;</span>2016-08-25T17:49:06.006Z<span class="nt">&lt;/LastModified&gt;</span>
+    <span class="nt">&lt;ETag&gt;</span>"37d4c94839ee181a2224d6242176c4b5"<span class="nt">&lt;/ETag&gt;</span>
+    <span class="nt">&lt;Size&gt;</span>11<span class="nt">&lt;/Size&gt;</span>
+    <span class="nt">&lt;Owner&gt;</span>
+      <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
+      <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+    <span class="nt">&lt;/Owner&gt;</span>
+    <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
+  <span class="nt">&lt;/Contents&gt;</span>
+  <span class="nt">&lt;Contents&gt;</span>
+    <span class="nt">&lt;Key&gt;</span>worker-bee<span class="nt">&lt;/Key&gt;</span>
+    <span class="nt">&lt;LastModified&gt;</span>2016-08-25T17:46:53.288Z<span class="nt">&lt;/LastModified&gt;</span>
+    <span class="nt">&lt;ETag&gt;</span>"d34d8aada2996fc42e6948b926513907"<span class="nt">&lt;/ETag&gt;</span>
+    <span class="nt">&lt;Size&gt;</span>467<span class="nt">&lt;/Size&gt;</span>
+    <span class="nt">&lt;Owner&gt;</span>
+      <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
+      <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+    <span class="nt">&lt;/Owner&gt;</span>
+    <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
+  <span class="nt">&lt;/Contents&gt;</span>
+<span class="nt">&lt;/ListBucketResult&gt;</span></code></pre></figure>
 
 <h4 id="delete-a-bucket">Delete a bucket</h4>
 
@@ -445,18 +426,14 @@ Content-Length: 909
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DELETE http://{endpoint}/{bucket-name}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span></code></pre></figure>
 
 <p><strong>Sample Request</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DELETE /images HTTP/1.1
-Host: s3-api.us-geo.objectstorage.softlayer.net
-X-Amz-Date: 20160822T064812Z
-Authorization: {authorization-string}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">DELETE</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160822T064812Z</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span></code></pre></figure>
 
 <p>The server responds with <code class="highlighter-rouge">204 No Content</code>.</p>
 
@@ -464,24 +441,20 @@ Authorization: {authorization-string}
 
 <p><strong>Sample Request</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DELETE /apiary HTTP/1.1
-Authorization: {authorization-string}
-x-amz-date: 20160825T174049Z
-Host: s3-api.us-geo.objectstorage.softlayer.net
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">DELETE</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20160825T174049Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span></code></pre></figure>
 
 <p><strong>Sample Response</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;Error&gt;
-  &lt;Code&gt;BucketNotEmpty&lt;/Code&gt;
-  &lt;Message&gt;The bucket you tried to delete is not empty.&lt;/Message&gt;
-  &lt;Resource&gt;/apiary/&lt;/Resource&gt;
-  &lt;RequestId&gt;9d2bbc00-2827-4210-b40a-8107863f4386&lt;/RequestId&gt;
-  &lt;httpStatusCode&gt;409&lt;/httpStatusCode&gt;
-&lt;/Error&gt;
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Error&gt;</span>
+  <span class="nt">&lt;Code&gt;</span>BucketNotEmpty<span class="nt">&lt;/Code&gt;</span>
+  <span class="nt">&lt;Message&gt;</span>The bucket you tried to delete is not empty.<span class="nt">&lt;/Message&gt;</span>
+  <span class="nt">&lt;Resource&gt;</span>/apiary/<span class="nt">&lt;/Resource&gt;</span>
+  <span class="nt">&lt;RequestId&gt;</span>9d2bbc00-2827-4210-b40a-8107863f4386<span class="nt">&lt;/RequestId&gt;</span>
+  <span class="nt">&lt;httpStatusCode&gt;</span>409<span class="nt">&lt;/httpStatusCode&gt;</span>
+<span class="nt">&lt;/Error&gt;</span></code></pre></figure>
 
 <h3 id="operations-on-objects">Operations on Objects</h3>
 
@@ -491,39 +464,32 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PUT http://{endpoint}/{bucket-name}/{object-name}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span></code></pre></figure>
 
 <p><strong>Sample Request</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PUT /apiary/queen-bee HTTP/1.1
-Authorization: {authorization-string}
-x-amz-date: 20160825T183001Z
-x-amz-content-sha256: 309721641329cf441f3fa16ef996cf24a2505f91be3e752ac9411688e3435429
-Content-Type: text/plain; charset=utf-8
-Host: s3-api.us-geo.objectstorage.softlayer.net
-Connection: close
-Content-Length: 533
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20160825T183001Z</span>
+<span class="na">x-amz-content-sha256</span><span class="p">:</span> <span class="s">309721641329cf441f3fa16ef996cf24a2505f91be3e752ac9411688e3435429</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain; charset=utf-8</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">533</span>
 
-The 'queen' bee is developed from larvae selected by worker bees and fed a substance referred to as 'royal jelly' to accelerate sexual maturity. After a short while the 'queen' is the mother of nearly every bee in the hive, and the colony will fight fiercly to protect her.
-
-</code></pre>
-</div>
+The 'queen' bee is developed from larvae selected by worker bees and fed a substance referred to as 'royal jelly' to accelerate sexual maturity. After a short while the 'queen' is the mother of nearly every bee in the hive, and the colony will fight fiercly to protect her.</code></pre></figure>
 
 <p><strong>Sample Response</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
-Date: Thu, 25 Aug 2016 18:30:02 GMT
-X-Clv-Request-Id: 9f0ca49a-ae13-4d2d-925b-117b157cf5c3
-Accept-Ranges: bytes
-Server: Cleversafe/3.9.0.121
-X-Clv-S3-Version: 2.5
-x-amz-request-id: 9f0ca49a-ae13-4d2d-925b-117b157cf5c3
-ETag: "3ca744fa96cb95e92081708887f63de5"
-Content-Length: 0
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:30:02 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">9f0ca49a-ae13-4d2d-925b-117b157cf5c3</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.121</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">9f0ca49a-ae13-4d2d-925b-117b157cf5c3</span>
+<span class="na">ETag</span><span class="p">:</span> <span class="s">"3ca744fa96cb95e92081708887f63de5"</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span></code></pre></figure>
 
 <h4 id="get-an-objects-headers">Get an objects headers</h4>
 
@@ -531,35 +497,29 @@ Content-Length: 0
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HEAD http://{endpoint}/{bucket-name}/{object-name}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">HEAD http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span></code></pre></figure>
 
 <p><strong>Sample Request</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HEAD /apiary/soldier-bee HTTP/1.1
-Authorization: {authorization-string}
-x-amz-date: 20160825T183244Z
-Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
-Connection: close
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">HEAD</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20160825T183244Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.sjc-us-geo.objectstorage.softlayer.net</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span></code></pre></figure>
 
 <p><strong>Sample Response</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
-Date: Thu, 25 Aug 2016 18:32:44 GMT
-X-Clv-Request-Id: da214d69-1999-4461-a130-81ba33c484a6
-Accept-Ranges: bytes
-Server: Cleversafe/3.9.0.121
-X-Clv-S3-Version: 2.5
-x-amz-request-id: da214d69-1999-4461-a130-81ba33c484a6
-ETag: "37d4c94839ee181a2224d6242176c4b5"
-Content-Type: text/plain; charset=UTF-8
-Last-Modified: Thu, 25 Aug 2016 17:49:06 GMT
-Content-Length: 11
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:32:44 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">da214d69-1999-4461-a130-81ba33c484a6</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.121</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">da214d69-1999-4461-a130-81ba33c484a6</span>
+<span class="na">ETag</span><span class="p">:</span> <span class="s">"37d4c94839ee181a2224d6242176c4b5"</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain; charset=UTF-8</span>
+<span class="na">Last-Modified</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 17:49:06 GMT</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">11</span></code></pre></figure>
 
 <h4 id="download-an-object">Download an object</h4>
 
@@ -567,36 +527,30 @@ Content-Length: 11
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET http://{endpoint}/{bucket-name}/{object-name}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span></code></pre></figure>
 
 <p><strong>Sample Request</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>GET /apiary/worker-bee HTTP/1.1
-Authorization: {authorization-string}
-Host: s3-api.us-geo.objectstorage.softlayer.net
-Connection: close
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/apiary/worker-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span></code></pre></figure>
 
 <p><strong>Sample Response</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
-Date: Thu, 25 Aug 2016 18:34:25 GMT
-X-Clv-Request-Id: 116dcd6b-215d-4a81-bd30-30291fa38f93
-Accept-Ranges: bytes
-Server: Cleversafe/3.9.0.121
-X-Clv-S3-Version: 2.5
-x-amz-request-id: 116dcd6b-215d-4a81-bd30-30291fa38f93
-ETag: "d34d8aada2996fc42e6948b926513907"
-Content-Type: text/plain; charset=UTF-8
-Last-Modified: Thu, 25 Aug 2016 17:46:53 GMT
-Content-Length: 467
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:34:25 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">116dcd6b-215d-4a81-bd30-30291fa38f93</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.121</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">116dcd6b-215d-4a81-bd30-30291fa38f93</span>
+<span class="na">ETag</span><span class="p">:</span> <span class="s">"d34d8aada2996fc42e6948b926513907"</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain; charset=UTF-8</span>
+<span class="na">Last-Modified</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 17:46:53 GMT</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">467</span>
 
-Female bees that are not fortunate enough to be selected to be the 'queen' while they were still larvae become known as 'worker' bees. These bees lack the ability to reproduce and instead ensure that the hive functions smoothly, acting almost as a single organism in fulfilling their purpose.
-</code></pre>
-</div>
+Female bees that are not fortunate enough to be selected to be the 'queen' while they were still larvae become known as 'worker' bees. These bees lack the ability to reproduce and instead ensure that the hive functions smoothly, acting almost as a single organism in fulfilling their purpose.</code></pre></figure>
 
 <h4 id="delete-object">DELETE Object</h4>
 
@@ -606,30 +560,24 @@ Female bees that are not fortunate enough to be selected to be the 'queen' while
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DELETE http://{endpoint}/{bucket-name}/{object-name}
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span></code></pre></figure>
 
 <p><strong>Sample Request</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>DELETE /apiary/soldier-bee HTTP/1.1
-Authorization: {authorization-string}
-Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
-Connection: close
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">DELETE</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.sjc-us-geo.objectstorage.softlayer.net</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span></code></pre></figure>
 
 <p><strong>Sample Response</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 204 No Content
-Date: Thu, 25 Aug 2016 17:44:57 GMT
-X-Clv-Request-Id: 8ff4dc32-a6f0-447f-86cf-427b564d5855
-Accept-Ranges: bytes
-Server: Cleversafe/3.9.0.121
-X-Clv-S3-Version: 2.5
-x-amz-request-id: 8ff4dc32-a6f0-447f-86cf-427b564d5855
-</code></pre>
-</div>
+<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 17:44:57 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">8ff4dc32-a6f0-447f-86cf-427b564d5855</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.121</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">8ff4dc32-a6f0-447f-86cf-427b564d5855</span></code></pre></figure>
 
 
       </div>
