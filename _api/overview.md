@@ -23,7 +23,7 @@ The only operation that is applied directly to account level is to get a list of
 
 | Service Operation | Note |
 |:----|:---|
-| GET Service (List buckets)| | 
+| GET Service | Used to retrieve of list of all buckets belonging to an account. | 
 
 ### Operations on buckets
 
@@ -31,10 +31,10 @@ These operations create, destroy, get information about, and control behavior of
 
 | Bucket Operation | Note |
 |:----|:---|
-| DELETE Bucket | Requestor must have Bucket Provisioner role assigned and be granted ``FULL_CONTROL`` permission for bucket. Provisioning API configuration must be enabled and set to ``CREATE`` and ``DELETE`` |
-| DELETE Bucket CORS | Requestor must be granted ``FULL_CONTROL`` permission for bucket. |
+| DELETE Bucket | Deletes a bucket.  Requires ownership or ``FULL_CONTROL`` permissions. |
+| DELETE Bucket CORS | Requires ownership or ``FULL_CONTROL`` permissions. |
 | DELETE Bucket tagging | |
-| GET Bucket (List Objects) | |
+| GET Bucket | Lists objects contained in a bucket.  Limited to 1000 objects. |
 | GET Bucket ACL |Requestor must be granted ``READ_ACL`` permission for bucket. |
 | GET Bucket CORS |Requestor must be granted ``FULL_CONTROL`` permission for bucket. |
 | GET Bucket location | Response will always contain a location constraint of empty string. |

@@ -195,8 +195,8 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">GET Service (List buckets)</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">GET Service</td>
+      <td style="text-align: left">Used to retrieve of list of all buckets belonging to an account.</td>
     </tr>
   </tbody>
 </table>
@@ -215,19 +215,19 @@
   <tbody>
     <tr>
       <td style="text-align: left">DELETE Bucket</td>
-      <td style="text-align: left">Requestor must have Bucket Provisioner role assigned and be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket. Provisioning API configuration must be enabled and set to <code class="highlighter-rouge">CREATE</code> and <code class="highlighter-rouge">DELETE</code></td>
+      <td style="text-align: left">Deletes a bucket.  Requires ownership or <code class="highlighter-rouge">FULL_CONTROL</code> permissions.</td>
     </tr>
     <tr>
       <td style="text-align: left">DELETE Bucket CORS</td>
-      <td style="text-align: left">Requestor must be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket.</td>
+      <td style="text-align: left">Requires ownership or <code class="highlighter-rouge">FULL_CONTROL</code> permissions.</td>
     </tr>
     <tr>
       <td style="text-align: left">DELETE Bucket tagging</td>
       <td style="text-align: left"> </td>
     </tr>
     <tr>
-      <td style="text-align: left">GET Bucket (List Objects)</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">GET Bucket</td>
+      <td style="text-align: left">Lists objects contained in a bucket.  Limited to 1000 objects.</td>
     </tr>
     <tr>
       <td style="text-align: left">GET Bucket ACL</td>

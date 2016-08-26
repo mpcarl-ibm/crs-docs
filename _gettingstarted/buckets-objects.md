@@ -23,7 +23,7 @@ The user interface portal provides a high level view of a storage account.  It i
 3. The page also shows the list of buckets present in the account.
 4. A new bucket can be added by clicking on the ‘+’ button at the right of the first row.
     ![Buckets]({{ site.baseurl }}/img/bu2.png)
-5. The new bucket name (it must be a globally unique name) can be entered and the new bucket added by clicking on the ‘Add’ button.
+5. The new bucket name (it must be a DNS-compliant, globally unique name) can be entered and the new bucket added by clicking on the ‘Add’ button.
 6. A bucket can be deleted by clicking on the red ‘-’ button to the extreme right of the bucket name. This opens a confirmation window.
     ![Buckets]({{ site.baseurl }}/img/bu3.png)
 7. Clicking the ‘Delete’ button removes the bucket from the account. **Note: only empty buckets can be deleted**.  Attempting to delete a non-empty bucket will result in an error.
