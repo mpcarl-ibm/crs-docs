@@ -293,7 +293,10 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 Connection: close
 Content-Length: 533
 
-The 'queen' bee is developed from larvae selected by worker bees and fed a substance referred to as 'royal jelly' to accelerate sexual maturity. After a short while the 'queen' is the mother of nearly every bee in the hive, and the colony will fight fiercly to protect her.
+ The 'queen' bee is developed from larvae selected by worker bees and fed a 
+ substance referred to as 'royal jelly' to accelerate sexual maturity. After a 
+ short while the 'queen' is the mother of nearly every bee in the hive, and 
+ the colony will fight fiercly to protect her. 
 
 {% endhighlight %}
 
@@ -381,7 +384,10 @@ Content-Type: text/plain; charset=UTF-8
 Last-Modified: Thu, 25 Aug 2016 17:46:53 GMT
 Content-Length: 467
 
-Female bees that are not fortunate enough to be selected to be the 'queen' while they were still larvae become known as 'worker' bees. These bees lack the ability to reproduce and instead ensure that the hive functions smoothly, acting almost as a single organism in fulfilling their purpose.
+ Female bees that are not fortunate enough to be selected to be the 'queen'
+ while they were still larvae become known as 'worker' bees. These bees lack 
+ the ability to reproduce and instead ensure that the hive functions smoothly, 
+ acting almost as a single organism in fulfilling their purpose.
 {% endhighlight %}
 
 #### DELETE Object
