@@ -10,8 +10,8 @@ dateAdded: August 18th, 2016
 
 IBM Cloud Object Storage uses two seperate APIs:
 
-* Account administration using the SoftLayer API
-* Interacting with the object store using an S3 API
+1. Account administration using the SoftLayer API
+2. Interacting with the object store using an S3 API
 
 More information on using the SoftLayer API can be found at the [SoftLayer Development Network](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account).
 

@@ -8,7 +8,7 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-#### Table of Contents
+### Table of Contents
 
 * [Overview](#overview)
 * [Common Headers and Error Responses](#headers-and-error-response)

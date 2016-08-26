@@ -217,21 +217,24 @@ table{
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
-    margin: 3rem 0;
+    margin: 1rem 0;
 }
 
 th{
     border: 1px solid #ddd;
-    text-align: center !important;
+    text-align: left !important;
+    padding-left: 13px;
+    background-color: #e4f2fd;
 }
 
 td{
     padding: 6px 13px;
     border : 1px solid #ddd;
+    font-size: 14px;
 }
-tr {
-    &:nth-child(even) {
-        background-color: #F8F8F8;
-    }
-}
-
+/** tr {
+ *     &:nth-child(even) {
+ *         background-color: #e4f2fd;
+ *     }
+ * }
+ */   
