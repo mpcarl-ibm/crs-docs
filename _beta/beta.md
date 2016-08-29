@@ -12,5 +12,5 @@ This Standard Cross Regional Service beta provides higher reliability and availa
 
 Customers can use either a web-based portal or a RESTful S3 API to interact with their storage. This documentation provides support to get started with provisioning accounts, to create buckets, to upload objects, and to use a reference of common API interactions.
 
-IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](https://www.ibm.com/cloud-computing/infrastructure/object-storage/) to enroll if not registered.
+IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com) to enroll if not registered.
 
