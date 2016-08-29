@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Credentials & Endpoints"
+title:  "Credentials & endpoints"
 featured: true
 weight: 2
 tags: []
@@ -10,23 +10,23 @@ dateAdded: August 18th, 2016
 
 ```** INTERNAL DRAFT NOTE: Screenshots to be updated prior to publishing **```
 
-#### Credentials 
-1. Credentials and available endpoints can be viewed by clicking on the  ‘View Credentials’ link on the top right of the details page.
+#### Credentials
+1. Credentials and available endpoints can be viewed, by clicking the  **View Credentials** link on the top right of the details page.
     ![Credentials]({{ site.baseurl }}/img/cr1.png)
-2. Clicking on the credentials header would expand and show the credentials.
+2. Click the credentials header to expand and show the credentials.
     ![Credentials]({{ site.baseurl }}/img/cr2.png)
-3. An account can have a maximum of two credentials at once. A new credential can be created by clicking on the ‘Add credential’ button just below the Credentials header to the left
-4. A credential can also be deleted by clicking on the ‘-’ button to the right of the credential. A confirmation dialog will pop-up for confirmation before the credential is deleted.
+3. An account can have a maximum of two credentials at once. A new credential can be created, by clicking the **Add credential** button just below the Credentials header.
+4. A credential can also be deleted, by clicking the **-** button to the right of the credential. A confirmation dialog will pop-up for confirmation before the credential is deleted.
 5. The page also shows the various authentication endpoints that can be used to access the account.
 
 #### Endpoints
 
-SoftLayer provides three regional endpoints for connecting S3 applications or clients to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections between the three regional data centers.  Endpoints can be accessed over either plaintext or SSL depending on security requirements.
+SoftLayer provides regional endpoints for connecting S3 applications or clients to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections among the regional data centers.  Endpoints can be accessed over either plaintext or SSL depending on security requirements.
 
-There are three types of endpoint:
+Types of endpoint:
 
 * **Public endpoints** can be accessed from anywhere, and customers are charged for outgoing bandwidth. Incoming bandwidth is free.
-* **Private endpoints** can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers. 
+* **Private endpoints** can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers.
 * **ADN endpoints** allow customers to bring their own IP addresses. If customer have an ADN account and use an ADN endpoint, they will not be charged for any outgoing or incoming bandwidth.
 
 
