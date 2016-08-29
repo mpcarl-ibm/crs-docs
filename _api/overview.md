@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "API Overview"
+title:  "API overview"
 featured: true
 weight: 1
 tags: []
@@ -8,28 +8,28 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-IBM Cloud Object Storage uses two seperate APIs:
+IBM Cloud Object Storage uses separate APIs:
 
-1. Account administration using the SoftLayer API
-2. Interacting with the object store using an S3 API
+* Account administration, by using the SoftLayer API
+* Interacting with the object store, by using an S3 API
 
 More information on using the SoftLayer API can be found at the [SoftLayer Development Network](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account).
 
-The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage. 
+The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.
 
 ### Operations on the service
 
 The only operation that is applied directly to account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.
 
-| Service Operation | Note |
+| Service operation | Note |
 |:----|:---|
-| GET Service | Used to retrieve of list of all buckets belonging to an account. | 
+| GET Service | Used to retrieve of list of all buckets belonging to an account. |
 
 ### Operations on buckets
 
 These operations create, destroy, get information about, and control behavior of buckets.
 
-| Bucket Operation | Note |
+| Bucket operation | Note |
 |:----|:---|
 | DELETE Bucket | Deletes a bucket.  Requires ownership or ``FULL_CONTROL`` permissions. |
 | DELETE Bucket CORS | Requires ownership or ``FULL_CONTROL`` permissions. |
@@ -52,7 +52,7 @@ These operations create, destroy, get information about, and control behavior of
 
 These operations create, destroy, get information about, and control behavior of buckets.
 
-| Object Operation | Note |
+| Object operation | Note |
 | :---------------| :------|
 | DELETE Object |
 | DELETE Multiple Objects  |
