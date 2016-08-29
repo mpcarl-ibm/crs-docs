@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Data Security Overview</title>
-  <meta name="description" content="The IBM Cloud Object Storage System uses Information Dispersal Algorithms (IDAs) to separate data into unrecognizable “slices” that are distributed across a ...">
+  <title>Data security overview</title>
+  <meta name="description" content="The IBM Cloud Object Storage system uses information dispersal algorithms (IDAs) to separate data into unrecognizable “slices” that are distributed across a ...">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
   <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/gettingstarted/security/">
@@ -74,7 +74,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/ordering-billing/">Ordering & Billing</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/ordering-billing/">Ordering & billing</a>
           </li>
      
            
@@ -82,7 +82,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/credentials-endpoints/">Credentials & Endpoints</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/credentials-endpoints/">Credentials & endpoints</a>
           </li>
      
            
@@ -90,7 +90,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">Managing Buckets & Objects</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">Managing buckets & objects</a>
           </li>
      
            
@@ -98,7 +98,7 @@
         
           
           <li>
-              <a class="page-link--active"  href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Data Security Overview</a>
+              <a class="page-link--active"  href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Data security overview</a>
           </li>
      
            
@@ -122,7 +122,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/api/overview/">API Overview</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>
           </li>
      
            
@@ -159,7 +159,7 @@
 
         
 
-        Data Security Overview
+        Data security overview
 
         
         </h1>
@@ -171,11 +171,11 @@
       </header>
 
       <div class="post-content">
-        <p>The IBM Cloud Object Storage System uses Information Dispersal Algorithms (IDAs) to separate data into unrecognizable “slices” that are distributed across a network of data centers, making transmission and storage of data inherently private and secure. No complete copy of the data resides in any single storage node, and only a subset of nodes needs to be available in order to fully retrieve the data on the network.</p>
+        <p>The IBM Cloud Object Storage system uses information dispersal algorithms (IDAs) to separate data into unrecognizable “slices” that are distributed across a network of data centers, making transmission and storage of data inherently private and secure. No complete copy of the data resides in any single storage node, and only a subset of nodes needs to be available in order to fully retrieve the data on the network.</p>
 
-<p>Data is secured by TLS in transit from clients to the data center as well as between devices within and between data centers.  Data at rest is secured through provider side encryption; this is default for all customer accounts.</p>
+<p>Data is secured by TLS in transit from clients to the data center as well as between devices within and among data centers.  Data at rest is secured through provider-side encryption; this is default for all customer accounts.</p>
 
-<p>When an object is deleted by a customer, enough slices of that object are immediately deleted to prevent the object from being read, and the remaining slices are overwritten by new data as it is written to disk.  Forensic reconstruction of an object from remaining encypted slices is virtually impossible.</p>
+<p>When an object is deleted by a customer, enough slices of that object are immediately deleted to prevent the object from being read, and the remaining slices are overwritten by new data as it is written to disk.  Forensic reconstruction of an object from the remaining encrypted slices is virtually impossible.</p>
 
       </div>
     </div>
