@@ -390,9 +390,7 @@ Content-Length: 467
  acting almost as a single organism in fulfilling their purpose.
 {% endhighlight %}
 
-#### DELETE Object
-
-#### Download an object
+#### Delete an object
 
 A `DELETE` given a path to an object deletes an object.
 
