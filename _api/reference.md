@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "API Reference & Examples"
+title:  "API reference & examples"
 featured: true
 weight: 3
 tags: []
