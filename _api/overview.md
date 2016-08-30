@@ -41,7 +41,7 @@ These operations create, destroy, get information about, and control behavior of
 | `GET` Bucket location | Response will always contain a location constraint of empty string. |
 | `HEAD` Bucket | Retrieves a bucket's headers. |
 | `GET` multipart uploads | Lists multipart uploads that have not completed or been canceled. |
-| `PUT` Bucket | Buckets must have unique names and can note begin with `SWIFT`. Accounts are limited to 100 buckets. |
+| `PUT` Bucket | Buckets have naming restrictions. Accounts are limited to 100 buckets. |
 | `PUT` Bucket ACL | Creates an access control list for a bucket. |
 | `PUT` Bucket CORS | Creates a cross-origin resource sharing configuration for a bucket.|
 
