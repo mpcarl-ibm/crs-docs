@@ -38,8 +38,8 @@ The following table describes supported common request headers. Headers not list
 | x-amz-date         | **Required** for all requests.                 |
 |x-amz-content-sha256| **Required** for uploading objects. |
 | Content-Length     | **Required** for uploading objects, chunked encoding also supported.    |
-| Content-MD5        |                                  |
-| Expect             |                                    | 
+| Content-MD5        | A 128-bit MD5 hash value of the message being sent.                  |
+| Expect             | `100-continue` waits for the headers to be accepted before sending the body.  | 
 
 
 
@@ -49,13 +49,11 @@ The following table describes common response headers.
 
 |  Header        | Note |
 |----------------|------|
-| Content-Length |      |
-|Connection     |       | 
-| Date           |       |
-| Server         |      | 
-|x-amz-request-id|       |
-|X-Clv-Request-Id|  Unique identifier per response an IBM COS Support Engineer uses for diagnostics and troubleshooting purposes. |
-|x-amz-version-id|      |
+| Content-Length | The length of the request body in bytes.      |
+|Connection     |  Indicates whether the connection is open or closed.     | 
+| Date           | Timestamp of the request.     |
+| Server         | Name of the responding server.     | 
+|X-Clv-Request-Id|  Unique identifier generated per request. |
 
 ### Operations on Service
 {: #operations-on-service}

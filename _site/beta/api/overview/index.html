@@ -20,12 +20,9 @@
 
   
     <header class="site-header">
-
-  <div class="header-wrapper">
-
-    <a class="site-title" href="/nicholas-lange/cos-docs/beta/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="44px"></a>
-
-    <div class="search--pageview">
+    <div class="header-wrapper">
+        <a class="site-title" href="/nicholas-lange/cos-docs/beta/"><img src="/nicholas-lange/cos-docs/img/logo.png" alt="" height="56px"></a>
+        <div class="search--pageview">
 
   <div class="full-view__search hide">
     <a href="" class="x hide">X</a>
@@ -40,16 +37,7 @@
   </div>
 </div>
 
-
-    <a href="" class="header--request" >
-      <p>
-        Submit feedback
-      </p>
-      <img src="/nicholas-lange/cos-docs/img/user.svg">
-    </a>
-    <a id="nav-toggle" href="mailto:nicholas.lange@ibm.com"><span></span></a>
-  </div>
-
+    </div>
 </header>
 
   
@@ -59,91 +47,45 @@
   
 
       <div class="main-wrapper">
-        
-<div class="sidebar sidebar--toggled">
-  <ul class="sidebar__nav">
-    <li>
-      
-
-      
-
-      <ul class="article__list"  class="article__list">
-        <h4 class="sub__head"><a href="/nicholas-lange/cos-docs/beta/"> Getting Started (Beta)</h4>
-        
-        
-        
-          
-          <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/ordering-billing/">Ordering, credentials, and billing</a>
-          </li>
-     
-           
-          
-        
-          
-          <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/credentials-endpoints/">Endpoints</a>
-          </li>
-     
-           
-          
-        
-          
-          <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">Managing buckets & objects</a>
-          </li>
-     
-           
-          
-        
-          
-          <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Data security overview</a>
-          </li>
-     
-           
-          
-        
-          
-          <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Support</a>
-          </li>
-     
-           
-          
-        
-        
-      </ul>
-      
-            <ul class="article__list"  class="article__list">
-        <h4 class="sub__head">API & Reference (Beta)</h4>
-        
-        
-        
-          
-          <li>
-              <a class="page-link--active"  href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>
-          </li>
-     
-           
-          
-        
-          
-        
-          
-          <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/api/reference/">API reference & examples</a>
-          </li>
-     
-           
-          
-        
-        
-      </ul>
-    
-
-    </li>
-  </ul>
+        <div class="sidebar sidebar--toggled">
+    <ul class="sidebar__nav">
+        <li>
+            <ul class="article__list" class="article__list">
+                <h4 class="sub__head"><a href="/nicholas-lange/cos-docs/beta/"> Getting Started (Beta)</h4>    
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/ordering-billing/">Ordering, credentials, and billing</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/credentials-endpoints/">Endpoints</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">Managing buckets & objects</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Data security overview</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Support</a>
+                </li>
+                 
+            </ul>
+            <ul class="article__list" class="article__list">
+                <h4 class="sub__head">API & Reference (Beta)</h4>    
+                <li>
+                    <a class="page-link--active"  href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>
+                </li>
+                    
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/reference/">API reference & examples</a>
+                </li>
+                 
+            </ul>
+        </li>
+    </ul>
 </div>
 
 
@@ -277,68 +219,68 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">DELETE Object</td>
+      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Object</td>
       <td style="text-align: left">Deletes an object from a bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">DELETE Multiple Objects</td>
+      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Multiple Objects</td>
       <td style="text-align: left">Deletes multiple objects from a bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">GET Object</td>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Object</td>
       <td style="text-align: left">Retrieves an object from a bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">GET Object ACL</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Object ACL</td>
+      <td style="text-align: left">Retrieves an object’s access control list.</td>
     </tr>
     <tr>
-      <td style="text-align: left">HEAD Object</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">HEAD</code> Object</td>
+      <td style="text-align: left">Retrieves an object’s headers.</td>
     </tr>
     <tr>
-      <td style="text-align: left">OPTIONS Object</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">OPTIONS</code> Object</td>
+      <td style="text-align: left">Checks CORS configuration to see if a specific request can be sent.</td>
     </tr>
     <tr>
-      <td style="text-align: left">POST Object</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">POST</code> Object</td>
+      <td style="text-align: left">Adds an object to a bucket using HTML forms.</td>
     </tr>
     <tr>
-      <td style="text-align: left">PUT Object</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object</td>
+      <td style="text-align: left">Adds an object to a bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">PUT Object ACL</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object ACL</td>
+      <td style="text-align: left">Creates an access control list for an object.</td>
     </tr>
     <tr>
-      <td style="text-align: left">PUT Object (Copy)</td>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object (Copy)</td>
       <td style="text-align: left">Creates a copy of an object.</td>
     </tr>
     <tr>
       <td style="text-align: left">Initiate Multipart Upload</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Creates an upload ID for a given set of parts to be uploaded.</td>
     </tr>
     <tr>
       <td style="text-align: left">Upload Part</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Uploads a part of an object associated with an upload ID.</td>
     </tr>
     <tr>
       <td style="text-align: left">Upload Part (Copy)</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Uploads a part of an existing object associated with an upload ID.</td>
     </tr>
     <tr>
       <td style="text-align: left">Complete Multipart Upload</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Assembles an object from parts associated with an upload ID.</td>
     </tr>
     <tr>
       <td style="text-align: left">Abort Multipart Upload</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Stops upload of parts associated with an upload ID.</td>
     </tr>
     <tr>
       <td style="text-align: left">List Parts</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Returns a list of parts associated with an upload ID</td>
     </tr>
   </tbody>
 </table>

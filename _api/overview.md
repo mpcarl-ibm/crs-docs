@@ -51,19 +51,19 @@ These operations create, destroy, get information about, and control behavior of
 
 | Object operation | Note |
 | :---------------| :------|
-| DELETE Object | Deletes an object from a bucket.
-| DELETE Multiple Objects  | Deletes multiple objects from a bucket.
-| GET Object | Retrieves an object from a bucket.
-| GET Object ACL |
-| HEAD Object |
-| OPTIONS Object |
-| POST Object |
-| PUT Object |
-| PUT Object ACL |
-| PUT Object (Copy) | Creates a copy of an object. |
-| Initiate Multipart Upload |
-| Upload Part |
-| Upload Part (Copy) |
-| Complete Multipart Upload |
-| Abort Multipart Upload |
-| List Parts |
+| `DELETE` Object | Deletes an object from a bucket.
+| `DELETE` Multiple Objects  | Deletes multiple objects from a bucket.
+| `GET` Object | Retrieves an object from a bucket.
+| `GET` Object ACL | Retrieves an object's access control list.
+| `HEAD` Object | Retrieves an object's headers.
+| `OPTIONS` Object | Checks CORS configuration to see if a specific request can be sent.
+| `POST` Object | Adds an object to a bucket using HTML forms.
+| `PUT` Object | Adds an object to a bucket.
+| `PUT` Object ACL | Creates an access control list for an object. 
+| `PUT` Object (Copy) | Creates a copy of an object. |
+| Initiate Multipart Upload | Creates an upload ID for a given set of parts to be uploaded.
+| Upload Part | Uploads a part of an object associated with an upload ID.
+| Upload Part (Copy) | Uploads a part of an existing object associated with an upload ID.
+| Complete Multipart Upload | Assembles an object from parts associated with an upload ID.
+| Abort Multipart Upload | Stops upload of parts associated with an upload ID.
+| List Parts | Returns a list of parts associated with an upload ID

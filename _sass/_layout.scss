@@ -11,6 +11,7 @@
 .site-title {
   float: left;
   margin-bottom: 0;
+  padding-top: 24px;
   letter-spacing: -1px;
   color: #e0e0e0;
   font-size: 26px;
@@ -21,6 +22,7 @@
 .site-nav {
   float: right;
   line-height: 56px;
+  padding-top: 10px;
 
   @include media-query($on-palm) {
     position: absolute;
