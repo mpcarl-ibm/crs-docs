@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Managing buckets & objects</title>
-  <meta name="description" content="** INTERNAL DRAFT NOTE: Screenshots to be updated prior to publishing **">
+  <meta name="description" content="  IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact IBM sales to enroll if not registered.">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
   <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/gettingstarted/buckets-objects/">
@@ -68,13 +68,13 @@
       
 
       <ul class="article__list"  class="article__list">
-        <h4 class="sub__head">Getting Started (Beta)</h4>
+        <h4 class="sub__head"><a href="/nicholas-lange/cos-docs/beta/"> Getting Started (Beta)</h4>
         
         
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/ordering-billing/">Ordering & billing</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/ordering-billing/">Ordering, credentials, and billing</a>
           </li>
      
            
@@ -82,7 +82,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/credentials-endpoints/">Credentials & endpoints</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/credentials-endpoints/">Endpoints</a>
           </li>
      
            
@@ -171,14 +171,15 @@
       </header>
 
       <div class="post-content">
-        <p><code class="highlighter-rouge">** INTERNAL DRAFT NOTE: Screenshots to be updated prior to publishing **</code></p>
+        <blockquote>
+  <p>IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#105;&#110;&#115;&#105;&#100;&#101;&#115;&#097;&#108;&#101;&#115;&#064;&#099;&#108;&#101;&#118;&#101;&#114;&#115;&#097;&#102;&#101;&#046;&#099;&#111;&#109;">IBM sales</a> to enroll if not registered.</p>
+</blockquote>
 
 <p>The user interface portal provides a high level view of a storage account.  It is possible to create buckets and upload objects using the portal, but typically most interaction with the object store is done through the API by a client application.</p>
 
 <h4 id="using-buckets">Using buckets</h4>
 <ol>
-  <li>Click the Account Name in the above accounts list to open the details page for that account.<br />
- <img src="/nicholas-lange/cos-docs/img/bu1.png" alt="Buckets" /></li>
+  <li>Click the Account Name in the above accounts list to open the details page for that account.</li>
   <li>The details page shows the following info on the top header bar:
     <ul>
       <li>Name of the account currently being viewed</li>
@@ -188,19 +189,15 @@
     </ul>
   </li>
   <li>The page also shows the list of buckets present in the account.</li>
-  <li>A new bucket can be added by clicking on the <strong>+</strong> button at the right of the first row.<br />
- <img src="/nicholas-lange/cos-docs/img/bu2.png" alt="Buckets" /></li>
-  <li>The new bucket name (it must be a DNS-compliant, globally unique name) can be entered and the new bucket added, by clicking the <strong>Add</strong> button.</li>
-  <li>A bucket can be deleted, by clicking the red <strong>-</strong> button to the extreme right of the bucket name. This opens a confirmation window.<br />
- <img src="/nicholas-lange/cos-docs/img/bu3.png" alt="Buckets" /></li>
+  <li>A new bucket can be added by clicking on the <strong>+</strong> button at the right of the first row.</li>
+  <li>The new bucket name can be entered and the new bucket added, by clicking the <strong>Add</strong> button. Bucket names must be DNS-compliant (between 3 and 63 characters long, can not be formatted as an IP address, and can not begin or end with a period) and must be globally unique (possibly by appending a UUID or other disctictive suffix to bucket names).</li>
+  <li>A bucket can be deleted, by clicking the red <strong>-</strong> button to the extreme right of the bucket name. This opens a confirmation window.</li>
   <li>Click the <strong>Delete</strong> button to remove the bucket from the account. <strong>Note: only empty buckets can be deleted</strong>.  Attempting to delete a non-empty bucket will result in an error.</li>
 </ol>
 
 <h4 id="using-objects">Using objects</h4>
-
 <ol>
-  <li>The objects present within a bucket can be viewed, by clicking the bucket name on the buckets list.<br />
- <img src="/nicholas-lange/cos-docs/img/obj1.png" alt="Objects" /></li>
+  <li>The objects present within a bucket can be viewed, by clicking the bucket name on the buckets list.</li>
   <li>The header is updated to include the following info:
     <ul>
       <li>Name of the account currently being viewed</li>
@@ -211,11 +208,9 @@
   </li>
   <li>Above the grid on the left is a link with the name of the bucket currently viewed. Click the link to show the list of buckets again.</li>
   <li>The grid shows the list of objects in the bucket.</li>
-  <li>A new object can be added, by clicking the <strong>+</strong> button at the right of the first row.<br />
- <img src="/nicholas-lange/cos-docs/img/obj2.png" alt="Objects" /></li>
+  <li>A new object can be added, by clicking the <strong>+</strong> button at the right of the first row.</li>
   <li>The file can be selected from the file system, by clicking the <strong>select</strong> button and the new file uploaded, by clicking the <strong>Add</strong> button.  When using the portal to add an object, file size is limited to 20 megabytes.</li>
-  <li>An object can be deleted, by clicking on the red <strong>-</strong> button to the extreme right of the object name. This opens a confirmation window.<br />
- <img src="/nicholas-lange/cos-docs/img/obj3.png" alt="Objects" /></li>
+  <li>An object can be deleted, by clicking on the red <strong>-</strong> button to the extreme right of the object name. This opens a confirmation window.</li>
   <li>Click the <strong>Delete</strong> button to remove the object from the bucket.</li>
 </ol>
 

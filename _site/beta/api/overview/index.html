@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>API overview</title>
-  <meta name="description" content="IBM Cloud Object Storage uses separate APIs:">
+  <meta name="description" content="  IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact IBM sales to enroll if not registered.">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
   <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/api/overview/">
@@ -68,13 +68,13 @@
       
 
       <ul class="article__list"  class="article__list">
-        <h4 class="sub__head">Getting Started (Beta)</h4>
+        <h4 class="sub__head"><a href="/nicholas-lange/cos-docs/beta/"> Getting Started (Beta)</h4>
         
         
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/ordering-billing/">Ordering & billing</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/ordering-billing/">Ordering, credentials, and billing</a>
           </li>
      
            
@@ -82,7 +82,7 @@
         
           
           <li>
-              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/credentials-endpoints/">Credentials & endpoints</a>
+              <a class="page-link" href="/nicholas-lange/cos-docs/beta/gettingstarted/credentials-endpoints/">Endpoints</a>
           </li>
      
            
@@ -171,16 +171,20 @@
       </header>
 
       <div class="post-content">
-        <p>IBM Cloud Object Storage uses separate APIs:</p>
+        <blockquote>
+  <p>IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#105;&#110;&#115;&#105;&#100;&#101;&#115;&#097;&#108;&#101;&#115;&#064;&#099;&#108;&#101;&#118;&#101;&#114;&#115;&#097;&#102;&#101;&#046;&#099;&#111;&#109;">IBM sales</a> to enroll if not registered.</p>
+</blockquote>
+
+<p>IBM Cloud Object Storage uses separate APIs:</p>
 
 <ul>
-  <li>Account administration, by using the SoftLayer API</li>
-  <li>Interacting with the object store, by using an S3 API</li>
+  <li>Account and credential administration uses the SoftLayer API</li>
+  <li>Interacting with buckets and objects uses an S3 API</li>
 </ul>
 
-<p>More information on using the SoftLayer API can be found at the <a href="http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account">SoftLayer Development Network</a>.</p>
+<p>More information on using the SoftLayer API to create or delete credentials, check capacity usage, retrieve a UUID, and other account functions can be found at the <a href="http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account">SoftLayer Development Network</a>.</p>
 
-<p>The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.</p>
+<p>The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.  For details on using the operations, including examples, see <a href="/nicholas-lange/cos-docs/beta/api/reference">the API reference page</a>.</p>
 
 <h3 id="operations-on-the-service">Operations on the service</h3>
 
@@ -195,7 +199,7 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">GET Service</td>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Service</td>
       <td style="text-align: left">Used to retrieve of list of all buckets belonging to an account.</td>
     </tr>
   </tbody>
@@ -214,68 +218,48 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">DELETE Bucket</td>
-      <td style="text-align: left">Deletes a bucket.  Requires ownership or <code class="highlighter-rouge">FULL_CONTROL</code> permissions.</td>
+      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Bucket</td>
+      <td style="text-align: left">Deletes an empty bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">DELETE Bucket CORS</td>
-      <td style="text-align: left">Requires ownership or <code class="highlighter-rouge">FULL_CONTROL</code> permissions.</td>
+      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Bucket CORS</td>
+      <td style="text-align: left">Deletes any cross-origin resource sharing configuration set on a bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">DELETE Bucket tagging</td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left">GET Bucket</td>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket</td>
       <td style="text-align: left">Lists objects contained in a bucket.  Limited to 1000 objects.</td>
     </tr>
     <tr>
-      <td style="text-align: left">GET Bucket ACL</td>
-      <td style="text-align: left">Requestor must be granted <code class="highlighter-rouge">READ_ACL</code> permission for bucket.</td>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket ACL</td>
+      <td style="text-align: left">Retrieves the access control list for a bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">GET Bucket CORS</td>
-      <td style="text-align: left">Requestor must be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket.</td>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket CORS</td>
+      <td style="text-align: left">Retrieves any cross-origin resource sharing configuration set on a bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">GET Bucket location</td>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket location</td>
       <td style="text-align: left">Response will always contain a location constraint of empty string.</td>
     </tr>
     <tr>
-      <td style="text-align: left">GET Bucket Tagging</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">HEAD</code> Bucket</td>
+      <td style="text-align: left">Retrieves a bucket’s headers.</td>
     </tr>
     <tr>
-      <td style="text-align: left">GET Bucket Request Payment</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> multipart uploads</td>
+      <td style="text-align: left">Lists multipart uploads that have not completed or been canceled.</td>
     </tr>
     <tr>
-      <td style="text-align: left">HEAD Bucket</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket</td>
+      <td style="text-align: left">Buckets must have unique names and can note begin with <code class="highlighter-rouge">SWIFT</code>. Accounts are limited to 100 buckets.</td>
     </tr>
     <tr>
-      <td style="text-align: left">List Multipart Uploads</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket ACL</td>
+      <td style="text-align: left">Creates an access control list for a bucket.</td>
     </tr>
     <tr>
-      <td style="text-align: left">PUT Bucket</td>
-      <td style="text-align: left">Buckets must have unique names, and accounts are limited to 100 buckets.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">PUT Bucket ACL</td>
-      <td style="text-align: left">Requestor must be granted <code class="highlighter-rouge">WRITE_ACL</code> permission for bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">PUT Bucket CORS</td>
-      <td style="text-align: left">Requestor must be granted <code class="highlighter-rouge">FULL_CONTROL</code> permission for bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">PUT Bucket Tagging</td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td style="text-align: left">PUT Bucket Request Payment</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket CORS</td>
+      <td style="text-align: left">Creates a cross-origin resource sharing configuration for a bucket.</td>
     </tr>
   </tbody>
 </table>
@@ -294,15 +278,15 @@
   <tbody>
     <tr>
       <td style="text-align: left">DELETE Object</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Deletes an object from a bucket.</td>
     </tr>
     <tr>
       <td style="text-align: left">DELETE Multiple Objects</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Deletes multiple objects from a bucket.</td>
     </tr>
     <tr>
       <td style="text-align: left">GET Object</td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left">Retrieves an object from a bucket.</td>
     </tr>
     <tr>
       <td style="text-align: left">GET Object ACL</td>
@@ -330,7 +314,7 @@
     </tr>
     <tr>
       <td style="text-align: left">PUT Object (Copy)</td>
-      <td style="text-align: left">Copying objects can result in high bandwidth utilization within the system until the copy is complete.</td>
+      <td style="text-align: left">Creates a copy of an object.</td>
     </tr>
     <tr>
       <td style="text-align: left">Initiate Multipart Upload</td>

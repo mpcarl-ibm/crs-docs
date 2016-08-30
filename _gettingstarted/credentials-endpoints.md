@@ -1,23 +1,13 @@
 ---
 layout: page
-title:  "Credentials & endpoints"
+title:  "Endpoints"
 featured: true
 weight: 2
 tags: []
 author: Nick
 dateAdded: August 18th, 2016
 ---
-
-```** INTERNAL DRAFT NOTE: Screenshots to be updated prior to publishing **```
-
-#### Credentials
-1. Credentials and available endpoints can be viewed, by clicking the  **View Credentials** link on the top right of the details page.
-    ![Credentials]({{ site.baseurl }}/img/cr1.png)
-2. Click the credentials header to expand and show the credentials.
-    ![Credentials]({{ site.baseurl }}/img/cr2.png)
-3. An account can have a maximum of two credentials at once. A new credential can be created, by clicking the **Add credential** button just below the Credentials header.
-4. A credential can also be deleted, by clicking the **-** button to the right of the credential. A confirmation dialog will pop-up for confirmation before the credential is deleted.
-5. The page also shows the various authentication endpoints that can be used to access the account.
+> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com) to enroll if not registered.
 
 #### Endpoints
 
@@ -25,27 +15,67 @@ SoftLayer provides regional endpoints for connecting S3 applications or clients 
 
 Types of endpoint:
 
-* **Public endpoints** can be accessed from anywhere, and customers are charged for outgoing bandwidth. Incoming bandwidth is free.
-* **Private endpoints** can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers.
+* **Public endpoints** can be accessed from anywhere, and customers are charged for outgoing bandwidth. Incoming bandwidth is free.  Customers without existing workloads running in SoftLayer data centers should use public endpoints. 
+* **Private endpoints** can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers. Customers with existing workloads running in a SoftLayer data center in Dallas, San Jose, or Washington should use the endpoint for that same city. Customers with existing workloads running in a remote SoftLayer data center should use the US Region endpoint.
 * **ADN endpoints** allow customers to bring their own IP addresses. If customer have an ADN account and use an ADN endpoint, they will not be charged for any outgoing or incoming bandwidth.
 
 
-**Dallas**
-public: `s3-api.dal-us-geo.objectstorage.softlayer.net`
-private: `s3-api.dal-us-geo.objectstorage.service.networklayer.com`
-adn: `s3-api.dal-us-geo.objectstorage.adn.networklayer.com`
-
-**San Jose**
-public: `s3-api.sjc-us-geo.objectstorage.softlayer.net`
-private: `s3-api.sjc-us-geo.objectstorage.service.networklayer.com`
-adn: `s3-api.sjc-us-geo.objectstorage.adn.networklayer.com`
-
-**Washington**
-public: `s3-api.wdc-us-geo.objectstorage.softlayer.net`
-private: `s3-api.wdc-us-geo.objectstorage.service.networklayer.com`
-adn: `s3-api.wdc-us-geo.objectstorage.adn.networklayer.com`
-
-**US Region**
-public: `s3-api.us-geo.objectstorage.softlayer.net`
-private: `s3-api.us-geo.objectstorage.service.networklayer.com`
-adn: `s3-api.us-geo.objectstorage.service.adn.networklayer.com`
+<table>
+  <tr>
+    <th>Region</th>
+    <th>Type</th>
+    <th>Endpoint</th>
+  </tr>
+    <tr>
+    <td rowspan="3">US Region</td>
+    <td>public</td>
+    <td><code class="highlighter-rouge">s3-api.us-geo.objectstorage.softlayer.net</code></td>
+  </tr>
+  <tr>
+    <td>private</td>
+    <td><code class="highlighter-rouge">s3-api.us-geo.objectstorage.service.networklayer.com</code></td>
+  </tr>
+  <tr>
+    <td>adn</td>
+    <td><code class="highlighter-rouge">s3-api.us-geo.objectstorage.adn.networklayer.com</code></td>
+  </tr>
+  <tr>
+    <td rowspan="3">Dallas</td>
+    <td>public</td>
+    <td><code class="highlighter-rouge">s3-api.dal-us-geo.objectstorage.softlayer.net</code></td>
+  </tr>
+  <tr>
+    <td>private</td>
+    <td><code class="highlighter-rouge">s3-api.dal-us-geo.objectstorage.service.networklayer.com</code></td>
+  </tr>
+  <tr>
+    <td>adn</td>
+    <td><code class="highlighter-rouge">s3-api.dal-us-geo.objectstorage.adn.networklayer.com</code></td>
+  </tr>
+  <tr>
+    <td rowspan="3">San Jose</td>
+        <td>public</td>
+    <td><code class="highlighter-rouge">s3-api.sjc-us-geo.objectstorage.softlayer.net</code></td>
+  </tr>
+  <tr>
+    <td>private</td>
+    <td><code class="highlighter-rouge">s3-api.sjc-us-geo.objectstorage.service.networklayer.com</code></td>
+  </tr>
+  <tr>
+    <td>adn</td>
+    <td><code class="highlighter-rouge">s3-api.sjc-us-geo.objectstorage.adn.networklayer.com</code></td>
+  </tr>
+  <tr>
+    <td rowspan="3">Washington</td>
+    <td>public</td>
+    <td><code class="highlighter-rouge">s3-api.wdc-us-geo.objectstorage.softlayer.net</code></td>
+  </tr>
+  <tr>
+    <td>private</td>
+    <td><code class="highlighter-rouge">s3-api.wdc-us-geo.objectstorage.service.networklayer.com</code></td>
+  </tr>
+  <tr>
+    <td>adn</td>
+    <td><code class="highlighter-rouge">s3-api.wdc-us-geo.objectstorage.adn.networklayer.com</code></td>
+  </tr>
+</table>

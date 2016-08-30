@@ -8,6 +8,8 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
+> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com) to enroll if not registered.
+
 ### Table of Contents
 
 * [Overview](#overview)
@@ -20,6 +22,8 @@ dateAdded: August 18th, 2016
 {: #overview}
 
 The IBM Cloud Object Storage S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found [here]({{ site.baseurl }}/beta/api/overview/).
+
+> **Note:** this documentation for the Cross-Region beta is in-progress and does not yet provide detailed usage guidance and examples for all supported operations. 
 
 ### Common Headers and Error Responses
 {: #headers-and-error-response} 
