@@ -6,7 +6,7 @@ category: top-level
 top-level: gettingstarted
 ---
 
->IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com) to enroll if not registered.
+>IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll if not registered.
 
 IBM Cloud Object Storage Standard Cross Regional Service provides an innovative solution to the problem of managing increasingly vast amounts of unstructured data. Information is encrypted and dispersed across three geographic regions (Dallas, San Jose, and Washington) and accessed by using an implementation of the S3 API.
 
