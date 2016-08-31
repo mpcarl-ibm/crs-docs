@@ -29,9 +29,3 @@ Contact `nicholas.lange@ibm.com` OR `@nicholas.lange` on Slack with questions an
 If you would like to be added as a contributor contact `nicholas.lange@ibm.com` OR `@nicholas.lange` on Slack.
 
 The Markdown files that hold the underlying content are found in the `_beta`, `_gettingstarted`, and `_api` directories.
-
-## Outstanding todos ahead of beta release on 8/31
-
-* Check for and insert trademarks where appropriate throughout.
-* Determine domain for hosting and set DNS
-* Set home page redirect to `{ domain }/docs/beta/` (this allows for clicking on the logo to return to the intro page)
