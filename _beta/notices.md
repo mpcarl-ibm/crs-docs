@@ -16,13 +16,6 @@ IBM may have patents or pending patent applications covering subject matter desc
 *Armonk, NY 10504-1785*
 *US*
 
-For license inquiries regarding double-byte character set (DBCS) information, contact the IBM Intellectual Property Department in your country or send inquiries, in writing, to:
-*Intellectual Property Licensing*
-*Legal and Intellectual Property Law*
-*IBM Japan Ltd.*
-*19-21, Nihonbashi-Hakozakicho, Chuo-ku*
-*Tokyo 103-8510, Japan*
-
 INTERNATIONAL BUSINESS MACHINES CORPORATION PROVIDES THIS PUBLICATION "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. Some jurisdictions do not allow disclaimer of express or implied warranties in certain transactions, therefore, this statement may not apply to you.
 
 This information could include technical inaccuracies or typographical errors. Changes are periodically made to the information herein; these changes will be incorporated in new editions of the publication. IBM may make improvements and/or changes in the product(s) and/or the program(s) described in this publication at any time without notice.
@@ -65,22 +58,30 @@ Portions of this code are derived from IBM Corp. Sample Programs.
 Trademarks
 
 
-##Trademarks 
+## Trademarks 
 IBM, the IBM logo, and ibm.com are trademarks or registered trademarks of International Business Machines Corp., registered in many jurisdictions worldwide. Other product and service names might be trademarks of IBM or other companies. A current list of IBM trademarks is available on the web at "Copyright and trademark information" at www.ibm.com/legal/copytrade.shtml.
-
-Adobe, the Adobe logo, PostScript, and the PostScript logo are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States, and/or other countries.
-
-The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.
-
-Linux is a registered trademark of Linus Torvalds in the United States, other countries, or both.
-
-Microsoft, Windows, and Windows NT are trademarks of Microsoft Corporation in the United States, other countries, or both.
-
-Node.js is a trademark of Joyent, Inc. and is used with its permission. This documentation is not formally endorsed by or affiliated with Joyent.
-
-UNIX is a registered trademark of The Open Group in the United States and other countries.
-
-Java™ and all Java-based trademarks and logos are trademarks or registered trademarks of Oracle and/or its affiliates.
 
 Other company, product, and service names may be trademarks or service marks of others.
 
+## Terms and conditions
+
+Permissions for the use of these publications are granted subject to the following terms and conditions.
+
+### Applicability
+
+These terms and conditions are in addition to any terms of use for the IBM website.
+
+### Personal use
+
+You may reproduce these publications for your personal, noncommercial use provided that all proprietary notices are preserved. You may not distribute, display or make derivative work of these publications, or any portion thereof, without the express consent of IBM.
+
+### Commercial use
+
+You may reproduce, distribute and display these publications solely within your enterprise provided that all proprietary notices are preserved. You may not make derivative works of these publications, or reproduce, distribute or display these publications or any portion thereof outside your enterprise, without the express consent of IBM.
+
+### Rights
+
+Except as expressly granted in this permission, no other permissions, licenses or rights are granted, either express or implied, to the publications or any information, data, software or other intellectual property contained therein.
+IBM reserves the right to withdraw the permissions granted herein whenever, in its discretion, the use of the publications is detrimental to its interest or, as determined by IBM, the above instructions are not being properly followed.
+You may not download, export or re-export this information except in full compliance with all applicable laws and regulations, including all United States export laws and regulations.
+IBM MAKES NO GUARANTEE ABOUT THE CONTENT OF THESE PUBLICATIONS. THE PUBLICATIONS ARE PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.

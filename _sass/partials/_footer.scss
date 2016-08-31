@@ -44,6 +44,12 @@
     align-items: center;
     font-size: $font-14;
     height: auto;
+    p {
+      color: $light-font;
+      font-size: $font-12;
+      margin: 0;
+      text-align: center;
+    }
 
     .list--item__link {
       display: inline-block;
@@ -88,6 +94,9 @@
       font-size: $font-12;
       margin: 0;
     }
+    a {
+    color: $blue-30;
+    padding: 1em;
   }
 }
 
@@ -122,4 +131,5 @@
     color: $light-font;
     padding: 1em;
   }
+}
 }

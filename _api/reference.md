@@ -21,7 +21,7 @@ dateAdded: August 18th, 2016
 ###  Overview
 {: #overview}
 
-The IBM Cloud Object Storage S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found [here]({{ site.baseurl }}/beta/api/overview/).
+The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found [here]({{ site.baseurl }}/beta/api/overview/).
 
 > **Note:** this documentation for the Cross-Region beta is in-progress and does not yet provide detailed usage guidance and examples for all supported operations. 
 

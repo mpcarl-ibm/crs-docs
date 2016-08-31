@@ -13,11 +13,11 @@ dateAdded: August 18th, 2016
 IBM Cloud Object Storage uses separate APIs:
 
 * Account and credential administration uses the SoftLayer API
-* Interacting with buckets and objects uses an S3 API
+* Interacting with buckets and objects uses an implementation of the S3 API
 
 More information on using the SoftLayer API to create or delete credentials, check capacity usage, retrieve a UUID, and other account functions can be found at the [SoftLayer Development Network](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account).
 
-The following tables describe the complete set of supported operations when using the S3 interface to IBM Cloud Object Storage.  For details on using the operations, including examples, see [the API reference page]({{ site.baseurl }}/beta/api/reference).
+The following tables describe the complete set of supported operations when using the S3 API to access IBM Cloud Object Storage.  For details on using the operations, including examples, see [the API reference page]({{ site.baseurl }}/beta/api/reference).
 
 ### Operations on the service
 
