@@ -47,7 +47,7 @@ These operations create, destroy, get information about, and control behavior of
 
 #### Operations on objects
 
-These operations create, destroy, get information about, and control behavior of buckets.
+These operations create, destroy, get information about, and control behavior of objects.
 
 | Object operation | Note |
 | :---------------| :------|
