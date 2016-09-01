@@ -113,7 +113,7 @@ Authorization: {authorization-string}
 
 #### Create a new bucket
 
-A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant (between 3 and 63 characters long, can not be formatted as an IP address, and can not begin or end with a period). 
+A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Using periods as a seperator within bucket names is not recommended, and bucket names resembling IP addresses are not allowed.
 
 **Syntax**
 
