@@ -38,7 +38,6 @@ These operations create, destroy, get information about, and control behavior of
 | `GET` Bucket | Lists objects contained in a bucket.  Limited to 1000 objects. |
 | `GET` Bucket ACL |Retrieves the access control list for a bucket.|
 | `GET` Bucket CORS |Retrieves any cross-origin resource sharing configuration set on a bucket.|
-| `GET` Bucket location | Response will always contain a location constraint of empty string. |
 | `HEAD` Bucket | Retrieves a bucket's headers. |
 | `GET` multipart uploads | Lists multipart uploads that have not completed or been canceled. |
 | `PUT` Bucket | Buckets have naming restrictions. Accounts are limited to 100 buckets. |
