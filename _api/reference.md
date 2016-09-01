@@ -113,7 +113,7 @@ Authorization: {authorization-string}
 
 #### Create a new bucket
 
-A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Using periods as a seperator within bucket names is not recommended, and bucket names resembling IP addresses are not allowed.
+A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Using periods as a separator within bucket names is not recommended, and bucket names resembling IP addresses are not allowed.
 
 **Syntax**
 
@@ -298,7 +298,7 @@ Content-Length: 533
  The 'queen' bee is developed from larvae selected by worker bees and fed a 
  substance referred to as 'royal jelly' to accelerate sexual maturity. After a 
  short while the 'queen' is the mother of nearly every bee in the hive, and 
- the colony will fight fiercly to protect her. 
+ the colony will fight fiercely to protect her. 
 
 {% endhighlight %}
 
