@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "API reference & examples"
+title:  "API reference and examples"
 featured: true
 weight: 3
 tags: []
@@ -8,7 +8,7 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll if not registered.
+> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll.
 
 ### Table of Contents
 

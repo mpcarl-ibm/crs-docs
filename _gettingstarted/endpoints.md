@@ -7,14 +7,14 @@ tags: []
 author: Nick
 dateAdded: August 18th, 2016
 ---
-> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll if not registered.
+> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll.
 
 SoftLayer provides regional endpoints for connecting applications or clients that use the S3 API to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections among the regional data centers.  Endpoints can be accessed over either plaintext or SSL depending on security requirements.
 
 Types of endpoint:
 
-* **Public endpoints** can be accessed from anywhere, and customers are charged for outgoing bandwidth. Incoming bandwidth is free.  Customers without existing workloads running in SoftLayer data centers should use public endpoints. 
-* **Private endpoints** can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers. Customers with existing workloads running in a SoftLayer data center in Dallas, San Jose, or Washington should use the endpoint for that same city. Customers with existing workloads running in a remote SoftLayer data center should use the US Region endpoint.
+* **Public endpoints** can be accessed from anywhere and charges are assessed on outgoing bandwidth. Incoming bandwidth is free. Public endpoints should be used for access not originating from a SoftLayer data center. 
+* **Private endpoints** can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers. Customers with workloads running in a SoftLayer data center in Dallas, San Jose, or Washington should use the endpoint for that same city. Customers with existing workloads running in a remote SoftLayer data center should use the US Region endpoint.
 * **ADN endpoints** allow customers to bring their own IP addresses. If customer have an ADN account and use an ADN endpoint, they will not be charged for any outgoing or incoming bandwidth.
 
 

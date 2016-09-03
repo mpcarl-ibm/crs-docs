@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Endpoints</title>
-  <meta name="description" content="  IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact IBM sales to enroll if not registered.">
+  <meta name="description" content="  IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact IBM sales to enroll.">
 
   <link rel="stylesheet" href="/crs-docs/css/main.css">
   <link rel="canonical" href="https://ibm-public-cos//crs-docs/beta/gettingstarted/endpoints/">
@@ -62,7 +62,7 @@
                 </li>
                   
                 <li>
-                    <a class="page-link"  href="/crs-docs/beta/gettingstarted/buckets-objects/">Managing buckets & objects</a>
+                    <a class="page-link"  href="/crs-docs/beta/gettingstarted/buckets-objects/">Managing buckets and objects</a>
                 </li>
                   
                 <li>
@@ -81,7 +81,7 @@
                 </li>
                     
                 <li>
-                    <a class="page-link"  href="/crs-docs/beta/api/reference/">API reference & examples</a>
+                    <a class="page-link"  href="/crs-docs/beta/api/reference/">API reference and examples</a>
                 </li>
                  
             </ul>
@@ -115,7 +115,7 @@
 
       <div class="post-content">
         <blockquote>
-  <p>IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#105;&#110;&#115;&#105;&#100;&#101;&#115;&#097;&#108;&#101;&#115;&#064;&#099;&#108;&#101;&#118;&#101;&#114;&#115;&#097;&#102;&#101;&#046;&#099;&#111;&#109;&#063;&#115;&#117;&#098;&#106;&#101;&#099;&#116;&#061;&#066;&#101;&#116;&#097;&#032;&#082;&#101;&#113;&#117;&#101;&#115;&#116;">IBM sales</a> to enroll if not registered.</p>
+  <p>IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#105;&#110;&#115;&#105;&#100;&#101;&#115;&#097;&#108;&#101;&#115;&#064;&#099;&#108;&#101;&#118;&#101;&#114;&#115;&#097;&#102;&#101;&#046;&#099;&#111;&#109;&#063;&#115;&#117;&#098;&#106;&#101;&#099;&#116;&#061;&#066;&#101;&#116;&#097;&#032;&#082;&#101;&#113;&#117;&#101;&#115;&#116;">IBM sales</a> to enroll.</p>
 </blockquote>
 
 <p>SoftLayer provides regional endpoints for connecting applications or clients that use the S3 API to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections among the regional data centers.  Endpoints can be accessed over either plaintext or SSL depending on security requirements.</p>
@@ -123,8 +123,8 @@
 <p>Types of endpoint:</p>
 
 <ul>
-  <li><strong>Public endpoints</strong> can be accessed from anywhere, and customers are charged for outgoing bandwidth. Incoming bandwidth is free.  Customers without existing workloads running in SoftLayer data centers should use public endpoints.</li>
-  <li><strong>Private endpoints</strong> can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers. Customers with existing workloads running in a SoftLayer data center in Dallas, San Jose, or Washington should use the endpoint for that same city. Customers with existing workloads running in a remote SoftLayer data center should use the US Region endpoint.</li>
+  <li><strong>Public endpoints</strong> can be accessed from anywhere and charges are assessed on outgoing bandwidth. Incoming bandwidth is free. Public endpoints should be used for access not originating from a SoftLayer data center.</li>
+  <li><strong>Private endpoints</strong> can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers. Customers with workloads running in a SoftLayer data center in Dallas, San Jose, or Washington should use the endpoint for that same city. Customers with existing workloads running in a remote SoftLayer data center should use the US Region endpoint.</li>
   <li><strong>ADN endpoints</strong> allow customers to bring their own IP addresses. If customer have an ADN account and use an ADN endpoint, they will not be charged for any outgoing or incoming bandwidth.</li>
 </ul>
 

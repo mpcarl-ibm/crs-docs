@@ -8,7 +8,7 @@ author: Nick
 dateAdded: August 18th, 2016
 ---
 
-> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll if not registered.
+> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll.
 
 #### Ordering
 
@@ -16,7 +16,7 @@ dateAdded: August 18th, 2016
 2. Navigate to the object storage page, by clicking **Storage** > **Object Storage** in the Navigation menu.
 3. Click the **order object storage** link on the top right to open the order menu.
 4. Select **IBM Cloud Object Storage** in the **Storage Type** menu.
-5. Click **Continue** and complete the order after accepting the Master Service Agreement. The New object storage account will be provisioned momentarily and will show up in the objects list when it is done.
+5. Click **Continue** and complete the order after accepting the Master Service Agreement. The new object storage account will be provisioned momentarily and will show up in the objects list when it is done.
 
 #### Credentials
 1. Credentials and available endpoints can be viewed, by clicking the  **View Credentials** link on the top right of the details page.
@@ -26,7 +26,7 @@ dateAdded: August 18th, 2016
 5. The page also shows the various authentication endpoints that can be used to access the account.
 
 #### Billing
-1. Information on pricing can be found in the [SoftLayer store](https://www.softlayer.com/Store/orderService/objectStorage){: new_window}.
+1. Information on pricing can be found at [SoftLayer](https://www.softlayer.com/Store/orderService/objectStorage){: new_window}.
 2. Each account receives a single bill. If you need separate billing for different sets of containers, then creating multiple accounts is necessary.
 2. Invoices can be found at **Account** > **Billing** > **Invoices** in the navigation menu.
    
