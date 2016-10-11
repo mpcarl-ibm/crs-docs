@@ -25,6 +25,21 @@ The IBM Cloud Object Storage implementation of the S3 API supports the most comm
 
 > **Note:** this documentation for the Cross-Region beta is in-progress and does not yet provide detailed usage guidance and examples for all supported operations. 
 
+### Authorization
+The `authorization` header is required for all requests, and is calculated according to the AWS Signature Version 4 protocol.  This provides identity verification and in-transit data integrity, and is tied to the timestamp of the request.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature:  
+
+```
+AWS4-HMAC-SHA256 
+Credential={access-key}/{date}/{region}/s3/aws4_request, 
+SignedHeaders=host;x-amz-date;{other-required-headers}, 
+Signature={signature}
+```
+
+The date is provided in `YYYYMMDD` format, and the region can be any value (e.g. `us-geo` or `us-east-1`). The `host` and `x-amz-date` headers are always required, and depending on the request other headers may be required as well (e.g. `x-amz-content-sha256`).  The 256 bit signature is given as 64 hexadecimal character string and is calculated from multiple combinations and hashes of the request elements.  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.
+
+> **INTERNAL NOTE**: The signature calculation process is fairly involved.  Assuming we don't want to link to AWS documentation, we could describe it on another page here and link to our version of it, or gently suggest the reader research calculation methods.  Thoughts?  Here is the AWS documentation on single payload (as opposed to multipart uploads) [signature calculation](http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html).
+
+
 ### Common Headers and Error Responses
 {: #headers-and-error-response} 
 
@@ -33,15 +48,13 @@ The following table describes supported common request headers. Headers not list
 
 | Header             | Note                               |
 |--------------------|-------------------------------------|
-| Authorization      | **Required** for all requests. AWS4 authentication  |
+| Authorization      | **Required** for all requests (AWS Signature Version 4).   |
 | Host               | **Required** for all requests.                 |
 | x-amz-date         | **Required** for all requests.                 |
-|x-amz-content-sha256| **Required** for uploading objects. |
+|x-amz-content-sha256| **Required** for uploading objects or any request with information in the body. |
 | Content-Length     | **Required** for uploading objects, chunked encoding also supported.    |
 | Content-MD5        | A 128-bit MD5 hash value of the message being sent.                  |
 | Expect             | `100-continue` waits for the headers to be accepted before sending the body.  | 
-
-
 
 ####  Common Response Headers
 The following table describes common response headers.
@@ -64,28 +77,28 @@ A `GET` issued to the endpoint root returns a list of buckets associated with th
 
 **Syntax**
 
-{% highlight bash %}
+```ShellSession
 GET http://{endpoint}/
-{% endhighlight %}
+```
 
 **Sample Request:**
 
-{% highlight http %}
+```http
 GET / HTTP/1.1
 Content-Type: text/plain
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T030815Z
 Authorization: {authorization-string}
-{% endhighlight %}
+```
 
 **Sample Response:**
 
-{% highlight xml %}
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ListAllMyBucketsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
     <Owner>
-        <ID>7dd4f57d38484131999e6739e40279a7</ID>
-        <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+        <ID>{account-id}</ID>
+        <DisplayName>{account-id}</DisplayName>
     </Owner>
     <Buckets>
         <Bucket>
@@ -106,7 +119,7 @@ Authorization: {authorization-string}
         </Bucket>
     </Buckets>
 </ListAllMyBucketsResult>
-{% endhighlight %}
+```
 
 ### Operations on Buckets
 {: #operations-on-buckets}
@@ -117,25 +130,25 @@ A `PUT` issued to the endpoint root will create a bucket when a string is provid
 
 **Syntax**
 
-{% highlight bash %}
+```bash
 PUT http://{endpoint}/{bucket-name}
-{% endhighlight %}
+```
 
 **Sample Request:**
 
 This is an example of creating a new bucket called 'images'.
 
-{% highlight http %}
+```http
 PUT /images HTTP/1.1
 Content-Type: text/plain
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160821T052842Z
 Authorization:{authorization-string}
-{% endhighlight %}
+```
 
 **Sample Response:**
 
-{% highlight http %}
+```http
 HTTP/1.1 200 OK
 Date: Wed, 24 Aug 2016 17:45:25 GMT
 X-Clv-Request-Id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
@@ -144,7 +157,7 @@ Server: Cleversafe/3.9.0.115
 X-Clv-S3-Version: 2.5
 x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
 Content-Length: 0
-{% endhighlight %}
+```
 
 #### List objects in a given bucket
 
@@ -152,25 +165,25 @@ When a `GET` request is given to a specific container, a list of the contents ar
 
 **Syntax**
 
-{% highlight bash %}
+```bash
 GET http://{endpoint}/{bucket-name}
-{% endhighlight %}
+```
 
 **Sample Request**
 
 This requests lists the objects inside the "apiary" bucket.
 
-{% highlight http %}
+```http
 GET /apiary HTTP/1.1
 Content-Type: text/plain
 Host: s3-api.us-geo.objectstorage.softlayer.net
 X-Amz-Date: 20160822T225156Z
 Authorization: {authorization-string}
-{% endhighlight %}
+```
 
 **Sample Response**
 
-{% highlight http %}
+```http
 HTTP/1.1 200 OK
 Date: Wed, 24 Aug 2016 17:36:24 GMT
 X-Clv-Request-Id: 9f39ff2e-55d1-461b-a6f1-2d0b75138861
@@ -180,8 +193,8 @@ X-Clv-S3-Version: 2.5
 x-amz-request-id: 9f39ff2e-55d1-461b-a6f1-2d0b75138861
 Content-Type: application/xml
 Content-Length: 909
-{% endhighlight %}
-{% highlight xml %}
+```
+```xml
 <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
   <Name>apiary</Name>
   <Prefix/>
@@ -195,8 +208,8 @@ Content-Length: 909
     <ETag>"0cbc6611f5540bd0809a388dc95a615b"</ETag>
     <Size>4</Size>
     <Owner>
-      <ID>7dd4f57d38484131999e6739e40279a7</ID>
-      <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+      <ID>{account-id}</ID>
+      <DisplayName>{account-id}</DisplayName>
     </Owner>
     <StorageClass>STANDARD</StorageClass>
   </Contents>
@@ -206,8 +219,8 @@ Content-Length: 909
     <ETag>"37d4c94839ee181a2224d6242176c4b5"</ETag>
     <Size>11</Size>
     <Owner>
-      <ID>7dd4f57d38484131999e6739e40279a7</ID>
-      <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+      <ID>{account-id}</ID>
+      <DisplayName>{account-id}</DisplayName>
     </Owner>
     <StorageClass>STANDARD</StorageClass>
   </Contents>
@@ -217,13 +230,13 @@ Content-Length: 909
     <ETag>"d34d8aada2996fc42e6948b926513907"</ETag>
     <Size>467</Size>
     <Owner>
-      <ID>7dd4f57d38484131999e6739e40279a7</ID>
-      <DisplayName>7dd4f57d38484131999e6739e40279a7</DisplayName>
+      <ID>{account-id}</ID>
+      <DisplayName>{account-id}</DisplayName>
     </Owner>
     <StorageClass>STANDARD</StorageClass>
   </Contents>
 </ListBucketResult>
-{% endhighlight %}
+```
 
 #### Delete a bucket
 
@@ -231,18 +244,18 @@ A `DELETE` issued to an empty bucket deletes the bucket. *Only empty buckets can
 
 **Syntax**
 
-{% highlight bash %}
+```bash
 DELETE http://{endpoint}/{bucket-name}
-{% endhighlight %}
+```
 
 **Sample Request**
 
-{% highlight http %}
+```http
 DELETE /images HTTP/1.1
 Host: s3-api.us-geo.objectstorage.softlayer.net
-X-Amz-Date: 20160822T064812Z
+x-amz-date: 20160822T064812Z
 Authorization: {authorization-string}
-{% endhighlight %}
+```
 
 The server responds with `204 No Content`.
 
@@ -250,16 +263,16 @@ If a non-empty bucket is requested for deletion, the server responds with `409 C
 
 **Sample Request**
 
-{% highlight http %}
+```http
 DELETE /apiary HTTP/1.1
 Authorization: {authorization-string}
 x-amz-date: 20160825T174049Z
 Host: s3-api.us-geo.objectstorage.softlayer.net
-{% endhighlight %}
+```
 
 **Sample Response**
 
-{% highlight xml %}
+```xml
 <Error>
   <Code>BucketNotEmpty</Code>
   <Message>The bucket you tried to delete is not empty.</Message>
@@ -267,7 +280,214 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
   <RequestId>9d2bbc00-2827-4210-b40a-8107863f4386</RequestId>
   <httpStatusCode>409</httpStatusCode>
 </Error>
-{% endhighlight %}
+```
+
+#### Create an access control list for a bucket
+
+A `PUT` issued to a bucket with the proper parameters creates an access control list (ACL) for that bucket.  Access control lists allow for granting different sets of permissions to different storage accounts using the account's UUID, or by using a pre-made ACL.
+
+> **INTERNAL NOTE**: At this time credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. Similarly, `public-read-write` allows any other CRS storage account to access the resource, but not the general public. 
+
+ACLs can use pre-made permissions sets (or 'canned ACLs') or be customized in the body of the request. Pre-made ACLs are specified using the `x-amz-acl` header with `private`, `public-read`, or `public-read-write` as the value. Custom ACLs are specified using XML in the request body and can grant `READ`, `WRITE`, `READ_ACP` (read ACL), `WRITE_ACP` (write ACL), or `FULL_CONTROL` permissions to a given storage account.
+
+**Syntax**
+
+```bash
+PUT http://{endpoint}/{bucket-name}?acl=
+```
+
+**Sample Request:** Basic pre-made ACL
+
+This is an example of specifying a pre-made ACL to allow for `public-read` access to the "apiary" bucket. This allows any storage account to view the bucket's contents and ACL, and to access objects.
+
+```http
+PUT /apiary?acl= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161011T190354Z
+x-amz-acl: public-read
+Host: s3-api.us-geo.objectstorage.softlayer.net
+```
+
+**Sample Response:**
+
+```http
+HTTP/1.1 200 OK
+Date: Tue, 11 Oct 2016 19:03:55 GMT
+X-Clv-Request-Id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.129
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
+Content-Length: 0
+```
+
+**Sample Request:** Custom ACL
+
+This is an example of specifying a custom ACL to allow for another account to view the ACL for the "apiary" bucket, but not to view or access objects stored inside the bucket. Additionally, a third account is given full access to the same bucket as another element of the same ACL.
+
+```http
+PUT /apiary?acl= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161011T190354Z
+Host: s3-api.us-geo.objectstorage.softlayer.net
+```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Owner>
+    <ID>{owner-storage-account-uuid}</ID>
+    <DisplayName>OwnerDisplayName</DisplayName>
+  </Owner>
+  <AccessControlList>
+    <Grant>
+      <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser">
+        <ID>{first-grantee-storage-account-uuid}</ID>
+        <DisplayName>Grantee1DisplayName</DisplayName>
+      </Grantee>
+      <Permission>READ_ACP</Permission>
+    </Grant>
+    <Grant>
+      <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser">
+        <ID>{second-grantee-storage-account-uuid}</ID>
+        <DisplayName>Grantee2DisplayName</DisplayName>
+      </Grantee>
+      <Permission>FULL_CONTROL</Permission>
+    </Grant>
+  </AccessControlList>
+</AccessControlPolicy>
+```
+
+**Sample Response:**
+
+```http
+HTTP/1.1 200 OK
+Date: Tue, 11 Oct 2016 19:03:55 GMT
+X-Clv-Request-Id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.129
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
+```
+
+#### Retrieve the access control list for a bucket
+
+A `XXX` issued to ...
+
+**Syntax**
+
+```bash
+XXX http://{endpoint}/{bucket-name}
+```
+
+**Sample Request:**
+
+This is an example ...
+
+```http
+
+```
+
+**Sample Response:**
+
+```http
+
+```
+
+#### List canceled/incomplete multipart uploads for a bucket
+
+A `XXX` issued to ...
+
+**Syntax**
+
+```bash
+XXX http://{endpoint}/{bucket-name}
+```
+
+**Sample Request:**
+
+This is an example ...
+
+```http
+
+```
+
+**Sample Response:**
+
+```http
+
+```
+
+#### List any cross-origin resource sharing configuration for a bucket
+
+A `XXX` issued to ...
+
+**Syntax**
+
+```bash
+XXX http://{endpoint}/{bucket-name}
+```
+
+**Sample Request:**
+
+This is an example ...
+
+```http
+
+```
+
+**Sample Response:**
+
+```http
+
+```
+
+#### Create a cross-origin resource sharing configuration for a bucket
+
+A `XXX` issued to ...
+
+**Syntax**
+
+```bash
+XXX http://{endpoint}/{bucket-name}
+```
+
+**Sample Request:**
+
+This is an example ...
+
+```http
+
+```
+
+**Sample Response:**
+
+```http
+
+```
+
+#### Delete any cross-origin resource sharing configuration for a bucket
+
+A `XXX` issued to ...
+
+**Syntax**
+
+```bash
+XXX http://{endpoint}/{bucket-name}
+```
+
+**Sample Request:**
+
+This is an example ...
+
+```http
+
+```
+
+**Sample Response:**
+
+```http
+
+```
 
 ### Operations on Objects
 {: #operations-on-objects}
@@ -279,13 +499,13 @@ A `PUT` given a path to an object uploads an object. A SHA256 hash of the object
 
 **Syntax**
 
-{% highlight bash %}
+```bash
 PUT http://{endpoint}/{bucket-name}/{object-name}
-{% endhighlight %}
+```
 
 **Sample Request**
 
-{% highlight http %}
+```http
 PUT /apiary/queen-bee HTTP/1.1
 Authorization: {authorization-string}
 x-amz-date: 20160825T183001Z
@@ -300,11 +520,11 @@ Content-Length: 533
  short while the 'queen' is the mother of nearly every bee in the hive, and 
  the colony will fight fiercely to protect her. 
 
-{% endhighlight %}
+```
 
 **Sample Response**
 
-{% highlight http %}
+```http
 HTTP/1.1 200 OK
 Date: Thu, 25 Aug 2016 18:30:02 GMT
 X-Clv-Request-Id: 9f0ca49a-ae13-4d2d-925b-117b157cf5c3
@@ -314,7 +534,7 @@ X-Clv-S3-Version: 2.5
 x-amz-request-id: 9f0ca49a-ae13-4d2d-925b-117b157cf5c3
 ETag: "3ca744fa96cb95e92081708887f63de5"
 Content-Length: 0
-{% endhighlight %}
+```
 
 #### Get an objects headers
 
@@ -322,23 +542,23 @@ A `HEAD` given a path to an object retrieves that object's headers.
 
 **Syntax**
 
-{% highlight bash %}
+```bash
 HEAD http://{endpoint}/{bucket-name}/{object-name}
-{% endhighlight %}
+```
 
 **Sample Request**
 
-{% highlight http %}
+```http
 HEAD /apiary/soldier-bee HTTP/1.1
 Authorization: {authorization-string}
 x-amz-date: 20160825T183244Z
 Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
 Connection: close
-{% endhighlight %}
+```
 
 **Sample Response**
 
-{% highlight http %}
+```http
 HTTP/1.1 200 OK
 Date: Thu, 25 Aug 2016 18:32:44 GMT
 X-Clv-Request-Id: da214d69-1999-4461-a130-81ba33c484a6
@@ -350,7 +570,7 @@ ETag: "37d4c94839ee181a2224d6242176c4b5"
 Content-Type: text/plain; charset=UTF-8
 Last-Modified: Thu, 25 Aug 2016 17:49:06 GMT
 Content-Length: 11
-{% endhighlight %}
+```
 
 #### Download an object
 
@@ -358,22 +578,22 @@ A `GET` given a path to an object uploads an object.
 
 **Syntax**
 
-{% highlight bash %}
+```bash
 GET http://{endpoint}/{bucket-name}/{object-name}
-{% endhighlight %}
+```
 
 **Sample Request**
 
-{% highlight http %}
+```http
 GET /apiary/worker-bee HTTP/1.1
 Authorization: {authorization-string}
 Host: s3-api.us-geo.objectstorage.softlayer.net
 Connection: close
-{% endhighlight %}
+```
 
 **Sample Response**
 
-{% highlight http %}
+```http
 HTTP/1.1 200 OK
 Date: Thu, 25 Aug 2016 18:34:25 GMT
 X-Clv-Request-Id: 116dcd6b-215d-4a81-bd30-30291fa38f93
@@ -390,7 +610,7 @@ Content-Length: 467
  while they were still larvae become known as 'worker' bees. These bees lack 
  the ability to reproduce and instead ensure that the hive functions smoothly, 
  acting almost as a single organism in fulfilling their purpose.
-{% endhighlight %}
+```
 
 #### Delete an object
 
@@ -398,22 +618,22 @@ A `DELETE` given a path to an object deletes an object.
 
 **Syntax**
 
-{% highlight bash %}
+```bash
 DELETE http://{endpoint}/{bucket-name}/{object-name}
-{% endhighlight %}
+```
 
 **Sample Request**
 
-{% highlight http %}
+```http
 DELETE /apiary/soldier-bee HTTP/1.1
 Authorization: {authorization-string}
 Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
 Connection: close
-{% endhighlight %}
+```
 
 **Sample Response**
 
-{% highlight http %}
+```http
 HTTP/1.1 204 No Content
 Date: Thu, 25 Aug 2016 17:44:57 GMT
 X-Clv-Request-Id: 8ff4dc32-a6f0-447f-86cf-427b564d5855
@@ -421,6 +641,6 @@ Accept-Ranges: bytes
 Server: Cleversafe/3.9.0.121
 X-Clv-S3-Version: 2.5
 x-amz-request-id: 8ff4dc32-a6f0-447f-86cf-427b564d5855
-{% endhighlight %}
+```
 
 

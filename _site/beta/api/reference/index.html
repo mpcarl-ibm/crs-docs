@@ -77,9 +77,17 @@
             <ul class="article__list" class="article__list">
                 <h4 class="sub__head">API & Reference (Beta)</h4>    
                 <li>
+                    <a class="page-link"  href="/crs-docs/beta/api/tools/">Tools and SDKs</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/crs-docs/beta/api/best-practices/">Best practices</a>
+                </li>
+                  
+                <li>
                     <a class="page-link"  href="/crs-docs/beta/api/overview/">API overview</a>
                 </li>
-                    
+                  
                 <li>
                     <a class="page-link--active"  href="/crs-docs/beta/api/reference/">API reference and examples</a>
                 </li>
@@ -136,6 +144,22 @@
   <p><strong>Note:</strong> this documentation for the Cross-Region beta is in-progress and does not yet provide detailed usage guidance and examples for all supported operations.</p>
 </blockquote>
 
+<h3 id="authorization">Authorization</h3>
+<p>The <code class="highlighter-rouge">authorization</code> header is required for all requests, and is calculated according to the AWS Signature Version 4 protocol.  This provides identity verification and in-transit data integrity, and is tied to the timestamp of the request.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>AWS4-HMAC-SHA256 
+Credential={access-key}/{date}/{region}/s3/aws4_request, 
+SignedHeaders=host;x-amz-date;{other-required-headers}, 
+Signature={signature}
+</code></pre>
+</div>
+
+<p>The date is provided in <code class="highlighter-rouge">YYYYMMDD</code> format, and the region can be any value (e.g. <code class="highlighter-rouge">us-geo</code> or <code class="highlighter-rouge">us-east-1</code>). The <code class="highlighter-rouge">host</code> and <code class="highlighter-rouge">x-amz-date</code> headers are always required, and depending on the request other headers may be required as well (e.g. <code class="highlighter-rouge">x-amz-content-sha256</code>).  The 256 bit signature is given as 64 hexadecimal character string and is calculated from multiple combinations and hashes of the request elements.  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.</p>
+
+<blockquote>
+  <p><strong>INTERNAL NOTE</strong>: The signature calculation process is fairly involved.  Assuming we don’t want to link to AWS documentation, we could describe it on another page here and link to our version of it, or gently suggest the reader research calculation methods.  Thoughts?  Here is the AWS documentation on single payload (as opposed to multipart uploads) <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html">signature calculation</a>.</p>
+</blockquote>
+
 <h3 id="headers-and-error-response">Common Headers and Error Responses</h3>
 
 <h4 id="common-request-headers">Common Request Headers</h4>
@@ -151,7 +175,7 @@
   <tbody>
     <tr>
       <td>Authorization</td>
-      <td><strong>Required</strong> for all requests. AWS4 authentication</td>
+      <td><strong>Required</strong> for all requests (AWS Signature Version 4).</td>
     </tr>
     <tr>
       <td>Host</td>
@@ -163,7 +187,7 @@
     </tr>
     <tr>
       <td>x-amz-content-sha256</td>
-      <td><strong>Required</strong> for uploading objects.</td>
+      <td><strong>Required</strong> for uploading objects or any request with information in the body.</td>
     </tr>
     <tr>
       <td>Content-Length</td>
@@ -222,23 +246,26 @@
 
 <p><strong>Syntax</strong></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">GET http://<span class="o">{</span>endpoint<span class="o">}</span>/</code></pre></figure>
+<pre><code class="language-ShellSession">GET http://{endpoint}/
+</code></pre>
 
 <p><strong>Sample Request:</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
 <span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160822T030815Z</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span></code></pre></figure>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Response:</strong></p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
 <span class="nt">&lt;ListAllMyBucketsResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Owner&gt;</span>
-        <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
-        <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>{account-id}<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;DisplayName&gt;</span>{account-id}<span class="nt">&lt;/DisplayName&gt;</span>
     <span class="nt">&lt;/Owner&gt;</span>
     <span class="nt">&lt;Buckets&gt;</span>
         <span class="nt">&lt;Bucket&gt;</span>
@@ -258,7 +285,9 @@
             <span class="nt">&lt;CreationDate&gt;</span>2016-08-18T14:25:09.599Z<span class="nt">&lt;/CreationDate&gt;</span>
         <span class="nt">&lt;/Bucket&gt;</span>
     <span class="nt">&lt;/Buckets&gt;</span>
-<span class="nt">&lt;/ListAllMyBucketsResult&gt;</span></code></pre></figure>
+<span class="nt">&lt;/ListAllMyBucketsResult&gt;</span>
+</code></pre>
+</div>
 
 <h3 id="operations-on-buckets">Operations on Buckets</h3>
 
@@ -268,28 +297,34 @@
 
 <p><strong>Syntax</strong></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Request:</strong></p>
 
 <p>This is an example of creating a new bucket called ‘images’.</p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">PUT</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
 <span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160821T052842Z</span>
-<span class="na">Authorization</span><span class="p">:</span><span class="s">{authorization-string}</span></code></pre></figure>
+<span class="na">Authorization</span><span class="p">:</span><span class="s">{authorization-string}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Response:</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:45:25 GMT</span>
 <span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">dca204eb-72b5-4e2a-a142-808d2a5c2a87</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
 <span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.115</span>
 <span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
 <span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">dca204eb-72b5-4e2a-a142-808d2a5c2a87</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span></code></pre></figure>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
 
 <h4 id="list-objects-in-a-given-bucket">List objects in a given bucket</h4>
 
@@ -297,21 +332,25 @@
 
 <p><strong>Syntax</strong></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Request</strong></p>
 
 <p>This requests lists the objects inside the “apiary” bucket.</p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
 <span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160822T225156Z</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span></code></pre></figure>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Response</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:36:24 GMT</span>
 <span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">9f39ff2e-55d1-461b-a6f1-2d0b75138861</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
@@ -319,9 +358,10 @@
 <span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
 <span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">9f39ff2e-55d1-461b-a6f1-2d0b75138861</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">909</span></code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;ListBucketResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">909</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ListBucketResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Name&gt;</span>apiary<span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;Prefix/&gt;</span>
   <span class="nt">&lt;Marker/&gt;</span>
@@ -334,8 +374,8 @@
     <span class="nt">&lt;ETag&gt;</span>"0cbc6611f5540bd0809a388dc95a615b"<span class="nt">&lt;/ETag&gt;</span>
     <span class="nt">&lt;Size&gt;</span>4<span class="nt">&lt;/Size&gt;</span>
     <span class="nt">&lt;Owner&gt;</span>
-      <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
-      <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;ID&gt;</span>{account-id}<span class="nt">&lt;/ID&gt;</span>
+      <span class="nt">&lt;DisplayName&gt;</span>{account-id}<span class="nt">&lt;/DisplayName&gt;</span>
     <span class="nt">&lt;/Owner&gt;</span>
     <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
   <span class="nt">&lt;/Contents&gt;</span>
@@ -345,8 +385,8 @@
     <span class="nt">&lt;ETag&gt;</span>"37d4c94839ee181a2224d6242176c4b5"<span class="nt">&lt;/ETag&gt;</span>
     <span class="nt">&lt;Size&gt;</span>11<span class="nt">&lt;/Size&gt;</span>
     <span class="nt">&lt;Owner&gt;</span>
-      <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
-      <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;ID&gt;</span>{account-id}<span class="nt">&lt;/ID&gt;</span>
+      <span class="nt">&lt;DisplayName&gt;</span>{account-id}<span class="nt">&lt;/DisplayName&gt;</span>
     <span class="nt">&lt;/Owner&gt;</span>
     <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
   <span class="nt">&lt;/Contents&gt;</span>
@@ -356,12 +396,14 @@
     <span class="nt">&lt;ETag&gt;</span>"d34d8aada2996fc42e6948b926513907"<span class="nt">&lt;/ETag&gt;</span>
     <span class="nt">&lt;Size&gt;</span>467<span class="nt">&lt;/Size&gt;</span>
     <span class="nt">&lt;Owner&gt;</span>
-      <span class="nt">&lt;ID&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/ID&gt;</span>
-      <span class="nt">&lt;DisplayName&gt;</span>7dd4f57d38484131999e6739e40279a7<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;ID&gt;</span>{account-id}<span class="nt">&lt;/ID&gt;</span>
+      <span class="nt">&lt;DisplayName&gt;</span>{account-id}<span class="nt">&lt;/DisplayName&gt;</span>
     <span class="nt">&lt;/Owner&gt;</span>
     <span class="nt">&lt;StorageClass&gt;</span>STANDARD<span class="nt">&lt;/StorageClass&gt;</span>
   <span class="nt">&lt;/Contents&gt;</span>
-<span class="nt">&lt;/ListBucketResult&gt;</span></code></pre></figure>
+<span class="nt">&lt;/ListBucketResult&gt;</span>
+</code></pre>
+</div>
 
 <h4 id="delete-a-bucket">Delete a bucket</h4>
 
@@ -369,14 +411,18 @@
 
 <p><strong>Syntax</strong></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Request</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">DELETE</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
-<span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160822T064812Z</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span></code></pre></figure>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20160822T064812Z</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+</code></pre>
+</div>
 
 <p>The server responds with <code class="highlighter-rouge">204 No Content</code>.</p>
 
@@ -384,20 +430,233 @@
 
 <p><strong>Sample Request</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">DELETE</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20160825T174049Z</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span></code></pre></figure>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Response</strong></p>
 
-<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Error&gt;</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Error&gt;</span>
   <span class="nt">&lt;Code&gt;</span>BucketNotEmpty<span class="nt">&lt;/Code&gt;</span>
   <span class="nt">&lt;Message&gt;</span>The bucket you tried to delete is not empty.<span class="nt">&lt;/Message&gt;</span>
   <span class="nt">&lt;Resource&gt;</span>/apiary/<span class="nt">&lt;/Resource&gt;</span>
   <span class="nt">&lt;RequestId&gt;</span>9d2bbc00-2827-4210-b40a-8107863f4386<span class="nt">&lt;/RequestId&gt;</span>
   <span class="nt">&lt;httpStatusCode&gt;</span>409<span class="nt">&lt;/httpStatusCode&gt;</span>
-<span class="nt">&lt;/Error&gt;</span></code></pre></figure>
+<span class="nt">&lt;/Error&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="create-an-access-control-list-for-a-bucket">Create an access control list for a bucket</h4>
+
+<p>A <code class="highlighter-rouge">PUT</code> issued to a bucket with the proper parameters creates an access control list (ACL) for that bucket.  Access control lists allow for granting different sets of permissions to different storage accounts using the account’s UUID, or by using a pre-made ACL.</p>
+
+<blockquote>
+  <p><strong>INTERNAL NOTE</strong>: At this time credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. Similarly, <code class="highlighter-rouge">public-read-write</code> allows any other CRS storage account to access the resource, but not the general public.</p>
+</blockquote>
+
+<p>ACLs can use pre-made permissions sets (or ‘canned ACLs’) or be customized in the body of the request. Pre-made ACLs are specified using the <code class="highlighter-rouge">x-amz-acl</code> header with <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">public-read</code>, or <code class="highlighter-rouge">public-read-write</code> as the value. Custom ACLs are specified using XML in the request body and can grant <code class="highlighter-rouge">READ</code>, <code class="highlighter-rouge">WRITE</code>, <code class="highlighter-rouge">READ_ACP</code> (read ACL), <code class="highlighter-rouge">WRITE_ACP</code> (write ACL), or <code class="highlighter-rouge">FULL_CONTROL</code> permissions to a given storage account.</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Request:</strong> Basic pre-made ACL</p>
+
+<p>This is an example of specifying a pre-made ACL to allow for <code class="highlighter-rouge">public-read</code> access to the “apiary” bucket. This allows any storage account to view the bucket’s contents and ACL, and to access objects.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161011T190354Z</span>
+<span class="na">x-amz-acl</span><span class="p">:</span> <span class="s">public-read</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Response:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 11 Oct 2016 19:03:55 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">73d3cd4a-ff1d-4ac9-b9bb-43529b11356a</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.129</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">73d3cd4a-ff1d-4ac9-b9bb-43529b11356a</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Request:</strong> Custom ACL</p>
+
+<p>This is an example of specifying a custom ACL to allow for another account to view the ACL for the “apiary” bucket, but not to view or access objects stored inside the bucket. Additionally, a third account is given full access to the same bucket as another element of the same ACL.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161011T190354Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AccessControlPolicy</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Owner&gt;</span>
+    <span class="nt">&lt;ID&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;DisplayName&gt;</span>OwnerDisplayName<span class="nt">&lt;/DisplayName&gt;</span>
+  <span class="nt">&lt;/Owner&gt;</span>
+  <span class="nt">&lt;AccessControlList&gt;</span>
+    <span class="nt">&lt;Grant&gt;</span>
+      <span class="nt">&lt;Grantee</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:type=</span><span class="s">"CanonicalUser"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>{first-grantee-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;DisplayName&gt;</span>Grantee1DisplayName<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;/Grantee&gt;</span>
+      <span class="nt">&lt;Permission&gt;</span>READ_ACP<span class="nt">&lt;/Permission&gt;</span>
+    <span class="nt">&lt;/Grant&gt;</span>
+    <span class="nt">&lt;Grant&gt;</span>
+      <span class="nt">&lt;Grantee</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:type=</span><span class="s">"CanonicalUser"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>{second-grantee-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;DisplayName&gt;</span>Grantee2DisplayName<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;/Grantee&gt;</span>
+      <span class="nt">&lt;Permission&gt;</span>FULL_CONTROL<span class="nt">&lt;/Permission&gt;</span>
+    <span class="nt">&lt;/Grant&gt;</span>
+  <span class="nt">&lt;/AccessControlList&gt;</span>
+<span class="nt">&lt;/AccessControlPolicy&gt;</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Response:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 11 Oct 2016 19:03:55 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">73d3cd4a-ff1d-4ac9-b9bb-43529b11356a</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.129</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">73d3cd4a-ff1d-4ac9-b9bb-43529b11356a</span>
+</code></pre>
+</div>
+
+<h4 id="retrieve-the-access-control-list-for-a-bucket">Retrieve the access control list for a bucket</h4>
+
+<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Request:</strong></p>
+
+<p>This is an example …</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<p><strong>Sample Response:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<h4 id="list-canceledincomplete-multipart-uploads-for-a-bucket">List canceled/incomplete multipart uploads for a bucket</h4>
+
+<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Request:</strong></p>
+
+<p>This is an example …</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<p><strong>Sample Response:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<h4 id="list-any-cross-origin-resource-sharing-configuration-for-a-bucket">List any cross-origin resource sharing configuration for a bucket</h4>
+
+<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Request:</strong></p>
+
+<p>This is an example …</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<p><strong>Sample Response:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<h4 id="create-a-cross-origin-resource-sharing-configuration-for-a-bucket">Create a cross-origin resource sharing configuration for a bucket</h4>
+
+<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Request:</strong></p>
+
+<p>This is an example …</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<p><strong>Sample Response:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<h4 id="delete-any-cross-origin-resource-sharing-configuration-for-a-bucket">Delete any cross-origin resource sharing configuration for a bucket</h4>
+
+<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+
+<p><strong>Syntax</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
+
+<p><strong>Sample Request:</strong></p>
+
+<p>This is an example …</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
+
+<p><strong>Sample Response:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
+</span></code></pre>
+</div>
 
 <h3 id="operations-on-objects">Operations on Objects</h3>
 
@@ -407,11 +666,13 @@
 
 <p><strong>Syntax</strong></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Request</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20160825T183001Z</span>
 <span class="na">x-amz-content-sha256</span><span class="p">:</span> <span class="s">309721641329cf441f3fa16ef996cf24a2505f91be3e752ac9411688e3435429</span>
@@ -423,11 +684,14 @@
  The 'queen' bee is developed from larvae selected by worker bees and fed a 
  substance referred to as 'royal jelly' to accelerate sexual maturity. After a 
  short while the 'queen' is the mother of nearly every bee in the hive, and 
- the colony will fight fiercely to protect her. </code></pre></figure>
+ the colony will fight fiercely to protect her. 
+
+</code></pre>
+</div>
 
 <p><strong>Sample Response</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:30:02 GMT</span>
 <span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">9f0ca49a-ae13-4d2d-925b-117b157cf5c3</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
@@ -435,7 +699,9 @@
 <span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
 <span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">9f0ca49a-ae13-4d2d-925b-117b157cf5c3</span>
 <span class="na">ETag</span><span class="p">:</span> <span class="s">"3ca744fa96cb95e92081708887f63de5"</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span></code></pre></figure>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
 
 <h4 id="get-an-objects-headers">Get an objects headers</h4>
 
@@ -443,19 +709,23 @@
 
 <p><strong>Syntax</strong></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">HEAD http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code>HEAD http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Request</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">HEAD</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">HEAD</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20160825T183244Z</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.sjc-us-geo.objectstorage.softlayer.net</span>
-<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span></code></pre></figure>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Response</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:32:44 GMT</span>
 <span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">da214d69-1999-4461-a130-81ba33c484a6</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
@@ -465,7 +735,9 @@
 <span class="na">ETag</span><span class="p">:</span> <span class="s">"37d4c94839ee181a2224d6242176c4b5"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain; charset=UTF-8</span>
 <span class="na">Last-Modified</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 17:49:06 GMT</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">11</span></code></pre></figure>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">11</span>
+</code></pre>
+</div>
 
 <h4 id="download-an-object">Download an object</h4>
 
@@ -473,18 +745,22 @@
 
 <p><strong>Syntax</strong></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Request</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">GET</span> <span class="nn">/apiary/worker-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary/worker-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
-<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span></code></pre></figure>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Response</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:34:25 GMT</span>
 <span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">116dcd6b-215d-4a81-bd30-30291fa38f93</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
@@ -499,7 +775,9 @@
  Female bees that are not fortunate enough to be selected to be the 'queen'
  while they were still larvae become known as 'worker' bees. These bees lack 
  the ability to reproduce and instead ensure that the hive functions smoothly, 
- acting almost as a single organism in fulfilling their purpose.</code></pre></figure>
+ acting almost as a single organism in fulfilling their purpose.
+</code></pre>
+</div>
 
 <h4 id="delete-an-object">Delete an object</h4>
 
@@ -507,24 +785,30 @@
 
 <p><strong>Syntax</strong></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span></code></pre></figure>
+<div class="highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Request</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="nf">DELETE</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.sjc-us-geo.objectstorage.softlayer.net</span>
-<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span></code></pre></figure>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+</code></pre>
+</div>
 
 <p><strong>Sample Response</strong></p>
 
-<figure class="highlight"><pre><code class="language-http" data-lang="http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 17:44:57 GMT</span>
 <span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">8ff4dc32-a6f0-447f-86cf-427b564d5855</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
 <span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.121</span>
 <span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
-<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">8ff4dc32-a6f0-447f-86cf-427b564d5855</span></code></pre></figure>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">8ff4dc32-a6f0-447f-86cf-427b564d5855</span>
+</code></pre>
+</div>
 
 
       </div>

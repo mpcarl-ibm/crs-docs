@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Best practices</title>
-  <meta name="description" content="To be incorporated into the FAQ later.">
+  <meta name="description" content="Object namingIt is recommended to randomize the beginning component of the object name to avoid performance.  Randomness ensures that the index does not beco...">
 
   <link rel="stylesheet" href="/crs-docs/css/main.css">
   <link rel="canonical" href="https://ibm-public-cos//crs-docs/beta/api/best-practices/">
@@ -77,9 +77,17 @@
             <ul class="article__list" class="article__list">
                 <h4 class="sub__head">API & Reference (Beta)</h4>    
                 <li>
+                    <a class="page-link"  href="/crs-docs/beta/api/tools/">Tools and SDKs</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link--active"  href="/crs-docs/beta/api/best-practices/">Best practices</a>
+                </li>
+                  
+                <li>
                     <a class="page-link"  href="/crs-docs/beta/api/overview/">API overview</a>
                 </li>
-                    
+                  
                 <li>
                     <a class="page-link"  href="/crs-docs/beta/api/reference/">API reference and examples</a>
                 </li>
@@ -114,7 +122,58 @@
       </header>
 
       <div class="post-content">
-        <p>To be incorporated into the FAQ later.</p>
+        <h3 id="object-naming">Object naming</h3>
+<p>It is recommended to randomize the beginning component of the object name to avoid performance.  Randomness ensures that the index does not become unbalanced and can lead to significant performance gains.</p>
+
+<p>Example of <strong>inefficient</strong> naming scheme:<br />
+<code class="highlighter-rouge">bash
+PUT /bucket1/filename-00001
+PUT /bucket1/filename-00002
+PUT /bucket1/filename-00003
+PUT /bucket1/filename-00004
+PUT /bucket1/filename-00005
+</code></p>
+
+<p>Examples of an <strong>efficient</strong> naming scheme:<br />
+<code class="highlighter-rouge">bash
+PUT /bucket1/c1ca2-filename-00001
+PUT /bucket1/c9872-filename-00002
+PUT /bucket1/98837-filename-00003
+PUT /bucket1/abfc4-filename-00004
+PUT /bucket1/9ac18-filename-00005
+</code></p>
+
+<h3 id="tuning-cipher-settings">Tuning cipher settings</h3>
+<p>IBM COS supports variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</code>, <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_128_CBC_SHA</code> has shown to yield the same levels of performance as no TLS between the client and the IBM COS.</p>
+
+<h3 id="using-multipart-uploads">Using multipart uploads</h3>
+<p>If the objects being stored in IBM COS are all larger objects, it is recommend that multipart upload operation is used to write objects into IBM COS.  Multipart uploads are only available for objects larger than 5MB - depending on the object size a part size of 20MB to 100MB is recommended.</p>
+
+<blockquote>
+  <p><strong>NOTE</strong>: Using more than 500 parts leads to inefficiencies in IBM COS and should be avoided.</p>
+</blockquote>
+
+<p>The multipart upload s designed to improve the upload performance for larger objects.  An upload of a single object can be performed as a set of parts and these parts can be uploaded independently in any order, and in parallel.  Upon upload completion, IBM COS then presents all parts as a single object.</p>
+
+<p>Using multipart upload provides the following advantages:</p>
+
+<ul>
+  <li><strong>Improved throughput</strong>—You can upload parts in parallel to improve throughput.</li>
+  <li><strong>Quick recovery from any network issues</strong>—Smaller part size minimizes the impact of restarting a failed upload due to a network error.</li>
+  <li><strong>Pause and resume object uploads</strong>—Upload object parts over time. Once a multipart upload is initiated a multipart upload there is no expiry; it must explicitly complete or the multipart upload has to be aborted.</li>
+  <li><strong>Begin an upload before the final object size is known</strong>—An object can be uploaded as it is being created.</li>
+</ul>
+
+<p>Due to the additional complexity of multipart uploads, as a best practice; it is recommended that S3 API libraries that offer multipart uploads be used.</p>
+
+<blockquote>
+  <p><strong>NOTE</strong>: Incomplete multipart uploads do persist until the object is deleted or the multipart upload is aborted with <code class="highlighter-rouge">AbortIncompleteMultipartUpload</code>. If an incomplete multipart upload is not aborted, the partial upload continues to use resources.  Interfaces should be designed with this point in mind, and clean up incomplete multipart uploads.</p>
+</blockquote>
+
+<h3 id="using-software-development-kits">Using software development kits</h3>
+
+<p>It is not mandatory to use published S3 API SDKs; homegrown libraries can be written to integrate with IBM COS. However, using published S3 API libraries provide advantages such as automatic retry logic on <code class="highlighter-rouge">5xx</code> errors. If using home grown libraries to integrate with IBM COS, care must be taken to handle transient errors such as <code class="highlighter-rouge">503</code>s originating from IBM COS. Retries with exponential backing similar to published SDKs must be implemented in these libraries.</p>
+
 
       </div>
     </div>
