@@ -480,7 +480,7 @@ Signature={signature}
 <p><strong>Sample Response:</strong></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 11 Oct 2016 19:03:55 GMT</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 4 Oct 2016 19:03:55 GMT</span>
 <span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">73d3cd4a-ff1d-4ac9-b9bb-43529b11356a</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
 <span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.129</span>
@@ -529,7 +529,7 @@ Signature={signature}
 <p><strong>Sample Response:</strong></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 11 Oct 2016 19:03:55 GMT</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 4 Oct 2016 19:03:55 GMT</span>
 <span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">73d3cd4a-ff1d-4ac9-b9bb-43529b11356a</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
 <span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.129</span>
@@ -540,123 +540,258 @@ Signature={signature}
 
 <h4 id="retrieve-the-access-control-list-for-a-bucket">Retrieve the access control list for a bucket</h4>
 
-<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+<p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves the ACL for a bucket.</p>
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span>
 </code></pre>
 </div>
 
 <p><strong>Sample Request:</strong></p>
 
-<p>This is an example …</p>
+<p>This is an example of retrieving a bucket ACL.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161011T190354Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
 </div>
 
 <p><strong>Sample Response:</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 14:14:34 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">eb57e60e-d84e-4237-b18a-be9c2bb0deb8</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.129</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">eb57e60e-d84e-4237-b18a-be9c2bb0deb8</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">550</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;AccessControlPolicy</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Owner&gt;</span>
+    <span class="nt">&lt;ID&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;DisplayName&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/DisplayName&gt;</span>
+  <span class="nt">&lt;/Owner&gt;</span>
+  <span class="nt">&lt;AccessControlList&gt;</span>
+    <span class="nt">&lt;Grant&gt;</span>
+      <span class="nt">&lt;Grantee</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:type=</span><span class="s">"CanonicalUser"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;DisplayName&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;/Grantee&gt;</span>
+      <span class="nt">&lt;Permission&gt;</span>FULL_CONTROL<span class="nt">&lt;/Permission&gt;</span>
+    <span class="nt">&lt;/Grant&gt;</span>
+  <span class="nt">&lt;/AccessControlList&gt;</span>
+<span class="nt">&lt;/AccessControlPolicy&gt;</span>
+</code></pre>
 </div>
 
 <h4 id="list-canceledincomplete-multipart-uploads-for-a-bucket">List canceled/incomplete multipart uploads for a bucket</h4>
 
-<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+<p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.</p>
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?uploads<span class="o">=</span>
 </code></pre>
 </div>
 
+<p><strong>Parameters</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">prefix</code></td>
+      <td>string</td>
+      <td>Constrains reponse to object names beginning with <code class="highlighter-rouge"><span class="p">{</span><span class="err">prefix</span><span class="p">}</span></code>.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">delimiter</code></td>
+      <td>string</td>
+      <td>Groups objects within between the <code class="highlighter-rouge">prefix</code> and the <code class="highlighter-rouge">delimiter</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">encoding-type</code></td>
+      <td>string</td>
+      <td>If unicode characters that are not supported by XML are used in an object name, this parameter can be set to <code class="highlighter-rouge">url</code> to properly encode the reponse.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">max-uploads</code></td>
+      <td>integer</td>
+      <td>Restricts the number of objects to display in the response.  Default and maximum is 1,000.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">key-marker</code></td>
+      <td>string</td>
+      <td>Specifies the start of the which parts should be listed.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">upload-id-marker</code></td>
+      <td>string</td>
+      <td>Ignored if <code class="highlighter-rouge">key-marker</code> is not specified, otherwise sets a point at which to begin listing parts above <code class="highlighter-rouge">upload-id-marker</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
 <p><strong>Sample Request:</strong></p>
 
-<p>This is an example …</p>
+<p>This is an example of retrieving all current cancelled and incomplete multipart uploads.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary?uploads=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161011T190354Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
+<p><strong>Sample Response:</strong> No multipart uploads in progress.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 15:22:27 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">9fa96daa-9f37-42ee-ab79-0bcda049c671</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.129</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">9fa96daa-9f37-42ee-ab79-0bcda049c671</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">374</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ListMultipartUploadsResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Bucket&gt;</span>bucket-1<span class="nt">&lt;/Bucket&gt;</span>
+  <span class="nt">&lt;KeyMarker/&gt;</span>
+  <span class="nt">&lt;UploadIdMarker/&gt;</span>
+  <span class="nt">&lt;NextKeyMarker/&gt;</span>
+  <span class="nt">&lt;NextUploadIdMarker/&gt;</span>
+  <span class="nt">&lt;MaxUploads&gt;</span>1000<span class="nt">&lt;/MaxUploads&gt;</span>
+  <span class="nt">&lt;IsTruncated&gt;</span>false<span class="nt">&lt;/IsTruncated&gt;</span>
+<span class="nt">&lt;/ListMultipartUploadsResult&gt;</span>
+</code></pre>
 </div>
 
 <h4 id="list-any-cross-origin-resource-sharing-configuration-for-a-bucket">List any cross-origin resource sharing configuration for a bucket</h4>
 
-<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+<p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
 <p><strong>Sample Request:</strong></p>
 
-<p>This is an example …</p>
+<p>This is an example of listing a CORS configuration on the “apiary” bucket.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary?cors=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161011T190354Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
+<p><strong>Sample Response:</strong> No CORS configuration set</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 15:20:30 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">0b69bce1-8420-4f93-a04a-35d7542799e6</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.129</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">0b69bce1-8420-4f93-a04a-35d7542799e6</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">123</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CORSConfiguration</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">/&gt;</span>
+</code></pre>
 </div>
 
 <h4 id="create-a-cross-origin-resource-sharing-configuration-for-a-bucket">Create a cross-origin resource sharing configuration for a bucket</h4>
 
-<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+<p>A <code class="highlighter-rouge">PUT</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
 <p><strong>Sample Request:</strong></p>
 
-<p>This is an example …</p>
+<p>This is an example of adding a CORS configuration that allows requests from <code class="highlighter-rouge">www.ibm.com</code> to issue <code class="highlighter-rouge">GET</code>, <code class="highlighter-rouge">PUT</code>, and <code class="highlighter-rouge">POST</code> requests to the bucket.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary?cors=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161011T190354Z</span>
+<span class="na">x-amz-content-sha256</span><span class="p">:</span> <span class="s">2938f51643d63c864fdbea618fe71b13579570a86f39da2837c922bae68d72df</span>
+<span class="na">Content-MD5</span><span class="p">:</span> <span class="s">GQmpTNpruOyK6YrxHnpj7g==</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">237</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CORSConfiguration&gt;</span>
+  <span class="nt">&lt;CORSRule&gt;</span>
+    <span class="nt">&lt;AllowedOrigin&gt;</span>http:www.ibm.com<span class="nt">&lt;/AllowedOrigin&gt;</span>
+    <span class="nt">&lt;AllowedMethod&gt;</span>GET<span class="nt">&lt;/AllowedMethod&gt;</span>
+    <span class="nt">&lt;AllowedMethod&gt;</span>PUT<span class="nt">&lt;/AllowedMethod&gt;</span>
+    <span class="nt">&lt;AllowedMethod&gt;</span>POST<span class="nt">&lt;/AllowedMethod&gt;</span>
+  <span class="nt">&lt;/CORSRule&gt;</span>
+<span class="nt">&lt;/CORSConfiguration&gt;</span>
+</code></pre>
 </div>
 
 <p><strong>Sample Response:</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 15:39:38 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">7afca6d8-e209-4519-8f2c-1af3f1540b42</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.129</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">7afca6d8-e209-4519-8f2c-1af3f1540b42</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
 </div>
 
 <h4 id="delete-any-cross-origin-resource-sharing-configuration-for-a-bucket">Delete any cross-origin resource sharing configuration for a bucket</h4>
 
-<p>A <code class="highlighter-rouge">XXX</code> issued to …</p>
+<p>A <code class="highlighter-rouge">DELETE</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
 <p><strong>Sample Request:</strong></p>
 
-<p>This is an example …</p>
+<p>This is an example of deleting a CORS configuration for a bucket.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary?cors=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161011T190354Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">
-</span></code></pre>
-</div>
+<p>The server responds with <code class="highlighter-rouge">204 No Content</code>.</p>
 
 <h3 id="operations-on-objects">Operations on Objects</h3>
 

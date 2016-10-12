@@ -312,7 +312,7 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 ```http
 HTTP/1.1 200 OK
-Date: Tue, 11 Oct 2016 19:03:55 GMT
+Date: Tue, 4 Oct 2016 19:03:55 GMT
 X-Clv-Request-Id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
 Accept-Ranges: bytes
 Server: Cleversafe/3.9.0.129
@@ -361,7 +361,7 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 ```http
 HTTP/1.1 200 OK
-Date: Tue, 11 Oct 2016 19:03:55 GMT
+Date: Tue, 4 Oct 2016 19:03:55 GMT
 X-Clv-Request-Id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
 Accept-Ranges: bytes
 Server: Cleversafe/3.9.0.129
@@ -371,123 +371,225 @@ x-amz-request-id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
 
 #### Retrieve the access control list for a bucket
 
-A `XXX` issued to ...
+A `GET` issued to a bucket with the proper parameters retrieves the ACL for a bucket.
 
 **Syntax**
 
 ```bash
-XXX http://{endpoint}/{bucket-name}
+XXX http://{endpoint}/{bucket-name}?acl=
 ```
 
 **Sample Request:**
 
-This is an example ...
+This is an example of retrieving a bucket ACL.
 
 ```http
-
+GET /apiary?acl= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161011T190354Z
+Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
 **Sample Response:**
 
 ```http
+HTTP/1.1 200 OK
+Date: Wed, 5 Oct 2016 14:14:34 GMT
+X-Clv-Request-Id: eb57e60e-d84e-4237-b18a-be9c2bb0deb8
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.129
+X-Clv-S3-Version: 2.5
+x-amz-request-id: eb57e60e-d84e-4237-b18a-be9c2bb0deb8
+Content-Type: application/xml
+Content-Length: 550
+```
 
+```xml
+<AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Owner>
+    <ID>{owner-storage-account-uuid}</ID>
+    <DisplayName>{owner-storage-account-uuid}</DisplayName>
+  </Owner>
+  <AccessControlList>
+    <Grant>
+      <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser">
+        <ID>{owner-storage-account-uuid}</ID>
+        <DisplayName>{owner-storage-account-uuid}</DisplayName>
+      </Grantee>
+      <Permission>FULL_CONTROL</Permission>
+    </Grant>
+  </AccessControlList>
+</AccessControlPolicy>
 ```
 
 #### List canceled/incomplete multipart uploads for a bucket
 
-A `XXX` issued to ...
+A `GET` issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.
 
 **Syntax**
 
 ```bash
-XXX http://{endpoint}/{bucket-name}
+GET http://{endpoint}/{bucket-name}?uploads=
 ```
 
+**Parameters**
+
+Name | Type | Description
+--- | ---- | ------------
+`prefix` | string | Constrains reponse to object names beginning with `{prefix}`.
+`delimiter` | string | Groups objects within between the `prefix` and the `delimiter`.
+`encoding-type` | string | If unicode characters that are not supported by XML are used in an object name, this parameter can be set to `url` to properly encode the reponse.
+`max-uploads` | integer | Restricts the number of objects to display in the response.  Default and maximum is 1,000.
+`key-marker` | string | Specifies the start of the which parts should be listed.
+`upload-id-marker` | string | Ignored if `key-marker` is not specified, otherwise sets a point at which to begin listing parts above `upload-id-marker`.
+ 
 **Sample Request:**
 
-This is an example ...
+This is an example of retrieving all current cancelled and incomplete multipart uploads.
 
 ```http
-
+GET /apiary?uploads= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161011T190354Z
+Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-**Sample Response:**
+**Sample Response:** No multipart uploads in progress.
 
 ```http
+HTTP/1.1 200 OK
+Date: Wed, 5 Oct 2016 15:22:27 GMT
+X-Clv-Request-Id: 9fa96daa-9f37-42ee-ab79-0bcda049c671
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.129
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 9fa96daa-9f37-42ee-ab79-0bcda049c671
+Content-Type: application/xml
+Content-Length: 374
+```
 
+```xml
+<ListMultipartUploadsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Bucket>bucket-1</Bucket>
+  <KeyMarker/>
+  <UploadIdMarker/>
+  <NextKeyMarker/>
+  <NextUploadIdMarker/>
+  <MaxUploads>1000</MaxUploads>
+  <IsTruncated>false</IsTruncated>
+</ListMultipartUploadsResult>
 ```
 
 #### List any cross-origin resource sharing configuration for a bucket
 
-A `XXX` issued to ...
+A `GET` issued to a bucket with the proper parameters retrieves information about cross-origin resource sharing (CORS) configuration for a bucket.
 
 **Syntax**
 
 ```bash
-XXX http://{endpoint}/{bucket-name}
+GET http://{endpoint}/{bucket-name}?cors=
 ```
 
 **Sample Request:**
 
-This is an example ...
+This is an example of listing a CORS configuration on the "apiary" bucket.
 
 ```http
-
+GET /apiary?cors= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161011T190354Z
+Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-**Sample Response:**
+**Sample Response:** No CORS configuration set
 
 ```http
+HTTP/1.1 200 OK
+Date: Wed, 5 Oct 2016 15:20:30 GMT
+X-Clv-Request-Id: 0b69bce1-8420-4f93-a04a-35d7542799e6
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.129
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 0b69bce1-8420-4f93-a04a-35d7542799e6
+Content-Type: application/xml
+Content-Length: 123
+```
 
+```xml
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"/>
 ```
 
 #### Create a cross-origin resource sharing configuration for a bucket
 
-A `XXX` issued to ...
+A `PUT` issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.
 
 **Syntax**
 
 ```bash
-XXX http://{endpoint}/{bucket-name}
+XXX http://{endpoint}/{bucket-name}?cors=
 ```
 
 **Sample Request:**
 
-This is an example ...
+This is an example of adding a CORS configuration that allows requests from `www.ibm.com` to issue `GET`, `PUT`, and `POST` requests to the bucket.
 
 ```http
+GET /apiary?cors= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161011T190354Z
+x-amz-content-sha256: 2938f51643d63c864fdbea618fe71b13579570a86f39da2837c922bae68d72df
+Content-MD5: GQmpTNpruOyK6YrxHnpj7g==
+Content-Type: text/plain
+Host: s3-api.us-geo.objectstorage.softlayer.net
+Content-Length: 237
+```
 
+```xml
+<CORSConfiguration>
+  <CORSRule>
+    <AllowedOrigin>http:www.ibm.com</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <AllowedMethod>POST</AllowedMethod>
+  </CORSRule>
+</CORSConfiguration>
 ```
 
 **Sample Response:**
 
 ```http
-
+HTTP/1.1 200 OK
+Date: Wed, 5 Oct 2016 15:39:38 GMT
+X-Clv-Request-Id: 7afca6d8-e209-4519-8f2c-1af3f1540b42
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.129
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 7afca6d8-e209-4519-8f2c-1af3f1540b42
+Content-Length: 0
 ```
 
 #### Delete any cross-origin resource sharing configuration for a bucket
 
-A `XXX` issued to ...
+A `DELETE` issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.
 
 **Syntax**
 
 ```bash
-XXX http://{endpoint}/{bucket-name}
+DELETE http://{endpoint}/{bucket-name}?cors=
 ```
 
 **Sample Request:**
 
-This is an example ...
+This is an example of deleting a CORS configuration for a bucket.
 
 ```http
-
+GET /apiary?cors= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161011T190354Z
+Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-**Sample Response:**
-
-```http
-
-```
+The server responds with `204 No Content`.
 
 ### Operations on Objects
 {: #operations-on-objects}
