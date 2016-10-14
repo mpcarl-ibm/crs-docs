@@ -7,13 +7,13 @@ Items still in progress (completed 10/17):
 [] Detailed multipart upload examples.
 
 Items still in progress (completed TBD):
-[] Documentation and code examples for SoftLayer API.
-[] Final UI walkthroughs for unified console.
-[] Additional detail around managing access and creating users.
-[] AWS Signature v4 documentation.
-[] Spark/Hadoop documentation and code examples.
-[] Aspera documentation and code examples.
-[] Swagger API documentation format.
+- [ ] Documentation and code examples for SoftLayer API.
+- [ ] Final UI walkthroughs for unified console.
+- [ ] Additional detail around managing access and creating users.
+- [ ] AWS Signature v4 documentation.
+- [ ] Spark/Hadoop documentation and code examples.
+- [ ] Aspera documentation and code examples.
+- [ ] Swagger API documentation format.
 
 
 Contact `nicholas.lange@ibm.com` OR `@nicholas.lange` on Slack with questions and concerns.
