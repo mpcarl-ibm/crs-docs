@@ -2,7 +2,7 @@
 layout: page
 title:  "API overview"
 featured: true
-weight: 2
+weight: 3
 tags: []
 author: Nick
 dateAdded: August 18th, 2016

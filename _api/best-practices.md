@@ -2,7 +2,7 @@
 layout: page
 title:  "Best practices"
 featured: True
-weight: 2
+weight: 1
 tags: []
 author: Nick
 dateAdded: August 18th, 2016
