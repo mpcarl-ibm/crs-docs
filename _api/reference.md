@@ -526,7 +526,7 @@ A `PUT` issued to a bucket with the proper parameters creates or replaces a cros
 **Syntax**
 
 ```bash
-XXX http://{endpoint}/{bucket-name}?cors=
+PUT http://{endpoint}/{bucket-name}?cors=
 ```
 
 **Sample Request:**
@@ -596,7 +596,7 @@ The server responds with `204 No Content`.
 
 #### Upload an object
 
-A `PUT` given a path to an object uploads an object. A SHA256 hash of the object is a required header.
+A `PUT` given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.
 
 
 **Syntax**

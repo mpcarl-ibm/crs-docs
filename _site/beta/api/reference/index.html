@@ -727,7 +727,7 @@ Signature={signature}
 
 <p><strong>Syntax</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
@@ -797,7 +797,7 @@ Signature={signature}
 
 <h4 id="upload-an-object">Upload an object</h4>
 
-<p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads an object. A SHA256 hash of the object is a required header.</p>
+<p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.</p>
 
 <p><strong>Syntax</strong></p>
 

@@ -163,13 +163,7 @@ Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.read
 import boto3
 import pprintpp
 
-# Begin config
-##############
-
 endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
-
-############
-# End config
 
 s3 = boto3.client('s3', endpoint_url=endpoint)
 
