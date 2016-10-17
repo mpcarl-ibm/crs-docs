@@ -149,19 +149,49 @@ $ aws --endpoint-url=https://{endpoint} s3api list-objects --bucket bucket1
 
 # Python
 
-Python support is provided through the `boto3` library.  It can be installed from the Python Package Index via `pip install boto3`. 
+Python support is provided through the Boto 3 library.  It can be installed from the Python Package Index via `pip install boto3`. 
 
-> **Note**: Existing applications that use the original `boto` library should be compatible as well, although `boto` is no longer being actively supported and users are encouraged to migrate to `boto3`. 
+> **Note**: Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3. 
 
-The `boto3` library provides complete access to the S3 API and can source credentials from the `~/.aws/credentials` file referenced above.  The IBM COS endpoint must be specified in the `boto3.client()` method as shown in the following example. The `pprintpp` package is used for readability of raw output.
+The `boto3` library provides complete access to the S3 API and can source credentials from the `~/.aws/credentials` file referenced above.  The IBM COS endpoint must be specified when creating a service resource or low-level client as shown in the following basic examples. 
 
 Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.readthedocs.io).
 
-**Sample script**
+
+**Sample script**: Listing buckets and objects using a service resource
+Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. 
 
 ```python
 import boto3
-import pprintpp
+
+endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
+
+s3 = boto3.resource('s3', endpoint_url=endpoint)
+
+for bucket in s3.buckets.all():
+    print("Bucket %s contains") % bucket.name
+    for obj in bucket.objects.all():
+        print("  - %s") % obj.key
+```
+
+**Sample script response**
+
+```
+bucket-1
+  - c1ca2-filename-00001
+  - c9872-filename-00002
+  - 98837-filename-00003
+  - abfc4-filename-00004
+bucket-2
+  - c1ca2-filename-00011
+```
+
+**Sample script**: Listing buckets and objects using a low-level client
+Creating a low-level client allows for considerably more detail and access to metadata. This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. As considerably more data is returned than in the previous example, the `pprintpp` package is used to increase the readability of the raw output.
+
+```python
+import boto3
+import pprint as pp
 
 endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 
@@ -169,25 +199,21 @@ s3 = boto3.client('s3', endpoint_url=endpoint)
 
 buckets = s3.list_buckets()
 
-print('=') * 110
 print('These are the buckets in this service account:')
 bucketNames = buckets['Buckets']
-pprintpp.pprint(buckets, width=180)
-print('=') * 110
+pp.pprint(buckets, width=180)
 
 
 for bucket in buckets['Buckets']:
     name = bucket['Name']
     print("Raw output from 'list_buckets()' in %s:" % name)
     objects = s3.list_objects(Bucket=name)
-    pprintpp.pprint(objects)
-    print('-') * 110
+    pp.pprint(objects)
 ```
 
 **Sample script response**
 
-```bash
-==============================================================================================================
+```
 These are the buckets in this service account:
 {
     u'Buckets': [
@@ -212,7 +238,6 @@ These are the buckets in this service account:
         'RetryAttempts': 0,
     },
 }
-==============================================================================================================
 Raw output from 'list_buckets()' in apiary:
 {
     u'Contents': [
@@ -284,7 +309,6 @@ Raw output from 'list_buckets()' in apiary:
         'RetryAttempts': 0,
     },
 }
---------------------------------------------------------------------------------------------------------------
 Raw output from 'list_buckets()' in bucket-2:
 {
     u'Contents': [
@@ -326,7 +350,7 @@ Raw output from 'list_buckets()' in bucket-2:
 ```
 # Java
 
->In progress.
+
 
 # Go
 
