@@ -2,7 +2,7 @@
 
 This is the staging environment for COS documentation for the 12/1 GA.
 
-Items still in progress (completed 10/17):
+Items still in progress (completed 10/18):
 - [ ] Basic documentation for Java, node.js, and Go SDKs (with links to detailed original 3rd party documentation).
 - [ ] Detailed multipart upload examples.
 

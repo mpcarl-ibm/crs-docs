@@ -10,12 +10,14 @@ dateAdded: August 18th, 2016
 
 > IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll.
 
-Most tools that use the S3 API to interact with object storage are compatible with IBM COS, although some configuration is necessary to connect to the correct endpoint.  
+Most tools that use the S3 API to interact with object storage are compatible with IBM COS, although some configuration is necessary to connect to the correct endpoint. 
 
 # Command line tools
 
 #### AWS CLI
 The official command line interface for AWS is compatible with the IBM COS S3 API. Written in Python, it can be installed from the Python Package Index via `pip install awscli`. Access keys are sourced from `~/.aws/credentials`.
+
+These examples have been generated using version 1.10.66 of the CLI.  To check the version installed, run `aws --version`.
 
 Minimum required `~/.aws/credentials` file:
 
@@ -155,7 +157,7 @@ Python support is provided through the Boto 3 library.  It can be installed from
 
 The `boto3` library provides complete access to the S3 API and can source credentials from the `~/.aws/credentials` file referenced above.  The IBM COS endpoint must be specified when creating a service resource or low-level client as shown in the following basic examples. 
 
-Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.readthedocs.io).
+Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.readthedocs.io/en/latest/reference/services/s3.html).
 
 
 **Sample service resource script**
@@ -351,7 +353,13 @@ Raw output from 'list_buckets()' in bucket-2:
 ```
 # Java
 
+The AWS SDK for Java can be cloned and built from source using Maven, or downloaded directy from AWS. You can learn about, download, and install Maven from [maven.apache.org](https://maven.apache.org/).
 
+**To build from source**
+1. From the command line, run `git clone https://github.com/aws/aws-sdk-java.git`.
+2. Change to the newly cloned directory with `cd aws-sdk-java`.
+3. Run `maven clean install`.  To skip GPG-signing, run `mvn clean install -Dgpg.skip=true`.
+4. Build detailed documentation by running `mvn javadoc:javadoc`.
 
 # Go
 
