@@ -71,8 +71,8 @@ Listing buckets:
 $ aws --endpoint-url=https://{endpoint} s3api list-buckets
 {
     "Owner": {
-        "DisplayName": "{Access Key ID}",
-        "ID": "{Access Key ID}"
+        "DisplayName": "{storage-account-uuid}",
+        "ID": "{storage-account-uuid}"
     },
     "Buckets": [
         {
@@ -105,8 +105,8 @@ $ aws --endpoint-url=https://{endpoint} s3api list-objects --bucket bucket1
             "StorageClass": "STANDARD",
             "Key": "c1ca2-filename-00001",
             "Owner": {
-                "DisplayName": "{Access Key ID}",
-                "ID": "{Access Key ID}"
+                "DisplayName": "{storage-account-uuid}",
+                "ID": "{storage-account-uuid}"
             },
             "Size": 837
         },
@@ -116,8 +116,8 @@ $ aws --endpoint-url=https://{endpoint} s3api list-objects --bucket bucket1
             "StorageClass": "STANDARD",
             "Key": "c9872-filename-00002",
             "Owner": {
-                "DisplayName": "{Access Key ID}",
-                "ID": "{Access Key ID}"
+                "DisplayName": "{storage-account-uuid}",
+                "ID": "{storage-account-uuid}"
             },
             "Size": 533
         },
@@ -127,8 +127,8 @@ $ aws --endpoint-url=https://{endpoint} s3api list-objects --bucket bucket1
             "StorageClass": "STANDARD",
             "Key": "98837-filename-00003",
             "Owner": {
-                "DisplayName": "{Access Key ID}",
-                "ID": "{Access Key ID}"
+                "DisplayName": "{storage-account-uuid}",
+                "ID": "{storage-account-uuid}"
             },
             "Size": 14476
         },
@@ -138,8 +138,8 @@ $ aws --endpoint-url=https://{endpoint} s3api list-objects --bucket bucket1
             "StorageClass": "STANDARD",
             "Key": "abfc4-filename-00004",
             "Owner": {
-                "DisplayName": "{Access Key ID}",
-                "ID": "{Access Key ID}"
+                "DisplayName": "{storage-account-uuid}",
+                "ID": "{storage-account-uuid}"
             },
             "Size": 20950
         }
@@ -158,7 +158,7 @@ The `boto3` library provides complete access to the S3 API and can source creden
 Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.readthedocs.io).
 
 
-**Sample script**: Listing buckets and objects using a service resource
+**Sample service resource script**
 Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. 
 
 ```python
@@ -186,7 +186,8 @@ bucket-2
   - c1ca2-filename-00011
 ```
 
-**Sample script**: Listing buckets and objects using a low-level client
+**Sample low-level client script**
+
 Creating a low-level client allows for considerably more detail and access to metadata. This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. As considerably more data is returned than in the previous example, the `pprintpp` package is used to increase the readability of the raw output.
 
 ```python
@@ -220,7 +221,7 @@ These are the buckets in this service account:
         {u'CreationDate': datetime.datetime(1970, 1, 1, 0, 0, tzinfo=tzutc()), u'Name': 'bucket-1'},
         {u'CreationDate': datetime.datetime(2016, 9, 16, 21, 29, 0, 912000, tzinfo=tzutc()), u'Name': 'bucket-2'},
     ],
-    u'Owner': {u'DisplayName': '{Access Key ID}', u'ID': '{Access Key ID}'},
+    u'Owner': {u'DisplayName': '{storage-account-uuid}', u'ID': '{storage-account-uuid}'},
     'ResponseMetadata': {
         'HTTPHeaders': {
             'accept-ranges': 'bytes',
@@ -246,8 +247,8 @@ Raw output from 'list_buckets()' in apiary:
             u'Key': 'c1ca2-filename-00001',
             u'LastModified': datetime.datetime(2016, 10, 6, 14, 44, 37, 211000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 20950,
             u'StorageClass': 'STANDARD',
@@ -257,8 +258,8 @@ Raw output from 'list_buckets()' in apiary:
             u'Key': 'c9872-filename-00002',
             u'LastModified': datetime.datetime(2016, 10, 11, 13, 12, 32, 234000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 533,
             u'StorageClass': 'STANDARD',
@@ -268,8 +269,8 @@ Raw output from 'list_buckets()' in apiary:
             u'Key': '98837-filename-00003',
             u'LastModified': datetime.datetime(2016, 10, 6, 15, 11, 49, 20000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 1989,
             u'StorageClass': 'STANDARD',
@@ -279,8 +280,8 @@ Raw output from 'list_buckets()' in apiary:
             u'Key': 'abfc4-filename-00004',
             u'LastModified': datetime.datetime(2016, 9, 28, 15, 36, 56, 807000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 837,
             u'StorageClass': 'STANDARD',
@@ -317,8 +318,8 @@ Raw output from 'list_buckets()' in bucket-2:
             u'Key': 'c1ca2-filename-00011',
             u'LastModified': datetime.datetime(2016, 9, 17, 18, 11, 58, 811000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 112001,
             u'StorageClass': 'STANDARD',

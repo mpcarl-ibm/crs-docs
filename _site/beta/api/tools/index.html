@@ -186,8 +186,8 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>aws --endpoint-url<span class="o">=</span>https://<span class="o">{</span>endpoint<span class="o">}</span> s3api list-buckets
 <span class="o">{</span>
     <span class="s2">"Owner"</span>: <span class="o">{</span>
-        <span class="s2">"DisplayName"</span>: <span class="s2">"{Access Key ID}"</span>,
-        <span class="s2">"ID"</span>: <span class="s2">"{Access Key ID}"</span>
+        <span class="s2">"DisplayName"</span>: <span class="s2">"{storage-account-uuid}"</span>,
+        <span class="s2">"ID"</span>: <span class="s2">"{storage-account-uuid}"</span>
     <span class="o">}</span>,
     <span class="s2">"Buckets"</span>: <span class="o">[</span>
         <span class="o">{</span>
@@ -220,8 +220,8 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
             <span class="s2">"StorageClass"</span>: <span class="s2">"STANDARD"</span>,
             <span class="s2">"Key"</span>: <span class="s2">"c1ca2-filename-00001"</span>,
             <span class="s2">"Owner"</span>: <span class="o">{</span>
-                <span class="s2">"DisplayName"</span>: <span class="s2">"{Access Key ID}"</span>,
-                <span class="s2">"ID"</span>: <span class="s2">"{Access Key ID}"</span>
+                <span class="s2">"DisplayName"</span>: <span class="s2">"{storage-account-uuid}"</span>,
+                <span class="s2">"ID"</span>: <span class="s2">"{storage-account-uuid}"</span>
             <span class="o">}</span>,
             <span class="s2">"Size"</span>: 837
         <span class="o">}</span>,
@@ -231,8 +231,8 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
             <span class="s2">"StorageClass"</span>: <span class="s2">"STANDARD"</span>,
             <span class="s2">"Key"</span>: <span class="s2">"c9872-filename-00002"</span>,
             <span class="s2">"Owner"</span>: <span class="o">{</span>
-                <span class="s2">"DisplayName"</span>: <span class="s2">"{Access Key ID}"</span>,
-                <span class="s2">"ID"</span>: <span class="s2">"{Access Key ID}"</span>
+                <span class="s2">"DisplayName"</span>: <span class="s2">"{storage-account-uuid}"</span>,
+                <span class="s2">"ID"</span>: <span class="s2">"{storage-account-uuid}"</span>
             <span class="o">}</span>,
             <span class="s2">"Size"</span>: 533
         <span class="o">}</span>,
@@ -242,8 +242,8 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
             <span class="s2">"StorageClass"</span>: <span class="s2">"STANDARD"</span>,
             <span class="s2">"Key"</span>: <span class="s2">"98837-filename-00003"</span>,
             <span class="s2">"Owner"</span>: <span class="o">{</span>
-                <span class="s2">"DisplayName"</span>: <span class="s2">"{Access Key ID}"</span>,
-                <span class="s2">"ID"</span>: <span class="s2">"{Access Key ID}"</span>
+                <span class="s2">"DisplayName"</span>: <span class="s2">"{storage-account-uuid}"</span>,
+                <span class="s2">"ID"</span>: <span class="s2">"{storage-account-uuid}"</span>
             <span class="o">}</span>,
             <span class="s2">"Size"</span>: 14476
         <span class="o">}</span>,
@@ -253,8 +253,8 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
             <span class="s2">"StorageClass"</span>: <span class="s2">"STANDARD"</span>,
             <span class="s2">"Key"</span>: <span class="s2">"abfc4-filename-00004"</span>,
             <span class="s2">"Owner"</span>: <span class="o">{</span>
-                <span class="s2">"DisplayName"</span>: <span class="s2">"{Access Key ID}"</span>,
-                <span class="s2">"ID"</span>: <span class="s2">"{Access Key ID}"</span>
+                <span class="s2">"DisplayName"</span>: <span class="s2">"{storage-account-uuid}"</span>,
+                <span class="s2">"ID"</span>: <span class="s2">"{storage-account-uuid}"</span>
             <span class="o">}</span>,
             <span class="s2">"Size"</span>: 20950
         <span class="o">}</span>
@@ -275,7 +275,7 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
 
 <p>Detailed documentation can be found at <a href="https://boto3.readthedocs.io">boto3.readthedocs.io</a>.</p>
 
-<p><strong>Sample script</strong>: Listing buckets and objects using a service resource<br />
+<p><strong>Sample service resource script</strong><br />
 Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
@@ -303,8 +303,9 @@ bucket-2
 </code></pre>
 </div>
 
-<p><strong>Sample script</strong>: Listing buckets and objects using a low-level client<br />
-Creating a low-level client allows for considerably more detail and access to metadata. This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. As considerably more data is returned than in the previous example, the <code class="highlighter-rouge">pprintpp</code> package is used to increase the readability of the raw output.</p>
+<p><strong>Sample low-level client script</strong></p>
+
+<p>Creating a low-level client allows for considerably more detail and access to metadata. This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. As considerably more data is returned than in the previous example, the <code class="highlighter-rouge">pprintpp</code> package is used to increase the readability of the raw output.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="kn">import</span> <span class="nn">pprint</span> <span class="kn">as</span> <span class="nn">pp</span>
@@ -336,7 +337,7 @@ Creating a low-level client allows for considerably more detail and access to me
         {u'CreationDate': datetime.datetime(1970, 1, 1, 0, 0, tzinfo=tzutc()), u'Name': 'bucket-1'},
         {u'CreationDate': datetime.datetime(2016, 9, 16, 21, 29, 0, 912000, tzinfo=tzutc()), u'Name': 'bucket-2'},
     ],
-    u'Owner': {u'DisplayName': '{Access Key ID}', u'ID': '{Access Key ID}'},
+    u'Owner': {u'DisplayName': '{storage-account-uuid}', u'ID': '{storage-account-uuid}'},
     'ResponseMetadata': {
         'HTTPHeaders': {
             'accept-ranges': 'bytes',
@@ -362,8 +363,8 @@ Raw output from 'list_buckets()' in apiary:
             u'Key': 'c1ca2-filename-00001',
             u'LastModified': datetime.datetime(2016, 10, 6, 14, 44, 37, 211000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 20950,
             u'StorageClass': 'STANDARD',
@@ -373,8 +374,8 @@ Raw output from 'list_buckets()' in apiary:
             u'Key': 'c9872-filename-00002',
             u'LastModified': datetime.datetime(2016, 10, 11, 13, 12, 32, 234000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 533,
             u'StorageClass': 'STANDARD',
@@ -384,8 +385,8 @@ Raw output from 'list_buckets()' in apiary:
             u'Key': '98837-filename-00003',
             u'LastModified': datetime.datetime(2016, 10, 6, 15, 11, 49, 20000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 1989,
             u'StorageClass': 'STANDARD',
@@ -395,8 +396,8 @@ Raw output from 'list_buckets()' in apiary:
             u'Key': 'abfc4-filename-00004',
             u'LastModified': datetime.datetime(2016, 9, 28, 15, 36, 56, 807000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 837,
             u'StorageClass': 'STANDARD',
@@ -433,8 +434,8 @@ Raw output from 'list_buckets()' in bucket-2:
             u'Key': 'c1ca2-filename-00011',
             u'LastModified': datetime.datetime(2016, 9, 17, 18, 11, 58, 811000, tzinfo=tzutc()),
             u'Owner': {
-                u'DisplayName': '{Access Key ID}',
-                u'ID': '{Access Key ID}',
+                u'DisplayName': '{storage-account-uuid}',
+                u'ID': '{storage-account-uuid}',
             },
             u'Size': 112001,
             u'StorageClass': 'STANDARD',
