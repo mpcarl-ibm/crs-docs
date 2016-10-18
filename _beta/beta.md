@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Standard Cross Regional Service documentation for IBM Cloud Object Storage (Beta)
+title: Standard Cross Regional Service documentation for IBM Cloud Object Storage (Open Trial)
 permalink: /beta/
 category: top-level
 top-level: gettingstarted
 ---
 
->IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll.
+> IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
 IBM Cloud Object Storage Standard Cross Regional Service provides an innovative solution to the problem of managing increasingly vast amounts of unstructured data. Information is encrypted and dispersed across three geographic regions (Dallas, San Jose, and Washington, DC) and accessed through an implementation of the S3 API.
 
