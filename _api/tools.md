@@ -349,6 +349,7 @@ Raw output from 'list_buckets()' in bucket-2:
     },
 }
 ```
+
 # Java
 
 The AWS SDK for Java can be cloned and built from source using Maven, or downloaded directy from AWS. You can learn about, download, and install Maven from [maven.apache.org](https://maven.apache.org/).
