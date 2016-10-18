@@ -66,11 +66,11 @@
                 </li>
                   
                 <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Data security overview</a>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Support</a>
                 </li>
                   
                 <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Support</a>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/security/">Data security overview</a>
                 </li>
                  
             </ul>
@@ -90,6 +90,10 @@
                   
                 <li>
                     <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/reference/">API reference and examples</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/security/">Data security overview</a>
                 </li>
                  
             </ul>
@@ -146,7 +150,7 @@ PUT /bucket1/9ac18-filename-00005
 </div>
 
 <h3 id="tuning-cipher-settings">Tuning cipher settings</h3>
-<p>IBM COS supports variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</code>, <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_128_CBC_SHA</code> has shown to yield the same levels of performance as no TLS between the client and the IBM COS.</p>
+<p>IBM COS supports variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</code>, <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_128_CBC_SHA</code> has shown to yield the same levels of performance as no TLS between the client and the IBM COS System.</p>
 
 <h3 id="using-multipart-uploads">Using multipart uploads</h3>
 <p>If the objects being stored in IBM COS are all larger objects, it is recommend that multipart upload operation is used to write objects into IBM COS.  Multipart uploads are only available for objects larger than 5MB - depending on the object size a part size of 20MB to 100MB is recommended.</p>

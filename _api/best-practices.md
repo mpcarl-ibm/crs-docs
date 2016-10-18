@@ -32,7 +32,7 @@ PUT /bucket1/9ac18-filename-00005
 ```
 
 ### Tuning cipher settings
-IBM COS supports variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`, `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`, `TLS_RSA_WITH_AES_256_CBC_SHA`, `TLS_RSA_WITH_AES_128_CBC_SHA` has shown to yield the same levels of performance as no TLS between the client and the IBM COS.
+IBM COS supports variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`, `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`, `TLS_RSA_WITH_AES_256_CBC_SHA`, `TLS_RSA_WITH_AES_128_CBC_SHA` has shown to yield the same levels of performance as no TLS between the client and the IBM COS System.
 
 ### Using multipart uploads
 If the objects being stored in IBM COS are all larger objects, it is recommend that multipart upload operation is used to write objects into IBM COS.  Multipart uploads are only available for objects larger than 5MB - depending on the object size a part size of 20MB to 100MB is recommended. 

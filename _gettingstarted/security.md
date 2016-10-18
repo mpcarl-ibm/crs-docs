@@ -2,7 +2,7 @@
 layout: page
 title:  "Data security overview"
 featured: true
-weight: 4
+weight: 6
 tags: []
 author: Nick
 dateAdded: August 18th, 2016
