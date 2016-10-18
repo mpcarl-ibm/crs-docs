@@ -205,7 +205,6 @@ print('These are the buckets in this service account:')
 buckets = s3.list_buckets()
 pp.pprint(buckets, width=180)
 
-
 for bucket in buckets['Buckets']:
     name = bucket['Name']
     print("Raw output from 'list_buckets()' in %s:" % name)
@@ -355,6 +354,7 @@ Raw output from 'list_buckets()' in bucket-2:
 The AWS SDK for Java can be cloned and built from source using Maven, or downloaded directy from AWS. You can learn about, download, and install Maven from [maven.apache.org](https://maven.apache.org/).
 
 **To build from source**
+
 1. From the command line, run `git clone https://github.com/aws/aws-sdk-java.git`.
 2. Change to the newly cloned directory with `cd aws-sdk-java`.
 3. Run `maven clean install`.  To skip GPG-signing, run `mvn clean install -Dgpg.skip=true`.

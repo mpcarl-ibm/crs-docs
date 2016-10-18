@@ -321,7 +321,6 @@ bucket-2
 <span class="n">buckets</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
 <span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">buckets</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 
-
 <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">buckets</span><span class="p">[</span><span class="s">'Buckets'</span><span class="p">]:</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">bucket</span><span class="p">[</span><span class="s">'Name'</span><span class="p">]</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"Raw output from 'list_buckets()' in </span><span class="si">%</span><span class="s">s:"</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
@@ -471,11 +470,14 @@ Raw output from 'list_buckets()' in bucket-2:
 
 <p>The AWS SDK for Java can be cloned and built from source using Maven, or downloaded directy from AWS. You can learn about, download, and install Maven from <a href="https://maven.apache.org/">maven.apache.org</a>.</p>
 
-<p><strong>To build from source</strong><br />
-1. From the command line, run <code class="highlighter-rouge">git clone https://github.com/aws/aws-sdk-java.git</code>.<br />
-2. Change to the newly cloned directory with <code class="highlighter-rouge">cd aws-sdk-java</code>.<br />
-3. Run <code class="highlighter-rouge">maven clean install</code>.  To skip GPG-signing, run <code class="highlighter-rouge">mvn clean install -Dgpg.skip=true</code>.<br />
-4. Build detailed documentation by running <code class="highlighter-rouge">mvn javadoc:javadoc</code>.</p>
+<p><strong>To build from source</strong></p>
+
+<ol>
+  <li>From the command line, run <code class="highlighter-rouge">git clone https://github.com/aws/aws-sdk-java.git</code>.</li>
+  <li>Change to the newly cloned directory with <code class="highlighter-rouge">cd aws-sdk-java</code>.</li>
+  <li>Run <code class="highlighter-rouge">maven clean install</code>.  To skip GPG-signing, run <code class="highlighter-rouge">mvn clean install -Dgpg.skip=true</code>.</li>
+  <li>Build detailed documentation by running <code class="highlighter-rouge">mvn javadoc:javadoc</code>.</li>
+</ol>
 
 <h1 id="go">Go</h1>
 
