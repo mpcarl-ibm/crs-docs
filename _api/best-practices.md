@@ -12,6 +12,7 @@ dateAdded: August 18th, 2016
 It is recommended to randomize the beginning component of the object name to avoid performance.  Randomness ensures that the index does not become unbalanced and can lead to significant performance gains.  
 
 Example of **inefficient** naming scheme:
+
 ```bash
 PUT /bucket1/filename-00001
 PUT /bucket1/filename-00002
@@ -21,6 +22,7 @@ PUT /bucket1/filename-00005
 ```
 
 Examples of an **efficient** naming scheme:
+
 ```bash
 PUT /bucket1/c1ca2-filename-00001
 PUT /bucket1/c9872-filename-00002

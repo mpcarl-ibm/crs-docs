@@ -125,23 +125,25 @@
         <h3 id="object-naming">Object naming</h3>
 <p>It is recommended to randomize the beginning component of the object name to avoid performance.  Randomness ensures that the index does not become unbalanced and can lead to significant performance gains.</p>
 
-<p>Example of <strong>inefficient</strong> naming scheme:<br />
-<code class="highlighter-rouge">bash
-PUT /bucket1/filename-00001
+<p>Example of <strong>inefficient</strong> naming scheme:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT /bucket1/filename-00001
 PUT /bucket1/filename-00002
 PUT /bucket1/filename-00003
 PUT /bucket1/filename-00004
 PUT /bucket1/filename-00005
-</code></p>
+</code></pre>
+</div>
 
-<p>Examples of an <strong>efficient</strong> naming scheme:<br />
-<code class="highlighter-rouge">bash
-PUT /bucket1/c1ca2-filename-00001
+<p>Examples of an <strong>efficient</strong> naming scheme:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT /bucket1/c1ca2-filename-00001
 PUT /bucket1/c9872-filename-00002
 PUT /bucket1/98837-filename-00003
 PUT /bucket1/abfc4-filename-00004
 PUT /bucket1/9ac18-filename-00005
-</code></p>
+</code></pre>
+</div>
 
 <h3 id="tuning-cipher-settings">Tuning cipher settings</h3>
 <p>IBM COS supports variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</code>, <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_128_CBC_SHA</code> has shown to yield the same levels of performance as no TLS between the client and the IBM COS.</p>
