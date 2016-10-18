@@ -7,7 +7,7 @@ tags: []
 author: Nick
 dateAdded: August 18th, 2016
 ---
-> IBM COS Standard Cross Region is currently in beta, and only available to registered users.  Please contact [IBM sales](mailto:insidesales@cleversafe.com?subject=Beta Request) to enroll.
+> IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
 IBM Cloud Object Storage encrypts data both in transit from clients via HTTPS endpoints as well in transit between geographic regions.   Additionally, all data at rest is encrypted with keys automatically managed by IBM Cloud Object Storage.
 
