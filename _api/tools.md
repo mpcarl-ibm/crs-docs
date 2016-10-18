@@ -161,7 +161,8 @@ Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.read
 
 
 **Sample service resource script**
-Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. 
+
+Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by an account, and lists the objects in each bucket. 
 
 ```python
 import boto3
@@ -200,10 +201,8 @@ endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 
 s3 = boto3.client('s3', endpoint_url=endpoint)
 
-buckets = s3.list_buckets()
-
 print('These are the buckets in this service account:')
-bucketNames = buckets['Buckets']
+buckets = s3.list_buckets()
 pp.pprint(buckets, width=180)
 
 

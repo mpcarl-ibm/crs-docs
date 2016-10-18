@@ -277,8 +277,9 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
 
 <p>Detailed documentation can be found at <a href="https://boto3.readthedocs.io/en/latest/reference/services/s3.html">boto3.readthedocs.io</a>.</p>
 
-<p><strong>Sample service resource script</strong><br />
-Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket.</p>
+<p><strong>Sample service resource script</strong></p>
+
+<p>Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by an account, and lists the objects in each bucket.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
 
@@ -316,10 +317,8 @@ bucket-2
 
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
 
-<span class="n">buckets</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
-
 <span class="k">print</span><span class="p">(</span><span class="s">'These are the buckets in this service account:'</span><span class="p">)</span>
-<span class="n">bucketNames</span> <span class="o">=</span> <span class="n">buckets</span><span class="p">[</span><span class="s">'Buckets'</span><span class="p">]</span>
+<span class="n">buckets</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
 <span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">buckets</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 
 
