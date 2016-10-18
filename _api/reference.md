@@ -286,7 +286,7 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 A `PUT` issued to a bucket with the proper parameters creates an access control list (ACL) for that bucket.  Access control lists allow for granting different sets of permissions to different storage accounts using the account's UUID, or by using a pre-made ACL.
 
-> **INTERNAL NOTE**: At this time credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. Similarly, `public-read-write` allows any other CRS storage account to access the resource, but not the general public. 
+> **INTERNAL NOTE**: At this time credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, `public-read-write` allows any other CRS storage account to access the resource, as well as the general public. 
 
 ACLs can use pre-made permissions sets (or 'canned ACLs') or be customized in the body of the request. Pre-made ACLs are specified using the `x-amz-acl` header with `private`, `public-read`, or `public-read-write` as the value. Custom ACLs are specified using XML in the request body and can grant `READ`, `WRITE`, `READ_ACP` (read ACL), `WRITE_ACP` (write ACL), or `FULL_CONTROL` permissions to a given storage account.
 
