@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "Endpoints"
+title:  "Connecting to endpoints"
 featured: true
 weight: 2
 tags: []
