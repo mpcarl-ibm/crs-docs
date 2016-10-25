@@ -3,6 +3,9 @@
 This is the staging environment for COS documentation for the 12/1 GA.
 
 Items still in progress:
+- [x] Basic documentation for GUI tool.
+- [x] Basic documentation for CLI.
+- [x] Basic documentation for Python SDK.
 - [ ] Basic documentation for Java SDK.
 - [ ] Detailed workflow example (in the form of a Python script/library).
 - [ ] Documentation and code examples for SoftLayer API. 
