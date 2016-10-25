@@ -2,7 +2,7 @@
 layout: page
 title:  "Tools and SDKs"
 featured: true
-weight: 2
+weight: 3
 tags: []
 author: Nick
 dateAdded: August 18th, 2016
@@ -11,6 +11,12 @@ dateAdded: August 18th, 2016
 > IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
 Most tools that use the S3 API to interact with object storage are compatible with IBM COS, although some configuration is necessary to connect to the correct endpoint. 
+
+# Basic tools
+
+#### Cyberduck
+
+For basic tasks there are GUI tools for accessing S3 API compatible object storage. Cyberduck is a popular, open-source, and easy to use FTP client that is also capable of calculating the correct authorization signatures needed to connect to IBM COS.  Cyberduck can be downloaded from [cyberduck.io/](https://cyberduck.io/).
 
 # Command line tools
 
@@ -172,7 +178,7 @@ endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 s3 = boto3.resource('s3', endpoint_url=endpoint)
 
 for bucket in s3.buckets.all():
-    print("Bucket %s contains") % bucket.name
+    print(bucket.name)
     for obj in bucket.objects.all():
         print("  - %s") % obj.key
 ```
@@ -361,14 +367,3 @@ The AWS SDK for Java can be cloned and built from source using Maven, or downloa
 3. Run `mvn clean install`.  To skip GPG-signing, run `mvn clean install -Dgpg.skip=true`.
 4. Build detailed documentation by running `mvn javadoc:javadoc`.
 
-# Go
-
->In progress.
-
-# node.js
-
->In progress.
-
-# .NET
-
-Use of the .NET SDK is not recommended at this time as it invokes undocumented APIs on IBM COS. 

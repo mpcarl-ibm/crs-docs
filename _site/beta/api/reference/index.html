@@ -66,20 +66,12 @@
                 </li>
                   
                 <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Support</a>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Getting support & FAQ</a>
                 </li>
                  
             </ul>
             <ul class="article__list" class="article__list">
                 <h4 class="sub__head">API & Reference</h4>    
-                <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/best-practices/">Best practices</a>
-                </li>
-                  
-                <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/tools/">Tools and SDKs</a>
-                </li>
-                  
                 <li>
                     <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>
                 </li>
@@ -89,7 +81,15 @@
                 </li>
                   
                 <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/tools/">Tools and SDKs</a>
+                </li>
+                  
+                <li>
                     <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/security/">Data security overview</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/best-practices/">Best practices</a>
                 </li>
                  
             </ul>
@@ -141,7 +141,7 @@
 <p>The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found <a href="/nicholas-lange/cos-docs/beta/api/overview/">here</a>.</p>
 
 <blockquote>
-  <p><strong>Note:</strong> this documentation for the Cross-Region beta is in-progress and does not yet provide detailed usage guidance and examples for all supported operations.</p>
+  <p><strong>Note:</strong> this documentation for the open trial is in-progress and does not yet provide detailed usage guidance and examples for all supported operations.</p>
 </blockquote>
 
 <h3 id="authorization">Authorization</h3>
@@ -154,10 +154,10 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p>The date is provided in <code class="highlighter-rouge">YYYYMMDD</code> format, and the region can be any value (e.g. <code class="highlighter-rouge">us-geo</code> or <code class="highlighter-rouge">us-east-1</code>). The <code class="highlighter-rouge">host</code> and <code class="highlighter-rouge">x-amz-date</code> headers are always required, and depending on the request other headers may be required as well (e.g. <code class="highlighter-rouge">x-amz-content-sha256</code>).  The 256 bit signature is given as 64 hexadecimal character string and is calculated from multiple combinations and hashes of the request elements.  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.</p>
+<p>The date is provided in <code class="highlighter-rouge">YYYYMMDD</code> format, and the region can be any value (e.g. <code class="highlighter-rouge">us-standard</code>). The <code class="highlighter-rouge">host</code> and <code class="highlighter-rouge">x-amz-date</code> headers are always required, and depending on the request other headers may be required as well (e.g. <code class="highlighter-rouge">x-amz-content-sha256</code>).  The 256 bit signature is given as 64 hexadecimal character string and is calculated from multiple combinations and hashes of the request elements.  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.</p>
 
 <blockquote>
-  <p><strong>INTERNAL NOTE</strong>: The signature calculation process is fairly involved.  Assuming we don’t want to link to AWS documentation, we could describe it on another page here and link to our version of it, or gently suggest the reader research calculation methods.  Thoughts?  Here is the AWS documentation on single payload (as opposed to multipart uploads) <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html">signature calculation</a>.</p>
+  <p><strong>INTERNAL NOTE</strong>: The signature calculation process is fairly involved, and will be illustracted here but is still in-progress.  <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html">AWS signature calculation documentation can be viewed here</a>.</p>
 </blockquote>
 
 <h3 id="headers-and-error-response">Common Headers and Error Responses</h3>

@@ -2,7 +2,7 @@
 layout: page
 title:  "API reference and examples"
 featured: true
-weight: 3
+weight: 2
 tags: []
 author: Nick
 dateAdded: August 18th, 2016
@@ -23,7 +23,7 @@ dateAdded: August 18th, 2016
 
 The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found [here]({{ site.baseurl }}/beta/api/overview/).
 
-> **Note:** this documentation for the Cross-Region beta is in-progress and does not yet provide detailed usage guidance and examples for all supported operations. 
+> **Note:** this documentation for the open trial is in-progress and does not yet provide detailed usage guidance and examples for all supported operations. 
 
 ### Authorization
 The `authorization` header is required for all requests, and is calculated according to the AWS Signature Version 4 protocol.  This provides identity verification and in-transit data integrity, and is tied to the timestamp of the request.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature:  
@@ -35,9 +35,9 @@ SignedHeaders=host;x-amz-date;{other-required-headers},
 Signature={signature}
 ```
 
-The date is provided in `YYYYMMDD` format, and the region can be any value (e.g. `us-geo` or `us-east-1`). The `host` and `x-amz-date` headers are always required, and depending on the request other headers may be required as well (e.g. `x-amz-content-sha256`).  The 256 bit signature is given as 64 hexadecimal character string and is calculated from multiple combinations and hashes of the request elements.  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.
+The date is provided in `YYYYMMDD` format, and the region can be any value (e.g. `us-standard`). The `host` and `x-amz-date` headers are always required, and depending on the request other headers may be required as well (e.g. `x-amz-content-sha256`).  The 256 bit signature is given as 64 hexadecimal character string and is calculated from multiple combinations and hashes of the request elements.  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.
 
-> **INTERNAL NOTE**: The signature calculation process is fairly involved.  Assuming we don't want to link to AWS documentation, we could describe it on another page here and link to our version of it, or gently suggest the reader research calculation methods.  Thoughts?  Here is the AWS documentation on single payload (as opposed to multipart uploads) [signature calculation](http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html).
+> **INTERNAL NOTE**: The signature calculation process is fairly involved, and will be illustracted here but is still in-progress.  [AWS signature calculation documentation can be viewed here](http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html). 
 
 
 ### Common Headers and Error Responses

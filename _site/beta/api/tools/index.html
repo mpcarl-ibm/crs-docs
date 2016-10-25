@@ -66,20 +66,12 @@
                 </li>
                   
                 <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Support</a>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Getting support & FAQ</a>
                 </li>
                  
             </ul>
             <ul class="article__list" class="article__list">
                 <h4 class="sub__head">API & Reference</h4>    
-                <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/best-practices/">Best practices</a>
-                </li>
-                  
-                <li>
-                    <a class="page-link--active"  href="/nicholas-lange/cos-docs/beta/api/tools/">Tools and SDKs</a>
-                </li>
-                  
                 <li>
                     <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>
                 </li>
@@ -89,7 +81,15 @@
                 </li>
                   
                 <li>
+                    <a class="page-link--active"  href="/nicholas-lange/cos-docs/beta/api/tools/">Tools and SDKs</a>
+                </li>
+                  
+                <li>
                     <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/security/">Data security overview</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/best-practices/">Best practices</a>
                 </li>
                  
             </ul>
@@ -127,6 +127,12 @@
 </blockquote>
 
 <p>Most tools that use the S3 API to interact with object storage are compatible with IBM COS, although some configuration is necessary to connect to the correct endpoint.</p>
+
+<h1 id="basic-tools">Basic tools</h1>
+
+<h4 id="cyberduck">Cyberduck</h4>
+
+<p>For basic tasks there are GUI tools for accessing S3 API compatible object storage. Cyberduck is a popular, open-source, and easy to use FTP client that is also capable of calculating the correct authorization signatures needed to connect to IBM COS.  Cyberduck can be downloaded from <a href="https://cyberduck.io/">cyberduck.io/</a>.</p>
 
 <h1 id="command-line-tools">Command line tools</h1>
 
@@ -288,7 +294,7 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
 <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">s3</span><span class="o">.</span><span class="n">buckets</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Bucket </span><span class="si">%</span><span class="s">s contains"</span><span class="p">)</span> <span class="o">%</span> <span class="n">bucket</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">bucket</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">bucket</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
         <span class="k">print</span><span class="p">(</span><span class="s">"  - </span><span class="si">%</span><span class="s">s"</span><span class="p">)</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span>
 </code></pre>
@@ -480,21 +486,6 @@ Raw output from 'list_buckets()' in bucket-2:
   <li>Build detailed documentation by running <code class="highlighter-rouge">mvn javadoc:javadoc</code>.</li>
 </ol>
 
-<h1 id="go">Go</h1>
-
-<blockquote>
-  <p>In progress.</p>
-</blockquote>
-
-<h1 id="nodejs">node.js</h1>
-
-<blockquote>
-  <p>In progress.</p>
-</blockquote>
-
-<h1 id="net">.NET</h1>
-
-<p>Use of the .NET SDK is not recommended at this time as it invokes undocumented APIs on IBM COS.</p>
 
       </div>
     </div>

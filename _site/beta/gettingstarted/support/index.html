@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Support</title>
+  <title>Getting support & FAQ</title>
   <meta name="description" content="  IBM COS Standard Cross Region is currently in open trial.  Please visit IBM Cloud to participate.">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
@@ -66,20 +66,12 @@
                 </li>
                   
                 <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Support</a>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/gettingstarted/support/">Getting support & FAQ</a>
                 </li>
                  
             </ul>
             <ul class="article__list" class="article__list">
                 <h4 class="sub__head">API & Reference</h4>    
-                <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/best-practices/">Best practices</a>
-                </li>
-                  
-                <li>
-                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/tools/">Tools and SDKs</a>
-                </li>
-                  
                 <li>
                     <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>
                 </li>
@@ -89,7 +81,15 @@
                 </li>
                   
                 <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/tools/">Tools and SDKs</a>
+                </li>
+                  
+                <li>
                     <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/security/">Data security overview</a>
+                </li>
+                  
+                <li>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/best-practices/">Best practices</a>
                 </li>
                  
             </ul>
@@ -110,7 +110,7 @@
 
         
 
-        Support
+        Getting support & FAQ
 
         
         </h1>
@@ -126,7 +126,21 @@
   <p>IBM COS Standard Cross Region is currently in open trial.  Please visit <a href="https://www.softlayer.com/Store/orderService/objectStorage">IBM Cloud</a> to participate.</p>
 </blockquote>
 
-<p>Beta customers requiring support can open a ticket and check the status of an issue in the <a href="https://control.softlayer.com/">customer portal</a>.</p>
+<p>Customers requiring support can open a ticket and check the status of an issue in the <a href="https://control.softlayer.com/">customer portal</a>.</p>
+
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+
+<h4 id="what-is-the-maximum-number-of-buckets-per-storage-account--what-if-i-need-more">What is the maximum number of buckets per storage account?  What if I need more?</h4>
+
+<p>Currently each storage account is limited to 100 buckets.  If more buckets are required, and creating another storage account is not a workable solution, please contact customer support.</p>
+
+<h4 id="how-many-objects-can-fit-in-a-single-bucket">How many objects can fit in a single bucket?</h4>
+
+<p>There is no practical limit to the number of objects in a single bucket.</p>
+
+<h4 id="can-i-nest-buckets-inside-one-another">Can I nest buckets inside one another?</h4>
+
+<p>No, buckets can not be nested.  If a greater level of organization is required within a bucket, the use of prefixes is supported: <code class="highlighter-rouge"><span class="p">{</span><span class="err">endpoint</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">bucket-name</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-prefix</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-name</span><span class="p">}</span></code>.  Note that the object’s key remains the combination <code class="highlighter-rouge"><span class="p">{</span><span class="err">object-prefix</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-name</span><span class="p">}</span></code> and that</p>
 
       </div>
     </div>
