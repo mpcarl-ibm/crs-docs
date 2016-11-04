@@ -10,7 +10,7 @@ dateAdded: August 18th, 2016
 
 > IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
-#### Ordering
+#### Ordering a new storage account
 
 1. Login to [https://control.softlayer.com/](https://control.softlayer.com/){: new_window}.
 2. Navigate to the object storage page, by clicking **Storage** > **Object Storage** in the Navigation menu.

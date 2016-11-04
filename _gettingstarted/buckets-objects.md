@@ -20,10 +20,11 @@ The user interface portal provides a high level view of a storage account.  It i
    * The total bandwidth usage in the current billing cycle
 3. The page also shows the list of buckets present in the account.
 4. A new bucket can be added by clicking on the **+** button at the right of the first row.
-5. The new bucket name can be entered and the new bucket added, by clicking the **Add** button. Bucket names must be DNS-compliant (between 3 and 63 characters long and must be made of lowercase letters, numbers, and dashes) and must be globally unique (possibly by appending a UUID or other distinctive suffix to bucket names). 
+5. The new bucket name can be entered and the new bucket added, by clicking the **Add** button. Bucket names must be DNS-compliant. Names must be between 3 and 63 characters long, must be made of lowercase letters, numbers, and dashes, must be globally unique, and cannot appear to be an IP address. A common approach to ensuring uniqueness is to append a UUID or other distinctive suffix to bucket names. 
 6. A bucket can be deleted, by clicking the red **-** button to the extreme right of the bucket name. This opens a confirmation window.
+7. **Note: only empty buckets can be deleted**.  Attempting to delete a non-empty bucket will result in an error.
 7. Click the **Delete** button to remove the bucket from the account. 
-**Note: only empty buckets can be deleted**.  Attempting to delete a non-empty bucket will result in an error.
+
 
 #### Using objects
 1. The objects present within a bucket can be viewed, by clicking the bucket name on the buckets list.

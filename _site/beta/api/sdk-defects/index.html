@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>API overview</title>
-  <meta name="description" content="  IBM COS Standard Cross Region is currently in open trial.  Please visit IBM Cloud to participate.">
+  <title>Tools and SDKs</title>
+  <meta name="description" content="Java">
 
   <link rel="stylesheet" href="/nicholas-lange/cos-docs/css/main.css">
-  <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/api/overview/">
+  <link rel="canonical" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/beta/api/sdk-defects/">
   <link rel="alternate" type="application/rss+xml" title="IBM Public Cloud Object Storage Documentation" href="https://pages.github.ibm.com//nicholas-lange/cos-docs/feed.xml">
   
 </head>
@@ -73,7 +73,7 @@
             <ul class="article__list" class="article__list">
                 <h4 class="sub__head">API & Reference</h4>    
                 <li>
-                    <a class="page-link--active"  href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>
+                    <a class="page-link"  href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>
                 </li>
                   
                 <li>
@@ -110,7 +110,7 @@
 
         
 
-        API overview
+        Tools and SDKs
 
         
         </h1>
@@ -122,173 +122,18 @@
       </header>
 
       <div class="post-content">
-        <blockquote>
-  <p>IBM COS Standard Cross Region is currently in open trial.  Please visit <a href="https://www.softlayer.com/Store/orderService/objectStorage">IBM Cloud</a> to participate.</p>
-</blockquote>
+        <h1 id="java">Java</h1>
 
-<p>IBM Cloud Object Storage provides two separate APIs for managing and using obhect storage:</p>
+<p>The AWS SDK for Java can be cloned and built from source using Maven, or downloaded directy from AWS. You can learn about, download, and install Maven from <a href="https://maven.apache.org/">maven.apache.org</a>.</p>
 
-<ul>
-  <li>Account and credential administration uses the SoftLayer API</li>
-  <li>Interacting with buckets and objects uses an implementation of the S3 API</li>
-</ul>
+<p><strong>To build from source</strong></p>
 
-<p>More information on using the SoftLayer API to create or delete credentials, check capacity usage, retrieve a UUID, and other account functions can be found at the <a href="http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account">SoftLayer Development Network</a>.</p>
-
-<p>The following tables describe the complete set of supported operations when using the S3 API to access IBM Cloud Object Storage.  For details on using the operations, including examples, see <a href="/nicholas-lange/cos-docs/beta/api/reference">the API reference page</a>.</p>
-
-<h3 id="operations-on-the-service">Operations on the service</h3>
-
-<p>The only operation that is performed directly at the account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Account operation</th>
-      <th style="text-align: left">Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> account</td>
-      <td style="text-align: left">Used to retrieve of list of all buckets belonging to an account.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="operations-on-buckets">Operations on buckets</h3>
-
-<p>These operations create, destroy, get information about, and control behavior of buckets.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Bucket operation</th>
-      <th style="text-align: left">Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Bucket</td>
-      <td style="text-align: left">Deletes an empty bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Bucket CORS</td>
-      <td style="text-align: left">Deletes any cross-origin resource sharing configuration set on a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket</td>
-      <td style="text-align: left">Lists objects contained in a bucket.  Limited to listing 1,000 objects at once.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket ACL</td>
-      <td style="text-align: left">Retrieves the access control list for a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket CORS</td>
-      <td style="text-align: left">Retrieves any cross-origin resource sharing configuration set on a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">HEAD</code> Bucket</td>
-      <td style="text-align: left">Retrieves a bucket’s headers.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> multipart uploads</td>
-      <td style="text-align: left">Lists multipart uploads that have not completed or been canceled.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket</td>
-      <td style="text-align: left">Buckets have naming restrictions. Accounts are limited to 100 buckets.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket ACL</td>
-      <td style="text-align: left">Creates an access control list for a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket CORS</td>
-      <td style="text-align: left">Creates a cross-origin resource sharing configuration for a bucket.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="operations-on-objects">Operations on objects</h4>
-
-<p>These operations create, destroy, get information about, and control behavior of objects.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Object operation</th>
-      <th style="text-align: left">Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Object</td>
-      <td style="text-align: left">Deletes an object from a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Multiple Objects</td>
-      <td style="text-align: left">Deletes multiple objects from a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Object</td>
-      <td style="text-align: left">Retrieves an object from a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Object ACL</td>
-      <td style="text-align: left">Retrieves an object’s access control list.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">HEAD</code> Object</td>
-      <td style="text-align: left">Retrieves an object’s headers.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">OPTIONS</code> Object</td>
-      <td style="text-align: left">Checks CORS configuration to see if a specific request can be sent.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">POST</code> Object</td>
-      <td style="text-align: left">Adds an object to a bucket using HTML forms.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object</td>
-      <td style="text-align: left">Adds an object to a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object ACL</td>
-      <td style="text-align: left">Creates an access control list for an object.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object (Copy)</td>
-      <td style="text-align: left">Creates a copy of an object.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Initiate Multipart Upload</td>
-      <td style="text-align: left">Creates an upload ID for a given set of parts to be uploaded.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Upload Part</td>
-      <td style="text-align: left">Uploads a part of an object associated with an upload ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Upload Part (Copy)</td>
-      <td style="text-align: left">Uploads a part of an existing object associated with an upload ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Complete Multipart Upload</td>
-      <td style="text-align: left">Assembles an object from parts associated with an upload ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Abort Multipart Upload</td>
-      <td style="text-align: left">Aborts upload and deletes outstanding parts associated with an upload ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">List Parts</td>
-      <td style="text-align: left">Returns a list of parts associated with an upload ID</td>
-    </tr>
-  </tbody>
-</table>
+<ol>
+  <li>From the command line, run <code class="highlighter-rouge">git clone https://github.com/aws/aws-sdk-java.git</code>.</li>
+  <li>Change to the newly cloned directory with <code class="highlighter-rouge">cd aws-sdk-java</code>.</li>
+  <li>Run <code class="highlighter-rouge">mvn clean install</code>.  To skip GPG-signing, run <code class="highlighter-rouge">mvn clean install -Dgpg.skip=true</code>.</li>
+  <li>Build detailed documentation by running <code class="highlighter-rouge">mvn javadoc:javadoc</code>.</li>
+</ol>
 
       </div>
     </div>

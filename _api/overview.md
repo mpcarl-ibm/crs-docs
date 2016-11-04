@@ -10,7 +10,7 @@ dateAdded: August 18th, 2016
 
 > IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
-IBM Cloud Object Storage uses separate APIs:
+IBM Cloud Object Storage provides two separate APIs for managing and using obhect storage:
 
 * Account and credential administration uses the SoftLayer API
 * Interacting with buckets and objects uses an implementation of the S3 API
@@ -21,11 +21,11 @@ The following tables describe the complete set of supported operations when usin
 
 ### Operations on the service
 
-The only operation that is applied directly to account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.
+The only operation that is performed directly at the account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.
 
-| Service operation | Note |
+| Account operation | Note |
 |:----|:---|
-| `GET` Service | Used to retrieve of list of all buckets belonging to an account. |
+| `GET` account | Used to retrieve of list of all buckets belonging to an account. |
 
 ### Operations on buckets
 
@@ -35,7 +35,7 @@ These operations create, destroy, get information about, and control behavior of
 |:----|:---|
 | `DELETE` Bucket | Deletes an empty bucket.   |
 | `DELETE` Bucket CORS | Deletes any cross-origin resource sharing configuration set on a bucket. |
-| `GET` Bucket | Lists objects contained in a bucket.  Limited to 1000 objects. |
+| `GET` Bucket | Lists objects contained in a bucket.  Limited to listing 1,000 objects at once. |
 | `GET` Bucket ACL |Retrieves the access control list for a bucket.|
 | `GET` Bucket CORS |Retrieves any cross-origin resource sharing configuration set on a bucket.|
 | `HEAD` Bucket | Retrieves a bucket's headers. |
@@ -64,5 +64,5 @@ These operations create, destroy, get information about, and control behavior of
 | Upload Part | Uploads a part of an object associated with an upload ID.
 | Upload Part (Copy) | Uploads a part of an existing object associated with an upload ID.
 | Complete Multipart Upload | Assembles an object from parts associated with an upload ID.
-| Abort Multipart Upload | Stops upload of parts associated with an upload ID.
+| Abort Multipart Upload | Aborts upload and deletes outstanding parts associated with an upload ID.
 | List Parts | Returns a list of parts associated with an upload ID

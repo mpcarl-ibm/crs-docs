@@ -15,7 +15,7 @@ Types of endpoint:
 
 * **Public endpoints** can be accessed from anywhere and charges are assessed on outgoing bandwidth. Incoming bandwidth is free. Public endpoints should be used for access not originating from a SoftLayer data center. 
 * **Private endpoints** can be accessed by customers running Virtual Machines or Bare Metal Servers on SoftLayer. Private endpoints do not incur charges for any outgoing or incoming bandwidth even if the traffic is cross regions or across data centers. Customers with workloads running in a SoftLayer data center in Dallas, San Jose, or Washington should use the endpoint for that same city. Customers with existing workloads running in a remote SoftLayer data center should use the US Region endpoint.
-* **ADN endpoints** allow customers to bring their own IP addresses. If customer have an ADN account and use an ADN endpoint, they will not be charged for any outgoing or incoming bandwidth.
+* **ADN endpoints** allow customers to bring their own IP addresses. If a customer has an ADN account and uses an ADN endpoint, they will not be charged for any outgoing or incoming bandwidth. ADN endpoints will not appear in the control console in ADN accounts.
 
 
 <table>

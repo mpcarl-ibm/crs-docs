@@ -18,10 +18,14 @@ Most tools that use the S3 API to interact with object storage are compatible wi
 
 For basic tasks there are GUI tools for accessing S3 API compatible object storage. Cyberduck is a popular, open-source, and easy to use FTP client that is also capable of calculating the correct authorization signatures needed to connect to IBM COS.  Cyberduck can be downloaded from [cyberduck.io/](https://cyberduck.io/).
 
+#### Cloudberry
+
+Cloudberry is a flexible backup utility that allows users to back up some or all of a local filesystem to an S3 API compatible object storage system. It can be configured to be run either manually or scheduled based on need, and can backup different directories to different buckets if needed.  Cloudberry can be downloaded from [cloudberrylab.com](http://www.cloudberrylab.com/). **Note**: When configuring Cloudberry, select 'S3 Compatible' from the list of options, not 'Amazon S3' or 'SoftLayer'.  
+
 # Command line tools
 
 #### AWS CLI
-The official command line interface for AWS is compatible with the IBM COS S3 API. Written in Python, it can be installed from the Python Package Index via `pip install awscli`. Access keys are sourced from `~/.aws/credentials`.
+The official command line interface for AWS is compatible with the IBM COS S3 API. Written in Python, it can be installed from the Python Package Index via `pip install awscli`. By defauly, access keys are sourced from `~/.aws/credentials`, but can also be set as environment variables.
 
 These examples have been generated using version 1.10.66 of the CLI.  To check the version installed, run `aws --version`.
 
@@ -37,7 +41,7 @@ The IBM COS endpoint must be sourced using the `--endpoint-url` option, and can 
 
 Simple use cases can be accomplished using `aws --endpoint-url={endpoint} s3 <command>`. Objects are managed using familiar shell commands, such as `ls`, `mv`, `cp`, and `rm`.  Buckets can be deleted using `rb`.  
 
-**Note**: Buckets can not be created using this method, but require using the `s3api` method described below.
+**Note**: Buckets can not be created using this method. Instead, use the `s3api` method described below.
 
 Listing buckets:
 
@@ -98,7 +102,7 @@ $ aws --endpoint-url=https://{endpoint} s3api list-buckets
 Creating a new bucket:
 
 ```bash
-$ aws --endpoint-url=https://{endpoint} s3api create-bucket --bucket {bucket-name}
+$ aws --endpoint-url=https://{endpoint} s3api create-bucket --bucket {bucket-name} [--region us-standard]
 ```
 
 Listing objects within a bucket:
@@ -157,7 +161,7 @@ $ aws --endpoint-url=https://{endpoint} s3api list-objects --bucket bucket1
 
 # Python
 
-Python support is provided through the Boto 3 library.  It can be installed from the Python Package Index via `pip install boto3`. 
+Python support is provided through the Boto 3 library.  It can be installed from the Python Package Index via `pip install boto3`. The examples shown here were generated using version 1.4.0 of the boto3 package.  
 
 > **Note**: Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3. 
 
@@ -356,14 +360,9 @@ Raw output from 'list_buckets()' in bucket-2:
 }
 ```
 
-# Java
+# Other third-party SDKs
 
-The AWS SDK for Java can be cloned and built from source using Maven, or downloaded directy from AWS. You can learn about, download, and install Maven from [maven.apache.org](https://maven.apache.org/).
+Other SDKs that leverage the S3 API are available from AWS and other providers are currently being tested against IBM COS internally. 
 
-**To build from source**
-
-1. From the command line, run `git clone https://github.com/aws/aws-sdk-java.git`.
-2. Change to the newly cloned directory with `cd aws-sdk-java`.
-3. Run `mvn clean install`.  To skip GPG-signing, run `mvn clean install -Dgpg.skip=true`.
-4. Build detailed documentation by running `mvn javadoc:javadoc`.
+Please contact `nicholas.lange@ibm.com` with questions.
 
