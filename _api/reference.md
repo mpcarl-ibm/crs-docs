@@ -14,9 +14,9 @@ dateAdded: August 18th, 2016
 
 * [Overview](#overview)
 * [Common Headers and Error Responses](#headers-and-error-response)
-* [Operations on Service](#operations-on-service)
-* [Operations on Buckets](#operations-on-buckets)
-* [Operations on Objects](#operations-on-objects)
+* [Account Operations](#operations-on-service)
+* [Bucket Operations](#operations-on-buckets)
+* [Object Operations](#operations-on-objects)
 
 ###  Overview
 {: #overview}
@@ -68,7 +68,7 @@ The following table describes common response headers.
 | Server         | Name of the responding server.     | 
 |X-Clv-Request-Id|  Unique identifier generated per request. |
 
-### Operations on Service
+### Operations on the Account
 {: #operations-on-service}
 
 #### List buckets belonging to an account

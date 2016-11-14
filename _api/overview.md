@@ -19,7 +19,7 @@ More information on using the SoftLayer API to create or delete credentials, che
 
 The following tables describe the complete set of supported operations when using the S3 API to access IBM Cloud Object Storage.  For details on using the operations, including examples, see [the API reference page]({{ site.baseurl }}/beta/api/reference).
 
-### Operations on the service
+### Operations on the account
 
 The only operation that is performed directly at the account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.
 
