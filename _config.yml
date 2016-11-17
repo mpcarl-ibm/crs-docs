@@ -12,7 +12,7 @@ company_name: IBM
 # this appears in the footer
 
 baseurl: "/nicholas-lange/cos-docs" # the subpath of your site, e.g. /blog
-url: "https://pages.github.ibm.com/" # the base hostname & protocol for your site
+url: "https://pages.github.ibm.com" # the base hostname & protocol for your site
 
 # github_editme_path: 
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
