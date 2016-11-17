@@ -1,27 +1,19 @@
-# Draft documentation for IBM Cloud Object Storage (Cross Regional Standard) 
+## Jekyll Documentation theme
 
-This is the staging environment for COS documentation for the 12/1 GA.
+Build the site to see the instructions for using it. Or just go here: [http://idratherbewriting.com/documentation-theme-jekyll/](http://idratherbewriting.com/documentation-theme-jekyll/)
 
-Items still in progress:
-- [x] Basic documentation for GUI tool.
-- [x] Basic documentation for CLI.
-- [x] Basic documentation for Python SDK.
-- [ ] Basic documentation for Java SDK.
-- [ ] Detailed workflow example (in the form of a Python script/library).
-- [ ] Documentation and code examples for SoftLayer API. 
-- [ ] Final UI walkthroughs for unified console. 
-- [ ] Additional detail around managing access and creating users. 
-- [ ] AWS Signature v4 documentation.
+## Running the site in Docker
 
-Items still in backlog:
-- [ ] Spark/Hadoop documentation and code examples.
-- [ ] Aspera documentation and code examples.
-- [ ] Swagger API documentation format.
+You can also use Docker to directly build and run the site on your local machine. Just clone the repo and run the following from your working dir:
 
-Contact `nicholas.lange@ibm.com` OR `@nicholas.lange` on Slack with questions and concerns.
+```
+docker build --no-cache -t mydocs .
+```
 
-## Feedback
+Once the build is complete, you can mount and run the whole site as follows:
 
-If you would like to be added as a contributor contact `nicholas.lange@ibm.com` OR `@nicholas.lange` on Slack.
+```
+docker run -v "$PWD:/src" -p 4000:4000 mydocs serve -H 0.0.0.0
+```
+This is perhaps the easiest way to see how your site would actually look.
 
-The Markdown files that hold the underlying content are found in the `_beta`, `_gettingstarted`, and `_api` directories.

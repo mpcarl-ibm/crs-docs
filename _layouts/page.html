@@ -1,85 +1,70 @@
 ---
 layout: default
 ---
-{% include sidebar.html %}
 
-<article>
+<div class="post-header">
+   <h1 class="post-title-main">{{ page.title }}</h1>
+</div>
 
-  <div class="page-container">
+{% if page.simple_map == true %}
 
-    <div class="main-content">
-      <header class="post-header">
+<script>
+    $(document).ready ( function(){
+        $('.box{{page.box_number}}').addClass('active');
+    });
+</script>
 
-        <h1 class="post-title">
-        {% assign x = page.title | remove: ' ' | downcase %}
+{% include custom/{{page.map_name}}.html %}
 
-        {% if x == 'openstack' %}
-          {% assign count-helper = 0 %}
-          {% for topic in site.userdocs %}
-            {% if topic.title %}
-              {% assign count-helper = count-helper | plus: 1 %}
-            {% endif %}
-          {% endfor %}
-          {% for topic in site.api %}
-            {% if topic.title %}
-              {% assign count-helper = count-helper | plus: 1 %}
-            {% endif %}
-          {% endfor %}
-        {% elsif x == 'gettingstarted'%}
-          {% assign counter = 0 %}
-          {% assign counter = site.commontech.size | plus:site.commonadmin.size | plus:site.userguides.size | plus:site.api.size%}
-        {% else %}
-          {% assign counter = 0 %}
-          {% for item in site[x] %}
-            {% if item.title %}
-              {% assign counter = counter | plus: 1 %}
-            {% endif %}
-          {% endfor %}
+{% elsif page.complex_map == true %}
+
+<script>
+    $(document).ready ( function(){
+        $('.modalButton{{page.box_number}}').addClass('active');
+    });
+</script>
+
+{% include custom/{{page.map_name}}.html %}
+
+{% endif %}
+
+<div class="post-content">
+
+   {% if page.summary %}
+    <div class="summary">{{page.summary}}</div>
+   {% endif %}
+
+    {% unless page.toc == false %}
+    {% include toc.html %}
+    {% endunless %}
+
+
+    {% if site.github_editme_path %}
+
+    <a target="_blank" href="https://github.com/{{site.github_editme_path}}{{page.folder}}{{page.url | remove: ".html" | append: ".md"}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+
+    {% endif %}
+
+  {{content}}
+
+    <div class="tags">
+        {% if page.tags != null %}
+        <b>Tags: </b>
+        {% assign projectTags = site.data.tags.allowed-tags %}
+        {% for tag in page.tags %}
+        {% if projectTags contains tag %}
+        <a href="{{ "tag_" | append: tag | append: ".html" }}" class="btn btn-default navbar-btn cursorNorm" role="button">{{page.tagName}}{{tag}}</a>
         {% endif %}
-
-        {{ page.title }}
-
-        {% if counter > 1 %}
-          {{ counter | prepend: '(' | append: ')' }}
-        {% elsif count-helper > 1 %}
-          {{ count-helper | prepend: '(' | append: ')' }}
-        {% endif%}
-        </h1>
-
-
-
-
-        {% if page.tags.size > 0 %}
-        <div class="post-data">
-          <img src='{{ site.baseurl }}/img/avatar.png' />
-          <ul class="author--info">
-            <li>
-              <span class="author">by {{ page.author }} </span>
-              <span class="dot">&#9679;</span>
-              <span class="date"> {{ page.dateAdded }}</span>
-            </li>
-            <li>
-              <span class="job-title">{{ page.job-title }}</span>
-            </li>
-            <li class="tags">
-              {% if page.tags %}
-                <h4>Tags:</h4>
-                  <ul class="tag--list">
-                  {% for tag in page.tags %}
-                    <li class="tag"><p>{{ tag | remove: ',' }}</p></li>
-                  {% endfor %}
-                  </ul>
-              {% endif %}
-            </li>
-          </ul>
-        </div>
+        {% endfor %}
         {% endif %}
-      </header>
-
-      <div class="post-content">
-        {{ content }}
-      </div>
     </div>
 
-  </div>
-</article>
+    {% if site.disqus %}
+{% include disqus.html %}
+    {% endif %}
+
+</div>
+
+{{site.data.alerts.hr_shaded}}
+
+{% include footer.html %}
