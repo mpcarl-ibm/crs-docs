@@ -1,0 +1,22 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  levels: two
+  folders:
+
+  - title: Products
+    output: web
+    folderitems:
+    - title: News
+      url: /news.html
+      output: web
+    - title: IBM COS Standard Cross-Region
+      url: /index.html
+      output: web
+    - title: IBM COS Standard Regional
+      external_url: http://sldn.softlayer.com/reference/objectstorageapi
+      output: web
+    - title: Object Storage for Bluemix
+      external_url: https://console.ng.bluemix.net/docs/services/ObjectStorage/index.html
+      output: web

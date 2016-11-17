@@ -1,0 +1,38 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+    - title: News
+      url: /news
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+    - title: IBM Bluemix
+      folderitems:
+        - title: About IBM Bluemix
+          external_url: https://bluemix.com
+        - title: Bluemix catalog
+          external_url: https://console.ng.bluemix.net/catalog/
+        - title: Bluemix documentation
+          external_url: https://console.ng.bluemix.net/docs/
+        - title: IBM Cloud Object Storage
+          external_url: https://www.ibm.com/cloud-computing/products/storage/object-storage/
+    - title: Documentation
+      folderitems:
+        - title: IBM COS Standard Cross-Region (GA)
+          url: /index.html
+        - title: IBM COS Standard Cross-Region (open trial)
+          url: /crs-basic-overview.html
+        - title: IBM COS Standard Regional
+          external_url: http://sldn.softlayer.com/reference/objectstorageapi
+        - title: Object Storage for Bluemix
+          external_url: https://console.ng.bluemix.net/docs/services/ObjectStorage/index.html
+    - title: Community
+      folderitems:
+        - title: IBM devWorks
+          external_url: https://developer.ibm.com/answers/smartspace/public-cloud-object-storage/
+        - title: StackOverflow
+          External_url: http://stackoverflow.com/questions/tagged/object-storage+softlayer

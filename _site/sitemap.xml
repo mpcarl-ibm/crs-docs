@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  
+  <url>
+    <loc>http://localhost:4000/samplepost.html</loc>
+  </url>
+  
+  
+
+
+  
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-about-api.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-account-operations.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-api-faq.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-api-overview.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-api-reference.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-authentication.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-api-overview.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-api-reference.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-best-practices.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-bucket-operations.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-buckets-objects.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-endpoints.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-ordering-billing.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-overview.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-security.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-support.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-basic-tools.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-best-practices.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-billing.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-bucket-operations.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-buckets-objects.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-cli.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-connecting.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-control-buckets.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-control-credentials.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-control-objects.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-create-account.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-create-storage-account.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-endpoints.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-example-workflow.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-faq.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-get.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-guis.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-head.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-java.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-managing-users.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-node.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-object-operations.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-operations.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-ordering-billing.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-put.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-python.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-sdk-faq.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-security.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-sldn.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-pricing.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-support.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/crs-tools.html</loc>
+  </url>
+  
+  
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/index.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/js/mydoc_scroll.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/news.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/news_archive.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/notices.html</loc>
+  </url>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</urlset>

@@ -1,0 +1,76 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Standard Cross-Region 
+  version: Open Trial
+  levels: three
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction to IBM COS
+      url: /crs-basic-overview.html
+      output: web, pdf
+      type: homepage
+
+    - title: About IBM COS security
+      url: /crs-basic-security.html
+      output: web, pdf
+
+  - title: Getting started
+    output: web, pdf
+    folderitems:
+
+    - title: Ordering, credentials, and billing
+      url: /crs-basic-ordering-billing.html
+      output: web, pdf
+
+    - title: Connecting to endpoints
+      url: /crs-basic-endpoints.html
+      output: web, pdf  
+
+    - title: Managing buckets and objects
+      url: /crs-basic-buckets-objects.html
+      output: web, pdf 
+
+    - title: Getting support & FAQ
+      url: /crs-basic-support.html
+      output: web, pdf 
+
+  - title: Using the API
+    output: web, pdf
+    folderitems:
+
+    - title: API overview
+      url: /crs-basic-api-overview.html
+      output: web, pdf 
+
+    - title: API reference
+      url: /crs-basic-api-reference.html
+      output: web, pdf
+
+    - title: Tools and SDKs
+      url: /crs-basic-tools.html
+      output: web, pdf
+
+    - title: Best practices and performance tips
+      url: /crs-basic-best-practices.html
+      output: web, pdf
+
+
