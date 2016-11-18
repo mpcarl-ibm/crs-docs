@@ -1,7 +1,7 @@
 ---
 title: Managing buckets and objects
 keywords: 
-last_updated: July 3, 2016
+last_updated: November 18, 2016
 tags: 
 summary: 
 sidebar: crs_sidebar
