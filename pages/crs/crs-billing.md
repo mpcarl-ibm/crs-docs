@@ -9,7 +9,5 @@ permalink: crs-billing.html
 folder: crs
 ---
 
-### About COS APIs
-
-There are several ways.
+ 
 

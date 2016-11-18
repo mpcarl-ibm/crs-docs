@@ -9,7 +9,5 @@ permalink: crs-create-storage-account.html
 folder: crs
 ---
 
-### About COS APIs
-
-There are several ways.
+ 
 

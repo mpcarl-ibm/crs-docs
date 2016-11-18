@@ -9,7 +9,5 @@ permalink: crs-control-credentials.html
 folder: crs
 ---
 
-### About COS APIs
-
-There are several ways.
+ 
 

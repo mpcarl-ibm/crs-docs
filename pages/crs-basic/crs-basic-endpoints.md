@@ -9,7 +9,9 @@ permalink: crs-basic-endpoints.html
 folder: crs-basic
 ---
 
-> IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
+ > IBM COS Standard Cross Region is currently in open trial. 
+> 
+> Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
 SoftLayer provides regional endpoints for connecting applications or clients that use the S3 API to the public cloud. Endpoints should be chosen based on proximity to the application servers accessing the object store to minimize latency.  For workloads not concentrated in a single geographic area, the US Region endpoint distributes connections among the regional data centers.  Endpoints can be accessed over either plaintext or SSL depending on security requirements.
 

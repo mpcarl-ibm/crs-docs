@@ -9,7 +9,9 @@ permalink: crs-support.html
 folder: crs
 ---
 
-> IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
+> IBM COS Standard Cross Region is currently in open trial. 
+> 
+> Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
 Customers requiring support can open a ticket and check the status of an issue in the [customer portal](https://control.softlayer.com/){: new_window}.
 

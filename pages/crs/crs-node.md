@@ -9,7 +9,5 @@ permalink: crs-node.html
 folder: crs
 ---
 
-### About COS APIs
-
-There are several ways.
+ 
 

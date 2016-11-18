@@ -8,23 +8,25 @@ sidebar: crs_basic_sidebar
 permalink: crs-basic-tools.html
 folder: crs-basic
 ---
-> IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
+> IBM COS Standard Cross Region is currently in open trial. 
+> 
+> Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
 Most tools that use the S3 API to interact with object storage are compatible with IBM COS, although some configuration is necessary to connect to the correct endpoint. 
 
 # Basic tools
 
-#### Cyberduck
+### Cyberduck
 
 For basic tasks there are GUI tools for accessing S3 API compatible object storage. Cyberduck is a popular, open-source, and easy to use FTP client that is also capable of calculating the correct authorization signatures needed to connect to IBM COS.  Cyberduck can be downloaded from [cyberduck.io/](https://cyberduck.io/).
 
-#### Cloudberry
+### Cloudberry
 
 Cloudberry is a flexible backup utility that allows users to back up some or all of a local filesystem to an S3 API compatible object storage system. It can be configured to be run either manually or scheduled based on need, and can backup different directories to different buckets if needed.  Cloudberry can be downloaded from [cloudberrylab.com](http://www.cloudberrylab.com/). **Note**: When configuring Cloudberry, select 'S3 Compatible' from the list of options, not 'Amazon S3' or 'SoftLayer'.  
 
 # Command line tools
 
-#### AWS CLI
+### AWS CLI
 The official command line interface for AWS is compatible with the IBM COS S3 API. Written in Python, it can be installed from the Python Package Index via `pip install awscli`. By defauly, access keys are sourced from `~/.aws/credentials`, but can also be set as environment variables.
 
 These examples have been generated using version 1.10.66 of the CLI.  To check the version installed, run `aws --version`.
@@ -159,7 +161,7 @@ $ aws --endpoint-url=https://{endpoint} s3api list-objects --bucket bucket1
 }
 ```
 
-# Python
+### Python SDK (boto3)
 
 Python support is provided through the Boto 3 library.  It can be installed from the Python Package Index via `pip install boto3`. The examples shown here were generated using version 1.4.0 of the boto3 package.  
 
@@ -360,7 +362,7 @@ Raw output from 'list_buckets()' in bucket-2:
 }
 ```
 
-# Other third-party SDKs
+## Other third-party SDKs
 
 Other SDKs that leverage the S3 API are available from AWS and other providers are currently being tested against IBM COS internally. 
 

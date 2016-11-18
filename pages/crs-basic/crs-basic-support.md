@@ -9,11 +9,15 @@ permalink: crs-basic-support.html
 folder: crs-basic
 ---
 
-> IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
+> IBM COS Standard Cross Region is currently in open trial. 
+> 
+> Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
-Customers requiring support can open a ticket and check the status of an issue in the [customer portal](https://control.softlayer.com/){: new_window}.
+### Getting support
 
-## Frequently asked questions
+Customers requiring support can open a ticket and check the status of an issue in the [customer portal](https://control.softlayer.com/){: new_window}. Technical questions can be asked on [StackOverflow](http://stackoverflow.com/questions/tagged/object-storage+ibm-bluemix), and more general questions about IBM Cloud Object Storage can be asked on [dW Answers](https://developer.ibm.com/answers/smartspace/public-cloud-object-storage/).
+
+### Frequently asked questions
 
 #### What is the maximum number of buckets per storage account?  What if I need more?
 

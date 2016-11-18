@@ -11,10 +11,10 @@ site_title: IBM COS Documentation
 company_name: IBM
 # this appears in the footer
 
-baseurl: "/nicholas-lange/cos-docs" # the subpath of your site, e.g. /blog
+baseurl: "/nicholas-lange/cos-docs/" # the subpath of your site, e.g. /blog
 url: "https://pages.github.ibm.com" # the base hostname & protocol for your site
 
-# github_editme_path: 
+github_editme_path: 
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 # disqus_shortname:
@@ -98,8 +98,8 @@ sidebars:
 - home_sidebar
 - other
 
-description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
+description:
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only
-url: http://idratherbewriting.com
+url:

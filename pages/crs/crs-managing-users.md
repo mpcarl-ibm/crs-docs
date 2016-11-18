@@ -9,7 +9,5 @@ permalink: crs-managing-users.html
 folder: crs
 ---
 
-### About COS APIs
-
-There are several ways.
+ 
 

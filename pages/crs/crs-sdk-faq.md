@@ -9,7 +9,5 @@ permalink: crs-sdk-faq.html
 folder: crs
 ---
 
-### About COS APIs
-
-There are several ways.
+ 
 

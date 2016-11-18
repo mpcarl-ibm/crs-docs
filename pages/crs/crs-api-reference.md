@@ -9,7 +9,9 @@ permalink: crs-api-reference.html
 folder: crs
 ---
 
-> IBM COS Standard Cross Region is currently in open trial.  Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
+> IBM COS Standard Cross Region is currently in open trial. 
+> 
+> Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
 
 ### Table of Contents
 
@@ -76,13 +78,13 @@ The following table describes common response headers.
 
 A `GET` issued to the endpoint root returns a list of buckets associated with the requesting account.
 
-**Syntax**
+##### Syntax
 
 ```ShellSession
 GET http://{endpoint}/
 ```
 
-**Sample Request:**
+##### Sample request
 
 ```http
 GET / HTTP/1.1
@@ -92,7 +94,7 @@ X-Amz-Date: 20160822T030815Z
 Authorization: {authorization-string}
 ```
 
-**Sample Response:**
+##### Sample response
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -129,13 +131,13 @@ Authorization: {authorization-string}
 
 A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.
 
-**Syntax**
+##### Syntax
 
 ```bash
 PUT http://{endpoint}/{bucket-name}
 ```
 
-**Sample Request:**
+##### Sample request
 
 This is an example of creating a new bucket called 'images'.
 
@@ -147,7 +149,7 @@ X-Amz-Date: 20160821T052842Z
 Authorization:{authorization-string}
 ```
 
-**Sample Response:**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -164,13 +166,13 @@ Content-Length: 0
 
 When a `GET` request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.
 
-**Syntax**
+##### Syntax
 
 ```bash
 GET http://{endpoint}/{bucket-name}
 ```
 
-**Sample Request**
+##### Sample request
 
 This requests lists the objects inside the "apiary" bucket.
 
@@ -182,7 +184,7 @@ X-Amz-Date: 20160822T225156Z
 Authorization: {authorization-string}
 ```
 
-**Sample Response**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -243,13 +245,13 @@ Content-Length: 909
 
 A `DELETE` issued to an empty bucket deletes the bucket. *Only empty buckets can be deleted.*
 
-**Syntax**
+##### Syntax
 
 ```bash
 DELETE http://{endpoint}/{bucket-name}
 ```
 
-**Sample Request**
+##### Sample request
 
 ```http
 DELETE /images HTTP/1.1
@@ -262,7 +264,7 @@ The server responds with `204 No Content`.
 
 If a non-empty bucket is requested for deletion, the server responds with `409 Conflict`.
 
-**Sample Request**
+##### Sample request
 
 ```http
 DELETE /apiary HTTP/1.1
@@ -271,7 +273,7 @@ x-amz-date: 20160825T174049Z
 Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-**Sample Response**
+##### Sample response
 
 ```xml
 <Error>
@@ -291,13 +293,13 @@ A `PUT` issued to a bucket with the proper parameters creates an access control 
 
 ACLs can use pre-made permissions sets (or 'canned ACLs') or be customized in the body of the request. Pre-made ACLs are specified using the `x-amz-acl` header with `private`, `public-read`, or `public-read-write` as the value. Custom ACLs are specified using XML in the request body and can grant `READ`, `WRITE`, `READ_ACP` (read ACL), `WRITE_ACP` (write ACL), or `FULL_CONTROL` permissions to a given storage account.
 
-**Syntax**
+##### Syntax
 
 ```bash
 PUT http://{endpoint}/{bucket-name}?acl=
 ```
 
-**Sample Request:** Basic pre-made ACL
+##### Sample request Basic pre-made ACL
 
 This is an example of specifying a pre-made ACL to allow for `public-read` access to the "apiary" bucket. This allows any storage account to view the bucket's contents and ACL, and to access objects.
 
@@ -309,7 +311,7 @@ x-amz-acl: public-read
 Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-**Sample Response:**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -322,7 +324,7 @@ x-amz-request-id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
 Content-Length: 0
 ```
 
-**Sample Request:** Custom ACL
+##### Sample request Custom ACL
 
 This is an example of specifying a custom ACL to allow for another account to view the ACL for the "apiary" bucket, but not to view or access objects stored inside the bucket. Additionally, a third account is given full access to the same bucket as another element of the same ACL.
 
@@ -358,7 +360,7 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 </AccessControlPolicy>
 ```
 
-**Sample Response:**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -374,13 +376,13 @@ x-amz-request-id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
 
 A `GET` issued to a bucket with the proper parameters retrieves the ACL for a bucket.
 
-**Syntax**
+##### Syntax
 
 ```bash
 XXX http://{endpoint}/{bucket-name}?acl=
 ```
 
-**Sample Request:**
+##### Sample request
 
 This is an example of retrieving a bucket ACL.
 
@@ -391,7 +393,7 @@ x-amz-date: 20161011T190354Z
 Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-**Sample Response:**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -427,7 +429,7 @@ Content-Length: 550
 
 A `GET` issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.
 
-**Syntax**
+##### Syntax
 
 ```bash
 GET http://{endpoint}/{bucket-name}?uploads=
@@ -444,7 +446,7 @@ Name | Type | Description
 `key-marker` | string | Specifies the start of the which parts should be listed.
 `upload-id-marker` | string | Ignored if `key-marker` is not specified, otherwise sets a point at which to begin listing parts above `upload-id-marker`.
  
-**Sample Request:**
+##### Sample request
 
 This is an example of retrieving all current cancelled and incomplete multipart uploads.
 
@@ -455,7 +457,7 @@ x-amz-date: 20161011T190354Z
 Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-**Sample Response:** No multipart uploads in progress.
+##### Sample response No multipart uploads in progress.
 
 ```http
 HTTP/1.1 200 OK
@@ -485,13 +487,13 @@ Content-Length: 374
 
 A `GET` issued to a bucket with the proper parameters retrieves information about cross-origin resource sharing (CORS) configuration for a bucket.
 
-**Syntax**
+##### Syntax
 
 ```bash
 GET http://{endpoint}/{bucket-name}?cors=
 ```
 
-**Sample Request:**
+##### Sample request
 
 This is an example of listing a CORS configuration on the "apiary" bucket.
 
@@ -502,7 +504,7 @@ x-amz-date: 20161011T190354Z
 Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-**Sample Response:** No CORS configuration set
+##### Sample response No CORS configuration set
 
 ```http
 HTTP/1.1 200 OK
@@ -524,13 +526,13 @@ Content-Length: 123
 
 A `PUT` issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.
 
-**Syntax**
+##### Syntax
 
 ```bash
 PUT http://{endpoint}/{bucket-name}?cors=
 ```
 
-**Sample Request:**
+##### Sample request
 
 This is an example of adding a CORS configuration that allows requests from `www.ibm.com` to issue `GET`, `PUT`, and `POST` requests to the bucket.
 
@@ -556,7 +558,7 @@ Content-Length: 237
 </CORSConfiguration>
 ```
 
-**Sample Response:**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -573,13 +575,13 @@ Content-Length: 0
 
 A `DELETE` issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.
 
-**Syntax**
+##### Syntax
 
 ```bash
 DELETE http://{endpoint}/{bucket-name}?cors=
 ```
 
-**Sample Request:**
+##### Sample request
 
 This is an example of deleting a CORS configuration for a bucket.
 
@@ -592,21 +594,21 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 The server responds with `204 No Content`.
 
-### Operations on Objects
+## Operations on Objects
 {: #operations-on-objects}
 
-#### Upload an object
+### Upload an object
 
 A `PUT` given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.
 
 
-**Syntax**
+##### Syntax
 
 ```bash
 PUT http://{endpoint}/{bucket-name}/{object-name}
 ```
 
-**Sample Request**
+##### Sample request
 
 ```http
 PUT /apiary/queen-bee HTTP/1.1
@@ -625,7 +627,7 @@ Content-Length: 533
 
 ```
 
-**Sample Response**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -639,17 +641,17 @@ ETag: "3ca744fa96cb95e92081708887f63de5"
 Content-Length: 0
 ```
 
-#### Get an objects headers
+### Get an objects headers
 
 A `HEAD` given a path to an object retrieves that object's headers.
 
-**Syntax**
+##### Syntax
 
 ```bash
 HEAD http://{endpoint}/{bucket-name}/{object-name}
 ```
 
-**Sample Request**
+##### Sample request
 
 ```http
 HEAD /apiary/soldier-bee HTTP/1.1
@@ -659,7 +661,7 @@ Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
 Connection: close
 ```
 
-**Sample Response**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -675,17 +677,17 @@ Last-Modified: Thu, 25 Aug 2016 17:49:06 GMT
 Content-Length: 11
 ```
 
-#### Download an object
+### Download an object
 
 A `GET` given a path to an object uploads an object.
 
-**Syntax**
+##### Syntax
 
 ```bash
 GET http://{endpoint}/{bucket-name}/{object-name}
 ```
 
-**Sample Request**
+##### Sample request
 
 ```http
 GET /apiary/worker-bee HTTP/1.1
@@ -694,7 +696,7 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 Connection: close
 ```
 
-**Sample Response**
+##### Sample response
 
 ```http
 HTTP/1.1 200 OK
@@ -715,17 +717,17 @@ Content-Length: 467
  acting almost as a single organism in fulfilling their purpose.
 ```
 
-#### Delete an object
+### Delete an object
 
 A `DELETE` given a path to an object deletes an object.
 
-**Syntax**
+##### Syntax
 
 ```bash
 DELETE http://{endpoint}/{bucket-name}/{object-name}
 ```
 
-**Sample Request**
+##### Sample request
 
 ```http
 DELETE /apiary/soldier-bee HTTP/1.1
@@ -734,7 +736,7 @@ Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
 Connection: close
 ```
 
-**Sample Response**
+##### Sample response
 
 ```http
 HTTP/1.1 204 No Content

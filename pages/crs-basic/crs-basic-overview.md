@@ -8,6 +8,10 @@ summary:
 folder: crs-basic
 ---
 
+> IBM COS Standard Cross Region is currently in open trial. 
+> 
+> Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
+
 ## Understanding IBM Cloud Object Storage
 IBM Bluemix Infrastructure currently offers three unique object storage offerings for different user needs, all of which are accessible through a web-based portal and RESTful APIs.
 

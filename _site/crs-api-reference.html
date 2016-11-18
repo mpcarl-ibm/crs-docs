@@ -591,7 +591,9 @@ $('#toc').on('click', 'a', function() {
     
 
   <blockquote>
-  <p>IBM COS Standard Cross Region is currently in open trial.  Please visit <a href="https://www.softlayer.com/Store/orderService/objectStorage">IBM Cloud</a> to participate.</p>
+  <p>IBM COS Standard Cross Region is currently in open trial.</p>
+
+  <p>Please visit <a href="https://www.softlayer.com/Store/orderService/objectStorage">IBM Cloud</a> to participate.</p>
 </blockquote>
 
 <h3 id="table-of-contents">Table of Contents</h3>
@@ -606,7 +608,7 @@ $('#toc').on('click', 'a', function() {
 
 <h3 id="overview">Overview</h3>
 
-<p>The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found in the <a href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>.</p>
+<p>The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found in the <a href="/nicholas-lange/cos-docs//beta/api/overview/">API overview</a>.</p>
 
 <blockquote>
   <p><strong>Note:</strong> This documentation for the open trial is in-progress and does not yet provide detailed usage guidance and examples for all supported operations.</p>
@@ -712,12 +714,12 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">GET</code> issued to the endpoint root returns a list of buckets associated with the requesting account.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax">Syntax</h5>
 
 <pre><code class="language-ShellSession">GET http://{endpoint}/
 </code></pre>
 
-<p><strong>Sample Request:</strong></p>
+<h5 id="sample-request">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
@@ -727,7 +729,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
+<h5 id="sample-response">Sample response</h5>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
 <span class="nt">&lt;ListAllMyBucketsResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
@@ -763,13 +765,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-1">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request:</strong></p>
+<h5 id="sample-request-1">Sample request</h5>
 
 <p>This is an example of creating a new bucket called ‘images’.</p>
 
@@ -781,7 +783,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
+<h5 id="sample-response-1">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:45:25 GMT</span>
@@ -798,13 +800,13 @@ Signature={signature}
 
 <p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-2">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request</strong></p>
+<h5 id="sample-request-2">Sample request</h5>
 
 <p>This requests lists the objects inside the “apiary” bucket.</p>
 
@@ -816,7 +818,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response</strong></p>
+<h5 id="sample-response-2">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:36:24 GMT</span>
@@ -877,13 +879,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. <em>Only empty buckets can be deleted.</em></p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-3">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request</strong></p>
+<h5 id="sample-request-3">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
@@ -896,7 +898,7 @@ Signature={signature}
 
 <p>If a non-empty bucket is requested for deletion, the server responds with <code class="highlighter-rouge">409 Conflict</code>.</p>
 
-<p><strong>Sample Request</strong></p>
+<h5 id="sample-request-4">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -905,7 +907,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response</strong></p>
+<h5 id="sample-response-3">Sample response</h5>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Error&gt;</span>
   <span class="nt">&lt;Code&gt;</span>BucketNotEmpty<span class="nt">&lt;/Code&gt;</span>
@@ -927,13 +929,13 @@ Signature={signature}
 
 <p>ACLs can use pre-made permissions sets (or ‘canned ACLs’) or be customized in the body of the request. Pre-made ACLs are specified using the <code class="highlighter-rouge">x-amz-acl</code> header with <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">public-read</code>, or <code class="highlighter-rouge">public-read-write</code> as the value. Custom ACLs are specified using XML in the request body and can grant <code class="highlighter-rouge">READ</code>, <code class="highlighter-rouge">WRITE</code>, <code class="highlighter-rouge">READ_ACP</code> (read ACL), <code class="highlighter-rouge">WRITE_ACP</code> (write ACL), or <code class="highlighter-rouge">FULL_CONTROL</code> permissions to a given storage account.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-4">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request:</strong> Basic pre-made ACL</p>
+<h5 id="sample-request-basic-pre-made-acl">Sample request Basic pre-made ACL</h5>
 
 <p>This is an example of specifying a pre-made ACL to allow for <code class="highlighter-rouge">public-read</code> access to the “apiary” bucket. This allows any storage account to view the bucket’s contents and ACL, and to access objects.</p>
 
@@ -945,7 +947,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
+<h5 id="sample-response-4">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 4 Oct 2016 19:03:55 GMT</span>
@@ -958,7 +960,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Request:</strong> Custom ACL</p>
+<h5 id="sample-request-custom-acl">Sample request Custom ACL</h5>
 
 <p>This is an example of specifying a custom ACL to allow for another account to view the ACL for the “apiary” bucket, but not to view or access objects stored inside the bucket. Additionally, a third account is given full access to the same bucket as another element of the same ACL.</p>
 
@@ -994,7 +996,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
+<h5 id="sample-response-5">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 4 Oct 2016 19:03:55 GMT</span>
@@ -1010,13 +1012,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves the ACL for a bucket.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-5">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request:</strong></p>
+<h5 id="sample-request-5">Sample request</h5>
 
 <p>This is an example of retrieving a bucket ACL.</p>
 
@@ -1027,7 +1029,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
+<h5 id="sample-response-6">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 14:14:34 GMT</span>
@@ -1063,7 +1065,7 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-6">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?uploads<span class="o">=</span>
 </code></pre>
@@ -1113,7 +1115,7 @@ Signature={signature}
   </tbody>
 </table>
 
-<p><strong>Sample Request:</strong></p>
+<h5 id="sample-request-6">Sample request</h5>
 
 <p>This is an example of retrieving all current cancelled and incomplete multipart uploads.</p>
 
@@ -1124,7 +1126,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response:</strong> No multipart uploads in progress.</p>
+<h5 id="sample-response-no-multipart-uploads-in-progress">Sample response No multipart uploads in progress.</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 15:22:27 GMT</span>
@@ -1154,13 +1156,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-7">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request:</strong></p>
+<h5 id="sample-request-7">Sample request</h5>
 
 <p>This is an example of listing a CORS configuration on the “apiary” bucket.</p>
 
@@ -1171,7 +1173,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response:</strong> No CORS configuration set</p>
+<h5 id="sample-response-no-cors-configuration-set">Sample response No CORS configuration set</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 15:20:30 GMT</span>
@@ -1193,13 +1195,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-8">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request:</strong></p>
+<h5 id="sample-request-8">Sample request</h5>
 
 <p>This is an example of adding a CORS configuration that allows requests from <code class="highlighter-rouge">www.ibm.com</code> to issue <code class="highlighter-rouge">GET</code>, <code class="highlighter-rouge">PUT</code>, and <code class="highlighter-rouge">POST</code> requests to the bucket.</p>
 
@@ -1225,7 +1227,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response:</strong></p>
+<h5 id="sample-response-7">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 15:39:38 GMT</span>
@@ -1242,13 +1244,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-9">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request:</strong></p>
+<h5 id="sample-request-9">Sample request</h5>
 
 <p>This is an example of deleting a CORS configuration for a bucket.</p>
 
@@ -1261,19 +1263,19 @@ Signature={signature}
 
 <p>The server responds with <code class="highlighter-rouge">204 No Content</code>.</p>
 
-<h3 id="operations-on-objects">Operations on Objects</h3>
+<h2 id="operations-on-objects">Operations on Objects</h2>
 
-<h4 id="upload-an-object">Upload an object</h4>
+<h3 id="upload-an-object">Upload an object</h3>
 
 <p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-10">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request</strong></p>
+<h5 id="sample-request-10">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1292,7 +1294,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response</strong></p>
+<h5 id="sample-response-8">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:30:02 GMT</span>
@@ -1306,17 +1308,17 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h4 id="get-an-objects-headers">Get an objects headers</h4>
+<h3 id="get-an-objects-headers">Get an objects headers</h3>
 
 <p>A <code class="highlighter-rouge">HEAD</code> given a path to an object retrieves that object’s headers.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-11">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request</strong></p>
+<h5 id="sample-request-11">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">HEAD</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1326,7 +1328,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response</strong></p>
+<h5 id="sample-response-9">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:32:44 GMT</span>
@@ -1342,17 +1344,17 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h4 id="download-an-object">Download an object</h4>
+<h3 id="download-an-object">Download an object</h3>
 
 <p>A <code class="highlighter-rouge">GET</code> given a path to an object uploads an object.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-12">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request</strong></p>
+<h5 id="sample-request-12">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary/worker-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1361,7 +1363,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response</strong></p>
+<h5 id="sample-response-10">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:34:25 GMT</span>
@@ -1382,17 +1384,17 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h4 id="delete-an-object">Delete an object</h4>
+<h3 id="delete-an-object">Delete an object</h3>
 
 <p>A <code class="highlighter-rouge">DELETE</code> given a path to an object deletes an object.</p>
 
-<p><strong>Syntax</strong></p>
+<h5 id="syntax-13">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<p><strong>Sample Request</strong></p>
+<h5 id="sample-request-13">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1401,7 +1403,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<p><strong>Sample Response</strong></p>
+<h5 id="sample-response-11">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 17:44:57 GMT</span>

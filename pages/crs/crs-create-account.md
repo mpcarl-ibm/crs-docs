@@ -9,7 +9,5 @@ permalink: crs-create-account.html
 folder: crs
 ---
 
-### About COS APIs
-
-There are several ways.
+ 
 

@@ -9,7 +9,5 @@ permalink: crs-bucket-operations.html
 folder: crs
 ---
 
-### About COS APIs
-
-There are several ways.
+ 
 
