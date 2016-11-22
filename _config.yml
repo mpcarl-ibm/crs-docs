@@ -11,12 +11,12 @@ site_title: IBM COS Documentation
 company_name: IBM
 # this appears in the footer
 
-baseurl: "/nicholas-lange/cos-docs/" # the subpath of your site, e.g. /blog
+baseurl: "/nicholas-lange/cos-docs" # the subpath of your site, e.g. /blog
 url: "https://pages.github.ibm.com" # the base hostname & protocol for your site
 
-repository: https://github.ibm.com/Nicholas-Lange/cos-docs
+repository: Nicholas-Lange/cos-docs
 
-github_editme_path: 
+# github_editme_path: Nicholas-Lange/cos-docs/blob/gh-pages/pages/
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 # disqus_shortname:
@@ -25,7 +25,7 @@ github_editme_path:
 host: 127.0.0.1
 # the preview server used. Leave as is.
 
-port: 4000
+port: 8080
 # the port where the preview is rendered. You can leave this as is unless you have other Jekyll builds using this same port that might cause conflicts. in that case, use another port such as 4006.
 
 exclude:

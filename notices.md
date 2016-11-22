@@ -1,13 +1,13 @@
 ---
-title: Notices
+title: Notices, trademarks, terms and conditions
 keywords: 
 last_updated: November 18, 2016
 tags: 
 summary: 
 permalink: notices.html
 ---
-*Last updated: 31 August 2016*
 
+## Notices
 This information was developed for products and services offered in the US. This material might be available from IBM in other languages. However, you may be required to own a copy of the product or product version in that language in order to access it.
 
 IBM may not offer the products, services, or features discussed in this document in other countries. Consult your local IBM representative for information on the products and services currently available in your area. Any reference to an IBM product, program, or service is not intended to state or imply that only that IBM product, program, or service may be used. Any functionally equivalent product, program, or service that does not infringe any IBM intellectual property right may be used instead. However, it is the user's responsibility to evaluate and verify the operation of any non-IBM product, program, or service.

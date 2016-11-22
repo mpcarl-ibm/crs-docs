@@ -71,9 +71,7 @@ samp {
   font-family: monospace, serif;
   font-size: 1em;
 }
-pre {
-  white-space: pre-wrap;
-}
+
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
@@ -271,7 +269,7 @@ textarea {
   background-image: none;
 }
 a {
-  color: #20343e;
+  color: #216f9b;
   text-decoration: none;
 }
 a:hover,
@@ -595,38 +593,37 @@ address {
 }
 code,
 pre {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-family: Menlo, Consolas, Monaco, "Courier New", monospace;
 }
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #444;
-  background-color: #f0f0f0;
-  white-space: nowrap;
+  color: #152935;
+  background-color: #f0f3f6;
   border-radius: 4px;
 }
 
 pre {
   display: block;
+  white-space: pre;
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
   line-height: 1.428571429;
-  word-break: break-all;
-  word-wrap: break-word;
-  color: #77777a;
-  background-color: #f5f5f5;
   border: 1px solid #cccccc;
+  background-color: inherit;
   border-radius: 4px;
+  overflow-x: auto;
 }
 pre.prettyprint {
   margin-bottom: 20px;
 }
 pre code {
   padding: 0;
+  word-wrap: normal;
+  white-space: pre;
   font-size: inherit;
   color: inherit;
-  white-space: pre-wrap;
   background-color: transparent;
   border: 0;
 }
@@ -634,6 +631,7 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
+
 .container {
   margin-right: auto;
   margin-left: auto;

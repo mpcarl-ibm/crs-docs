@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>Introduction | IBM COS Documentation</title>
+<title>Introduction to IBM Cloud Object Storage | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
-
-
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
 <link rel="stylesheet" href="css/modern-business.css">
@@ -35,7 +33,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -51,7 +49,7 @@
                     path: '/'
                 },
                 slide: {
-                    duration: 400,
+                    duration: 125,
                     easing: 'swing'
                 }
             });
@@ -93,12 +91,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- entries without drop-downs appear here -->
-                
-                
-                
-                <li><a href="news">News</a></li>
-                
-                
                 
                 <!-- entries with drop-downs appear here -->
                 <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
@@ -180,7 +172,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Introduction">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Introduction to IBM Cloud Object Storage">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -377,13 +369,6 @@
             
             
             
-            
-            
-            
-            <li><a href=""></a></li>
-            
-            
-            
             <li class="subfolders">
                 <a href="#">API reference (by request)</a>
                 <ul>
@@ -408,13 +393,6 @@
                     
                 </ul>
             </li>
-            
-            
-            
-            
-            
-            
-            <li><a href=""></a></li>
             
             
             
@@ -445,13 +423,6 @@
             
             
             
-            
-            
-            
-            <li><a href=""></a></li>
-            
-            
-            
             <li class="subfolders">
                 <a href="#">Compatible tools and SDKs</a>
                 <ul>
@@ -477,12 +448,6 @@
                     
                     
                     <li><a href="crs-java.html">Using Java with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-node.html">Using node.js with IBM COS</a></li>
                     
                     
                     
@@ -538,11 +503,10 @@
         
         
         
-        <!-- if you aren't using the accordion, uncomment this block:
+        <!-- if you aren't using the accordion, uncomment this block: -->
            <p class="external">
                <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
            </p>
-           -->
     </li>
 </ul>
 </div>
@@ -553,7 +517,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">Introduction</h1>
+   <h1 class="post-title-main">Introduction to IBM Cloud Object Storage</h1>
 </div>
 
 
@@ -563,35 +527,13 @@
    
 
     
-    
-<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
-<script>
-$( document ).ready(function() {
-  // Handler for .ready() called.
-
-$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
-
-/* this offset helps account for the space taken up by the floating toolbar. */
-$('#toc').on('click', 'a', function() {
-  var target = $(this.getAttribute('href'))
-    , scroll_target = target.offset().top
-
-  $(window).scrollTop(scroll_target - 10);
-  return false
-})
-  
-});
-</script>
-
-<div id="toc"></div>
-
-    
 
 
     
 
-  <h2 id="understanding-ibm-cloud-object-storage">Understanding IBM Cloud Object Storage</h2>
-<p>IBM Bluemix Infrastructure currently offers three unique object storage offerings for different user needs, all of which are accessible through a web-based portal and RESTful APIs.</p>
+  <h3 id="overview">Overview</h3>
+
+<p>IBM Bluemix Infrastructure (formerly SoftLayer) currently offers three unique object storage offerings for different user needs, all of which are accessible through a web-based portal and RESTful APIs.</p>
 
 <table class="overviewtable">
   <thead>
@@ -605,17 +547,17 @@ $('#toc').on('click', 'a', function() {
     <tr>
       <td>IBM COS Standard Cross-Region</td>
       <td>S3 API</td>
-      <td>Highest availability and encryption at rest</td>
+      <td>– Highest availability, durability and resiliency<br /> – Encryption at rest and in flight</td>
     </tr>
     <tr>
       <td>IBM COS Standard Regional</td>
       <td>Swift API</td>
-      <td>Native integration with OpenStack clouds</td>
+      <td>– Native integration with OpenStack clouds <br /> – Choice of 20 geographic regions</td>
     </tr>
     <tr>
       <td>Object Storage for IBM Bluemix</td>
       <td>Swift API</td>
-      <td>Native integration with Bluemix services</td>
+      <td>– Native integration with Bluemix services</td>
     </tr>
   </tbody>
 </table>
@@ -630,7 +572,7 @@ $('#toc').on('click', 'a', function() {
 
 <h3 id="ibm-cos-standard-regional">IBM COS Standard Regional</h3>
 
-<p>Information stored with IBM COS Standard Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure (formerly SoftLayer) Control portal and does not provide encryption at-rest.</p>
+<p>Information stored with IBM COS Standard Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure Control portal and does not provide encryption at-rest.</p>
 
 <h3 id="object-storage-for-ibm-bluemix">Object Storage for IBM Bluemix</h3>
 
@@ -650,8 +592,8 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. All rights reserved. <br />
- Site last generated: Nov 18, 2016 <br /><br />
+               &copy;2016 IBM. <a href="/nicholas-lange/cos-docsnotices.html">Notices.</a> All rights reserved. <br />
+ Site last generated: Nov 22, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

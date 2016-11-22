@@ -4,7 +4,7 @@ entries:
 - title: sidebar
   product: Standard Cross-Region
   version: 
-  levels: three
+  levels:
   folders:
 
   - title:
@@ -114,10 +114,6 @@ entries:
           url: /crs-api-faq.html
           output: web, pdf  
 
-    - title: 
-      output: web, pdf
-
-      subfolders:
       - title: API reference (by request)
         output: web, pdf
         
@@ -134,10 +130,6 @@ entries:
           url: /crs-head.html
           output: web, pdf  
 
-    - title: 
-      output: web, pdf
-
-      subfolders:
       - title: API reference (by operation)
         output: web, pdf
         
@@ -154,10 +146,6 @@ entries:
           url: /crs-object-operations.html
           output: web, pdf  
 
-    - title: 
-      output: web, pdf
-
-      subfolders:
       - title: Compatible tools and SDKs
         output: web, pdf
         
@@ -176,10 +164,6 @@ entries:
 
         - title: Using Java with IBM COS
           url: /crs-java.html
-          output: web, pdf 
-
-        - title: Using node.js with IBM COS
-          url: /crs-node.html
           output: web, pdf 
 
         - title: Tools and SDKs FAQ

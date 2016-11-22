@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>IBM COS Security | IBM COS Documentation</title>
+<title>Data security and IBM COS | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
-
-
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
 <link rel="stylesheet" href="css/modern-business.css">
@@ -35,7 +33,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000feed.xml">
+<link rel="alternate" type="application/rss+xml" title="" href="feed.xml">
 
     <script>
         $(document).ready(function() {
@@ -51,7 +49,7 @@
                     path: '/'
                 },
                 slide: {
-                    duration: 400,
+                    duration: 125,
                     easing: 'swing'
                 }
             });
@@ -93,12 +91,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- entries without drop-downs appear here -->
-                
-                
-                
-                <li><a href="news">News</a></li>
-                
-                
                 
                 <!-- entries with drop-downs appear here -->
                 <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
@@ -180,7 +172,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="IBM COS Security">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Data security and IBM COS">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -377,13 +369,6 @@
             
             
             
-            
-            
-            
-            <li><a href=""></a></li>
-            
-            
-            
             <li class="subfolders">
                 <a href="#">API reference (by request)</a>
                 <ul>
@@ -408,13 +393,6 @@
                     
                 </ul>
             </li>
-            
-            
-            
-            
-            
-            
-            <li><a href=""></a></li>
             
             
             
@@ -445,13 +423,6 @@
             
             
             
-            
-            
-            
-            <li><a href=""></a></li>
-            
-            
-            
             <li class="subfolders">
                 <a href="#">Compatible tools and SDKs</a>
                 <ul>
@@ -477,12 +448,6 @@
                     
                     
                     <li><a href="crs-java.html">Using Java with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-node.html">Using node.js with IBM COS</a></li>
                     
                     
                     
@@ -538,11 +503,10 @@
         
         
         
-        <!-- if you aren't using the accordion, uncomment this block:
+        <!-- if you aren't using the accordion, uncomment this block: -->
            <p class="external">
                <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
            </p>
-           -->
     </li>
 </ul>
 </div>
@@ -553,7 +517,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">IBM COS Security</h1>
+   <h1 class="post-title-main">Data security and IBM COS</h1>
 </div>
 
 
@@ -563,41 +527,25 @@
    
 
     
-    
-<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
-<script>
-$( document ).ready(function() {
-  // Handler for .ready() called.
-
-$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
-
-/* this offset helps account for the space taken up by the floating toolbar. */
-$('#toc').on('click', 'a', function() {
-  var target = $(this.getAttribute('href'))
-    , scroll_target = target.offset().top
-
-  $(window).scrollTop(scroll_target - 10);
-  return false
-})
-  
-});
-</script>
-
-<div id="toc"></div>
-
-    
 
 
     
 
-  <p>IBM Cloud Object Storage uses an innovative approach for cost-effectively storing large volumes of unstructured data while ensuring security, availability and reliability. This is accomplished by using Information Dispersal Algorithms (IDAs) to separate data into unrecognizable “slices” that are distributed across a network of data centers, making transmission and storage of data inherently private and secure. No complete copy of the data resides in any single storage node, and only a subset of nodes needs to be available in order to fully retrieve the data on the network.</p>
+  <h3 id="overview">Overview</h3>
 
-<p>Objects in IBM Cloud Object Storage are encrypted at rest. This technology individually encrypts each object using per-object generated keys. These keys are secured and reliably stored using the same Information Dispersal Algorithms that protect object data using an All-or-Nothing Transform (AONT), which prevents key data from being disclosed if individual nodes or hard drives are compromised.</p>
+<p>IBM Cloud Object Storage uses an innovative approach for cost-effectively storing large volumes of unstructured data while ensuring security, availability and reliability. This is accomplished by using Information Dispersal Algorithms (IDAs) to separate data into unrecognizable “slices” that are distributed across a network of data centers, making transmission and storage of data inherently private and secure. No complete copy of the data resides in any single storage node, and only a subset of nodes needs to be available in order to fully retrieve the data on the network.</p>
+
+<p>Objects in IBM COS are encrypted at rest. This technology individually encrypts each object using per-object generated keys. These keys are secured and reliably stored using the same Information Dispersal Algorithms that protect object data using an All-or-Nothing Transform (AONT), which prevents key data from being disclosed if individual nodes or hard drives are compromised.</p>
 
 <p>Storage can be accessed over HTTPS, and internally storage devices are certified and communicate with each other using TLS.</p>
 
+<h3 id="data-deletion">Data deletion</h3>
+
 <p>After data is deleted various mechanisms exists which prevent recovery or reconstruction of the deleted objects. The deletion of an object undergoes various stages, from marking the meta-data indicating the object as deleted, to removing the content regions, to the finalization of the erasure on the drives themselves until the eventual overwriting the blocks representing that slice data. Depending on whether one compromised the data center or has possession of the physical disks, the time an object becomes unrecoverable depends on the phase of the delete operation. When the metadata object is updated, clients external from the data center network can no longer read the object. When a majority of slices representing the content regions have been finalized by the storage devices, it is not possible to access the object.</p>
 
+<h3 id="tenant-isolation">Tenant isolation</h3>
+
+<p>IBM COS Cross-Region is a shared infrastructure, multi-tenant object storage solution. If your workload requires dedicated or isolated storage, contact XXXXX for more information.</p>
 
 
     <div class="tags">
@@ -613,8 +561,8 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 18, 2016 <br /><br />
+               &copy;2016 IBM. <a href="/nicholas-lange/cos-docsnotices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 22, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

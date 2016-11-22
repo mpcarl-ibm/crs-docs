@@ -130,7 +130,7 @@ th {
     text-align: left;
 }
 table {
-    max-width: 95%;
+    max-width: 98%;
     margin-bottom: 10px;
     margin-top: 10px;
     border: 1px solid #dfe3e6;
@@ -145,7 +145,7 @@ table > tbody > tr > td,
 table > tfoot > tr > td {
     padding: 8px;
     line-height: 1.5;
-    vertical-align: top;
+    vertical-align: center;
     border-top: 1px solid #dfe3e6;
 }
 table > thead > tr > th {
@@ -201,12 +201,7 @@ table.overviewtable th:first-child { width: 19em; }
 table.overviewtable th:nth-child(2) { width: 6em; }
 table.overviewtable th:nth-child(3) { width: 25em; }
 
-p.external a {
-    text-align:right;
-    font-size:12px;
-    font-color: #0088cc;
-    display:inline;
-}
+table.opstable th:first-child { width: 14em; }
 
 #definition-box-container div a.active {
     font-weight: bold;
@@ -328,6 +323,7 @@ footer {
 a.accordion-toggle, a.accordion-collapsed {
     font-size: 14px;
     text-decoration: none;
+    color: blue;
 }
 
 /* navgoco sidebar styles (customized) */
@@ -401,6 +397,17 @@ background-color: #347DBE;
     padding: 4px 10px;
 }
 
+p.external a {
+    font-size:12px;
+    color: #5a6872;
+    background-color: #ffffff;
+    display: inline;
+}
+
+p.external {
+    color: #5a6872;
+}
+
 ul#mysidebar {
     border-radius:0px;
 }
@@ -427,6 +434,11 @@ ul#mysidebar {
 
 .nav li a:hover {
     background-color: #8c9ba5;
+}
+
+p.external a:hover {
+    background-color: #f0f3f6;
+    color: #5a6872;
 }
 
 .nav ul li a {

@@ -290,7 +290,7 @@
 
 
 {
-"title": "",
+"title": "Creating a new customer account",
 "tags": "",
 "keywords": "",
 "url": "crs-create-account.html",
@@ -422,7 +422,7 @@
 
 
 {
-"title": "",
+"title": "Supported API operations",
 "tags": "",
 "keywords": "",
 "url": "crs-operations.html",
@@ -477,7 +477,7 @@
 
 
 {
-"title": "IBM COS Security",
+"title": "Data security and IBM COS",
 "tags": "",
 "keywords": "",
 "url": "crs-security.html",
@@ -534,7 +534,7 @@
 
 
 {
-"title": "Introduction",
+"title": "Introduction to IBM Cloud Object Storage",
 "tags": "",
 "keywords": "",
 "url": "index.html",
@@ -578,19 +578,13 @@
 
 
 {
-"title": "Notices",
+"title": "Notices, trademarks, terms and conditions",
 "tags": "",
 "keywords": "",
 "url": "notices.html",
 "summary": ""
 }
 ,
-
-
-
-
-
-
 
 
 

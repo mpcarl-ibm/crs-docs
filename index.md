@@ -1,20 +1,22 @@
 ---
-title: Introduction
+title: Introduction to IBM Cloud Object Storage
 keywords: 
 tags:
 sidebar: crs_sidebar
 permalink: index.html
 summary: 
+toc: false
 ---
 
-## Understanding IBM Cloud Object Storage
-IBM Bluemix Infrastructure currently offers three unique object storage offerings for different user needs, all of which are accessible through a web-based portal and RESTful APIs.
+### Overview 
+
+IBM Bluemix Infrastructure (formerly SoftLayer) currently offers three unique object storage offerings for different user needs, all of which are accessible through a web-based portal and RESTful APIs.
 
 | Offering | Interface | Defining advantage |
 |-- |-- |-- |
-| IBM COS Standard Cross-Region | S3 API | Highest availability and encryption at rest |
-| IBM COS Standard Regional | Swift API | Native integration with OpenStack clouds |
-| Object Storage for IBM Bluemix | Swift API | Native integration with Bluemix services |
+| IBM COS Standard Cross-Region | S3 API | -- Highest availability, durability and resiliency<br> -- Encryption at rest and in flight|
+| IBM COS Standard Regional | Swift API | -- Native integration with OpenStack clouds <br> -- Choice of 20 geographic regions|
+| Object Storage for IBM Bluemix | Swift API | -- Native integration with Bluemix services |
 {:.overviewtable}
 
 ### IBM COS Standard Cross-Region
@@ -27,7 +29,7 @@ Developers use IBM COS's implementation of the S3 API to interact with their sto
 
 ### IBM COS Standard Regional
 
-Information stored with IBM COS Standard Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure (formerly SoftLayer) Control portal and does not provide encryption at-rest.
+Information stored with IBM COS Standard Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure Control portal and does not provide encryption at-rest.
 
 ### Object Storage for IBM Bluemix
 
