@@ -24,6 +24,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Back to main documentation <i class="fa fa-undo"></i>
+      url: /crs-operations.html
+      output: web, pdf 
+
     - title: Overview
       url: /crs-api-reference.html#overview
       output: web, pdf 
@@ -58,7 +62,7 @@ entries:
           output: web, pdf 
 
         - title: Retrieving bucket ACLs
-          url: /crs-object-operations.html#retrieve-the-access-control-list-for-a-bucket
+          url: /crs-api-reference.html#retrieve-the-access-control-list-for-a-bucket
           output: web, pdf  
 
         - title: Creating bucket ACLs

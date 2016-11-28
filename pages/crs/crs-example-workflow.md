@@ -9,5 +9,5 @@ permalink: crs-example-workflow.html
 folder: crs
 ---
 
- 
+{% include warning.html content="In progress" %}
 
