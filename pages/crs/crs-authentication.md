@@ -41,21 +41,22 @@ AWS4-HMAC-SHA256
 
 1. The time must be current UTC and formatted according to the ISO 8601 specification (e.g. `20161128T152924Z`).
 2. The date is in `YYYYMMDD` format.
+3. The final line is the previously created standardized request hashed using the SHA-256 algorithm.
 
-TASK 3: CALCULATE THE SIGNATURE
-Create the signing key using the function defined above.
-Sign the string_to_sign using the signing_key
+Now we need to actually calculate the signature.
 
-TASK 4: ADD SIGNING INFORMATION TO THE REQUEST
-The signing information can be either in a query string value or in 
-a header named Authorization. This code shows how to use a header.
-Create authorization header and add to request headers
-The request can include any headers, but MUST include "host", "x-amz-date", 
-and (for this scenario) "Authorization". "host" and "x-amz-date" must
-be included in the canonical_headers and signed_headers, as noted
-earlier. Order here is not significant.
-Python note: The 'host' header is added automatically by the Python 'requests' library.
+1. First the signature key needs to be calculated from the account's secret access key, the current date, and the region and API type being used.  
+2. The string `AWS4` is perpended to the secret access key, and then that new string is used as the key to hash the date.  
+3. Then the resulting hash is used as the key to hash the region.
+4. The process continues with the new hash being used as the key to hash the API type. 
+5. Finally the newest hash is used as the key to hash the string `aws4_request` creating the signature key.
+6. The signature key is then used as the key to hash the string-to-sign generating the final signature.
 
+Now the only step remaining is actually assembling the `authorization` header as shown:
+
+```
+AWS4-HMAC-SHA256 Credential={access-key}/{date}/{region}/s3/aws4_request,SignedHeaders=host;x-amz-date;{other-required-headers},Signature={signature}
+```
 
 ### Example of generating an `authorization` header
 
