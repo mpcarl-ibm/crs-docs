@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -212,155 +212,22 @@
         
     
     <li>
-        <a href="#">Overview</a>
+        <a href="#">API reference</a>
         <ul>
             
             
             
-            <li><a href="index.html">Introduction to IBM COS</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-security.html">About IBM COS security</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-about-api.html">About IBM COS API and SDKs</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Getting started</a>
-        <ul>
-            
-            
-            
-            <li><a href="crs-create-account.html">Creating a new customer account</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-create-storage-account.html">Creating a new storage account</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-managing-users.html">Managing user accounts</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-endpoints.html">Connecting to endpoints</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-billing.html">Billing information</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-support.html">Getting support & FAQ</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Using the Control portal</a>
-        <ul>
-            
-            
-            
-            <li><a href="crs-control-buckets.html">Creating and using buckets</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-control-objects.html">Creating and using objects</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-control-credentials.html">Viewing credentials and endpoints</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Using the API</a>
-        <ul>
-            
-            
-            
-            <li><a href="crs-connecting.html">Connecting to IBM COS</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-example-workflow.html">Example workflow</a></li>
+            <li><a href="crs-api-reference.html#overview">Overview</a></li>
             
             
             
             <li class="subfolders">
-                <a href="#">API overview</a>
+                <a href="#">Account operations</a>
                 <ul>
                     
                     
                     
-                    <li><a href="crs-operations.html">Supported operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-authentication.html">About authentication</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-sldn.html">About the SoftLayer API</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-api-faq.html">API FAQ</a></li>
+                    <li><a href="crs-api-reference.html#list-buckets-belonging-to-an-account">Listing buckets</a></li>
                     
                     
                     
@@ -370,24 +237,66 @@
             
             
             <li class="subfolders">
-                <a href="#">API reference (by request)</a>
+                <a href="#">Bucket operations</a>
                 <ul>
                     
                     
                     
-                    <li><a href="crs-get.html">GET operations</a></li>
+                    <li><a href="crs-api-reference.html#create-a-new-bucket">Creating buckets</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-put.html">PUT and POST operations</a></li>
+                    <li><a href="crs-api-reference.html#get-bucket-headers">Retrieving bucket metadata</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-head.html">HEAD and OPTIONS operations</a></li>
+                    <li><a href="crs-api-reference.html#delete-a-bucket">Deleting buckets</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#list-objects-in-a-given-bucket">Listing objects within buckets</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-object-operations.html#retrieve-the-access-control-list-for-a-bucket">Retrieving bucket ACLs</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#create-an-access-control-list-for-a-bucket">Creating bucket ACLs</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#create-a-cross-origin-resource-sharing-configuration-for-a-bucket">Adding CORS configurations</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#list-any-cross-origin-resource-sharing-configuration-for-a-bucket">Retrieve CORS configurations</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#delete-any-cross-origin-resource-sharing-configuration-for-a-bucket">Delete CORS configurations</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#list-canceledincomplete-multipart-uploads-for-a-bucket">List multipart uploads</a></li>
                     
                     
                     
@@ -397,104 +306,35 @@
             
             
             <li class="subfolders">
-                <a href="#">API reference (by operation)</a>
+                <a href="#">Object operations</a>
                 <ul>
                     
                     
                     
-                    <li class="active"><a href="crs-account-operations.html">Account operations</a></li>
+                    <li><a href="crs-api-reference.html#upload-an-object">Uploading objects</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-bucket-operations.html">Bucket operations</a></li>
+                    <li><a href="crs-api-reference.html#get-an-objects-headers">Retrieving object metadata</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-object-operations.html">Object operations</a></li>
+                    <li><a href="crs-api-reference.html#download-an-object">Retrieving objects</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#delete-an-object">Deleting objects</a></li>
                     
                     
                     
                 </ul>
             </li>
-            
-            
-            
-            <li class="subfolders">
-                <a href="#">Compatible tools and SDKs</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-guis.html">Simple GUIs</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-cli.html">Command line tools</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-python.html">Using Python with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-java.html">Using Java with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-sdk-faq.html">Tools and SDKs FAQ</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-best-practices.html">Best practices and performance tips</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Resources</a>
-        <ul>
-            
-            
-            
-            <li><a href="crs-support-resources.html">Getting support</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-pricing.html">Pricing</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-faq.html">FAQs</a></li>
             
             
             
@@ -570,8 +410,8 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. <a href="/nicholas-lange/cos-docsnotices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 22, 2016 <br /><br />
+               &copy;2016 IBM. <a href="/nicholas-lange/cos-docs/notices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 28, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

@@ -1,0 +1,103 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Standard Cross-Region
+  version: 
+  levels:
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+  - title: API reference
+    output: web, pdf
+    folderitems:
+
+    - title: Overview
+      url: /crs-api-reference.html#overview
+      output: web, pdf 
+
+      subfolders:
+      - title: Account operations
+        output: web, pdf
+        
+        subfolderitems:
+        - title: Listing buckets
+          url: /crs-api-reference.html#list-buckets-belonging-to-an-account
+          output: web, pdf  
+
+      - title: Bucket operations
+        output: web, pdf
+        
+        subfolderitems:
+        - title: Creating buckets
+          url: /crs-api-reference.html#create-a-new-bucket
+          output: web, pdf 
+
+        - title: Retrieving bucket metadata
+          url: /crs-api-reference.html#get-bucket-headers
+          output: web, pdf  
+  
+        - title: Deleting buckets
+          url: /crs-api-reference.html#delete-a-bucket
+          output: web, pdf  
+
+        - title: Listing objects within buckets
+          url: /crs-api-reference.html#list-objects-in-a-given-bucket
+          output: web, pdf 
+
+        - title: Retrieving bucket ACLs
+          url: /crs-object-operations.html#retrieve-the-access-control-list-for-a-bucket
+          output: web, pdf  
+
+        - title: Creating bucket ACLs
+          url: /crs-api-reference.html#create-an-access-control-list-for-a-bucket
+          output: web, pdf 
+
+        - title: Adding CORS configurations
+          url: /crs-api-reference.html#create-a-cross-origin-resource-sharing-configuration-for-a-bucket
+          output: web, pdf 
+
+        - title: Retrieve CORS configurations
+          url: /crs-api-reference.html#list-any-cross-origin-resource-sharing-configuration-for-a-bucket
+          output: web, pdf 
+
+        - title: Delete CORS configurations
+          url: /crs-api-reference.html#delete-any-cross-origin-resource-sharing-configuration-for-a-bucket
+          output: web, pdf 
+
+        - title: List multipart uploads
+          url: /crs-api-reference.html#list-canceledincomplete-multipart-uploads-for-a-bucket
+          output: web, pdf 
+
+      - title: Object operations
+        output: web, pdf
+        
+        subfolderitems:
+        - title: Uploading objects
+          url: /crs-api-reference.html#upload-an-object
+          output: web, pdf 
+
+        - title: Retrieving object metadata
+          url: /crs-api-reference.html#get-an-objects-headers
+          output: web, pdf  
+  
+        - title: Retrieving objects
+          url: /crs-api-reference.html#download-an-object
+          output: web, pdf 
+
+        - title: Deleting objects
+          url: /crs-api-reference.html#delete-an-object
+          output: web, pdf  
+

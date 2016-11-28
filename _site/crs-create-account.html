@@ -3,7 +3,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
+<meta name="description" content="IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS.">
 <meta name="keywords" content=" ">
 <title>Creating a new customer account | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -370,60 +370,6 @@
             
             
             <li class="subfolders">
-                <a href="#">API reference (by request)</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-get.html">GET operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-put.html">PUT and POST operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-head.html">HEAD and OPTIONS operations</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="subfolders">
-                <a href="#">API reference (by operation)</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-account-operations.html">Account operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-bucket-operations.html">Bucket operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-object-operations.html">Object operations</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="subfolders">
                 <a href="#">Compatible tools and SDKs</a>
                 <ul>
                     
@@ -465,7 +411,14 @@
             
             
             
-            <li><a href="crs-best-practices.html">Best practices and performance tips</a></li>
+            <li><a href="crs-api-reference.html">Complete API reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="crs-best-practices.html">Best practices and performance</a></li>
             
             
             
@@ -525,6 +478,8 @@
 <div class="post-content">
 
    
+    <div class="summary">IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS.</div>
+   
 
     
     
@@ -556,9 +511,42 @@ $('#toc').on('click', 'a', function() {
 
   <h2 id="understanding-ibm-cloud-platform">Understanding IBM Cloud platform</h2>
 
-<p>Until recently, IBM offered Platform-as-a-Service and Infrastructure-as-a-Service as two distinct products: <a href="https://bluemix.net">Bluemix</a> and <a href="http://www.softlayer.com">SoftLayer</a>.  Bluemix provides a robust application development platform with direct access to cutting edge IBM technologies and DevOps services. SoftLayer provides access to infrastructure services, such as bare metal or virtual servers, data storage, and networking.</p>
+<p>Until recently, IBM offered Platform-as-a-Service and Infrastructure-as-a-Service in two distinct environements: <a href="https://bluemix.net">Bluemix</a> and <a href="http://www.softlayer.com">SoftLayer</a>.  Bluemix provides a robust application development platform with direct access to cutting edge IBM technologies and DevOps services. SoftLayer provides access to infrastructure services, such as bare metal or virtual servers, data storage, and networking.</p>
 
-<p>Now, these lines are dissolving as we integrate infrastructure offerings into the Bluemix catalog of services.</p>
+<p>Now these lines are dissolving as we integrate the SoftLayer infrastructure offerings into the <a href="https://console.ng.bluemix.net/catalog/">Bluemix catalog of services</a>. Existing SoftLayer customers are encouraged to take advantage of <a href="http://blog.softlayer.com/2016/new-softlayer-accounts-now-ibmid-authentication">using an IBMid for single-sign-on authentication</a>, and it is possible to <a href="http://blog.softlayer.com/2016/meet-integrated-ibm-cloud-platform-softlayer-and-bluemix">link existing SoftLayer and Bluemix accounts</a>. As of October 2016, SoftLayer is transitioning to the new name Bluemix Infrastructure, and computing, storage, networking services are provided through both the Bluemix catalog and (for a time) the SoftLayer website.</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> In order to distinguish it from the existing OpenStack Swift based object storage offerings, ‘IBM COS Cross-Region’ is commonly referred to by the name ‘Cloud Object Storage - S3 API’ in order forms.  ‘IBM COS Cross-Region’ and ‘COS - S3 API’ should be considered interchangeable terms within IBM Cloud at this time, although this is subject to change in accordance with future COS offerings.</div>
+
+<h2 id="creating-a-new-bluemix-account">Creating a new Bluemix account</h2>
+
+<p>Before ordering a new IBM COS Cross-Region storage account, it is necessary to create a customer account first.</p>
+
+<ol>
+  <li>Go to <a href="https://bluemix.net">bluemix.net</a> and click on the <strong>Create a Free Account</strong> button.</li>
+  <li>Fill out the form, providing your email address, name, region, and phone number.  Choose a password.</li>
+  <li>Follow the link provided by the confirmation email, and follow the links to log in to Bluemix.</li>
+  <li>Before using Bluemix, you need to set up a basic development environment.  Choose a region based on your geographic location, and choose a name for your organization.  Don’t worry about being perfect - you can change it or create new organizations later. Follow the <strong>Create</strong> link.</li>
+  <li>Now you need to name your first development space.  Again, this can be changed at any time.  After you’ve chosen a name, follow the <strong>Create</strong> link.</li>
+  <li>Follow the <strong>I’m Ready</strong> link to get started with Bluemix.</li>
+  <li>Ordering infrastructure services requires upgrading to a Pay-As-You-Go account.  Upgraded accounts still recieve runtime and service allowances, and are only charged for resources used.  Go to the Bluemix catalog, and follow the link for <strong>Cloud Object Storage - S3 API</strong>.</li>
+  <li>Follow the <strong>Upgrade</strong> link.</li>
+  <li>Fill out the Contact and Billing information forms, check the box to acknowledge Cloud Service terms, and follow the <strong>Submit Order</strong> link.</li>
+  <li>Follow the <strong>Done</strong> link, and wait for an email confirming your account upgrade.</li>
+  <li>Next up is ordering a new object storage account!</li>
+</ol>
+
+<h2 id="creating-a-new-softlayer-account">Creating a new SoftLayer account</h2>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Bluemix Infrastructure will be the primary platform for ordering storage in the future and new customers are encouraged to begin with Bluemix, although it is still possible to create an account directly through SoftLayer.</div>
+
+<ol>
+  <li>Got to <a href="http://www.softlayer.com">softlayer.com</a> and choose <strong>Products &amp; Services</strong> &gt; <strong>Object Storage</strong> from the top menu.</li>
+  <li>Follow the <strong>Order Now</strong> link.</li>
+  <li>Choose <strong>Cloud Object Storage - S3 API</strong> and then follow the <strong>Add to Order</strong> link.</li>
+  <li>Fill out the Contact and Billing information forms, check the box to acknowledge Cloud Service terms, and follow the <strong>Submit Order</strong> link. Note that the location indicated in the order form is unrelated to the location or endpoint used to store or connect to your data.</li>
+  <li>You will recieve an email indicated that the order is under review. This may take some time.</li>
+</ol>
+
 
 
     <div class="tags">
@@ -574,8 +562,8 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. <a href="/nicholas-lange/cos-docsnotices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 22, 2016 <br /><br />
+               &copy;2016 IBM. <a href="/nicholas-lange/cos-docs/notices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 28, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

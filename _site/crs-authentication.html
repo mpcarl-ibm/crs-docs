@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title> | IBM COS Documentation</title>
+<title>Authorization and authentication | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -172,7 +172,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Authorization and authentication">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -370,60 +370,6 @@
             
             
             <li class="subfolders">
-                <a href="#">API reference (by request)</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-get.html">GET operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-put.html">PUT and POST operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-head.html">HEAD and OPTIONS operations</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="subfolders">
-                <a href="#">API reference (by operation)</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-account-operations.html">Account operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-bucket-operations.html">Bucket operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-object-operations.html">Object operations</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="subfolders">
                 <a href="#">Compatible tools and SDKs</a>
                 <ul>
                     
@@ -465,7 +411,14 @@
             
             
             
-            <li><a href="crs-best-practices.html">Best practices and performance tips</a></li>
+            <li><a href="crs-api-reference.html">Complete API reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="crs-best-practices.html">Best practices and performance</a></li>
             
             
             
@@ -517,7 +470,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main"></h1>
+   <h1 class="post-title-main">Authorization and authentication</h1>
 </div>
 
 
@@ -554,7 +507,15 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  
+  <h3 id="the-authorization-header">The <code class="highlighter-rouge">authorization</code> header</h3>
+<p>Each request made against IBM COS using the S3 API must be authenticated using an implementation of the AWS <code class="highlighter-rouge">authorization</code> header.  IBM COS supports Signature Version 2 and Signature Version 4 authentication methods.  Signature Version 4 is considered more secure as it does not include the secret access key itself as part of the signature. Using a signature provides identity verification and in-transit data integrity, and because each signature is tied to the timestamp of the request it is not possible to reuse authorization headers.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>AWS4-HMAC-SHA256 Credential={access-key}/{date}/{region}/s3/aws4_request,SignedHeaders=host;x-amz-date;{other-required-headers},Signature={signature}
+</code></pre>
+</div>
+
+<p>The date is provided in <code class="highlighter-rouge">YYYYMMDD</code> format, and for COS Cross-Region the region should be <code class="highlighter-rouge">us-standard</code>. The <code class="highlighter-rouge">host</code> and <code class="highlighter-rouge">x-amz-date</code> headers are always required, and depending on the request other headers may be required as well (e.g. <code class="highlighter-rouge">x-amz-content-sha256</code> in the case of requests with payloads).  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.</p>
+
 
 
     <div class="tags">
@@ -570,8 +531,8 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. <a href="/nicholas-lange/cos-docsnotices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 22, 2016 <br /><br />
+               &copy;2016 IBM. <a href="/nicholas-lange/cos-docs/notices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 28, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

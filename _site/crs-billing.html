@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title> | IBM COS Documentation</title>
+<title>Billing information | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -172,7 +172,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Billing information">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -370,60 +370,6 @@
             
             
             <li class="subfolders">
-                <a href="#">API reference (by request)</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-get.html">GET operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-put.html">PUT and POST operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-head.html">HEAD and OPTIONS operations</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="subfolders">
-                <a href="#">API reference (by operation)</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-account-operations.html">Account operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-bucket-operations.html">Bucket operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-object-operations.html">Object operations</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="subfolders">
                 <a href="#">Compatible tools and SDKs</a>
                 <ul>
                     
@@ -465,7 +411,14 @@
             
             
             
-            <li><a href="crs-best-practices.html">Best practices and performance tips</a></li>
+            <li><a href="crs-api-reference.html">Complete API reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="crs-best-practices.html">Best practices and performance</a></li>
             
             
             
@@ -517,7 +470,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main"></h1>
+   <h1 class="post-title-main">Billing information</h1>
 </div>
 
 
@@ -527,34 +480,46 @@
    
 
     
-    
-<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
-<script>
-$( document ).ready(function() {
-  // Handler for .ready() called.
-
-$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
-
-/* this offset helps account for the space taken up by the floating toolbar. */
-$('#toc').on('click', 'a', function() {
-  var target = $(this.getAttribute('href'))
-    , scroll_target = target.offset().top
-
-  $(window).scrollTop(scroll_target - 10);
-  return false
-})
-  
-});
-</script>
-
-<div id="toc"></div>
-
-    
 
 
     
 
-  
+  <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Information on pricing can be found at <a href="https://www.softlayer.com/Store/orderService/objectStorage">SoftLayer</a>.</div>
+
+<h3 id="invoices">Invoices</h3>
+<p>Invoices can be found at <strong>Account</strong> &gt; <strong>Billing</strong> &gt; <strong>Invoices</strong> in the navigation menu.</p>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Each account receives a single bill. If you need separate billing for different sets of containers, then creating multiple accounts is necessary.</div>
+
+<h3 id="what-is-the-difference-between-class-a-and-class-b-requests">What is the difference between ‘Class A’ and ‘Class B’ requests?</h3>
+
+<p>‘Class A’ requests are operations that involve modification or listing.  This includes creating buckets, uploading or copying objects, creating or changing configurations, listing buckets, and listing the contents of buckets.</p>
+
+<p>‘Class B’ requests are those related to retrieving objects or their associated metadata/configurations from the system.</p>
+
+<p>There is no charge for deleting buckets or objects from the system.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Requests</th>
+      <th>Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Class A</td>
+      <td>PUT, COPY, and POST requests, as well as GET requests used to list buckets and objects</td>
+      <td>Creating buckets, uploading or copying objects, listing buckets, listing contents of buckets, setting ACLs, and setting CORS configurations</td>
+    </tr>
+    <tr>
+      <td>Class B</td>
+      <td>GET (excluding listing), HEAD, and OPTIONS requests</td>
+      <td>Retrieving objects and metadata</td>
+    </tr>
+  </tbody>
+</table>
 
 
     <div class="tags">
@@ -570,8 +535,8 @@ $('#toc').on('click', 'a', function() {
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. <a href="/nicholas-lange/cos-docsnotices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 22, 2016 <br /><br />
+               &copy;2016 IBM. <a href="/nicholas-lange/cos-docs/notices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 28, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

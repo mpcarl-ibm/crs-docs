@@ -37,17 +37,6 @@
 
 
 {
-"title": "API overview",
-"tags": "",
-"keywords": "",
-"url": "crs-api-overview.html",
-"summary": ""
-}
-,
-
-
-
-{
 "title": "API reference",
 "tags": "",
 "keywords": "",
@@ -59,7 +48,7 @@
 
 
 {
-"title": "",
+"title": "Authorization and authentication",
 "tags": "",
 "keywords": "",
 "url": "crs-authentication.html",
@@ -202,7 +191,7 @@
 
 
 {
-"title": "",
+"title": "Billing information",
 "tags": "",
 "keywords": "",
 "url": "crs-billing.html",
@@ -294,7 +283,7 @@
 "tags": "",
 "keywords": "",
 "url": "crs-create-account.html",
-"summary": ""
+"summary": "IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS."
 }
 ,
 

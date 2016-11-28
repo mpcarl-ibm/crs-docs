@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -212,155 +212,22 @@
         
     
     <li>
-        <a href="#">Overview</a>
+        <a href="#">API reference</a>
         <ul>
             
             
             
-            <li><a href="index.html">Introduction to IBM COS</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-security.html">About IBM COS security</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-about-api.html">About IBM COS API and SDKs</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Getting started</a>
-        <ul>
-            
-            
-            
-            <li><a href="crs-create-account.html">Creating a new customer account</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-create-storage-account.html">Creating a new storage account</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-managing-users.html">Managing user accounts</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-endpoints.html">Connecting to endpoints</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-billing.html">Billing information</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-support.html">Getting support & FAQ</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Using the Control portal</a>
-        <ul>
-            
-            
-            
-            <li><a href="crs-control-buckets.html">Creating and using buckets</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-control-objects.html">Creating and using objects</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-control-credentials.html">Viewing credentials and endpoints</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Using the API</a>
-        <ul>
-            
-            
-            
-            <li><a href="crs-connecting.html">Connecting to IBM COS</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-example-workflow.html">Example workflow</a></li>
+            <li><a href="crs-api-reference.html#overview">Overview</a></li>
             
             
             
             <li class="subfolders">
-                <a href="#">API overview</a>
+                <a href="#">Account operations</a>
                 <ul>
                     
                     
                     
-                    <li><a href="crs-operations.html">Supported operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-authentication.html">About authentication</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-sldn.html">About the SoftLayer API</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-api-faq.html">API FAQ</a></li>
+                    <li><a href="crs-api-reference.html#list-buckets-belonging-to-an-account">Listing buckets</a></li>
                     
                     
                     
@@ -370,24 +237,66 @@
             
             
             <li class="subfolders">
-                <a href="#">API reference (by request)</a>
+                <a href="#">Bucket operations</a>
                 <ul>
                     
                     
                     
-                    <li><a href="crs-get.html">GET operations</a></li>
+                    <li><a href="crs-api-reference.html#create-a-new-bucket">Creating buckets</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-put.html">PUT and POST operations</a></li>
+                    <li><a href="crs-api-reference.html#get-bucket-headers">Retrieving bucket metadata</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-head.html">HEAD and OPTIONS operations</a></li>
+                    <li><a href="crs-api-reference.html#delete-a-bucket">Deleting buckets</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#list-objects-in-a-given-bucket">Listing objects within buckets</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-object-operations.html#retrieve-the-access-control-list-for-a-bucket">Retrieving bucket ACLs</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#create-an-access-control-list-for-a-bucket">Creating bucket ACLs</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#create-a-cross-origin-resource-sharing-configuration-for-a-bucket">Adding CORS configurations</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#list-any-cross-origin-resource-sharing-configuration-for-a-bucket">Retrieve CORS configurations</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#delete-any-cross-origin-resource-sharing-configuration-for-a-bucket">Delete CORS configurations</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#list-canceledincomplete-multipart-uploads-for-a-bucket">List multipart uploads</a></li>
                     
                     
                     
@@ -397,104 +306,35 @@
             
             
             <li class="subfolders">
-                <a href="#">API reference (by operation)</a>
+                <a href="#">Object operations</a>
                 <ul>
                     
                     
                     
-                    <li><a href="crs-account-operations.html">Account operations</a></li>
+                    <li><a href="crs-api-reference.html#upload-an-object">Uploading objects</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-bucket-operations.html">Bucket operations</a></li>
+                    <li><a href="crs-api-reference.html#get-an-objects-headers">Retrieving object metadata</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-object-operations.html">Object operations</a></li>
+                    <li><a href="crs-api-reference.html#download-an-object">Retrieving objects</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#delete-an-object">Deleting objects</a></li>
                     
                     
                     
                 </ul>
             </li>
-            
-            
-            
-            <li class="subfolders">
-                <a href="#">Compatible tools and SDKs</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-guis.html">Simple GUIs</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-cli.html">Command line tools</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-python.html">Using Python with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-java.html">Using Java with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-sdk-faq.html">Tools and SDKs FAQ</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-best-practices.html">Best practices and performance tips</a></li>
-            
-            
-            
-            
-        </ul>
-        
-        
-    
-    <li>
-        <a href="#">Resources</a>
-        <ul>
-            
-            
-            
-            <li><a href="crs-support-resources.html">Getting support</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-pricing.html">Pricing</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-faq.html">FAQs</a></li>
             
             
             
@@ -527,74 +367,17 @@
    
 
     
-    
-<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
-<script>
-$( document ).ready(function() {
-  // Handler for .ready() called.
-
-$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
-
-/* this offset helps account for the space taken up by the floating toolbar. */
-$('#toc').on('click', 'a', function() {
-  var target = $(this.getAttribute('href'))
-    , scroll_target = target.offset().top
-
-  $(window).scrollTop(scroll_target - 10);
-  return false
-})
-  
-});
-</script>
-
-<div id="toc"></div>
-
-    
 
 
     
 
-  <blockquote>
-  <p>IBM COS Standard Cross Region is currently in open trial.</p>
-
-  <p>Please visit <a href="https://www.softlayer.com/Store/orderService/objectStorage">IBM Cloud</a> to participate.</p>
-</blockquote>
-
-<h3 id="table-of-contents">Table of Contents</h3>
-
-<ul>
-  <li><a href="#overview">Overview</a></li>
-  <li><a href="#headers-and-error-response">Common Headers and Error Responses</a></li>
-  <li><a href="#operations-on-service">Account Operations</a></li>
-  <li><a href="#operations-on-buckets">Bucket Operations</a></li>
-  <li><a href="#operations-on-objects">Object Operations</a></li>
-</ul>
-
-<h3 id="overview">Overview</h3>
+  <h3 id="overview">Overview</h3>
 
 <p>The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found in the <a href="/nicholas-lange/cos-docs/beta/api/overview/">API overview</a>.</p>
 
-<blockquote>
-  <p><strong>Note:</strong> This documentation for the open trial is in-progress and does not yet provide detailed usage guidance and examples for all supported operations.</p>
-</blockquote>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This reference documentation is being updated continously. If you have technical questions about using the API in your application, please post them on StackOverflow using both <code class="highlighter-rouge">ibm-bluemix</code> and <code class="highlighter-rouge">object-storage</code> tags and we will do our best to answer promptly, and then improve this documentation thanks to your feedback.</div>
 
-<h3 id="authorization">Authorization</h3>
-<p>The <code class="highlighter-rouge">authorization</code> header is required for all requests, and is calculated according to the AWS Signature Version 4 protocol.  This provides identity verification and in-transit data integrity, and is tied to the timestamp of the request.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature (line breaks added for readability):</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>AWS4-HMAC-SHA256 
-Credential={access-key}/{date}/{region}/s3/aws4_request, 
-SignedHeaders=host;x-amz-date;{other-required-headers}, 
-Signature={signature}
-</code></pre>
-</div>
-
-<p>The date is provided in <code class="highlighter-rouge">YYYYMMDD</code> format, and the region can be any value (e.g. <code class="highlighter-rouge">us-standard</code>). The <code class="highlighter-rouge">host</code> and <code class="highlighter-rouge">x-amz-date</code> headers are always required, and depending on the request other headers may be required as well (e.g. <code class="highlighter-rouge">x-amz-content-sha256</code>).  The 256 bit signature is given as 64 hexadecimal character string and is calculated from multiple combinations and hashes of the request elements.  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.</p>
-
-<blockquote>
-  <p><strong>INTERNAL NOTE</strong>: The signature calculation process is fairly involved, and will be illustracted here but is still in-progress.  <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html">AWS signature calculation documentation can be viewed here</a>.</p>
-</blockquote>
-
-<h3 id="headers-and-error-response">Common Headers and Error Responses</h3>
+<h3 id="headers">Common Headers</h3>
 
 <h4 id="common-request-headers">Common Request Headers</h4>
 <p>The following table describes supported common request headers. Headers not listed here will be ignored if sent in a request.</p>
@@ -680,8 +463,9 @@ Signature={signature}
 
 <h5 id="syntax">Syntax</h5>
 
-<pre><code class="language-ShellSession">GET http://{endpoint}/
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/
 </code></pre>
+</div>
 
 <h5 id="sample-request">Sample request</h5>
 
@@ -729,9 +513,15 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.</p>
 
-<h5 id="syntax-1">Syntax</h5>
+<h5 id="path-based-syntax">Path based syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
+
+<h5 id="virtual-host-based-syntax">Virtual host based syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>
 </code></pre>
 </div>
 
@@ -760,17 +550,64 @@ Signature={signature}
 </code></pre>
 </div>
 
+<h4 id="retrieve-a-buckets-headers">Retrieve a bucket’s headers</h4>
+
+<p>A <code class="highlighter-rouge">HEAD</code> issued to the a bucket will return the headers for that bucket.</p>
+
+<h5 id="path-based-syntax-1">Path based syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+</code></pre>
+</div>
+
+<h5 id="virtual-host-based-syntax-1">Virtual host based syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-2">Sample request</h5>
+
+<p>This is an example of fetching the headers for the ‘images’ bucket.</p>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">HEAD</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160821T052842Z</span>
+<span class="na">Authorization</span><span class="p">:</span><span class="s">{authorization-string}</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-2">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:46:35 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">0c2832e3-3c51-4ea6-96a3-cd8482aca08a</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.115</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">0c2832e3-3c51-4ea6-96a3-cd8482aca08a</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
+
 <h4 id="list-objects-in-a-given-bucket">List objects in a given bucket</h4>
 
 <p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.</p>
 
-<h5 id="syntax-2">Syntax</h5>
+<h5 id="path-based-syntax-2">Path based syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-2">Sample request</h5>
+<h5 id="virtual-host-based-syntax-2">Virtual host based syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-3">Sample request</h5>
 
 <p>This requests lists the objects inside the “apiary” bucket.</p>
 
@@ -782,7 +619,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-2">Sample response</h5>
+<h5 id="sample-response-3">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:36:24 GMT</span>
@@ -843,13 +680,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. <em>Only empty buckets can be deleted.</em></p>
 
-<h5 id="syntax-3">Syntax</h5>
+<h5 id="syntax-1">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-3">Sample request</h5>
+<h5 id="sample-request-4">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
@@ -862,7 +699,7 @@ Signature={signature}
 
 <p>If a non-empty bucket is requested for deletion, the server responds with <code class="highlighter-rouge">409 Conflict</code>.</p>
 
-<h5 id="sample-request-4">Sample request</h5>
+<h5 id="sample-request-5">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -871,7 +708,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-3">Sample response</h5>
+<h5 id="sample-response-4">Sample response</h5>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Error&gt;</span>
   <span class="nt">&lt;Code&gt;</span>BucketNotEmpty<span class="nt">&lt;/Code&gt;</span>
@@ -893,7 +730,7 @@ Signature={signature}
 
 <p>ACLs can use pre-made permissions sets (or ‘canned ACLs’) or be customized in the body of the request. Pre-made ACLs are specified using the <code class="highlighter-rouge">x-amz-acl</code> header with <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">public-read</code>, or <code class="highlighter-rouge">public-read-write</code> as the value. Custom ACLs are specified using XML in the request body and can grant <code class="highlighter-rouge">READ</code>, <code class="highlighter-rouge">WRITE</code>, <code class="highlighter-rouge">READ_ACP</code> (read ACL), <code class="highlighter-rouge">WRITE_ACP</code> (write ACL), or <code class="highlighter-rouge">FULL_CONTROL</code> permissions to a given storage account.</p>
 
-<h5 id="syntax-4">Syntax</h5>
+<h5 id="syntax-2">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span>
 </code></pre>
@@ -911,7 +748,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-4">Sample response</h5>
+<h5 id="sample-response-5">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 4 Oct 2016 19:03:55 GMT</span>
@@ -960,7 +797,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-5">Sample response</h5>
+<h5 id="sample-response-6">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 4 Oct 2016 19:03:55 GMT</span>
@@ -976,13 +813,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves the ACL for a bucket.</p>
 
-<h5 id="syntax-5">Syntax</h5>
+<h5 id="syntax-3">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-5">Sample request</h5>
+<h5 id="sample-request-6">Sample request</h5>
 
 <p>This is an example of retrieving a bucket ACL.</p>
 
@@ -993,7 +830,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-6">Sample response</h5>
+<h5 id="sample-response-7">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 14:14:34 GMT</span>
@@ -1029,7 +866,7 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.</p>
 
-<h5 id="syntax-6">Syntax</h5>
+<h5 id="syntax-4">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?uploads<span class="o">=</span>
 </code></pre>
@@ -1079,7 +916,7 @@ Signature={signature}
   </tbody>
 </table>
 
-<h5 id="sample-request-6">Sample request</h5>
+<h5 id="sample-request-7">Sample request</h5>
 
 <p>This is an example of retrieving all current cancelled and incomplete multipart uploads.</p>
 
@@ -1120,13 +957,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-7">Syntax</h5>
+<h5 id="syntax-5">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-7">Sample request</h5>
+<h5 id="sample-request-8">Sample request</h5>
 
 <p>This is an example of listing a CORS configuration on the “apiary” bucket.</p>
 
@@ -1159,13 +996,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-8">Syntax</h5>
+<h5 id="syntax-6">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-8">Sample request</h5>
+<h5 id="sample-request-9">Sample request</h5>
 
 <p>This is an example of adding a CORS configuration that allows requests from <code class="highlighter-rouge">www.ibm.com</code> to issue <code class="highlighter-rouge">GET</code>, <code class="highlighter-rouge">PUT</code>, and <code class="highlighter-rouge">POST</code> requests to the bucket.</p>
 
@@ -1191,7 +1028,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-7">Sample response</h5>
+<h5 id="sample-response-8">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 15:39:38 GMT</span>
@@ -1208,13 +1045,13 @@ Signature={signature}
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-9">Syntax</h5>
+<h5 id="syntax-7">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-9">Sample request</h5>
+<h5 id="sample-request-10">Sample request</h5>
 
 <p>This is an example of deleting a CORS configuration for a bucket.</p>
 
@@ -1227,19 +1064,19 @@ Signature={signature}
 
 <p>The server responds with <code class="highlighter-rouge">204 No Content</code>.</p>
 
-<h2 id="operations-on-objects">Operations on Objects</h2>
+<h3 id="operations-on-objects">Operations on Objects</h3>
 
-<h3 id="upload-an-object">Upload an object</h3>
+<h4 id="upload-an-object">Upload an object</h4>
 
 <p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.</p>
 
-<h5 id="syntax-10">Syntax</h5>
+<h5 id="syntax-8">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-10">Sample request</h5>
+<h5 id="sample-request-11">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1258,7 +1095,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-8">Sample response</h5>
+<h5 id="sample-response-9">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:30:02 GMT</span>
@@ -1272,17 +1109,17 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h3 id="get-an-objects-headers">Get an objects headers</h3>
+<h4 id="get-an-objects-headers">Get an objects headers</h4>
 
 <p>A <code class="highlighter-rouge">HEAD</code> given a path to an object retrieves that object’s headers.</p>
 
-<h5 id="syntax-11">Syntax</h5>
+<h5 id="syntax-9">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-11">Sample request</h5>
+<h5 id="sample-request-12">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">HEAD</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1292,7 +1129,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-9">Sample response</h5>
+<h5 id="sample-response-10">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:32:44 GMT</span>
@@ -1308,17 +1145,17 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h3 id="download-an-object">Download an object</h3>
+<h4 id="download-an-object">Download an object</h4>
 
 <p>A <code class="highlighter-rouge">GET</code> given a path to an object uploads an object.</p>
 
-<h5 id="syntax-12">Syntax</h5>
+<h5 id="syntax-10">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-12">Sample request</h5>
+<h5 id="sample-request-13">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary/worker-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1327,7 +1164,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-10">Sample response</h5>
+<h5 id="sample-response-11">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:34:25 GMT</span>
@@ -1348,17 +1185,17 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h3 id="delete-an-object">Delete an object</h3>
+<h4 id="delete-an-object">Delete an object</h4>
 
 <p>A <code class="highlighter-rouge">DELETE</code> given a path to an object deletes an object.</p>
 
-<h5 id="syntax-13">Syntax</h5>
+<h5 id="syntax-11">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-13">Sample request</h5>
+<h5 id="sample-request-14">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1367,7 +1204,7 @@ Signature={signature}
 </code></pre>
 </div>
 
-<h5 id="sample-response-11">Sample response</h5>
+<h5 id="sample-response-12">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 17:44:57 GMT</span>
@@ -1394,8 +1231,8 @@ Signature={signature}
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. <a href="/nicholas-lange/cos-docsnotices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 22, 2016 <br /><br />
+               &copy;2016 IBM. <a href="/nicholas-lange/cos-docs/notices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 28, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

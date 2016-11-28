@@ -47,8 +47,11 @@ Simple use cases can be accomplished using `aws --endpoint-url={endpoint} s3 <co
 
 Listing buckets:
 
+```shell
+$ aws --endpoint-url=https://{endpoint} s3 ls
 ```
-$ aws --endpoint-url=https://{endpoint} s3 ls 
+
+```shell
 2016-09-09 12:48  s3://bucket-1
 2016-09-16 21:29  s3://bucket-2
 ```
@@ -57,6 +60,9 @@ Listing objects within a bucket:
 
 ```bash
 $ aws --endpoint-url=https://{endpoint} s3 ls s3://bucket-1/
+```
+
+```terminal
 2016-09-28 15:36       837   s3://bucket-1/c1ca2-filename-00001
 2016-09-09 12:49       533   s3://bucket-1/c9872-filename-00002
 2016-09-28 15:36     14476   s3://bucket-1/98837-filename-00003

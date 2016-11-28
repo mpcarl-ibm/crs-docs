@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -370,60 +370,6 @@
             
             
             <li class="subfolders">
-                <a href="#">API reference (by request)</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-get.html">GET operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-put.html">PUT and POST operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-head.html">HEAD and OPTIONS operations</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="subfolders">
-                <a href="#">API reference (by operation)</a>
-                <ul>
-                    
-                    
-                    
-                    <li><a href="crs-account-operations.html">Account operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-bucket-operations.html">Bucket operations</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-object-operations.html">Object operations</a></li>
-                    
-                    
-                    
-                </ul>
-            </li>
-            
-            
-            
-            <li class="subfolders">
                 <a href="#">Compatible tools and SDKs</a>
                 <ul>
                     
@@ -465,7 +411,14 @@
             
             
             
-            <li><a href="crs-best-practices.html">Best practices and performance tips</a></li>
+            <li><a href="crs-api-reference.html">Complete API reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="crs-best-practices.html">Best practices and performance</a></li>
             
             
             
@@ -591,8 +544,11 @@ aws_secret_access_key = {Secret Access Key}
 
 <p>Listing buckets:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ aws --endpoint-url=https://{endpoint} s3 ls 
-2016-09-09 12:48  s3://bucket-1
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>aws --endpoint-url<span class="o">=</span>https://<span class="o">{</span>endpoint<span class="o">}</span> s3 ls
+</code></pre>
+</div>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>2016-09-09 12:48  s3://bucket-1
 2016-09-16 21:29  s3://bucket-2
 </code></pre>
 </div>
@@ -600,7 +556,10 @@ aws_secret_access_key = {Secret Access Key}
 <p>Listing objects within a bucket:</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>aws --endpoint-url<span class="o">=</span>https://<span class="o">{</span>endpoint<span class="o">}</span> s3 ls s3://bucket-1/
-2016-09-28 15:36       837   s3://bucket-1/c1ca2-filename-00001
+</code></pre>
+</div>
+
+<div class="language-terminal highlighter-rouge"><pre class="highlight"><code>2016-09-28 15:36       837   s3://bucket-1/c1ca2-filename-00001
 2016-09-09 12:49       533   s3://bucket-1/c9872-filename-00002
 2016-09-28 15:36     14476   s3://bucket-1/98837-filename-00003
 2016-09-29 16:24     20950   s3://bucket-1/abfc4-filename-00004
@@ -928,8 +887,8 @@ Raw output from 'list_buckets()' in bucket-2:
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. <a href="/nicholas-lange/cos-docsnotices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 22, 2016 <br /><br />
+               &copy;2016 IBM. <a href="/nicholas-lange/cos-docs/notices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 28, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

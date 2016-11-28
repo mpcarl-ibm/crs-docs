@@ -4,47 +4,21 @@ keywords:
 last_updated: November 18, 2016
 tags: 
 summary: 
-sidebar: crs_sidebar
+sidebar: crs_api_sidebar
 permalink: crs-api-reference.html
 folder: crs
+toc: false
 ---
-
-> IBM COS Standard Cross Region is currently in open trial. 
-> 
-> Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
-
-### Table of Contents
-
-* [Overview](#overview)
-* [Common Headers and Error Responses](#headers-and-error-response)
-* [Account Operations](#operations-on-service)
-* [Bucket Operations](#operations-on-buckets)
-* [Object Operations](#operations-on-objects)
 
 ###  Overview
 {: #overview}
 
 The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found in the [API overview]({{ site.baseurl }}/beta/api/overview/).
 
-> **Note:** This documentation for the open trial is in-progress and does not yet provide detailed usage guidance and examples for all supported operations. 
+{% include note.html content="This reference documentation is being updated continously. If you have technical questions about using the API in your application, please post them on StackOverflow using both `ibm-bluemix` and `object-storage` tags and we will do our best to answer promptly, and then improve this documentation thanks to your feedback." %}
 
-### Authorization
-The `authorization` header is required for all requests, and is calculated according to the AWS Signature Version 4 protocol.  This provides identity verification and in-transit data integrity, and is tied to the timestamp of the request.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature (line breaks added for readability):  
-
-```
-AWS4-HMAC-SHA256 
-Credential={access-key}/{date}/{region}/s3/aws4_request, 
-SignedHeaders=host;x-amz-date;{other-required-headers}, 
-Signature={signature}
-```
-
-The date is provided in `YYYYMMDD` format, and the region can be any value (e.g. `us-standard`). The `host` and `x-amz-date` headers are always required, and depending on the request other headers may be required as well (e.g. `x-amz-content-sha256`).  The 256 bit signature is given as 64 hexadecimal character string and is calculated from multiple combinations and hashes of the request elements.  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.
-
-> **INTERNAL NOTE**: The signature calculation process is fairly involved, and will be illustracted here but is still in-progress.  [AWS signature calculation documentation can be viewed here](http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html). 
-
-
-### Common Headers and Error Responses
-{: #headers-and-error-response} 
+### Common Headers
+{: #headers} 
 
 #### Common Request Headers
 The following table describes supported common request headers. Headers not listed here will be ignored if sent in a request.
@@ -61,7 +35,6 @@ The following table describes supported common request headers. Headers not list
 
 ####  Common Response Headers
 The following table describes common response headers.
-
 
 |  Header        | Note |
 |----------------|------|
@@ -80,8 +53,8 @@ A `GET` issued to the endpoint root returns a list of buckets associated with th
 
 ##### Syntax
 
-```ShellSession
-GET http://{endpoint}/
+```bash
+GET https://{endpoint}/
 ```
 
 ##### Sample request
@@ -131,10 +104,16 @@ Authorization: {authorization-string}
 
 A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.
 
-##### Syntax
+##### Path based syntax
 
 ```bash
-PUT http://{endpoint}/{bucket-name}
+PUT https://{endpoint}/{bucket-name}
+```
+
+##### Virtual host based syntax
+
+```bash
+PUT https://{bucket-name}.{endpoint}
 ```
 
 ##### Sample request
@@ -162,14 +141,61 @@ x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
 Content-Length: 0
 ```
 
+#### Retrieve a bucket's headers
+
+A `HEAD` issued to the a bucket will return the headers for that bucket.
+
+##### Path based syntax
+
+```bash
+HEAD https://{endpoint}/{bucket-name}
+```
+
+##### Virtual host based syntax
+
+```bash
+HEAD https://{bucket-name}.{endpoint}
+```
+
+##### Sample request
+
+This is an example of fetching the headers for the 'images' bucket.
+
+```http
+HEAD /images HTTP/1.1
+Content-Type: text/plain
+Host: s3-api.us-geo.objectstorage.softlayer.net
+X-Amz-Date: 20160821T052842Z
+Authorization:{authorization-string}
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Wed, 24 Aug 2016 17:46:35 GMT
+X-Clv-Request-Id: 0c2832e3-3c51-4ea6-96a3-cd8482aca08a
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.115
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 0c2832e3-3c51-4ea6-96a3-cd8482aca08a
+Content-Length: 0
+```
+
 #### List objects in a given bucket
 
 When a `GET` request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.
 
-##### Syntax
+##### Path based syntax
 
 ```bash
 GET http://{endpoint}/{bucket-name}
+```
+
+##### Virtual host based syntax
+
+```bash
+GET http://{bucket-name}.{endpoint}
 ```
 
 ##### Sample request
@@ -594,10 +620,10 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 The server responds with `204 No Content`.
 
-## Operations on Objects
+### Operations on Objects
 {: #operations-on-objects}
 
-### Upload an object
+#### Upload an object
 
 A `PUT` given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.
 
@@ -641,7 +667,7 @@ ETag: "3ca744fa96cb95e92081708887f63de5"
 Content-Length: 0
 ```
 
-### Get an objects headers
+#### Get an objects headers
 
 A `HEAD` given a path to an object retrieves that object's headers.
 
@@ -677,7 +703,7 @@ Last-Modified: Thu, 25 Aug 2016 17:49:06 GMT
 Content-Length: 11
 ```
 
-### Download an object
+#### Download an object
 
 A `GET` given a path to an object uploads an object.
 
@@ -717,7 +743,7 @@ Content-Length: 467
  acting almost as a single organism in fulfilling their purpose.
 ```
 
-### Delete an object
+#### Delete an object
 
 A `DELETE` given a path to an object deletes an object.
 

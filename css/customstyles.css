@@ -164,9 +164,7 @@ table > colgroup + thead > tr:first-child > td,
 table > thead:first-child > tr:first-child > td {
     border-top: 0;
 }
-table > tbody + tbody {
-    b
-}
+
 table > tbody > tr:nth-of-type(odd) {
     background-color: #f0f3f6;
 }
@@ -200,6 +198,16 @@ table tr td {
 table.overviewtable th:first-child { width: 19em; }
 table.overviewtable th:nth-child(2) { width: 6em; }
 table.overviewtable th:nth-child(3) { width: 25em; }
+
+table.endpointtable {
+    max-width: 150%;
+}
+table.endpointtable th:first-child { width: 3em; }
+table.endpointtable th:nth-child(2) { width: 3em; }
+table.endpointtable th:nth-child(3) { width: 80em; }
+table.endpointtable tbody > tr {
+    background-color: #ffffff;
+}
 
 table.opstable th:first-child { width: 14em; }
 
@@ -443,7 +451,7 @@ p.external a:hover {
 
 .nav ul li a {
     border-top:1px solid #f5f7fa;
-    padding-left:10px;
+    padding-left:20px;
 }
 /* end sidebar */
 

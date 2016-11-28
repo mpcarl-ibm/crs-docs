@@ -112,39 +112,7 @@ entries:
 
         - title: API FAQ
           url: /crs-api-faq.html
-          output: web, pdf  
-
-      - title: API reference (by request)
-        output: web, pdf
-        
-        subfolderitems:
-        - title: GET operations
-          url: /crs-get.html
-          output: web, pdf  
-
-        - title: PUT and POST operations
-          url: /crs-put.html
-          output: web, pdf  
-
-        - title: HEAD and OPTIONS operations
-          url: /crs-head.html
-          output: web, pdf  
-
-      - title: API reference (by operation)
-        output: web, pdf
-        
-        subfolderitems:
-        - title: Account operations
-          url: /crs-account-operations.html
-          output: web, pdf  
-
-        - title: Bucket operations
-          url: /crs-bucket-operations.html
-          output: web, pdf  
-
-        - title: Object operations
-          url: /crs-object-operations.html
-          output: web, pdf  
+          output: web, pdf    
 
       - title: Compatible tools and SDKs
         output: web, pdf
@@ -170,7 +138,11 @@ entries:
           url: /crs-sdk-faq.html
           output: web, pdf
 
-    - title: Best practices and performance tips
+    - title: Complete API reference
+      url: /crs-api-reference.html
+      output: web, pdf  
+
+    - title: Best practices and performance
       url: /crs-best-practices.html
       output: web, pdf
 
