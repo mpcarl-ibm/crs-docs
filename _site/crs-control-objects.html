@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title> | IBM COS Documentation</title>
+<title>Creating and using objects | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
@@ -124,15 +124,11 @@
                     <ul class="dropdown-menu">
                         
                         
-                        <li><a href="index.html">IBM COS Standard Cross-Region (GA)</a></li>
+                        <li><a href="index.html">IBM COS Standard Cross-Region (S3 API)</a></li>
                         
                         
                         
-                        <li><a href="crs-basic-overview.html">IBM COS Standard Cross-Region (open trial)</a></li>
-                        
-                        
-                        
-                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional</a></li>
+                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional (Swift API)</a></li>
                         
                         
                         
@@ -172,7 +168,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Creating and using objects">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -260,13 +256,6 @@
             
             
             
-            <li><a href="crs-managing-users.html">Managing user accounts</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="crs-endpoints.html">Connecting to endpoints</a></li>
             
             
@@ -329,13 +318,6 @@
             
             
             
-            
-            
-            
-            <li><a href="crs-example-workflow.html">Example workflow</a></li>
-            
-            
-            
             <li class="subfolders">
                 <a href="#">API overview</a>
                 <ul>
@@ -358,12 +340,6 @@
                     
                     
                     
-                    
-                    
-                    <li><a href="crs-api-faq.html">API FAQ</a></li>
-                    
-                    
-                    
                 </ul>
             </li>
             
@@ -375,7 +351,7 @@
                     
                     
                     
-                    <li><a href="crs-guis.html">Simple GUIs</a></li>
+                    <li><a href="crs-guis.html">Desktop clients</a></li>
                     
                     
                     
@@ -388,18 +364,6 @@
                     
                     
                     <li><a href="crs-python.html">Using Python with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-java.html">Using Java with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-sdk-faq.html">Tools and SDKs FAQ</a></li>
                     
                     
                     
@@ -440,14 +404,7 @@
             
             
             
-            <li><a href="crs-pricing.html">Pricing</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-faq.html">FAQs</a></li>
+            <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2" target="_blank">Pricing</a></li>
             
             
             
@@ -470,7 +427,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main"></h1>
+   <h1 class="post-title-main">Creating and using objects</h1>
 </div>
 
 
@@ -480,34 +437,30 @@
    
 
     
-    
-<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
-<script>
-$( document ).ready(function() {
-  // Handler for .ready() called.
-
-$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
-
-/* this offset helps account for the space taken up by the floating toolbar. */
-$('#toc').on('click', 'a', function() {
-  var target = $(this.getAttribute('href'))
-    , scroll_target = target.offset().top
-
-  $(window).scrollTop(scroll_target - 10);
-  return false
-})
-  
-});
-</script>
-
-<div id="toc"></div>
-
-    
 
 
     
 
-  
+  <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The user interface portal provides a high level view of a storage account.  It is possible to create buckets and upload objects using the portal, but typically most interaction with the object store is done through the API by a client application.</div>
+
+<h4 id="using-objects">Using objects</h4>
+<ol>
+  <li>The objects present within a bucket can be viewed, by clicking the bucket name on the buckets list.</li>
+  <li>The header is updated to include the following info:
+    <ul>
+      <li>Name of the account currently being viewed</li>
+      <li>The current region being viewed</li>
+      <li>The name of the bucket whose objects are currently displayed</li>
+      <li>The type of the bucket whose objects are currently displayed</li>
+    </ul>
+  </li>
+  <li>Above the grid on the left is a link with the name of the bucket currently viewed. Click the link to show the list of buckets again.</li>
+  <li>The grid shows the list of objects in the bucket.</li>
+  <li>A new object can be added, by clicking the <strong>+</strong> button at the right of the first row.</li>
+  <li>The file can be selected from the file system, by clicking the <strong>select</strong> button and the new file uploaded, by clicking the <strong>Add</strong> button.  When using the portal to add an object, file size is limited to 20 megabytes. (When using the API, objects as large as 5 gigabytes can be uploaded in a single <code class="highlighter-rouge">PUT</code>, and as large as 5 terabytes when using a multi-part upload.)</li>
+  <li>An object can be deleted, by clicking on the red <strong>-</strong> button to the extreme right of the object name. This opens a confirmation window.</li>
+  <li>Click the <strong>Delete</strong> button to remove the object from the bucket.</li>
+</ol>
 
 
     <div class="tags">

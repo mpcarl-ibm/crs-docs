@@ -124,15 +124,11 @@
                     <ul class="dropdown-menu">
                         
                         
-                        <li><a href="index.html">IBM COS Standard Cross-Region (GA)</a></li>
+                        <li><a href="index.html">IBM COS Standard Cross-Region (S3 API)</a></li>
                         
                         
                         
-                        <li><a href="crs-basic-overview.html">IBM COS Standard Cross-Region (open trial)</a></li>
-                        
-                        
-                        
-                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional</a></li>
+                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional (Swift API)</a></li>
                         
                         
                         
@@ -260,13 +256,6 @@
             
             
             
-            <li><a href="crs-managing-users.html">Managing user accounts</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="crs-endpoints.html">Connecting to endpoints</a></li>
             
             
@@ -329,13 +318,6 @@
             
             
             
-            
-            
-            
-            <li><a href="crs-example-workflow.html">Example workflow</a></li>
-            
-            
-            
             <li class="subfolders">
                 <a href="#">API overview</a>
                 <ul>
@@ -358,12 +340,6 @@
                     
                     
                     
-                    
-                    
-                    <li><a href="crs-api-faq.html">API FAQ</a></li>
-                    
-                    
-                    
                 </ul>
             </li>
             
@@ -375,7 +351,7 @@
                     
                     
                     
-                    <li><a href="crs-guis.html">Simple GUIs</a></li>
+                    <li><a href="crs-guis.html">Desktop clients</a></li>
                     
                     
                     
@@ -388,18 +364,6 @@
                     
                     
                     <li><a href="crs-python.html">Using Python with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-java.html">Using Java with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-sdk-faq.html">Tools and SDKs FAQ</a></li>
                     
                     
                     
@@ -440,14 +404,7 @@
             
             
             
-            <li><a href="crs-pricing.html">Pricing</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-faq.html">FAQs</a></li>
+            <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2" target="_blank">Pricing</a></li>
             
             
             
@@ -480,42 +437,14 @@
    
 
     
-    
-<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
-<script>
-$( document ).ready(function() {
-  // Handler for .ready() called.
-
-$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
-
-/* this offset helps account for the space taken up by the floating toolbar. */
-$('#toc').on('click', 'a', function() {
-  var target = $(this.getAttribute('href'))
-    , scroll_target = target.offset().top
-
-  $(window).scrollTop(scroll_target - 10);
-  return false
-})
-  
-});
-</script>
-
-<div id="toc"></div>
-
-    
 
 
     
 
-  <blockquote>
-  <p>IBM COS Standard Cross Region is currently in open trial.</p>
-
-  <p>Please visit <a href="https://www.softlayer.com/Store/orderService/objectStorage">IBM Cloud</a> to participate.</p>
-</blockquote>
-
+  <h3 id="creating-support-tickets">Creating support tickets</h3>
 <p>Customers requiring support can open a ticket and check the status of an issue in the <a href="https://control.softlayer.com/">customer portal</a>.</p>
 
-<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<h3 id="frequently-asked-questions">Frequently asked questions</h3>
 
 <h4 id="what-is-the-maximum-number-of-buckets-per-storage-account--what-if-i-need-more">What is the maximum number of buckets per storage account?  What if I need more?</h4>
 
@@ -527,7 +456,15 @@ $('#toc').on('click', 'a', function() {
 
 <h4 id="can-i-nest-buckets-inside-one-another">Can I nest buckets inside one another?</h4>
 
-<p>No, buckets can not be nested.  If a greater level of organization is required within a bucket, the use of prefixes is supported: <code class="highlighter-rouge"><span class="p">{</span><span class="err">endpoint</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">bucket-name</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-prefix</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-name</span><span class="p">}</span></code>.  Note that the object’s key remains the combination <code class="highlighter-rouge"><span class="p">{</span><span class="err">object-prefix</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-name</span><span class="p">}</span></code> and that</p>
+<p>No, buckets can not be nested.  If a greater level of organization is required within a bucket, the use of prefixes is supported: <code class="highlighter-rouge"><span class="p">{</span><span class="err">endpoint</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">bucket-name</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-prefix</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-name</span><span class="p">}</span></code>.  Note that the object’s key remains the combination <code class="highlighter-rouge"><span class="p">{</span><span class="err">object-prefix</span><span class="p">}</span><span class="err">/</span><span class="p">{</span><span class="err">object-name</span><span class="p">}</span></code>.</p>
+
+<h4 id="what-is-the-difference-between-class-a-and-class-b-requests">What is the difference between ‘Class A’ and ‘Class B’ requests?</h4>
+
+<p>‘Class A’ requests are operations that involve modification or listing.  This includes creating buckets, uploading or copying objects, creating or changing configurations, listing buckets, and listing the contents of buckets.</p>
+
+<p>‘Class B’ requests are those related to retrieving objects or their associated metadata/configurations from the system.</p>
+
+<p>There is no charge for deleting buckets or objects from the system.</p>
 
 
     <div class="tags">

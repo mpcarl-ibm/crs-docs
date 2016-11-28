@@ -1,5 +1,5 @@
 ---
-title:  
+title: Using Python with IBM COS
 keywords: 
 last_updated: November 18, 2016
 tags: 
@@ -9,18 +9,16 @@ permalink: crs-python.html
 folder: crs
 ---
 
- # Python
-
 Python support is provided through the Boto 3 library.  It can be installed from the Python Package Index via `pip install boto3`. The examples shown here were generated using version 1.4.0 of the boto3 package.  
 
-> **Note**: Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3. 
+{% include note.html content="Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3. " %}
 
 The `boto3` library provides complete access to the S3 API and can source credentials from the `~/.aws/credentials` file referenced above.  The IBM COS endpoint must be specified when creating a service resource or low-level client as shown in the following basic examples. 
 
-Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.readthedocs.io/en/latest/reference/services/s3.html).
+{% include tip.html content= "Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.readthedocs.io/en/latest/reference/services/s3.html)." %}
 
 
-**Sample service resource script**
+### Example service resource script
 
 Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by an account, and lists the objects in each bucket. 
 
@@ -37,7 +35,7 @@ for bucket in s3.buckets.all():
         print("  - %s") % obj.key
 ```
 
-**Sample script response**
+##### Example script response
 
 ```
 bucket-1
@@ -49,7 +47,7 @@ bucket-2
   - c1ca2-filename-00011
 ```
 
-**Sample low-level client script**
+### Example low-level client script
 
 Creating a low-level client allows for considerably more detail and access to metadata. This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. As considerably more data is returned than in the previous example, the `pprintpp` package is used to increase the readability of the raw output.
 
@@ -72,7 +70,7 @@ for bucket in buckets['Buckets']:
     pp.pprint(objects)
 ```
 
-**Sample script response**
+##### Example script response
 
 ```
 These are the buckets in this service account:

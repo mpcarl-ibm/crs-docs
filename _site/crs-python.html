@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title> | IBM COS Documentation</title>
+<title>Using Python with IBM COS | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
@@ -124,15 +124,11 @@
                     <ul class="dropdown-menu">
                         
                         
-                        <li><a href="index.html">IBM COS Standard Cross-Region (GA)</a></li>
+                        <li><a href="index.html">IBM COS Standard Cross-Region (S3 API)</a></li>
                         
                         
                         
-                        <li><a href="crs-basic-overview.html">IBM COS Standard Cross-Region (open trial)</a></li>
-                        
-                        
-                        
-                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional</a></li>
+                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional (Swift API)</a></li>
                         
                         
                         
@@ -172,7 +168,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Using Python with IBM COS">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -260,13 +256,6 @@
             
             
             
-            <li><a href="crs-managing-users.html">Managing user accounts</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="crs-endpoints.html">Connecting to endpoints</a></li>
             
             
@@ -329,13 +318,6 @@
             
             
             
-            
-            
-            
-            <li><a href="crs-example-workflow.html">Example workflow</a></li>
-            
-            
-            
             <li class="subfolders">
                 <a href="#">API overview</a>
                 <ul>
@@ -358,12 +340,6 @@
                     
                     
                     
-                    
-                    
-                    <li><a href="crs-api-faq.html">API FAQ</a></li>
-                    
-                    
-                    
                 </ul>
             </li>
             
@@ -375,7 +351,7 @@
                     
                     
                     
-                    <li><a href="crs-guis.html">Simple GUIs</a></li>
+                    <li><a href="crs-guis.html">Desktop clients</a></li>
                     
                     
                     
@@ -388,18 +364,6 @@
                     
                     
                     <li class="active"><a href="crs-python.html">Using Python with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-java.html">Using Java with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-sdk-faq.html">Tools and SDKs FAQ</a></li>
                     
                     
                     
@@ -440,14 +404,7 @@
             
             
             
-            <li><a href="crs-pricing.html">Pricing</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-faq.html">FAQs</a></li>
+            <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2" target="_blank">Pricing</a></li>
             
             
             
@@ -470,7 +427,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main"></h1>
+   <h1 class="post-title-main">Using Python with IBM COS</h1>
 </div>
 
 
@@ -507,19 +464,15 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p># Python</p>
+  <p>Python support is provided through the Boto 3 library.  It can be installed from the Python Package Index via <code class="highlighter-rouge">pip install boto3</code>. The examples shown here were generated using version 1.4.0 of the boto3 package.</p>
 
-<p>Python support is provided through the Boto 3 library.  It can be installed from the Python Package Index via <code class="highlighter-rouge">pip install boto3</code>. The examples shown here were generated using version 1.4.0 of the boto3 package.</p>
-
-<blockquote>
-  <p><strong>Note</strong>: Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3.</p>
-</blockquote>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3. </div>
 
 <p>The <code class="highlighter-rouge">boto3</code> library provides complete access to the S3 API and can source credentials from the <code class="highlighter-rouge">~/.aws/credentials</code> file referenced above.  The IBM COS endpoint must be specified when creating a service resource or low-level client as shown in the following basic examples.</p>
 
-<p>Detailed documentation can be found at <a href="https://boto3.readthedocs.io/en/latest/reference/services/s3.html">boto3.readthedocs.io</a>.</p>
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Detailed documentation can be found at <a href="https://boto3.readthedocs.io/en/latest/reference/services/s3.html">boto3.readthedocs.io</a>.</div>
 
-<p><strong>Sample service resource script</strong></p>
+<h3 id="example-service-resource-script">Example service resource script</h3>
 
 <p>Creating a service resource provides greater abstraction for higher level tasks.  This is a basic script that fetches the list of buckets owned by an account, and lists the objects in each bucket.</p>
 
@@ -536,7 +489,7 @@ $('#toc').on('click', 'a', function() {
 </code></pre>
 </div>
 
-<p><strong>Sample script response</strong></p>
+<h5 id="example-script-response">Example script response</h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>bucket-1
   - c1ca2-filename-00001
@@ -548,7 +501,7 @@ bucket-2
 </code></pre>
 </div>
 
-<p><strong>Sample low-level client script</strong></p>
+<h3 id="example-low-level-client-script">Example low-level client script</h3>
 
 <p>Creating a low-level client allows for considerably more detail and access to metadata. This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. As considerably more data is returned than in the previous example, the <code class="highlighter-rouge">pprintpp</code> package is used to increase the readability of the raw output.</p>
 
@@ -571,7 +524,7 @@ bucket-2
 </code></pre>
 </div>
 
-<p><strong>Sample script response</strong></p>
+<h5 id="example-script-response-1">Example script response</h5>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>These are the buckets in this service account:
 {

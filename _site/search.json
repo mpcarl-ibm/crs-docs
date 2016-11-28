@@ -224,7 +224,7 @@
 
 
 {
-"title": "",
+"title": "Using the AWS CLI to connect to IBM COS",
 "tags": "",
 "keywords": "",
 "url": "crs-cli.html",
@@ -235,7 +235,7 @@
 
 
 {
-"title": "",
+"title": "Connecting to IBM COS Cross-Region",
 "tags": "",
 "keywords": "",
 "url": "crs-connecting.html",
@@ -246,7 +246,7 @@
 
 
 {
-"title": "",
+"title": "Creating and using buckets",
 "tags": "",
 "keywords": "",
 "url": "crs-control-buckets.html",
@@ -257,7 +257,7 @@
 
 
 {
-"title": "",
+"title": "Viewing credentials and endpoints",
 "tags": "",
 "keywords": "",
 "url": "crs-control-credentials.html",
@@ -268,7 +268,7 @@
 
 
 {
-"title": "",
+"title": "Creating and using objects",
 "tags": "",
 "keywords": "",
 "url": "crs-control-objects.html",
@@ -290,7 +290,7 @@
 
 
 {
-"title": "",
+"title": "Creating an IBM COS Cross-Region storage account",
 "tags": "",
 "keywords": "",
 "url": "crs-create-storage-account.html",
@@ -345,7 +345,7 @@
 
 
 {
-"title": "",
+"title": "Using desktop clients",
 "tags": "",
 "keywords": "",
 "url": "crs-guis.html",
@@ -444,7 +444,7 @@
 
 
 {
-"title": "",
+"title": "Using Python with IBM COS",
 "tags": "",
 "keywords": "",
 "url": "crs-python.html",
@@ -477,7 +477,7 @@
 
 
 {
-"title": "",
+"title": "Using the SoftLayer API",
 "tags": "",
 "keywords": "",
 "url": "crs-sldn.html",

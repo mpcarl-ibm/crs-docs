@@ -7,15 +7,13 @@ summary:
 sidebar: crs_sidebar
 permalink: crs-support.html
 folder: crs
+toc: false
 ---
 
-> IBM COS Standard Cross Region is currently in open trial. 
-> 
-> Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate.
-
+### Creating support tickets
 Customers requiring support can open a ticket and check the status of an issue in the [customer portal](https://control.softlayer.com/){: new_window}.
 
-## Frequently asked questions
+### Frequently asked questions
 
 #### What is the maximum number of buckets per storage account?  What if I need more?
 
@@ -27,4 +25,12 @@ There is no practical limit to the number of objects in a single bucket.
 
 #### Can I nest buckets inside one another?
 
-No, buckets can not be nested.  If a greater level of organization is required within a bucket, the use of prefixes is supported: `{endpoint}/{bucket-name}/{object-prefix}/{object-name}`.  Note that the object's key remains the combination `{object-prefix}/{object-name}` and that
+No, buckets can not be nested.  If a greater level of organization is required within a bucket, the use of prefixes is supported: `{endpoint}/{bucket-name}/{object-prefix}/{object-name}`.  Note that the object's key remains the combination `{object-prefix}/{object-name}`.
+
+#### What is the difference between 'Class A' and 'Class B' requests?
+
+'Class A' requests are operations that involve modification or listing.  This includes creating buckets, uploading or copying objects, creating or changing configurations, listing buckets, and listing the contents of buckets.
+
+'Class B' requests are those related to retrieving objects or their associated metadata/configurations from the system.
+
+There is no charge for deleting buckets or objects from the system.

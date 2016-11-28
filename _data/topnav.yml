@@ -22,11 +22,9 @@ topnav_dropdowns:
           external_url: https://www.ibm.com/cloud-computing/products/storage/object-storage/
     - title: Documentation
       folderitems:
-        - title: IBM COS Standard Cross-Region (GA)
+        - title: IBM COS Standard Cross-Region (S3 API)
           url: /index.html
-        - title: IBM COS Standard Cross-Region (open trial)
-          url: /crs-basic-overview.html
-        - title: IBM COS Standard Regional
+        - title: IBM COS Standard Regional (Swift API)
           external_url: http://sldn.softlayer.com/reference/objectstorageapi
         - title: Object Storage for Bluemix
           external_url: https://console.ng.bluemix.net/docs/services/ObjectStorage/index.html

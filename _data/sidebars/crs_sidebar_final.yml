@@ -49,6 +49,10 @@ entries:
       url: /crs-create-storage-account.html
       output: web, pdf
 
+    - title: Managing user accounts
+      url: /crs-managing-users.html
+      output: web, pdf
+
     - title: Connecting to endpoints
       url: /crs-endpoints.html
       output: web, pdf  
@@ -85,6 +89,10 @@ entries:
       url: /crs-connecting.html
       output: web, pdf
 
+    - title: Example workflow
+      url: /crs-example-workflow.html
+      output: web, pdf 
+
       subfolders:
       - title: API overview
         output: web, pdf
@@ -100,13 +108,17 @@ entries:
 
         - title: About the SoftLayer API
           url: /crs-sldn.html
+          output: web, pdf 
+
+        - title: API FAQ
+          url: /crs-api-faq.html
           output: web, pdf    
 
       - title: Compatible tools and SDKs
         output: web, pdf
         
         subfolderitems:
-        - title: Desktop clients
+        - title: Simple GUIs
           url: /crs-guis.html
           output: web, pdf  
 
@@ -117,6 +129,14 @@ entries:
         - title: Using Python with IBM COS
           url: /crs-python.html
           output: web, pdf 
+
+        - title: Using Java with IBM COS
+          url: /crs-java.html
+          output: web, pdf 
+
+        - title: Tools and SDKs FAQ
+          url: /crs-sdk-faq.html
+          output: web, pdf
 
     - title: Complete API reference
       url: /crs-api-reference.html
@@ -135,7 +155,10 @@ entries:
       output: web, pdf
 
     - title: Pricing
-      external_url: https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2
+      url: /crs-pricing.html
       output: web, pdf
 
+    - title: FAQs
+      url: /crs-faq.html
+      output: web, pdf
 

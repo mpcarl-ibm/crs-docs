@@ -124,15 +124,11 @@
                     <ul class="dropdown-menu">
                         
                         
-                        <li><a href="index.html">IBM COS Standard Cross-Region (GA)</a></li>
+                        <li><a href="index.html">IBM COS Standard Cross-Region (S3 API)</a></li>
                         
                         
                         
-                        <li><a href="crs-basic-overview.html">IBM COS Standard Cross-Region (open trial)</a></li>
-                        
-                        
-                        
-                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional</a></li>
+                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional (Swift API)</a></li>
                         
                         
                         
@@ -260,13 +256,6 @@
             
             
             
-            <li><a href="crs-managing-users.html">Managing user accounts</a></li>
-            
-            
-            
-            
-            
-            
             <li><a href="crs-endpoints.html">Connecting to endpoints</a></li>
             
             
@@ -329,13 +318,6 @@
             
             
             
-            
-            
-            
-            <li><a href="crs-example-workflow.html">Example workflow</a></li>
-            
-            
-            
             <li class="subfolders">
                 <a href="#">API overview</a>
                 <ul>
@@ -358,12 +340,6 @@
                     
                     
                     
-                    
-                    
-                    <li><a href="crs-api-faq.html">API FAQ</a></li>
-                    
-                    
-                    
                 </ul>
             </li>
             
@@ -375,7 +351,7 @@
                     
                     
                     
-                    <li><a href="crs-guis.html">Simple GUIs</a></li>
+                    <li><a href="crs-guis.html">Desktop clients</a></li>
                     
                     
                     
@@ -388,18 +364,6 @@
                     
                     
                     <li><a href="crs-python.html">Using Python with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-java.html">Using Java with IBM COS</a></li>
-                    
-                    
-                    
-                    
-                    
-                    <li><a href="crs-sdk-faq.html">Tools and SDKs FAQ</a></li>
                     
                     
                     
@@ -440,14 +404,7 @@
             
             
             
-            <li><a href="crs-pricing.html">Pricing</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-faq.html">FAQs</a></li>
+            <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2" target="_blank">Pricing</a></li>
             
             
             
@@ -507,15 +464,148 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h3 id="the-authorization-header">The <code class="highlighter-rouge">authorization</code> header</h3>
-<p>Each request made against IBM COS using the S3 API must be authenticated using an implementation of the AWS <code class="highlighter-rouge">authorization</code> header.  IBM COS supports Signature Version 2 and Signature Version 4 authentication methods.  Signature Version 4 is considered more secure as it does not include the secret access key itself as part of the signature. Using a signature provides identity verification and in-transit data integrity, and because each signature is tied to the timestamp of the request it is not possible to reuse authorization headers.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature:</p>
+  <h3 id="about-the-authorization-header">About the <code class="highlighter-rouge">authorization</code> header</h3>
+<p>Each request made against IBM COS using the S3 API must be authenticated using an implementation of the AWS <code class="highlighter-rouge">authorization</code> header.  IBM COS supports Signature Version 2 and Signature Version 4 authentication methods.  Signature Version 4 is considered more secure as it does not include the secret access key itself as part of the signature but instead uses a . Using a signature provides identity verification and in-transit data integrity, and because each signature is tied to the timestamp of the request it is not possible to reuse authorization headers.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>AWS4-HMAC-SHA256 Credential={access-key}/{date}/{region}/s3/aws4_request,SignedHeaders=host;x-amz-date;{other-required-headers},Signature={signature}
 </code></pre>
 </div>
 
-<p>The date is provided in <code class="highlighter-rouge">YYYYMMDD</code> format, and for COS Cross-Region the region should be <code class="highlighter-rouge">us-standard</code>. The <code class="highlighter-rouge">host</code> and <code class="highlighter-rouge">x-amz-date</code> headers are always required, and depending on the request other headers may be required as well (e.g. <code class="highlighter-rouge">x-amz-content-sha256</code> in the case of requests with payloads).  Due to the need to recalulate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.</p>
+<p>The date is provided in <code class="highlighter-rouge">YYYYMMDD</code> format, and for COS Cross-Region the region should be <code class="highlighter-rouge">us-standard</code>. The <code class="highlighter-rouge">host</code> and <code class="highlighter-rouge">x-amz-date</code> headers are always required, and depending on the request other headers may be required as well (e.g. <code class="highlighter-rouge">x-amz-content-sha256</code> in the case of requests with payloads).  Due to the need to recalculate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.</p>
 
+<h3 id="creating-an-authorization-header">Creating an <code class="highlighter-rouge">authorization</code> header</h3>
+
+<p>First we need to create a request in a standardized format.</p>
+
+<ol>
+  <li>Declare which HTTP method we are using (e.g. <code class="highlighter-rouge">PUT</code>)</li>
+  <li>Define the resource we are accessing in a standardized fashion.  This is the part of the address in between <code class="highlighter-rouge">http(s)://</code> and the query string.  For requests at the account level (i.e. listing buckets) this is simply <code class="highlighter-rouge">/</code>.</li>
+  <li>If there are any request parameters they must be standardized by being percent-encoded (e.g. spaces should be represented as <code class="highlighter-rouge">%20</code>) and alphabetized.</li>
+  <li>Headers need to be standardized by removing whitespace, converting to lowercase, and adding a newline to each, then they must be sorted in ASCII order.</li>
+  <li>After being listed in a standard format, they must be ‘signed’.  This is taking just the header names, not their values, and listing them in alphabetical order, separated by semicolons. <code class="highlighter-rouge">Host</code> and <code class="highlighter-rouge">x-amz-date</code> are required for all requests.</li>
+  <li>If the request has a body, such as when uploading an object or creating a new ACL, the request body must be hashed using the SHA-256 algorithm and represented as base-16 encoded lowercase characters.</li>
+  <li>Combine the HTTP method, standardized resource, standardized parameters, standardized headers, signed headers, and hashed request body each separated by a newline to form a standardized request.</li>
+</ol>
+
+<p>Next we need to assemble a ‘string-to-sign’ which will be combined with the signature key to form the final signature. The string-to-sign takes the following form:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>AWS4-HMAC-SHA256
+{time}
+{date}/{region}/s3/aws4_request
+{hashed-standardized-request}
+</code></pre>
+</div>
+
+<ol>
+  <li>The time must be current UTC and formatted according to the ISO 8601 specification (e.g. <code class="highlighter-rouge">20161128T152924Z</code>).</li>
+  <li>The date is in <code class="highlighter-rouge">YYYYMMDD</code> format.</li>
+</ol>
+
+<p>TASK 3: CALCULATE THE SIGNATURE
+Create the signing key using the function defined above.
+Sign the string_to_sign using the signing_key</p>
+
+<p>TASK 4: ADD SIGNING INFORMATION TO THE REQUEST
+The signing information can be either in a query string value or in 
+a header named Authorization. This code shows how to use a header.
+Create authorization header and add to request headers
+The request can include any headers, but MUST include “host”, “x-amz-date”, 
+and (for this scenario) “Authorization”. “host” and “x-amz-date” must
+be included in the canonical_headers and signed_headers, as noted
+earlier. Order here is not significant.
+Python note: The ‘host’ header is added automatically by the Python ‘requests’ library.</p>
+
+<h3 id="example-of-generating-an-authorization-header">Example of generating an <code class="highlighter-rouge">authorization</code> header</h3>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">hmac</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c"># please don't store credentials directly in code</span>
+<span class="n">access_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'COS_S3_ACCESS_KEY_ID'</span><span class="p">)</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'COS_S3_SECRET_ACCESS_KEY'</span><span class="p">)</span>
+
+<span class="c"># request elements</span>
+<span class="n">http_method</span> <span class="o">=</span> <span class="s">'GET'</span>
+<span class="n">host</span> <span class="o">=</span> <span class="s">'s3-api.us-geo.objectstorage.softlayer.net'</span>
+<span class="n">region</span> <span class="o">=</span> <span class="s">'us-standard'</span>
+<span class="n">endpoint</span> <span class="o">=</span> <span class="s">'http://s3-api.us-geo.objectstorage.softlayer.net'</span>
+<span class="n">bucket</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">object_key</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">request_parameters</span> <span class="o">=</span> <span class="s">''</span>
+
+
+<span class="c"># hashing and signing methods</span>
+<span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">createSignatureKey</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">datestamp</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">service</span><span class="p">):</span>
+    <span class="n">keyDate</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">((</span><span class="s">'AWS4'</span> <span class="o">+</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">datestamp</span><span class="p">)</span>
+    <span class="n">keyRegion</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyDate</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
+    <span class="n">keyService</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyRegion</span><span class="p">,</span> <span class="n">service</span><span class="p">)</span>
+    <span class="n">keySigning</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyService</span><span class="p">,</span> <span class="s">'aws4_request'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">keySigning</span>
+
+
+<span class="c"># assemble the standardized request</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+<span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">Y</span><span class="si">%</span><span class="s">m</span><span class="si">%</span><span class="s">dT</span><span class="si">%</span><span class="s">H</span><span class="si">%</span><span class="s">M</span><span class="si">%</span><span class="s">SZ'</span><span class="p">)</span>
+<span class="n">datestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">Y</span><span class="si">%</span><span class="s">m</span><span class="si">%</span><span class="s">d'</span><span class="p">)</span>
+
+<span class="n">standardized_resource</span> <span class="o">=</span> <span class="n">bucket</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">object_key</span>
+<span class="n">standardized_querystring</span> <span class="o">=</span> <span class="n">request_parameters</span>
+<span class="n">standardized_headers</span> <span class="o">=</span> <span class="s">'host:'</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span> <span class="s">'x-amz-date:'</span> <span class="o">+</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span>
+<span class="n">signed_headers</span> <span class="o">=</span> <span class="s">'host;x-amz-date'</span>
+<span class="n">payload_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="n">standardized_request</span> <span class="o">=</span> <span class="p">(</span><span class="n">http_method</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+                        <span class="n">standardized_resource</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+                        <span class="n">standardized_querystring</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+                        <span class="n">standardized_headers</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+                        <span class="n">signed_headers</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+                        <span class="n">payload_hash</span><span class="p">)</span>
+
+
+<span class="c"># assemble string-to-sign</span>
+<span class="n">hashing_algorithm</span> <span class="o">=</span> <span class="s">'AWS4-HMAC-SHA256'</span>
+<span class="n">credential_scope</span> <span class="o">=</span> <span class="n">datestamp</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">region</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="s">'s3'</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="s">'aws4_request'</span>
+<span class="n">sts</span> <span class="o">=</span> <span class="p">(</span><span class="n">hashing_algorithm</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+       <span class="n">timestamp</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+       <span class="n">credential_scope</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span> <span class="o">+</span>
+       <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">standardized_request</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+
+
+<span class="c"># generate the signature</span>
+<span class="n">signature_key</span> <span class="o">=</span> <span class="n">createSignatureKey</span><span class="p">(</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">datestamp</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="s">'s3'</span><span class="p">)</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">signature_key</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">sts</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">),</span>
+                     <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+
+<span class="c"># assemble all elements into the 'authorization' header</span>
+<span class="n">v4auth_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">hashing_algorithm</span> <span class="o">+</span> <span class="s">' '</span> <span class="o">+</span>
+                 <span class="s">'Credential='</span> <span class="o">+</span> <span class="n">access_key</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">credential_scope</span> <span class="o">+</span> <span class="s">', '</span> <span class="o">+</span>
+                 <span class="s">'SignedHeaders='</span> <span class="o">+</span> <span class="n">signed_headers</span> <span class="o">+</span> <span class="s">', '</span> <span class="o">+</span>
+                 <span class="s">'Signature='</span> <span class="o">+</span> <span class="n">signature</span><span class="p">)</span>
+
+
+<span class="c"># create and send the request</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'x-amz-date'</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span> <span class="s">'Authorization'</span><span class="p">:</span> <span class="n">v4auth_header</span><span class="p">}</span>
+<span class="c"># the 'requests' package autmatically adds the required 'host' header</span>
+<span class="n">request_url</span> <span class="o">=</span> <span class="n">endpoint</span> <span class="o">+</span> <span class="n">standardized_resource</span> <span class="o">+</span> <span class="n">standardized_querystring</span>
+
+<span class="k">print</span> <span class="s">'</span><span class="se">\n</span><span class="s">Sending `</span><span class="si">%</span><span class="s">s` request to IBM COS -----------------------'</span> <span class="o">%</span> <span class="n">http_method</span>
+<span class="k">print</span> <span class="s">'Request URL = '</span> <span class="o">+</span> <span class="n">request_url</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">'</span><span class="se">\n</span><span class="s">Response from IBM COS ----------------------------------'</span>
+<span class="k">print</span> <span class="s">'Response code: </span><span class="si">%</span><span class="s">d</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">status_code</span>
+<span class="k">print</span> <span class="n">request</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
 
 
     <div class="tags">

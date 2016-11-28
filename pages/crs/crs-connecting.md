@@ -1,5 +1,5 @@
 ---
-title:  
+title: Connecting to IBM COS Cross-Region
 keywords: 
 last_updated: November 18, 2016
 tags: 
@@ -8,6 +8,3 @@ sidebar: crs_sidebar
 permalink: crs-connecting.html
 folder: crs
 ---
-
- 
-

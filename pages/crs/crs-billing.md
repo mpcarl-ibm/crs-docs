@@ -10,10 +10,10 @@ folder: crs
 toc: false
 ---
 
-{% include note.html content="Information on pricing can be found at [SoftLayer](https://www.softlayer.com/Store/orderService/objectStorage){: new_window}." %}
+{% include note.html content="Information on pricing can be found at [IBM Cloud](https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2){:new_window}." %}
 
 ### Invoices
-Invoices can be found at **Account** > **Billing** > **Invoices** in the navigation menu.
+Account invoices can be found at **Account** > **Billing** > **Invoices** in the navigation menu.
 
 {% include tip.html content="Each account receives a single bill. If you need separate billing for different sets of containers, then creating multiple accounts is necessary." %}
 
