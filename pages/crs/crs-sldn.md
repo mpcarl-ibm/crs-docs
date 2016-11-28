@@ -9,6 +9,10 @@ permalink: crs-sldn.html
 folder: crs
 ---
 
+{% include note.html content="This section is still under construction with some help from the SoftLayer team." %}
+
+More information on using the SoftLayer API to create or delete credentials, check capacity usage, retrieve a UUID, and other account functions can be found at the [SoftLayer Development Network](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account).
+
 ## Example script to retrieve an account ID
 
 ```python
