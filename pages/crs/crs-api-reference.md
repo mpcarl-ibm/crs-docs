@@ -53,7 +53,7 @@ A `GET` issued to the endpoint root returns a list of buckets associated with th
 
 ##### Syntax
 
-```bash
+```http
 GET https://{endpoint}/
 ```
 
@@ -106,13 +106,13 @@ A `PUT` issued to the endpoint root will create a bucket when a string is provid
 
 ##### Path based syntax
 
-```bash
+```shell
 PUT https://{endpoint}/{bucket-name}
 ```
 
 ##### Virtual host based syntax
 
-```bash
+```shell
 PUT https://{bucket-name}.{endpoint}
 ```
 
