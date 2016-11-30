@@ -1,27 +1,21 @@
-# Draft documentation for IBM Cloud Object Storage (Standard Cross Region) 
+# Documentation for IBM Cloud Object Storage (Cross Region) 
 
-This is the staging environment for COS documentation for the 12/1 GA.
+This documentation is intended for anyone interested in learning about IBM Cloud Object Storage and specifically focuses on the Cross-Region service that uses an implementation of the S3 API and is based on .  
 
-Items still in progress:
-- [x] Basic documentation for GUI tool.
-- [x] Basic documentation for CLI.
-- [x] Basic documentation for Python SDK.
-- [ ] Basic documentation for Java SDK.
-- [ ] Detailed workflow example (in the form of a Python script/library).
-- [ ] Documentation and code examples for SoftLayer API. 
-- [ ] Final UI walkthroughs for unified console. 
-- [ ] Additional detail around managing access and creating users. 
-- [ ] AWS Signature v4 documentation.
 
-Items still in backlog:
-- [ ] Spark/Hadoop documentation and code examples.
-- [ ] Aspera documentation and code examples.
-- [ ] Swagger API documentation format.
 
-Contact `nicholas.lange@ibm.com` OR `@nicholas.lange` on Slack with questions and concerns.
+This documentation covers:
+- Overview of IBM COS and its features
+- Guidance on creating accounts
+- Guidance on using the web based portal
+- Detailed reference guide for the REST API
+- Basic documentation for third party desktop clients and GUI tools
+- Basic documentation for third party CLI
+- Basic documentation for third party Python SDK
+- Basic documentation for third party Java SDK
 
-## Feedback
+For help with questions about IBM Cloud Object Storage and it's capabilities, please visit [dW Answers](https://developer.ibm.com/answers/smartspace/public-cloud-object-storage/) and tag questions with `objectstorage` and/or `standardcrossregion`.
 
-If you would like to be added as a contributor contact `nicholas.lange@ibm.com` OR `@nicholas.lange` on Slack.
+For technical questions about software integration with IBM COS, visit [StackOverflow](http://stackoverflow.com/questions/tagged/object-storage+ibm) and tag questions with `ibm` and `object-storage`.
 
-The Markdown files that hold the underlying content are found in the `_beta`, `_gettingstarted`, and `_api` directories.
+Please contact `nicholas.lange@ibm.com` with questions or suggestions about the documentation itself.
