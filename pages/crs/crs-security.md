@@ -25,4 +25,4 @@ After data is deleted various mechanisms exists which prevent recovery or recons
 
 ### Tenant isolation
 
-IBM COS Cross-Region is a shared infrastructure, multi-tenant object storage solution. If your workload requires dedicated or isolated storage, contact XXXXX for more information.
+IBM COS Cross-Region is a shared infrastructure, multi-tenant object storage solution. If your workload requires dedicated or isolated storage, visit [IBM Cloud](https://www.ibm.com/cloud-computing/products/storage/object-storage/flexible-deployment/) for more information.
