@@ -33,4 +33,4 @@ topnav_dropdowns:
         - title: IBM devWorks
           external_url: https://developer.ibm.com/answers/smartspace/public-cloud-object-storage/
         - title: StackOverflow
-          External_url: http://stackoverflow.com/questions/tagged/object-storage+softlayer
+          external_url: https://stackoverflow.com/questions/tagged/object-storage+softlayer/

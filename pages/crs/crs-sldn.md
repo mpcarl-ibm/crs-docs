@@ -9,7 +9,7 @@ permalink: crs-sldn.html
 folder: crs
 ---
 
-{% include note.html content="This section is still under construction with some help from the SoftLayer team." %}
+{% include note.html content="This section is under construction. Please contact us on [dW Answers](https://developer.ibm.com/answers/smartspace/public-cloud-object-storage/) or [StackOverflow](http://stackoverflow.com/questions/tagged/object-storage+ibm)  with questions." %}
 
 More information on using the SoftLayer API to create or delete credentials, check capacity usage, retrieve a UUID, and other account functions can be found at the [SoftLayer Development Network](http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account).
 
