@@ -73,15 +73,15 @@ entries:
           url: /crs-api-reference.html#create-a-cross-origin-resource-sharing-configuration-for-a-bucket
           output: web, pdf 
 
-        - title: Retrieve CORS configurations
+        - title: Retrieving CORS configurations
           url: /crs-api-reference.html#list-any-cross-origin-resource-sharing-configuration-for-a-bucket
           output: web, pdf 
 
-        - title: Delete CORS configurations
+        - title: Deleting CORS configurations
           url: /crs-api-reference.html#delete-any-cross-origin-resource-sharing-configuration-for-a-bucket
           output: web, pdf 
 
-        - title: List multipart uploads
+        - title: Listing multipart uploads
           url: /crs-api-reference.html#list-canceledincomplete-multipart-uploads-for-a-bucket
           output: web, pdf 
 
@@ -104,4 +104,28 @@ entries:
         - title: Deleting objects
           url: /crs-api-reference.html#delete-an-object
           output: web, pdf  
+
+        - title: Deleting multiple objects
+          url: /crs-api-reference.html#deleting-multiple-objects
+          output: web, pdf 
+
+        - title: Creating a copy of an object
+          url: /crs-api-reference.html#copy-an-object
+          output: web, pdf
+
+        - title: Retrieving object ACLs
+          url: /crs-api-reference.html#delete-an-object
+          output: web, pdf
+
+        - title: Creating object ACLs
+          url: /crs-api-reference.html#delete-an-object
+          output: web, pdf
+
+        - title: Checking CORS for an object
+          url: /crs-api-reference.html#delete-an-object
+          output: web, pdf
+
+        - title: Uploading multipart objects
+          url: /crs-api-reference.html#delete-an-object
+          output: web, pdf
 

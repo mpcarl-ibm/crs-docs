@@ -287,19 +287,19 @@
                     
                     
                     
-                    <li><a href="crs-api-reference.html#list-any-cross-origin-resource-sharing-configuration-for-a-bucket">Retrieve CORS configurations</a></li>
+                    <li><a href="crs-api-reference.html#list-any-cross-origin-resource-sharing-configuration-for-a-bucket">Retrieving CORS configurations</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-api-reference.html#delete-any-cross-origin-resource-sharing-configuration-for-a-bucket">Delete CORS configurations</a></li>
+                    <li><a href="crs-api-reference.html#delete-any-cross-origin-resource-sharing-configuration-for-a-bucket">Deleting CORS configurations</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-api-reference.html#list-canceledincomplete-multipart-uploads-for-a-bucket">List multipart uploads</a></li>
+                    <li><a href="crs-api-reference.html#list-canceledincomplete-multipart-uploads-for-a-bucket">Listing multipart uploads</a></li>
                     
                     
                     
@@ -333,6 +333,42 @@
                     
                     
                     <li><a href="crs-api-reference.html#delete-an-object">Deleting objects</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#deleting-multiple-objects">Deleting multiple objects</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#copy-an-object">Creating a copy of an object</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#delete-an-object">Retrieving object ACLs</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#delete-an-object">Creating object ACLs</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#delete-an-object">Checking CORS for an object</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="crs-api-reference.html#delete-an-object">Uploading multipart objects</a></li>
                     
                     
                     
@@ -385,7 +421,7 @@
 <h4 id="common-request-headers">Common Request Headers</h4>
 <p>The following table describes supported common request headers. Headers not listed here will be ignored if sent in a request.</p>
 
-<table>
+<table class="opstable">
   <thead>
     <tr>
       <th>Header</th>
@@ -427,7 +463,7 @@
 <h4 id="common-response-headers">Common Response Headers</h4>
 <p>The following table describes common response headers.</p>
 
-<table>
+<table class="opstable">
   <thead>
     <tr>
       <th>Header</th>
@@ -466,8 +502,8 @@
 
 <h5 id="syntax">Syntax</h5>
 
-<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="err">GET https://{endpoint}/
-</span></code></pre>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/
+</code></pre>
 </div>
 
 <h5 id="sample-request">Sample request</h5>
@@ -510,21 +546,18 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h3 id="operations-on-buckets">Operations on Buckets</h3>
 
 <h4 id="create-a-new-bucket">Create a new bucket</h4>
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.</p>
 
-<h5 id="path-based-syntax">Path based syntax</h5>
+<h5 id="syntax-1">Syntax</h5>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
-</code></pre>
-</div>
-
-<h5 id="virtual-host-based-syntax">Virtual host based syntax</h5>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span> <span class="c"># path style</span>
+PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -553,19 +586,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="retrieve-a-buckets-headers">Retrieve a bucket’s headers</h4>
 
 <p>A <code class="highlighter-rouge">HEAD</code> issued to the a bucket will return the headers for that bucket.</p>
 
-<h5 id="path-based-syntax-1">Path based syntax</h5>
+<h5 id="syntax-2">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
-</code></pre>
-</div>
-
-<h5 id="virtual-host-based-syntax-1">Virtual host based syntax</h5>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span> <span class="c"># path style</span>
+HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -594,19 +624,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="list-objects-in-a-given-bucket">List objects in a given bucket</h4>
 
 <p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.</p>
 
-<h5 id="path-based-syntax-2">Path based syntax</h5>
+<h5 id="syntax-3">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
-</code></pre>
-</div>
-
-<h5 id="virtual-host-based-syntax-2">Virtual host based syntax</h5>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span> <span class="c"># path style</span>
+GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -679,13 +706,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="delete-a-bucket">Delete a bucket</h4>
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. <em>Only empty buckets can be deleted.</em></p>
 
-<h5 id="syntax-1">Syntax</h5>
+<h5 id="syntax-4">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span> <span class="c"># path style</span>
+DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -723,19 +753,20 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="create-an-access-control-list-for-a-bucket">Create an access control list for a bucket</h4>
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to a bucket with the proper parameters creates an access control list (ACL) for that bucket.  Access control lists allow for granting different sets of permissions to different storage accounts using the account’s ID, or by using a pre-made ACL.</p>
 
-<blockquote>
-  <p><strong>NOTE</strong>: Credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, <code class="highlighter-rouge">public-read-write</code> allows any other CRS storage account to access the resource, as well as the general public.</p>
-</blockquote>
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> Credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, <code class="highlighter-rouge">public-read-write</code> allows any other CRS storage account to access the resource, as well as the general public. </div>
 
 <p>ACLs can use pre-made permissions sets (or ‘canned ACLs’) or be customized in the body of the request. Pre-made ACLs are specified using the <code class="highlighter-rouge">x-amz-acl</code> header with <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">public-read</code>, or <code class="highlighter-rouge">public-read-write</code> as the value. Custom ACLs are specified using XML in the request body and can grant <code class="highlighter-rouge">READ</code>, <code class="highlighter-rouge">WRITE</code>, <code class="highlighter-rouge">READ_ACP</code> (read ACL), <code class="highlighter-rouge">WRITE_ACP</code> (write ACL), or <code class="highlighter-rouge">FULL_CONTROL</code> permissions to a given storage account.</p>
 
-<h5 id="syntax-2">Syntax</h5>
+<h5 id="syntax-5">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
+PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -812,13 +843,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="retrieve-the-access-control-list-for-a-bucket">Retrieve the access control list for a bucket</h4>
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves the ACL for a bucket.</p>
 
-<h5 id="syntax-3">Syntax</h5>
+<h5 id="syntax-6">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>XXX http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
+GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -865,13 +899,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="list-canceledincomplete-multipart-uploads-for-a-bucket">List canceled/incomplete multipart uploads for a bucket</h4>
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.</p>
 
-<h5 id="syntax-4">Syntax</h5>
+<h5 id="syntax-7">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?uploads<span class="o">=</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?uploads<span class="o">=</span> <span class="c"># path style</span>
+GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?uploads<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -956,13 +993,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="list-any-cross-origin-resource-sharing-configuration-for-a-bucket">List any cross-origin resource sharing configuration for a bucket</h4>
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-5">Syntax</h5>
+<h5 id="syntax-8">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># path style</span>
+GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -995,13 +1035,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="create-a-cross-origin-resource-sharing-configuration-for-a-bucket">Create a cross-origin resource sharing configuration for a bucket</h4>
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-6">Syntax</h5>
+<h5 id="syntax-9">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># path style</span>
+PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -1044,13 +1087,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="delete-any-cross-origin-resource-sharing-configuration-for-a-bucket">Delete any cross-origin resource sharing configuration for a bucket</h4>
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-7">Syntax</h5>
+<h5 id="syntax-10">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># path style</span>
+DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -1067,15 +1113,18 @@
 
 <p>The server responds with <code class="highlighter-rouge">204 No Content</code>.</p>
 
+<hr />
+
 <h3 id="operations-on-objects">Operations on Objects</h3>
 
 <h4 id="upload-an-object">Upload an object</h4>
 
 <p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.</p>
 
-<h5 id="syntax-8">Syntax</h5>
+<h5 id="syntax-11">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
+PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -1087,8 +1136,8 @@
 <span class="na">x-amz-content-sha256</span><span class="p">:</span> <span class="s">309721641329cf441f3fa16ef996cf24a2505f91be3e752ac9411688e3435429</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain; charset=utf-8</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
-<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">533</span>
+
+Content-Length: 533
 
  The 'queen' bee is developed from larvae selected by worker bees and fed a 
  substance referred to as 'royal jelly' to accelerate sexual maturity. After a 
@@ -1112,13 +1161,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="get-an-objects-headers">Get an objects headers</h4>
 
 <p>A <code class="highlighter-rouge">HEAD</code> given a path to an object retrieves that object’s headers.</p>
 
-<h5 id="syntax-9">Syntax</h5>
+<h5 id="syntax-12">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
+HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -1128,7 +1180,7 @@
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20160825T183244Z</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.sjc-us-geo.objectstorage.softlayer.net</span>
-<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+
 </code></pre>
 </div>
 
@@ -1148,13 +1200,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="download-an-object">Download an object</h4>
 
 <p>A <code class="highlighter-rouge">GET</code> given a path to an object uploads an object.</p>
 
-<h5 id="syntax-10">Syntax</h5>
+<h5 id="syntax-13">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
+GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -1163,7 +1218,7 @@
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary/worker-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
-<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+
 </code></pre>
 </div>
 
@@ -1188,13 +1243,16 @@
 </code></pre>
 </div>
 
+<hr />
+
 <h4 id="delete-an-object">Delete an object</h4>
 
 <p>A <code class="highlighter-rouge">DELETE</code> given a path to an object deletes an object.</p>
 
-<h5 id="syntax-11">Syntax</h5>
+<h5 id="syntax-14">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE http://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
+DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -1203,7 +1261,7 @@
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.sjc-us-geo.objectstorage.softlayer.net</span>
-<span class="na">Connection</span><span class="p">:</span> <span class="s">close</span>
+
 </code></pre>
 </div>
 
@@ -1218,6 +1276,152 @@
 <span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">8ff4dc32-a6f0-447f-86cf-427b564d5855</span>
 </code></pre>
 </div>
+
+<hr />
+
+<h4 id="deleting-multiple-objects">Deleting multiple objects</h4>
+
+<p>A <code class="highlighter-rouge">POST</code> given a path to an bucket and proper parameters will delete a specified set of objects.</p>
+
+<h5 id="syntax-15">Syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>POST https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?delete<span class="o">=</span> <span class="c"># path style</span>
+POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?delete<span class="o">=</span> <span class="c"># virtual host style</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-15">Sample request</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/apiary?delete=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Delete&gt;</span>
+    <span class="nt">&lt;Object&gt;</span>
+         <span class="nt">&lt;Key&gt;</span>surplus-bee<span class="nt">&lt;/Key&gt;</span>
+    <span class="nt">&lt;/Object&gt;</span>
+    <span class="nt">&lt;Object&gt;</span>
+         <span class="nt">&lt;Key&gt;</span>unnecessary-bee<span class="nt">&lt;/Key&gt;</span>
+    <span class="nt">&lt;/Object&gt;</span>
+<span class="nt">&lt;/Delete&gt;</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-13">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 30 Nov 2016 18:54:53 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">a6232735-c3b7-4c13-a7b2-cd40c4728d51</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.137</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">a6232735-c3b7-4c13-a7b2-cd40c4728d51</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">207</span>
+</code></pre>
+</div>
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<span class="nt">&lt;DeleteResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Deleted&gt;</span>
+         <span class="nt">&lt;Key&gt;</span>surplus-bee<span class="nt">&lt;/Key&gt;</span>
+    <span class="nt">&lt;/Deleted&gt;</span>
+    <span class="nt">&lt;Deleted&gt;</span>
+         <span class="nt">&lt;Key&gt;</span>unnecessary-bee<span class="nt">&lt;/Key&gt;</span>
+    <span class="nt">&lt;/Deleted&gt;</span>
+<span class="nt">&lt;/DeleteResult&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h4 id="copy-an-object">Copy an object</h4>
+
+<p>A <code class="highlighter-rouge">PUT</code> given a path to a new object creates a new copy of another object specified by the <code class="highlighter-rouge">x-amz-copy-source</code> header. Unless otherwise altered the metadata remains the same, although any ACL is reset to <code class="highlighter-rouge">private</code> for the  account creating the copy.</p>
+
+<h5 id="syntax-16">Syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
+PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
+</code></pre>
+</div>
+
+<h5 id="optional-headers">Optional headers</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>Header</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">x-amz-metadata-directive</code></td>
+      <td>string (<code class="highlighter-rouge">COPY</code> or <code class="highlighter-rouge">REPLACE</code>)</td>
+      <td><code class="highlighter-rouge">REPLACE</code> will overwrite original metadata with new metadata that is provided.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">x-amz-copy-source-if-match</code></td>
+      <td>string (<code class="highlighter-rouge">ETag</code>)</td>
+      <td>Creates a copy if the specified <code class="highlighter-rouge">ETag</code> matches the source object.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">x-amz-copy-source-if-none-match</code></td>
+      <td>string (<code class="highlighter-rouge">ETag</code>)</td>
+      <td>Creates a copy if the specified <code class="highlighter-rouge">ETag</code> is different from the source object.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">x-amz-copy-source-if-unmodified-since</code></td>
+      <td>string (timestamp)</td>
+      <td>Creates a copy if the the source object has not been modified since the specified date.  Date must be a valid HTTP date (e.g. <code class="highlighter-rouge">Wed, 30 Nov 2016 20:21:38 GMT</code>).</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">x-amz-copy-source-if-modified-since</code></td>
+      <td>string (timestamp)</td>
+      <td>Creates a copy if the the source object has been modified since the specified date.  Date must be a valid HTTP date (e.g. <code class="highlighter-rouge">Wed, 30 Nov 2016 20:21:38 GMT</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="sample-request-16">Sample request</h5>
+
+<p>This basic example takes the <code class="highlighter-rouge">bee</code> object from the <code class="highlighter-rouge">garden</code> bucket, and creates a copy in the <code class="highlighter-rouge">apiary</code> bucket with the new key <code class="highlighter-rouge">wild-bee</code>.</p>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary/wild-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161130T195251Z</span>
+<span class="na">x-amz-copy-source</span><span class="p">:</span> <span class="s">/garden/bee</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-14">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 30 Nov 2016 19:52:52 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">72992a90-8f86-433f-b1a4-7b1b33714bed</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.137</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">72992a90-8f86-433f-b1a4-7b1b33714bed</span>
+<span class="na">ETag</span><span class="p">:</span> <span class="s">"853aab195ce770b0dfb294a4e9467e62"</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">240</span>
+</code></pre>
+</div>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CopyObjectResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;LastModified&gt;</span>2016-11-30T19:52:53.125Z<span class="nt">&lt;/LastModified&gt;</span>
+  <span class="nt">&lt;ETag&gt;</span>"853aab195ce770b0dfb294a4e9467e62"<span class="nt">&lt;/ETag&gt;</span>
+<span class="nt">&lt;/CopyObjectResult&gt;</span>
+</code></pre>
+</div>
+
+<hr />
 
 
 
@@ -1235,7 +1439,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 IBM. <a href="/nicholas-lange/cos-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 29, 2016 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Nov 30, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

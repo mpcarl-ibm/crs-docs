@@ -32,6 +32,7 @@ The following table describes supported common request headers. Headers not list
 | Content-Length     | **Required** for uploading objects, chunked encoding also supported.    |
 | Content-MD5        | A 128-bit MD5 hash value of the message being sent.                  |
 | Expect             | `100-continue` waits for the headers to be accepted before sending the body.  | 
+{:.opstable}
 
 ####  Common Response Headers
 The following table describes common response headers.
@@ -43,6 +44,7 @@ The following table describes common response headers.
 | Date           | Timestamp of the request.     |
 | Server         | Name of the responding server.     | 
 |X-Clv-Request-Id|  Unique identifier generated per request. |
+{:.opstable}
 
 ### Operations on the Account
 {: #operations-on-service}
@@ -53,7 +55,7 @@ A `GET` issued to the endpoint root returns a list of buckets associated with th
 
 ##### Syntax
 
-```http
+```bash
 GET https://{endpoint}/
 ```
 
@@ -97,6 +99,8 @@ Authorization: {authorization-string}
 </ListAllMyBucketsResult>
 ```
 
+***
+
 ### Operations on Buckets
 {: #operations-on-buckets}
 
@@ -104,16 +108,11 @@ Authorization: {authorization-string}
 
 A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.
 
-##### Path based syntax
+##### Syntax
 
 ```shell
-PUT https://{endpoint}/{bucket-name}
-```
-
-##### Virtual host based syntax
-
-```shell
-PUT https://{bucket-name}.{endpoint}
+PUT https://{endpoint}/{bucket-name} # path style
+PUT https://{bucket-name}.{endpoint} # virtual host style
 ```
 
 ##### Sample request
@@ -141,20 +140,17 @@ x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
 Content-Length: 0
 ```
 
+***
+
 #### Retrieve a bucket's headers
 
 A `HEAD` issued to the a bucket will return the headers for that bucket.
 
-##### Path based syntax
+##### Syntax
 
 ```bash
-HEAD https://{endpoint}/{bucket-name}
-```
-
-##### Virtual host based syntax
-
-```bash
-HEAD https://{bucket-name}.{endpoint}
+HEAD https://{endpoint}/{bucket-name} # path style
+HEAD https://{bucket-name}.{endpoint} # virtual host style
 ```
 
 ##### Sample request
@@ -182,20 +178,17 @@ x-amz-request-id: 0c2832e3-3c51-4ea6-96a3-cd8482aca08a
 Content-Length: 0
 ```
 
+***
+
 #### List objects in a given bucket
 
 When a `GET` request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.
 
-##### Path based syntax
+##### Syntax
 
 ```bash
-GET http://{endpoint}/{bucket-name}
-```
-
-##### Virtual host based syntax
-
-```bash
-GET http://{bucket-name}.{endpoint}
+GET https://{endpoint}/{bucket-name} # path style
+GET https://{bucket-name}.{endpoint} # virtual host style
 ```
 
 ##### Sample request
@@ -267,6 +260,8 @@ Content-Length: 909
 </ListBucketResult>
 ```
 
+***
+
 #### Delete a bucket
 
 A `DELETE` issued to an empty bucket deletes the bucket. *Only empty buckets can be deleted.*
@@ -274,7 +269,8 @@ A `DELETE` issued to an empty bucket deletes the bucket. *Only empty buckets can
 ##### Syntax
 
 ```bash
-DELETE http://{endpoint}/{bucket-name}
+DELETE https://{endpoint}/{bucket-name} # path style
+DELETE https://{bucket-name}.{endpoint} # virtual host style
 ```
 
 ##### Sample request
@@ -311,18 +307,21 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 </Error>
 ```
 
+***
+
 #### Create an access control list for a bucket
 
 A `PUT` issued to a bucket with the proper parameters creates an access control list (ACL) for that bucket.  Access control lists allow for granting different sets of permissions to different storage accounts using the account's ID, or by using a pre-made ACL.
 
-> **NOTE**: Credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, `public-read-write` allows any other CRS storage account to access the resource, as well as the general public. 
+{% include important.html content="Credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, `public-read-write` allows any other CRS storage account to access the resource, as well as the general public. " %}
 
 ACLs can use pre-made permissions sets (or 'canned ACLs') or be customized in the body of the request. Pre-made ACLs are specified using the `x-amz-acl` header with `private`, `public-read`, or `public-read-write` as the value. Custom ACLs are specified using XML in the request body and can grant `READ`, `WRITE`, `READ_ACP` (read ACL), `WRITE_ACP` (write ACL), or `FULL_CONTROL` permissions to a given storage account.
 
 ##### Syntax
 
 ```bash
-PUT http://{endpoint}/{bucket-name}?acl=
+PUT https://{endpoint}/{bucket-name}?acl= # path style
+PUT https://{bucket-name}.{endpoint}?acl= # virtual host style
 ```
 
 ##### Sample request Basic pre-made ACL
@@ -398,6 +397,8 @@ X-Clv-S3-Version: 2.5
 x-amz-request-id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
 ```
 
+***
+
 #### Retrieve the access control list for a bucket
 
 A `GET` issued to a bucket with the proper parameters retrieves the ACL for a bucket.
@@ -405,7 +406,8 @@ A `GET` issued to a bucket with the proper parameters retrieves the ACL for a bu
 ##### Syntax
 
 ```bash
-XXX http://{endpoint}/{bucket-name}?acl=
+GET https://{endpoint}/{bucket-name}?acl= # path style
+GET https://{bucket-name}.{endpoint}?acl= # virtual host style
 ```
 
 ##### Sample request
@@ -451,6 +453,8 @@ Content-Length: 550
 </AccessControlPolicy>
 ```
 
+***
+
 #### List canceled/incomplete multipart uploads for a bucket
 
 A `GET` issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.
@@ -458,7 +462,8 @@ A `GET` issued to a bucket with the proper parameters retrieves information abou
 ##### Syntax
 
 ```bash
-GET http://{endpoint}/{bucket-name}?uploads=
+GET https://{endpoint}/{bucket-name}?uploads= # path style
+GET https://{bucket-name}.{endpoint}?uploads= # virtual host style
 ```
 
 **Parameters**
@@ -509,6 +514,8 @@ Content-Length: 374
 </ListMultipartUploadsResult>
 ```
 
+***
+
 #### List any cross-origin resource sharing configuration for a bucket
 
 A `GET` issued to a bucket with the proper parameters retrieves information about cross-origin resource sharing (CORS) configuration for a bucket.
@@ -516,7 +523,8 @@ A `GET` issued to a bucket with the proper parameters retrieves information abou
 ##### Syntax
 
 ```bash
-GET http://{endpoint}/{bucket-name}?cors=
+GET https://{endpoint}/{bucket-name}?cors= # path style
+GET https://{bucket-name}.{endpoint}?cors= # virtual host style
 ```
 
 ##### Sample request
@@ -548,6 +556,8 @@ Content-Length: 123
 <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"/>
 ```
 
+***
+
 #### Create a cross-origin resource sharing configuration for a bucket
 
 A `PUT` issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.
@@ -555,7 +565,8 @@ A `PUT` issued to a bucket with the proper parameters creates or replaces a cros
 ##### Syntax
 
 ```bash
-PUT http://{endpoint}/{bucket-name}?cors=
+PUT https://{endpoint}/{bucket-name}?cors= # path style
+PUT https://{bucket-name}.{endpoint}?cors= # virtual host style
 ```
 
 ##### Sample request
@@ -597,6 +608,8 @@ x-amz-request-id: 7afca6d8-e209-4519-8f2c-1af3f1540b42
 Content-Length: 0
 ```
 
+***
+
 #### Delete any cross-origin resource sharing configuration for a bucket
 
 A `DELETE` issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.
@@ -604,7 +617,8 @@ A `DELETE` issued to a bucket with the proper parameters creates or replaces a c
 ##### Syntax
 
 ```bash
-DELETE http://{endpoint}/{bucket-name}?cors=
+DELETE https://{endpoint}/{bucket-name}?cors= # path style
+DELETE https://{bucket-name}.{endpoint}?cors= # virtual host style
 ```
 
 ##### Sample request
@@ -620,6 +634,8 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 The server responds with `204 No Content`.
 
+***
+
 ### Operations on Objects
 {: #operations-on-objects}
 
@@ -631,7 +647,8 @@ A `PUT` given a path to an object uploads the request body as an object. A SHA25
 ##### Syntax
 
 ```bash
-PUT http://{endpoint}/{bucket-name}/{object-name}
+PUT https://{endpoint}/{bucket-name}/{object-name} # path style
+PUT https://{bucket-name}.{endpoint}/{object-name} # virtual host style
 ```
 
 ##### Sample request
@@ -643,7 +660,7 @@ x-amz-date: 20160825T183001Z
 x-amz-content-sha256: 309721641329cf441f3fa16ef996cf24a2505f91be3e752ac9411688e3435429
 Content-Type: text/plain; charset=utf-8
 Host: s3-api.us-geo.objectstorage.softlayer.net
-Connection: close
+
 Content-Length: 533
 
  The 'queen' bee is developed from larvae selected by worker bees and fed a 
@@ -667,6 +684,8 @@ ETag: "3ca744fa96cb95e92081708887f63de5"
 Content-Length: 0
 ```
 
+***
+
 #### Get an objects headers
 
 A `HEAD` given a path to an object retrieves that object's headers.
@@ -674,7 +693,8 @@ A `HEAD` given a path to an object retrieves that object's headers.
 ##### Syntax
 
 ```bash
-HEAD http://{endpoint}/{bucket-name}/{object-name}
+HEAD https://{endpoint}/{bucket-name}/{object-name} # path style
+HEAD https://{bucket-name}.{endpoint}/{object-name} # virtual host style
 ```
 
 ##### Sample request
@@ -684,7 +704,7 @@ HEAD /apiary/soldier-bee HTTP/1.1
 Authorization: {authorization-string}
 x-amz-date: 20160825T183244Z
 Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
-Connection: close
+
 ```
 
 ##### Sample response
@@ -703,6 +723,8 @@ Last-Modified: Thu, 25 Aug 2016 17:49:06 GMT
 Content-Length: 11
 ```
 
+***
+
 #### Download an object
 
 A `GET` given a path to an object uploads an object.
@@ -710,7 +732,8 @@ A `GET` given a path to an object uploads an object.
 ##### Syntax
 
 ```bash
-GET http://{endpoint}/{bucket-name}/{object-name}
+GET https://{endpoint}/{bucket-name}/{object-name} # path style
+GET https://{bucket-name}.{endpoint}/{object-name} # virtual host style
 ```
 
 ##### Sample request
@@ -719,7 +742,7 @@ GET http://{endpoint}/{bucket-name}/{object-name}
 GET /apiary/worker-bee HTTP/1.1
 Authorization: {authorization-string}
 Host: s3-api.us-geo.objectstorage.softlayer.net
-Connection: close
+
 ```
 
 ##### Sample response
@@ -743,6 +766,8 @@ Content-Length: 467
  acting almost as a single organism in fulfilling their purpose.
 ```
 
+***
+
 #### Delete an object
 
 A `DELETE` given a path to an object deletes an object.
@@ -750,7 +775,8 @@ A `DELETE` given a path to an object deletes an object.
 ##### Syntax
 
 ```bash
-DELETE http://{endpoint}/{bucket-name}/{object-name}
+DELETE https://{endpoint}/{bucket-name}/{object-name} # path style
+DELETE https://{bucket-name}.{endpoint}/{object-name} # virtual host style
 ```
 
 ##### Sample request
@@ -759,7 +785,7 @@ DELETE http://{endpoint}/{bucket-name}/{object-name}
 DELETE /apiary/soldier-bee HTTP/1.1
 Authorization: {authorization-string}
 Host: s3-api.sjc-us-geo.objectstorage.softlayer.net
-Connection: close
+
 ```
 
 ##### Sample response
@@ -774,4 +800,121 @@ X-Clv-S3-Version: 2.5
 x-amz-request-id: 8ff4dc32-a6f0-447f-86cf-427b564d5855
 ```
 
+***
+
+#### Deleting multiple objects
+
+A `POST` given a path to an bucket and proper parameters will delete a specified set of objects.
+
+##### Syntax
+
+```bash
+POST https://{endpoint}/{bucket-name}/{object-name}?delete= # path style
+POST https://{bucket-name}.{endpoint}/{object-name}?delete= # virtual host style
+```
+
+##### Sample request
+
+```http
+POST /apiary?delete= HTTP/1.1
+Authorization: {authorization-string}
+Host: s3-api.us-geo.objectstorage.softlayer.net
+```
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Delete>
+    <Object>
+         <Key>surplus-bee</Key>
+    </Object>
+    <Object>
+         <Key>unnecessary-bee</Key>
+    </Object>
+</Delete>
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Wed, 30 Nov 2016 18:54:53 GMT
+X-Clv-Request-Id: a6232735-c3b7-4c13-a7b2-cd40c4728d51
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.137
+X-Clv-S3-Version: 2.5
+x-amz-request-id: a6232735-c3b7-4c13-a7b2-cd40c4728d51
+Content-Type: application/xml
+Content-Length: 207
+```
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeleteResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Deleted>
+         <Key>surplus-bee</Key>
+    </Deleted>
+    <Deleted>
+         <Key>unnecessary-bee</Key>
+    </Deleted>
+</DeleteResult>
+```
+
+***
+
+#### Copy an object
+
+A `PUT` given a path to a new object creates a new copy of another object specified by the `x-amz-copy-source` header. Unless otherwise altered the metadata remains the same, although any ACL is reset to `private` for the  account creating the copy.
+
+
+##### Syntax
+
+```bash
+PUT https://{endpoint}/{bucket-name}/{object-name} # path style
+PUT https://{bucket-name}.{endpoint}/{object-name} # virtual host style
+```
+
+##### Optional headers
+
+Header | Type | Description
+--- | ---- | ------------
+`x-amz-metadata-directive` | string (`COPY` or `REPLACE`) | `REPLACE` will overwrite original metadata with new metadata that is provided.
+`x-amz-copy-source-if-match` | string (`ETag`)| Creates a copy if the specified `ETag` matches the source object.
+`x-amz-copy-source-if-none-match` | string (`ETag`)| Creates a copy if the specified `ETag` is different from the source object.
+`x-amz-copy-source-if-unmodified-since` | string (timestamp)| Creates a copy if the the source object has not been modified since the specified date.  Date must be a valid HTTP date (e.g. `Wed, 30 Nov 2016 20:21:38 GMT`).
+`x-amz-copy-source-if-modified-since` | string (timestamp)| Creates a copy if the the source object has been modified since the specified date.  Date must be a valid HTTP date (e.g. `Wed, 30 Nov 2016 20:21:38 GMT`).
+
+##### Sample request
+
+This basic example takes the `bee` object from the `garden` bucket, and creates a copy in the `apiary` bucket with the new key `wild-bee`.  
+
+```http
+PUT /apiary/wild-bee HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161130T195251Z
+x-amz-copy-source: /garden/bee
+Host: s3-api.us-geo.objectstorage.softlayer.net
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Wed, 30 Nov 2016 19:52:52 GMT
+X-Clv-Request-Id: 72992a90-8f86-433f-b1a4-7b1b33714bed
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.137
+X-Clv-S3-Version: 2.5
+x-amz-request-id: 72992a90-8f86-433f-b1a4-7b1b33714bed
+ETag: "853aab195ce770b0dfb294a4e9467e62"
+Content-Type: application/xml
+Content-Length: 240
+```
+
+```xml
+<CopyObjectResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <LastModified>2016-11-30T19:52:53.125Z</LastModified>
+  <ETag>"853aab195ce770b0dfb294a4e9467e62"</ETag>
+</CopyObjectResult>
+```
+
+***
 
