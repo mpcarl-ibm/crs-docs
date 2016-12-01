@@ -24,7 +24,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Introduction to IBM COS
+    - title: IBM COS Standard Cross-Region
       url: /index.html
       output: web, pdf
       type: homepage
@@ -35,6 +35,10 @@ entries:
 
     - title: About IBM COS API and SDKs
       url: /crs-about-api.html
+      output: web, pdf
+
+    - title: Other IBM object storage options
+      url: /crs-other-offerings.html
       output: web, pdf
 
   - title: Getting started
