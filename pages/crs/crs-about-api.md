@@ -14,6 +14,6 @@ toc: false
 
  A full list of supported S3 API operations can be found in the [API Overview]( {{ site.baseurl }}/crs-operations.html).
 
- This documentation provides basic introductions to using popular S3 API [client applications]( {{ site.baseurl }}crs-guis.html) and a [command line interface]( {{ site.baseurl }}crs-cli.html), as well as SDKs for the [Python]( {{ site.baseurl }}crs-python.html) and [Java]( {{ site.baseurl }}crs-java.html) programming languages. 
+ This documentation provides basic introductions to using popular S3 API [client applications]( {{ site.baseurl }}/crs-guis.html) and a [command line interface]( {{ site.baseurl }}/crs-cli.html), as well as an SDK for the [Python]( {{ site.baseurl }}/crs-python.html) programming language. 
  
 
