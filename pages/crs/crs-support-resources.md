@@ -5,7 +5,7 @@ last_updated: November 18, 2016
 tags: 
 summary: 
 sidebar: crs_sidebar
-permalink: crs-pricing.html
+permalink: crs-support-resources.html
 folder: crs
 ---
 

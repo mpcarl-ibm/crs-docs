@@ -49,7 +49,7 @@ bucket-2
 
 ### Example low-level client script
 
-Creating a low-level client allows for considerably more detail and access to metadata. This is a basic script that fetches the list of buckets owned by and account, and lists objects in each bucket. As considerably more data is returned than in the previous example, the `pprintpp` package is used to increase the readability of the raw output.
+Creating a low-level client allows for considerably more detail and access to metadata. This is a basic script that fetches the list of buckets owned by an account, and lists objects in each bucket. As considerably more data is returned than in the previous example, the `pprintpp` package is used to increase the readability of the raw output.
 
 ```python
 import boto3

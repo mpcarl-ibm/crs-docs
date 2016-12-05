@@ -24,7 +24,7 @@ The only operation that is performed directly at the account level is to get a l
 
 | Account operation | Note |
 |:----|:---|
-| `GET` account | Used to retrieve of list of all buckets belonging to an account. |
+| `GET` account | Used to retrieve a list of all buckets belonging to an account. |
 {:.opstable}
 
 ### Operations on buckets

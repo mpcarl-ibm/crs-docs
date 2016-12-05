@@ -144,7 +144,7 @@ Content-Length: 0
 
 #### Retrieve a bucket's headers
 
-A `HEAD` issued to the a bucket will return the headers for that bucket.
+A `HEAD` issued to a bucket will return the headers for that bucket.
 
 ##### Syntax
 
@@ -193,7 +193,7 @@ GET https://{bucket-name}.{endpoint} # virtual host style
 
 ##### Sample request
 
-This requests lists the objects inside the "apiary" bucket.
+This request lists the objects inside the "apiary" bucket.
 
 ```http
 GET /apiary HTTP/1.1
@@ -470,16 +470,16 @@ GET https://{bucket-name}.{endpoint}?uploads= # virtual host style
 
 Name | Type | Description
 --- | ---- | ------------
-`prefix` | string | Constrains reponse to object names beginning with `{prefix}`.
-`delimiter` | string | Groups objects within between the `prefix` and the `delimiter`.
-`encoding-type` | string | If unicode characters that are not supported by XML are used in an object name, this parameter can be set to `url` to properly encode the reponse.
+`prefix` | string | Constrains response to object names beginning with `{prefix}`.
+`delimiter` | string | Groups objects between the `prefix` and the `delimiter`.
+`encoding-type` | string | If unicode characters that are not supported by XML are used in an object name, this parameter can be set to `url` to properly encode the response.
 `max-uploads` | integer | Restricts the number of objects to display in the response.  Default and maximum is 1,000.
-`key-marker` | string | Specifies the start of the which parts should be listed.
+`key-marker` | string | Specifies from where the listing should begin.
 `upload-id-marker` | string | Ignored if `key-marker` is not specified, otherwise sets a point at which to begin listing parts above `upload-id-marker`.
  
 ##### Sample request
 
-This is an example of retrieving all current cancelled and incomplete multipart uploads.
+This is an example of retrieving all current canceled and incomplete multipart uploads.
 
 ```http
 GET /apiary?uploads= HTTP/1.1
@@ -686,7 +686,7 @@ Content-Length: 0
 
 ***
 
-#### Get an objects headers
+#### Get an object's headers
 
 A `HEAD` given a path to an object retrieves that object's headers.
 
@@ -727,7 +727,7 @@ Content-Length: 11
 
 #### Download an object
 
-A `GET` given a path to an object uploads an object.
+A `GET` given a path to an object downloads the object.
 
 ##### Syntax
 
@@ -880,7 +880,7 @@ Header | Type | Description
 `x-amz-copy-source-if-match` | string (`ETag`)| Creates a copy if the specified `ETag` matches the source object.
 `x-amz-copy-source-if-none-match` | string (`ETag`)| Creates a copy if the specified `ETag` is different from the source object.
 `x-amz-copy-source-if-unmodified-since` | string (timestamp)| Creates a copy if the the source object has not been modified since the specified date.  Date must be a valid HTTP date (e.g. `Wed, 30 Nov 2016 20:21:38 GMT`).
-`x-amz-copy-source-if-modified-since` | string (timestamp)| Creates a copy if the the source object has been modified since the specified date.  Date must be a valid HTTP date (e.g. `Wed, 30 Nov 2016 20:21:38 GMT`).
+`x-amz-copy-source-if-modified-since` | string (timestamp)| Creates a copy if the source object has been modified since the specified date.  Date must be a valid HTTP date (e.g. `Wed, 30 Nov 2016 20:21:38 GMT`).
 
 ##### Sample request
 

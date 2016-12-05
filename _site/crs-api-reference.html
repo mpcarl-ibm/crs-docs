@@ -590,7 +590,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <h4 id="retrieve-a-buckets-headers">Retrieve a bucket’s headers</h4>
 
-<p>A <code class="highlighter-rouge">HEAD</code> issued to the a bucket will return the headers for that bucket.</p>
+<p>A <code class="highlighter-rouge">HEAD</code> issued to a bucket will return the headers for that bucket.</p>
 
 <h5 id="syntax-2">Syntax</h5>
 
@@ -639,7 +639,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <h5 id="sample-request-3">Sample request</h5>
 
-<p>This requests lists the objects inside the “apiary” bucket.</p>
+<p>This request lists the objects inside the “apiary” bucket.</p>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
@@ -926,17 +926,17 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
     <tr>
       <td><code class="highlighter-rouge">prefix</code></td>
       <td>string</td>
-      <td>Constrains reponse to object names beginning with <code class="highlighter-rouge"><span class="p">{</span><span class="err">prefix</span><span class="p">}</span></code>.</td>
+      <td>Constrains response to object names beginning with <code class="highlighter-rouge"><span class="p">{</span><span class="err">prefix</span><span class="p">}</span></code>.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">delimiter</code></td>
       <td>string</td>
-      <td>Groups objects within between the <code class="highlighter-rouge">prefix</code> and the <code class="highlighter-rouge">delimiter</code>.</td>
+      <td>Groups objects between the <code class="highlighter-rouge">prefix</code> and the <code class="highlighter-rouge">delimiter</code>.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">encoding-type</code></td>
       <td>string</td>
-      <td>If unicode characters that are not supported by XML are used in an object name, this parameter can be set to <code class="highlighter-rouge">url</code> to properly encode the reponse.</td>
+      <td>If unicode characters that are not supported by XML are used in an object name, this parameter can be set to <code class="highlighter-rouge">url</code> to properly encode the response.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">max-uploads</code></td>
@@ -946,7 +946,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
     <tr>
       <td><code class="highlighter-rouge">key-marker</code></td>
       <td>string</td>
-      <td>Specifies the start of the which parts should be listed.</td>
+      <td>Specifies from where the listing should begin.</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">upload-id-marker</code></td>
@@ -958,7 +958,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <h5 id="sample-request-7">Sample request</h5>
 
-<p>This is an example of retrieving all current cancelled and incomplete multipart uploads.</p>
+<p>This is an example of retrieving all current canceled and incomplete multipart uploads.</p>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary?uploads=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1163,7 +1163,7 @@ Content-Length: 533
 
 <hr />
 
-<h4 id="get-an-objects-headers">Get an objects headers</h4>
+<h4 id="get-an-objects-headers">Get an object’s headers</h4>
 
 <p>A <code class="highlighter-rouge">HEAD</code> given a path to an object retrieves that object’s headers.</p>
 
@@ -1204,7 +1204,7 @@ HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 
 <h4 id="download-an-object">Download an object</h4>
 
-<p>A <code class="highlighter-rouge">GET</code> given a path to an object uploads an object.</p>
+<p>A <code class="highlighter-rouge">GET</code> given a path to an object downloads the object.</p>
 
 <h5 id="syntax-13">Syntax</h5>
 
@@ -1382,7 +1382,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
     <tr>
       <td><code class="highlighter-rouge">x-amz-copy-source-if-modified-since</code></td>
       <td>string (timestamp)</td>
-      <td>Creates a copy if the the source object has been modified since the specified date.  Date must be a valid HTTP date (e.g. <code class="highlighter-rouge">Wed, 30 Nov 2016 20:21:38 GMT</code>).</td>
+      <td>Creates a copy if the source object has been modified since the specified date.  Date must be a valid HTTP date (e.g. <code class="highlighter-rouge">Wed, 30 Nov 2016 20:21:38 GMT</code>).</td>
     </tr>
   </tbody>
 </table>
@@ -1441,7 +1441,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 2, 2016 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 5, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

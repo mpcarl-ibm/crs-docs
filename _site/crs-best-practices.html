@@ -495,7 +495,7 @@ PUT /bucket1/9ac18-filename-00005
 </div>
 
 <h3 id="tuning-cipher-settings">Tuning cipher settings</h3>
-<p>IBM COS supports variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</code>, <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_128_CBC_SHA</code> has shown to yield the same levels of performance as no TLS between the client and the IBM COS System.</p>
+<p>IBM COS supports a variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</code>, <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_128_CBC_SHA</code> has shown to yield the same levels of performance as no TLS between the client and the IBM COS System.</p>
 
 <h3 id="using-multipart-uploads">Using multipart uploads</h3>
 <p>When working with larger objects, multipart upload operations are recommended to write objects into IBM COS. An upload of a single object can be performed as a set of parts and these parts can be uploaded independently in any order and in parallel. Upon upload completion, IBM COS then presents all parts as a single object. This provides many benefits: network interruptions do not cause large uploads to fail, uploads can be paused and restarted over time, and objects can be uploaded as they are being created.</p>
@@ -531,7 +531,7 @@ PUT /bucket1/9ac18-filename-00005
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 2, 2016 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 5, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

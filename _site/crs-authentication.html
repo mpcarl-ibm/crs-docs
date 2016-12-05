@@ -472,7 +472,7 @@ $('#toc').on('click', 'a', function() {
     
 
   <h3 id="about-the-authorization-header">About the <code class="highlighter-rouge">authorization</code> header</h3>
-<p>Each request made against IBM COS using the S3 API must be authenticated using an implementation of the AWS <code class="highlighter-rouge">authorization</code> header.  IBM COS supports Signature Version 2 and Signature Version 4 authentication methods.  Signature Version 4 is considered more secure as it does not include the secret access key itself as part of the signature but instead uses a . Using a signature provides identity verification and in-transit data integrity, and because each signature is tied to the timestamp of the request it is not possible to reuse authorization headers.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature:</p>
+<p>Each request made against IBM COS using the S3 API must be authenticated using an implementation of the AWS <code class="highlighter-rouge">authorization</code> header.  IBM COS supports Signature Version 2 and Signature Version 4 authentication methods.  Signature Version 4 is considered more secure as it uses a derived signing key rather than the secret access key itself as part of the signature. Using a signature provides identity verification and in-transit data integrity, and because each signature is tied to the timestamp of the request it is not possible to reuse authorization headers.  The header is composed of four components: an algorithm declaration, credential information, signed headers, and the calculated signature:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>AWS4-HMAC-SHA256 Credential={access-key}/{date}/{region}/s3/aws4_request,SignedHeaders=host;x-amz-date;{other-required-headers},Signature={signature}
 </code></pre>
@@ -513,7 +513,7 @@ $('#toc').on('click', 'a', function() {
 
 <ol>
   <li>First the signature key needs to be calculated from the account’s secret access key, the current date, and the region and API type being used.</li>
-  <li>The string <code class="highlighter-rouge">AWS4</code> is perpended to the secret access key, and then that new string is used as the key to hash the date.</li>
+  <li>The string <code class="highlighter-rouge">AWS4</code> is prepended to the secret access key, and then that new string is used as the key to hash the date.</li>
   <li>Then the resulting hash is used as the key to hash the region.</li>
   <li>The process continues with the new hash being used as the key to hash the API type.</li>
   <li>Finally the newest hash is used as the key to hash the string <code class="highlighter-rouge">aws4_request</code> creating the signature key.</li>
@@ -633,7 +633,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 2, 2016 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 5, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
