@@ -114,15 +114,15 @@ entries:
           output: web, pdf
 
         - title: Retrieving object ACLs
-          url: /crs-api-reference.html#delete-an-object
+          url: /crs-api-reference.html#retrieve-an-objects-acl
           output: web, pdf
 
         - title: Creating object ACLs
-          url: /crs-api-reference.html#delete-an-object
+          url: /crs-api-reference.html#create-an-acl-for-an-object
           output: web, pdf
 
         - title: Checking CORS for an object
-          url: /crs-api-reference.html#delete-an-object
+          url: /crs-api-reference.html#check-an-objects-cors-configuration
           output: web, pdf
 
         - title: Uploading multipart objects

@@ -350,19 +350,19 @@
                     
                     
                     
-                    <li><a href="crs-api-reference.html#delete-an-object">Retrieving object ACLs</a></li>
+                    <li><a href="crs-api-reference.html#retrieve-an-objects-acl">Retrieving object ACLs</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-api-reference.html#delete-an-object">Creating object ACLs</a></li>
+                    <li><a href="crs-api-reference.html#create-an-acl-for-an-object">Creating object ACLs</a></li>
                     
                     
                     
                     
                     
-                    <li><a href="crs-api-reference.html#delete-an-object">Checking CORS for an object</a></li>
+                    <li><a href="crs-api-reference.html#check-an-objects-cors-configuration">Checking CORS for an object</a></li>
                     
                     
                     
@@ -1423,6 +1423,194 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <hr />
 
+<h4 id="retrieve-an-objects-acl">Retrieve an object’s ACL</h4>
+
+<p>A <code class="highlighter-rouge">GET</code> given a path to an object given the parameter <code class="highlighter-rouge">?acl=</code> retrieves the access control list for the object.</p>
+
+<h5 id="syntax-17">Syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span><span class="nv">acl</span><span class="o">=</span> <span class="c"># path style</span>
+GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span><span class="nv">acl</span><span class="o">=</span> <span class="c"># virtual host style</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-17">Sample request</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary/queen-bee?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161207T155945Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-15">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 15:59:46 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">78541562-29bf-4800-9eb3-0c360f0a037a</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.137</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">78541562-29bf-4800-9eb3-0c360f0a037a</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">550</span>
+</code></pre>
+</div>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;AccessControlPolicy</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Owner&gt;</span>
+    <span class="nt">&lt;ID&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;DisplayName&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/DisplayName&gt;</span>
+  <span class="nt">&lt;/Owner&gt;</span>
+  <span class="nt">&lt;AccessControlList&gt;</span>
+    <span class="nt">&lt;Grant&gt;</span>
+      <span class="nt">&lt;Grantee</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:type=</span><span class="s">"CanonicalUser"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;DisplayName&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;/Grantee&gt;</span>
+      <span class="nt">&lt;Permission&gt;</span>FULL_CONTROL<span class="nt">&lt;/Permission&gt;</span>
+    <span class="nt">&lt;/Grant&gt;</span>
+  <span class="nt">&lt;/AccessControlList&gt;</span>
+<span class="nt">&lt;/AccessControlPolicy&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h4 id="create-an-acl-for-an-object">Create an ACL for an object</h4>
+
+<p>A <code class="highlighter-rouge">PUT</code> issued to an object with the proper parameters creates an access control list (ACL) for that object.  Access control lists allow for granting different sets of permissions to different storage accounts using the account’s ID, or by using a pre-made ACL.</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> Credentials are generated for each storage account, not for individual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, <code class="highlighter-rouge">public-read-write</code> allows any other CRS storage account to access the resource, as well as the general public. </div>
+
+<p>ACLs can use pre-made permissions sets (or ‘canned ACLs’) or be customized in the body of the request. Pre-made ACLs are specified using the <code class="highlighter-rouge">x-amz-acl</code> header with <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">public-read</code>, or <code class="highlighter-rouge">public-read-write</code> as the value. Custom ACLs are specified using XML in the request body and can grant <code class="highlighter-rouge">READ</code>, <code class="highlighter-rouge">WRITE</code>, <code class="highlighter-rouge">READ_ACP</code> (read ACL), <code class="highlighter-rouge">WRITE_ACP</code> (write ACL), or <code class="highlighter-rouge">FULL_CONTROL</code> permissions to a given storage account.</p>
+
+<h5 id="syntax-18">Syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span><span class="nv">acl</span><span class="o">=</span> <span class="c"># path style</span>
+PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span><span class="nv">acl</span><span class="o">=</span> <span class="c"># virtual host style</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-canned-acl">Sample request (canned ACL)</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161207T162842Z</span>
+<span class="na">x-amz-acl</span><span class="p">:</span> <span class="s">public-read</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-16">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 16:28:42 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">b8dea44f-af20-466d-83ec-2a8563f1617b</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.137</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">b8dea44f-af20-466d-83ec-2a8563f1617b</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-custom-acl-1">Sample request (custom ACL)</h5>
+
+<p>This is an example of specifying a custom ACL to allow for another account to view the ACL for the “queen-bee” object, but not to access object itself. Additionally, a third account is given full access to the same object as another element of the same ACL.</p>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161207T163315Z</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">564</span>
+</code></pre>
+</div>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AccessControlPolicy</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Owner&gt;</span>
+    <span class="nt">&lt;ID&gt;</span>{owner-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+    <span class="nt">&lt;DisplayName&gt;</span>OwnerDisplayName<span class="nt">&lt;/DisplayName&gt;</span>
+  <span class="nt">&lt;/Owner&gt;</span>
+  <span class="nt">&lt;AccessControlList&gt;</span>
+    <span class="nt">&lt;Grant&gt;</span>
+      <span class="nt">&lt;Grantee</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:type=</span><span class="s">"CanonicalUser"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>{first-grantee-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;DisplayName&gt;</span>Grantee1DisplayName<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;/Grantee&gt;</span>
+      <span class="nt">&lt;Permission&gt;</span>READ_ACP<span class="nt">&lt;/Permission&gt;</span>
+    <span class="nt">&lt;/Grant&gt;</span>
+    <span class="nt">&lt;Grant&gt;</span>
+      <span class="nt">&lt;Grantee</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:type=</span><span class="s">"CanonicalUser"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>{second-grantee-storage-account-uuid}<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;DisplayName&gt;</span>Grantee2DisplayName<span class="nt">&lt;/DisplayName&gt;</span>
+      <span class="nt">&lt;/Grantee&gt;</span>
+      <span class="nt">&lt;Permission&gt;</span>FULL_CONTROL<span class="nt">&lt;/Permission&gt;</span>
+    <span class="nt">&lt;/Grant&gt;</span>
+  <span class="nt">&lt;/AccessControlList&gt;</span>
+<span class="nt">&lt;/AccessControlPolicy&gt;</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-17">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 17:11:51 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">ef02ea42-6fa6-4cc4-bec4-c59bc3fcc9f7</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.137</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">ef02ea42-6fa6-4cc4-bec4-c59bc3fcc9f7</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h4 id="check-an-objects-cors-configuration">Check an object’s CORS configuration</h4>
+
+<p>An <code class="highlighter-rouge">OPTIONS</code> given a path to an object along with an origin and request type checks to see if that object is accessible from that origin using that request type.  Unlike all other requests, an OPTIONS request does not require the <code class="highlighter-rouge">authorization</code> or <code class="highlighter-rouge">x-amx-date</code> headers.</p>
+
+<h5 id="syntax-19">Syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>OPTIONS https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
+OPTIONS https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-18">Sample request</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">OPTIONS</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Access-Control-Request-Method</span><span class="p">:</span> <span class="s">PUT</span>
+<span class="na">Origin</span><span class="p">:</span> <span class="s">http://ibm.com</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+
+</code></pre>
+</div>
+
+<h5 id="sample-response-18">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 16:23:14 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">9a2ae3e1-76dd-4eec-a8f2-1a7f60f63483</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.137</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">9a2ae3e1-76dd-4eec-a8f2-1a7f60f63483</span>
+<span class="na">Access-Control-Allow-Origin</span><span class="p">:</span> <span class="s">*</span>
+<span class="na">Access-Control-Allow-Methods</span><span class="p">:</span> <span class="s">PUT</span>
+<span class="na">Access-Control-Allow-Credentials</span><span class="p">:</span> <span class="s">true</span>
+<span class="na">Vary</span><span class="p">:</span> <span class="s">Origin, Access-Control-Request-Headers, Access-Control-Allow-Methods</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+
+</code></pre>
+</div>
+
+<hr />
+
+<hr />
 <hr />
 
 
@@ -1441,7 +1629,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2016 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 5, 2016 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 7, 2016 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
