@@ -21,5 +21,5 @@ Developers use IBM COS's implementation of the S3 API to interact with their sto
 
 This documentation is for anyone interested in learning about how to use IBM COS Cross-Region to manage unstructured data IO in their applications.  
 
-Please contact `nicholas.lange@ibm.com` with questions or suggestions about the documentation itself."
+Please contact `nicholas.lange@ibm.com` with questions or suggestions about the documentation itself.
 
