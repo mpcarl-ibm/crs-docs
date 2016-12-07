@@ -1429,8 +1429,8 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <h5 id="syntax-17">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span><span class="nv">acl</span><span class="o">=</span> <span class="c"># path style</span>
-GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span><span class="nv">acl</span><span class="o">=</span> <span class="c"># virtual host style</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
+GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -1487,8 +1487,8 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <h5 id="syntax-18">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span><span class="nv">acl</span><span class="o">=</span> <span class="c"># path style</span>
-PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span><span class="nv">acl</span><span class="o">=</span> <span class="c"># virtual host style</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
+PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 

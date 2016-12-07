@@ -926,8 +926,8 @@ A `GET` given a path to an object given the parameter `?acl=` retrieves the acce
 ##### Syntax
 
 ```bash
-GET https://{endpoint}/{bucket-name}/{object-name}acl= # path style
-GET https://{bucket-name}.{endpoint}/{object-name}acl= # virtual host style
+GET https://{endpoint}/{bucket-name}/{object-name}?acl= # path style
+GET https://{bucket-name}.{endpoint}/{object-name}?acl= # virtual host style
 ```
 
 ##### Sample request
@@ -984,8 +984,8 @@ ACLs can use pre-made permissions sets (or 'canned ACLs') or be customized in th
 ##### Syntax
 
 ```bash
-PUT https://{endpoint}/{bucket-name}/{object-name}acl= # path style
-PUT https://{bucket-name}.{endpoint}/{object-name}acl= # virtual host style
+PUT https://{endpoint}/{bucket-name}/{object-name}?acl= # path style
+PUT https://{bucket-name}.{endpoint}/{object-name}?acl= # virtual host style
 ```
 
 ##### Sample request (canned ACL)
