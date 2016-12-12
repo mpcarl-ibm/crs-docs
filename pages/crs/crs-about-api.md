@@ -1,10 +1,10 @@
 ---
 title: About using SDKs and tools with IBM COS
 keywords: 
-last\_updated: November 18, 2016
+last_updated: November 18, 2016
 tags:
 summary: 
-sidebar: crs\_sidebar
+sidebar: crs_sidebar
 permalink: crs-about-api.html
 folder: crs
 toc: false

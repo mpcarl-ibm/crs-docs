@@ -15,28 +15,6 @@
 
 
 {
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-account-operations.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-api-faq.html",
-"summary": ""
-}
-,
-
-
-
-{
 "title": "API reference",
 "tags": "",
 "keywords": "",
@@ -59,7 +37,7 @@
 
 
 {
-"title": "Best practices",
+"title": "Performance tips",
 "tags": "",
 "keywords": "",
 "url": "crs-best-practices.html",
@@ -74,17 +52,6 @@
 "tags": "",
 "keywords": "",
 "url": "crs-billing.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-bucket-operations.html",
 "summary": ""
 }
 ,
@@ -202,43 +169,10 @@
 
 
 {
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-faq.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-get.html",
-"summary": ""
-}
-,
-
-
-
-{
 "title": "Using desktop clients",
 "tags": "",
 "keywords": "",
 "url": "crs-guis.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-head.html",
 "summary": ""
 }
 ,
@@ -260,29 +194,7 @@
 "title": "",
 "tags": "",
 "keywords": "",
-"url": "crs-managing-users.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
 "url": "crs-node.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-object-operations.html",
 "summary": ""
 }
 ,
@@ -301,17 +213,6 @@
 
 
 {
-"title": "Ordering and billing",
-"tags": "",
-"keywords": "",
-"url": "crs-ordering-billing.html",
-"summary": ""
-}
-,
-
-
-
-{
 "title": "Other IBM object storage options",
 "tags": "",
 "keywords": "",
@@ -323,32 +224,10 @@
 
 
 {
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-put.html",
-"summary": ""
-}
-,
-
-
-
-{
 "title": "Using Python with IBM COS",
 "tags": "",
 "keywords": "",
 "url": "crs-python.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-sdk-faq.html",
 "summary": ""
 }
 ,
@@ -393,17 +272,6 @@
 "tags": "",
 "keywords": "",
 "url": "crs-support.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Tools and SDKs",
-"tags": "",
-"keywords": "",
-"url": "crs-tools.html",
 "summary": ""
 }
 ,

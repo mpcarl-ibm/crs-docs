@@ -1,10 +1,10 @@
 ---
 title: API reference
 keywords: 
-last\_updated: November 18, 2016
+last_updated: November 18, 2016
 tags: 
 summary: 
-sidebar: crs\_api\_sidebar
+sidebar: crs_api_sidebar
 permalink: crs-api-reference.html
 folder: crs
 toc: false

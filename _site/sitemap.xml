@@ -20,18 +20,6 @@
   
   
   <url>
-    <loc>/crs-account-operations.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-api-faq.html</loc>
-  </url>
-  
-  
-  
-  <url>
     <loc>/crs-api-reference.html</loc>
   </url>
   
@@ -51,12 +39,6 @@
   
   <url>
     <loc>/crs-billing.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-bucket-operations.html</loc>
   </url>
   
   
@@ -122,25 +104,7 @@
   
   
   <url>
-    <loc>/crs-faq.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-get.html</loc>
-  </url>
-  
-  
-  
-  <url>
     <loc>/crs-guis.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-head.html</loc>
   </url>
   
   
@@ -152,19 +116,7 @@
   
   
   <url>
-    <loc>/crs-managing-users.html</loc>
-  </url>
-  
-  
-  
-  <url>
     <loc>/crs-node.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-object-operations.html</loc>
   </url>
   
   
@@ -176,31 +128,13 @@
   
   
   <url>
-    <loc>/crs-ordering-billing.html</loc>
-  </url>
-  
-  
-  
-  <url>
     <loc>/crs-other-offerings.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-put.html</loc>
-  </url>
-  
-  
-  
-  <url>
     <loc>/crs-python.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-sdk-faq.html</loc>
   </url>
   
   
@@ -225,12 +159,6 @@
   
   <url>
     <loc>/crs-support.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-tools.html</loc>
   </url>
   
   

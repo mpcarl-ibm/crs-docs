@@ -1,19 +1,19 @@
 ---
 title: Creating a new customer account
 keywords: 
-last\_updated: November 18, 2016
+last_updated: November 18, 2016
 tags: 
 summary: IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS.
-sidebar: crs\_sidebar
+sidebar: crs_sidebar
 permalink: crs-create-account.html
 folder: crs
 ---
 
 ## Understanding IBM Cloud platform
  
-Until recently, IBM offered Platform-as-a-Service and Infrastructure-as-a-Service in two distinct environments: [Bluemix][1]{: new\_window} and [SoftLayer][2]{: new\_window}.  Bluemix provides a robust application development platform with direct access to cutting edge IBM technologies and DevOps services. SoftLayer provides access to infrastructure services, such as bare metal or virtual servers, data storage, and networking.
+Until recently, IBM offered Platform-as-a-Service and Infrastructure-as-a-Service in two distinct environments: [Bluemix][1]{: new_window} and [SoftLayer][2]{: new_window}.  Bluemix provides a robust application development platform with direct access to cutting edge IBM technologies and DevOps services. SoftLayer provides access to infrastructure services, such as bare metal or virtual servers, data storage, and networking.
 
-Now these lines are dissolving as we integrate the SoftLayer infrastructure offerings into the [Bluemix catalog of services][3]{: new\_window}. Existing SoftLayer customers are encouraged to take advantage of [using an IBMid for single-sign-on authentication][4]{: new\_window}, and it is possible to [link existing SoftLayer and Bluemix accounts][5]{: new\_window}. As of October 2016, SoftLayer is transitioning to the new name Bluemix Infrastructure, and computing, storage, networking services are provided through both the Bluemix catalog and (for a time) the SoftLayer website. 
+Now these lines are dissolving as we integrate the SoftLayer infrastructure offerings into the [Bluemix catalog of services][3]{: new_window}. Existing SoftLayer customers are encouraged to take advantage of [using an IBMid for single-sign-on authentication][4]{: new_window}, and it is possible to [link existing SoftLayer and Bluemix accounts][5]{: new_window}. As of October 2016, SoftLayer is transitioning to the new name Bluemix Infrastructure, and computing, storage, networking services are provided through both the Bluemix catalog and (for a time) the SoftLayer website. 
 
 {% include important.html content="In order to distinguish it from the existing OpenStack Swift based object storage offerings, 'IBM COS Cross-Region' is commonly referred to by the name 'Cloud Object Storage - S3 API' in order forms.  'IBM COS Cross-Region' and 'COS - S3 API' should be considered interchangeable terms within IBM Cloud at this time, although this is subject to change in accordance with future COS offerings." %}
 
@@ -21,7 +21,7 @@ Now these lines are dissolving as we integrate the SoftLayer infrastructure offe
 
 Before ordering a new IBM COS Cross-Region storage account, it is necessary to create a customer account first.
 
-1. Go to [bluemix.net][6]{: new\_window} and click on the **Create a Free Account** button.
+1. Go to [bluemix.net][6]{: new_window} and click on the **Create a Free Account** button.
 2. Fill out the form, providing your email address, name, region, and phone number.  Choose a password.
 3. Follow the link provided by the confirmation email, and follow the links to log in to Bluemix.
 4. Before using Bluemix, you need to set up a basic development environment.  Choose a region based on your geographic location, and choose a name for your organization.  Don't worry about being perfect - you can change it or create new organizations later. Follow the **Create** link.
@@ -37,7 +37,7 @@ Before ordering a new IBM COS Cross-Region storage account, it is necessary to c
 
 {% include note.html content="Bluemix Infrastructure will be the primary platform for ordering storage in the future and new customers are encouraged to begin with Bluemix, although it is still possible to create an account directly through SoftLayer." %}
 
-1. Got to [softlayer.com][7] and choose **Products & Services** \> **Object Storage** from the top menu.
+1. Got to [softlayer.com][7] and choose **Products & Services** > **Object Storage** from the top menu.
 2. Follow the **Order Now** link.
 3. Choose **Cloud Object Storage - S3 API** and then follow the **Add to Order** link. 
 4. Fill out the Contact and Billing information forms, check the box to acknowledge Cloud Service terms, and follow the **Submit Order** link. Note that the location indicated in the order form is unrelated to the location or endpoint used to store or connect to your data.
