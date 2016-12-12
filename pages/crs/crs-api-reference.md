@@ -1,16 +1,16 @@
 ---
 title: API reference
 keywords: 
-last_updated: November 18, 2016
+last\_updated: November 18, 2016
 tags: 
 summary: 
-sidebar: crs_api_sidebar
+sidebar: crs\_api\_sidebar
 permalink: crs-api-reference.html
 folder: crs
 toc: false
 ---
 
-###  Overview
+### Overview
 {: #overview}
 
 The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found in the [API overview]({{ site.baseurl }}/beta/api/overview/).
@@ -34,7 +34,7 @@ The following table describes supported common request headers. Headers not list
 | Expect             | `100-continue` waits for the headers to be accepted before sending the body.  | 
 {:.opstable}
 
-####  Common Response Headers
+#### Common Response Headers
 The following table describes common response headers.
 
 |  Header        | Note |
@@ -99,7 +99,7 @@ Authorization: {authorization-string}
 </ListAllMyBucketsResult>
 ```
 
-***
+---- 
 
 ### Operations on Buckets
 {: #operations-on-buckets}
@@ -140,7 +140,7 @@ x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
 Content-Length: 0
 ```
 
-***
+---- 
 
 #### Retrieve a bucket's headers
 
@@ -178,7 +178,7 @@ x-amz-request-id: 0c2832e3-3c51-4ea6-96a3-cd8482aca08a
 Content-Length: 0
 ```
 
-***
+---- 
 
 #### List objects in a given bucket
 
@@ -260,7 +260,7 @@ Content-Length: 909
 </ListBucketResult>
 ```
 
-***
+---- 
 
 #### Delete a bucket
 
@@ -307,13 +307,13 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 </Error>
 ```
 
-***
+---- 
 
 #### Create an access control list for a bucket
 
 A `PUT` issued to a bucket with the proper parameters creates an access control list (ACL) for that bucket.  Access control lists allow for granting different sets of permissions to different storage accounts using the account's ID, or by using a pre-made ACL.
 
-{% include important.html content="Credentials are generated for each storage account, not for indvidual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, `public-read-write` allows any other CRS storage account to access the resource, as well as the general public. " %}
+{% include important.html content="Credentials are generated for each storage account, not for individual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, `public-read-write` allows any other CRS storage account to access the resource, as well as the general public. " %}
 
 ACLs can use pre-made permissions sets (or 'canned ACLs') or be customized in the body of the request. Pre-made ACLs are specified using the `x-amz-acl` header with `private`, `public-read`, or `public-read-write` as the value. Custom ACLs are specified using XML in the request body and can grant `READ`, `WRITE`, `READ_ACP` (read ACL), `WRITE_ACP` (write ACL), or `FULL_CONTROL` permissions to a given storage account.
 
@@ -397,7 +397,7 @@ X-Clv-S3-Version: 2.5
 x-amz-request-id: 73d3cd4a-ff1d-4ac9-b9bb-43529b11356a
 ```
 
-***
+---- 
 
 #### Retrieve the access control list for a bucket
 
@@ -453,7 +453,7 @@ Content-Length: 550
 </AccessControlPolicy>
 ```
 
-***
+---- 
 
 #### List canceled/incomplete multipart uploads for a bucket
 
@@ -514,7 +514,7 @@ Content-Length: 374
 </ListMultipartUploadsResult>
 ```
 
-***
+---- 
 
 #### List any cross-origin resource sharing configuration for a bucket
 
@@ -556,7 +556,7 @@ Content-Length: 123
 <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"/>
 ```
 
-***
+---- 
 
 #### Create a cross-origin resource sharing configuration for a bucket
 
@@ -608,7 +608,7 @@ x-amz-request-id: 7afca6d8-e209-4519-8f2c-1af3f1540b42
 Content-Length: 0
 ```
 
-***
+---- 
 
 #### Delete any cross-origin resource sharing configuration for a bucket
 
@@ -634,7 +634,7 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 The server responds with `204 No Content`.
 
-***
+---- 
 
 ### Operations on Objects
 {: #operations-on-objects}
@@ -684,7 +684,7 @@ ETag: "3ca744fa96cb95e92081708887f63de5"
 Content-Length: 0
 ```
 
-***
+---- 
 
 #### Get an object's headers
 
@@ -723,7 +723,7 @@ Last-Modified: Thu, 25 Aug 2016 17:49:06 GMT
 Content-Length: 11
 ```
 
-***
+---- 
 
 #### Download an object
 
@@ -766,7 +766,7 @@ Content-Length: 467
  acting almost as a single organism in fulfilling their purpose.
 ```
 
-***
+---- 
 
 #### Delete an object
 
@@ -800,7 +800,7 @@ X-Clv-S3-Version: 2.5
 x-amz-request-id: 8ff4dc32-a6f0-447f-86cf-427b564d5855
 ```
 
-***
+---- 
 
 #### Deleting multiple objects
 
@@ -858,7 +858,7 @@ Content-Length: 207
 </DeleteResult>
 ```
 
-***
+---- 
 
 #### Copy an object
 
@@ -916,7 +916,7 @@ Content-Length: 240
 </CopyObjectResult>
 ```
 
-***
+---- 
 
 #### Retrieve an object's ACL
 
@@ -971,7 +971,7 @@ Content-Length: 550
 </AccessControlPolicy>
 ```
 
-***
+---- 
 
 #### Create an ACL for an object
 
@@ -1065,7 +1065,7 @@ x-amz-request-id: ef02ea42-6fa6-4cc4-bec4-c59bc3fcc9f7
 Content-Length: 0
 ```
 
-***
+---- 
 
 #### Check an object's CORS configuration
 
@@ -1106,8 +1106,7 @@ Content-Length: 0
 
 ```
 
-***
+---- 
 
-***
-***
-
+---- 
+---- 

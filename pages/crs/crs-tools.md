@@ -1,14 +1,14 @@
 ---
 title: Tools and SDKs
 keywords: 
-last_updated: November 18, 2016
+last\_updated: November 18, 2016
 tags: 
 summary: 
-sidebar: crs_sidebar
+sidebar: crs\_sidebar
 permalink: crs-tools.html
 folder: crs
 ---
-{% include note.html content="IBM COS Standard Cross Region is currently in open trial. Please visit [IBM Cloud](https://www.softlayer.com/Store/orderService/objectStorage) to participate." %}
+{% include note.html content="IBM COS Standard Cross Region is currently in open trial. Please visit [IBM Cloud][1] to participate." %}
 
 
 
@@ -18,16 +18,16 @@ Most tools that use the S3 API to interact with object storage are compatible wi
 
 #### Cyberduck
 
-For basic tasks there are GUI tools for accessing S3 API compatible object storage. Cyberduck is a popular, open-source, and easy to use FTP client that is also capable of calculating the correct authorization signatures needed to connect to IBM COS.  Cyberduck can be downloaded from [cyberduck.io/](https://cyberduck.io/).
+For basic tasks there are GUI tools for accessing S3 API compatible object storage. Cyberduck is a popular, open-source, and easy to use FTP client that is also capable of calculating the correct authorization signatures needed to connect to IBM COS.  Cyberduck can be downloaded from [cyberduck.io/][2].
 
 #### Cloudberry
 
-Cloudberry is a flexible backup utility that allows users to back up some or all of a local filesystem to an S3 API compatible object storage system. It can be configured to be run either manually or scheduled based on need, and can backup different directories to different buckets if needed.  Cloudberry can be downloaded from [cloudberrylab.com](http://www.cloudberrylab.com/). **Note**: When configuring Cloudberry, select 'S3 Compatible' from the list of options, not 'Amazon S3' or 'SoftLayer'.  
+Cloudberry is a flexible backup utility that allows users to back up some or all of a local filesystem to an S3 API compatible object storage system. It can be configured to be run either manually or scheduled based on need, and can backup different directories to different buckets if needed.  Cloudberry can be downloaded from [cloudberrylab.com][3]. **Note**: When configuring Cloudberry, select 'S3 Compatible' from the list of options, not 'Amazon S3' or 'SoftLayer'.  
 
 # Command line tools
 
 #### AWS CLI
-The official command line interface for AWS is compatible with the IBM COS S3 API. Written in Python, it can be installed from the Python Package Index via `pip install awscli`. By defauly, access keys are sourced from `~/.aws/credentials`, but can also be set as environment variables.
+The official command line interface for AWS is compatible with the IBM COS S3 API. Written in Python, it can be installed from the Python Package Index via `pip install awscli`. By default, access keys are sourced from `~/.aws/credentials`, but can also be set as environment variables.
 
 These examples have been generated using version 1.10.66 of the CLI.  To check the version installed, run `aws --version`.
 
@@ -175,7 +175,7 @@ Python support is provided through the Boto 3 library.  It can be installed from
 
 The `boto3` library provides complete access to the S3 API and can source credentials from the `~/.aws/credentials` file referenced above.  The IBM COS endpoint must be specified when creating a service resource or low-level client as shown in the following basic examples. 
 
-Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.readthedocs.io/en/latest/reference/services/s3.html).
+Detailed documentation can be found at [boto3.readthedocs.io][4].
 
 
 **Sample service resource script**
@@ -374,3 +374,7 @@ Other SDKs that leverage the S3 API are available from AWS and other providers a
 
 Please contact `nicholas.lange@ibm.com` with questions.
 
+[1]:	https://www.softlayer.com/Store/orderService/objectStorage
+[2]:	https://cyberduck.io/
+[3]:	http://www.cloudberrylab.com/
+[4]:	https://boto3.readthedocs.io/en/latest/reference/services/s3.html
