@@ -741,6 +741,7 @@ GET https://{bucket-name}.{endpoint}/{object-name} # virtual host style
 ```http
 GET /apiary/worker-bee HTTP/1.1
 Authorization: {authorization-string}
+x-amz-date: 20160825T183244Z
 Host: s3-api.us-geo.objectstorage.softlayer.net
 
 ```
@@ -819,6 +820,10 @@ POST https://{bucket-name}.{endpoint}/{object-name}?delete= # virtual host style
 POST /apiary?delete= HTTP/1.1
 Authorization: {authorization-string}
 Host: s3-api.us-geo.objectstorage.softlayer.net
+x-amz-date: 20161205T231624Z
+x-amz-content-sha256: 3ade096cd9471017539ede10c4d8aa05a1ecd015a16f4f090e9fcee92a816cf4
+Content-MD5: zhi+TmIAhD2U3GfoYayyTQ==
+Content-Type: text/plain; charset=utf-8
 ```
 
 ```xml
