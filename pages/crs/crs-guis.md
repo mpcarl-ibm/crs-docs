@@ -16,5 +16,11 @@ For basic tasks there are GUI tools for accessing S3 API compatible object stora
 
 ### Cloudberry
 
-Cloudberry is a flexible backup utility that allows users to back up some or all of a local filesystem to an S3 API compatible object storage system. It can be configured to be run either manually or scheduled based on need, and can backup different directories to different buckets if needed.  Cloudberry can be downloaded from [cloudberrylab.com](http://www.cloudberrylab.com/). **Note**: When configuring Cloudberry, select 'S3 Compatible' from the list of options, not 'Amazon S3' or 'SoftLayer'.  
+Cloudberry is a flexible backup utility that allows users to back up some or all of a local filesystem to an S3 API compatible object storage system. It can be configured to be run either manually or scheduled based on need, and can backup different directories to different buckets if needed.  Cloudberry can be downloaded from [cloudberrylab.com](http://www.cloudberrylab.com/). **
+
+{% include note.html content="When configuring Cloudberry, select 'S3 Compatible' from the list of options, not 'Amazon S3' or 'SoftLayer'." %}
+
+{% include important.html content="When using the Cloudberry Client for Windows to securely connect to a COS Cross Region endpoint, it is important to leave the 'Use SSL' box **unchecked** and to specify the destination as `https://{endpoint}`. This allows Cloudberry to connect using a compatible TLS handshake protocol." %}
+
+
 
