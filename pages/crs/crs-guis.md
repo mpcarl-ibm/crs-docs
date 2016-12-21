@@ -10,7 +10,7 @@ folder: crs
 toc: false
 ---
 
-For basic tasks, such as configuring routine backup or shared hosting for large files, there are GUI tools for accessing S3 API compatible object storage.
+For basic tasks, such as configuring routine backup or shared hosting for large files, there are GUI tools for accessing S3 API compatible object storage.  
 
 ### Cyberduck
 
