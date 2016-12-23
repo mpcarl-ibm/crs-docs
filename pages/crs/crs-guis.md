@@ -22,7 +22,7 @@ Cloudberry is a flexible backup utility that allows users to back up some or all
 
 {% include note.html content="When configuring Cloudberry, select 'S3 Compatible' from the list of options, not 'Amazon S3' or 'SoftLayer'." %}
 
-{% include important.html content="When configuring the Cloudberry Client for Windows to securely connect to a COS Cross Region endpoint, it is important to leave the 'Use SSL' box **unchecked** and to specify the destination as `https://{endpoint}`. This allows Cloudberry to connect using a compatible TLS handshake protocol." %}
+{% include warning.html content="The current release of the Cloudberry Client for Windows uses TLSv1.0 for establishing secure data transmission over the public Internet.  IBM Cloud requires the more modern TLSv1.1 or TLSv1.2 to establish a secure connection. Connections from the Cloudberry Client for Windows will fail unless the 'Use SSL' box is left **unchecked** during configuration." %}
 
 
 
