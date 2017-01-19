@@ -17,6 +17,10 @@ Account invoices can be found at **Account** > **Billing** > **Invoices** in the
 
 {% include tip.html content="Each account receives a single bill. If you need separate billing for different sets of containers, then creating multiple accounts is necessary." %}
 
+### How does IBM COS pricing work?
+
+Storage costs for IBM COS are determined by total volume of data stored, the amount of public outbound bandwidth consumed, and the total number of operational requests processed by the system.
+
 ### What is the difference between 'Class A' and 'Class B' requests?
 
 'Class A' requests are operations that involve modification or listing.  This includes creating buckets, uploading or copying objects, creating or changing configurations, listing buckets, and listing the contents of buckets.
