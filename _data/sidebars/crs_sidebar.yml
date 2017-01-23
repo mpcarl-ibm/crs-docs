@@ -126,8 +126,8 @@ entries:
       url: /crs-api-reference.html
       output: web, pdf  
 
-    - title: Best practices and performance
-      url: /crs-best-practices.html
+    - title: Usage guidelines
+      url: /crs-usage-guidelines.html
       output: web, pdf
 
   - title: Resources

@@ -5,7 +5,7 @@ last_updated: November 18, 2016
 tags: 
 summary: 
 sidebar: crs_sidebar
-permalink: crs-best-practices.html
+permalink: crs-usage-guidelines.html
 folder: crs
 ---
 ### Object naming
