@@ -10,7 +10,7 @@ folder: crs
 toc: false
 ---
 
- IBM Cloud does not provide native SDKs for interacting with COS offerings at this time, although they are under active development.  In the case of IBM COS Cross Region, stored data is accessed using an implementation of the S3 API. Compatibility with an established object storage API allows developers to make use of a large ecosystem of third-party tools and SDKs.  
+ IBM Cloud does not provide native SDKs for interacting with COS offerings at this time.  In the case of IBM COS Cross Region, stored data is accessed using an implementation of the S3 API. Compatibility with an established object storage API allows developers to make use of a large ecosystem of third-party tools and SDKs.  
 
  A full list of supported S3 API operations can be found in the [API Overview]( {{ site.baseurl }}/crs-operations.html).
 
