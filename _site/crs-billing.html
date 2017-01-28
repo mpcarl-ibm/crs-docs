@@ -389,7 +389,7 @@
             
             
             
-            <li><a href="crs-best-practices.html">Best practices and performance</a></li>
+            <li><a href="crs-usage-guidelines.html">Usage guidelines</a></li>
             
             
             
@@ -455,6 +455,12 @@
 
 <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Each account receives a single bill. If you need separate billing for different sets of containers, then creating multiple accounts is necessary.</div>
 
+<h3 id="how-does-ibm-cos-pricing-work">How does IBM COS pricing work?</h3>
+
+<p>Storage costs for IBM COS are determined by total volume of data stored, the amount of public outbound bandwidth consumed, and the total number of operational requests processed by the system.</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> Bluemix infrastructure offerings are connected to a three-tiered network, segmenting public, private, and management traffic. Infrastructure on a customer’s Bluemix account may transfer data between one another across the private network at no cost. Infrastructure offerings (such as bare metal servers, virtual servers, and cloud storage) connect to other applications and services in the Bluemix catalog (such as Watson services, containers, runtimes) across the public network, so data transfer between those two types of offerings is  metered and charged at standard public network bandwidth rates.</div>
+
 <h3 id="what-is-the-difference-between-class-a-and-class-b-requests">What is the difference between ‘Class A’ and ‘Class B’ requests?</h3>
 
 <p>‘Class A’ requests are operations that involve modification or listing.  This includes creating buckets, uploading or copying objects, creating or changing configurations, listing buckets, and listing the contents of buckets.</p>
@@ -499,8 +505,8 @@
 <footer>
             <div class="row">
                 <div class="col-lg-12 footer">
-               &copy;2016 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Dec 23, 2016 <br /><br />
+               &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Jan 27, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
