@@ -35,3 +35,7 @@ There is no charge for deleting buckets or objects from the system.
 |--- |--- |--- |
 | Class A | PUT, COPY, and POST requests, as well as GET requests used to list buckets and objects | Creating buckets, uploading or copying objects, listing buckets, listing contents of buckets, setting ACLs, and setting CORS configurations |
 | Class B | GET (excluding listing), HEAD, and OPTIONS requests | Retrieving objects and metadata |
+
+### What is the difference between the Standard and Vault billing tiers?
+ 
+Vault billing is a way to control costs for infrequently accessed data, such as compliance or backup data. These objects incur lower storage costs but higher costs for operational requests. Unlike the Standard billing tier, additional costs are incurred on a per-GB basis for objects retrieved from the system.  
