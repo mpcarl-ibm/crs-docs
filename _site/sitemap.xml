@@ -32,12 +32,6 @@
   
   
   <url>
-    <loc>/crs-best-practices.html</loc>
-  </url>
-  
-  
-  
-  <url>
     <loc>/crs-billing.html</loc>
   </url>
   
@@ -159,6 +153,12 @@
   
   <url>
     <loc>/crs-support.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-usage-guidelines.html</loc>
   </url>
   
   

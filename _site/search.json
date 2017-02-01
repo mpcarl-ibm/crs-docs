@@ -37,17 +37,6 @@
 
 
 {
-"title": "Performance tips",
-"tags": "",
-"keywords": "",
-"url": "crs-best-practices.html",
-"summary": ""
-}
-,
-
-
-
-{
 "title": "Billing information",
 "tags": "",
 "keywords": "",
@@ -272,6 +261,17 @@
 "tags": "",
 "keywords": "",
 "url": "crs-support.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Performance tips",
+"tags": "",
+"keywords": "",
+"url": "crs-usage-guidelines.html",
 "summary": ""
 }
 ,
