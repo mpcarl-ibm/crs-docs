@@ -28,7 +28,7 @@ Types of endpoint:
     </tr>
   </thead>
     <tr>
-    <td rowspan="3">US Region</td>
+    <td rowspan="2">US Region</td>
     <td>public</td>
     <td><code class="highlighter-rouge">s3-api.us-geo.objectstorage.softlayer.net</code></td>
   </tr>
@@ -37,7 +37,7 @@ Types of endpoint:
     <td><code class="highlighter-rouge">s3-api.us-geo.objectstorage.service.networklayer.com</code></td>
   </tr>
   <tr>
-    <td rowspan="3">Dallas</td>
+    <td rowspan="2">Dallas</td>
     <td>public</td>
     <td><code class="highlighter-rouge">s3-api.dal-us-geo.objectstorage.softlayer.net</code></td>
   </tr>
@@ -46,7 +46,7 @@ Types of endpoint:
     <td><code class="highlighter-rouge">s3-api.dal-us-geo.objectstorage.service.networklayer.com</code></td>
   </tr>
   <tr>
-    <td rowspan="3">San Jose</td>
+    <td rowspan="2">San Jose</td>
         <td>public</td>
     <td><code class="highlighter-rouge">s3-api.sjc-us-geo.objectstorage.softlayer.net</code></td>
   </tr>
@@ -55,7 +55,7 @@ Types of endpoint:
     <td><code class="highlighter-rouge">s3-api.sjc-us-geo.objectstorage.service.networklayer.com</code></td>
   </tr>
   <tr>
-    <td rowspan="3">Washington, DC</td>
+    <td rowspan="2">Washington, DC</td>
     <td>public</td>
     <td><code class="highlighter-rouge">s3-api.wdc-us-geo.objectstorage.softlayer.net</code></td>
   </tr>
