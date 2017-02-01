@@ -106,7 +106,9 @@ Authorization: {authorization-string}
 
 #### Create a new bucket
 
-A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be globally unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.
+A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.
+
+{% include note.html content="Using third-party tools or SDKs may enforce setting a 'Location Constraint' when creating a bucket.  If required, this value must be set to 'us-standard'." %}
 
 ##### Syntax
 
