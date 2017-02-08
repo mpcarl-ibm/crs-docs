@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation (Staging)</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -475,6 +475,14 @@ $('#toc').on('click', 'a', function() {
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3. </div>
 
+<p>By default, access keys are sourced from <code class="highlighter-rouge">~/.aws/credentials</code>, but can also be set as environment variables.  Minimum required <code class="highlighter-rouge">~/.aws/credentials</code> file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[default]
+aws_access_key_id = {Access Key ID}
+aws_secret_access_key = {Secret Access Key}
+</code></pre>
+</div>
+
 <p>The <code class="highlighter-rouge">boto3</code> library provides complete access to the S3 API and can source credentials from the <code class="highlighter-rouge">~/.aws/credentials</code> file referenced above.  The IBM COS endpoint must be specified when creating a service resource or low-level client as shown in the following basic examples.</p>
 
 <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Detailed documentation can be found at <a href="https://boto3.readthedocs.io/en/latest/reference/services/s3.html">boto3.readthedocs.io</a>.</div>
@@ -685,7 +693,7 @@ Raw output from 'list_buckets()' in bucket-2:
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 1, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 8, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

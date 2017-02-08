@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation (Staging)</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -444,6 +444,29 @@
    
 
     
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
 
 
     
@@ -589,6 +612,20 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
 </code></pre>
 </div>
 
+<h4 id="pre-signed-urls">Pre-signed URLs</h4>
+<p>The CLI is also capable of creating pre-signed URLs.  These allow for public consumption of objects without the need to provide authentication, or the need to actually change the access control settings of an object.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>aws --endpoint-url<span class="o">=</span>https://<span class="o">{</span>endpoint<span class="o">}</span> s3 presign s3://bucket-1/new-file
+</code></pre>
+</div>
+
+<p>It is also possible to set an expiration time for the URL in seconds (default is 3600):</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>aws --endpoint-url<span class="o">=</span>https://<span class="o">{</span>endpoint<span class="o">}</span> s3 presign s3://bucket-1/new-file --expires-in 600
+</code></pre>
+</div>
+
+
 
     <div class="tags">
         
@@ -604,7 +641,7 @@ copy: s3://bucket-1/new-file to s3://bucket-2/new-file
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 1, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 8, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

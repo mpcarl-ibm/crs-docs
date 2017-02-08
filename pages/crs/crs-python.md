@@ -13,6 +13,14 @@ Python support is provided through the Boto 3 library.  It can be installed from
 
 {% include note.html content="Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3. " %}
 
+By default, access keys are sourced from `~/.aws/credentials`, but can also be set as environment variables.  Minimum required `~/.aws/credentials` file:
+
+```
+[default]
+aws_access_key_id = {Access Key ID}
+aws_secret_access_key = {Secret Access Key}
+```
+
 The `boto3` library provides complete access to the S3 API and can source credentials from the `~/.aws/credentials` file referenced above.  The IBM COS endpoint must be specified when creating a service resource or low-level client as shown in the following basic examples. 
 
 {% include tip.html content= "Detailed documentation can be found at [boto3.readthedocs.io](https://boto3.readthedocs.io/en/latest/reference/services/s3.html)." %}
