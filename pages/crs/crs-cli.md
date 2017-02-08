@@ -7,7 +7,7 @@ summary:
 sidebar: crs_sidebar
 permalink: crs-cli.html
 folder: crs
-toc: false
+toc: true
 ---
 
 ### AWS CLI
@@ -29,6 +29,7 @@ Simple use cases can be accomplished using `aws --endpoint-url={endpoint} s3 <co
 
 **Note**: Buckets can not be created using this method. Instead, use the `s3api` method described below.
 
+#### Basic operations 
 Listing buckets:
 
 ```shell
@@ -149,4 +150,17 @@ $ aws --endpoint-url=https://{endpoint} s3api list-objects --bucket bucket1
         }
     ]
 }
+```
+
+#### Pre-signed URLs
+The CLI is also capable of creating pre-signed URLs.  These allow for public consumption of objects without the need to provide authentication, or the need to actually change the access control settings of an object.
+
+```bash
+$ aws --endpoint-url=https://{endpoint} s3 presign s3://bucket-1/new-file
+```
+
+It is also possible to set an expiration time for the URL in seconds (default is 3600):
+
+```bash
+$ aws --endpoint-url=https://{endpoint} s3 presign s3://bucket-1/new-file --expires-in 600
 ```
