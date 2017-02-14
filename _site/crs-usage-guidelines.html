@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation (Staging)</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -471,30 +471,7 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h3 id="object-naming">Object naming</h3>
-<p>It is recommended to randomize the beginning component of the object name to increase performance.  A random name allows for greater parallelization during object writes, which can lead to performance gains for write-heavy workloads.</p>
-
-<p>Example of <strong>inefficient</strong> naming scheme:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT /bucket1/filename-00001
-PUT /bucket1/filename-00002
-PUT /bucket1/filename-00003
-PUT /bucket1/filename-00004
-PUT /bucket1/filename-00005
-</code></pre>
-</div>
-
-<p>Examples of an <strong>efficient</strong> naming scheme:</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT /bucket1/c1ca2-filename-00001
-PUT /bucket1/c9872-filename-00002
-PUT /bucket1/98837-filename-00003
-PUT /bucket1/abfc4-filename-00004
-PUT /bucket1/9ac18-filename-00005
-</code></pre>
-</div>
-
-<h3 id="tuning-cipher-settings">Tuning cipher settings</h3>
+  <h3 id="tuning-cipher-settings">Tuning cipher settings</h3>
 <p>IBM COS supports a variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</code>, <code class="highlighter-rouge">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_256_CBC_SHA</code>, <code class="highlighter-rouge">TLS_RSA_WITH_AES_128_CBC_SHA</code> has shown to yield the same levels of performance as no TLS between the client and the IBM COS System.</p>
 
 <h3 id="using-multipart-uploads">Using multipart uploads</h3>
@@ -527,7 +504,7 @@ PUT /bucket1/9ac18-filename-00005
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 8, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 14, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
