@@ -13,11 +13,7 @@ Python support is provided through the Boto 3 library.  It can be installed from
 
 {% include note.html content="Existing applications that use the original Boto 2.x library should be compatible as well, although it is no longer being actively maintained and users are encouraged to migrate to Boto 3. " %}
 
-<<<<<<< HEAD
 By default, access keys are sourced from `~/.aws/credentials`, but can also be set as environment variables. Minimum required `~/.aws/credentials` file:
-=======
-By default, access keys are sourced from `~/.aws/credentials`, but can also be set as environment variables.  Minimum required `~/.aws/credentials` file:
->>>>>>> gh-pages
 
 ```
 [default]

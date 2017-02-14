@@ -163,9 +163,5 @@ It is also possible to set an expiration time for the URL in seconds (default is
 
 ```bash
 $ aws --endpoint-url=https://{endpoint} s3 presign s3://bucket-1/new-file --expires-in 600
-<<<<<<< HEAD
-```
-=======
 ```
 
->>>>>>> gh-pages
