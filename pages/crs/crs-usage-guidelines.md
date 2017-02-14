@@ -8,28 +8,6 @@ sidebar: crs_sidebar
 permalink: crs-usage-guidelines.html
 folder: crs
 ---
-### Object naming
-It is recommended to randomize the beginning component of the object name to increase performance.  A random name allows for greater parallelization during object writes, which can lead to performance gains for write-heavy workloads.
-
-Example of **inefficient** naming scheme:
-
-```bash
-PUT /bucket1/filename-00001
-PUT /bucket1/filename-00002
-PUT /bucket1/filename-00003
-PUT /bucket1/filename-00004
-PUT /bucket1/filename-00005
-```
-
-Examples of an **efficient** naming scheme:
-
-```bash
-PUT /bucket1/c1ca2-filename-00001
-PUT /bucket1/c9872-filename-00002
-PUT /bucket1/98837-filename-00003
-PUT /bucket1/abfc4-filename-00004
-PUT /bucket1/9ac18-filename-00005
-```
 
 ### Tuning cipher settings
 IBM COS supports a variety of cipher settings to encrypt data in transit. Not all cipher settings yield the same level performance. Negotiating one of `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`, `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`, `TLS_RSA_WITH_AES_256_CBC_SHA`, `TLS_RSA_WITH_AES_128_CBC_SHA` has shown to yield the same levels of performance as no TLS between the client and the IBM COS System.
