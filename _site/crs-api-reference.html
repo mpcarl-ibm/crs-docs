@@ -588,6 +588,16 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
+<h5 id="providing-a-location-constraint">Providing a Location Constraint</h5>
+
+<p>To specify a Location Constraint, provide an XML block that describes the configuration in the body of the request (as well as a <code class="highlighter-rouge">x-amz-content-sha256</code> header with the hashed request body).</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-standard<span class="nt">&lt;/LocationConstraint&gt;</span>
+<span class="nt">&lt;/CreateBucketConfiguration&gt;</span>
+</code></pre>
+</div>
+
 <hr />
 
 <h4 id="retrieve-a-buckets-headers">Retrieve a bucket’s headers</h4>
@@ -1637,7 +1647,7 @@ OPTIONS https://<span class="o">{</span>bucket-name<span class="o">}</span>.<spa
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 14, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 15, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
