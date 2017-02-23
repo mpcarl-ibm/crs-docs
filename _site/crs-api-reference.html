@@ -135,6 +135,10 @@
                         <li><a href="https://console.ng.bluemix.net/docs/services/ObjectStorage/index.html" target="_blank">Object Storage for Bluemix</a></li>
                         
                         
+                        
+                        <li><a href="bx-dedicated">Object Storage for Bluemix (Dedicated)</a></li>
+                        
+                        
                     </ul>
                 </li>
                 
@@ -585,6 +589,16 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 <span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
 <span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">dca204eb-72b5-4e2a-a142-808d2a5c2a87</span>
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
+
+<h5 id="providing-a-location-constraint">Providing a Location Constraint</h5>
+
+<p>To specify a Location Constraint, provide an XML block that describes the configuration in the body of the request (as well as a <code class="highlighter-rouge">x-amz-content-sha256</code> header with the hashed request body).</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-standard<span class="nt">&lt;/LocationConstraint&gt;</span>
+<span class="nt">&lt;/CreateBucketConfiguration&gt;</span>
 </code></pre>
 </div>
 
@@ -1637,7 +1651,7 @@ OPTIONS https://<span class="o">{</span>bucket-name<span class="o">}</span>.<spa
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 14, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Feb 23, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

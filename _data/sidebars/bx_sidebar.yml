@@ -1,0 +1,100 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Bluemix Dedicated
+  version: 
+  levels:
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+  - title: Getting started
+    output: web, pdf
+    folderitems:
+
+    - title: Bluemix Dedicated Object Storage
+      url: /bx-dedicated
+      output: web, pdf
+
+    - title: Generating service credentials
+      url: /bx-credentials
+      output: web, pdf
+
+    - title: Managing objects
+      url: /bx-objects
+      output: web, pdf  
+
+    - title: Managing access
+      url: /bx-access
+      output: web, pdf 
+
+    - title: Unbinding & deprovisioning
+      url: /bx-unbinding
+      output: web, pdf 
+
+    - title: Getting support & FAQ
+      url: /crs-support.html
+      output: web, pdf 
+
+  - title: Using the API
+    output: web, pdf
+    folderitems:
+
+    - title: Connecting to IBM COS
+      url: /crs-connecting.html
+      output: web, pdf
+
+      subfolders:
+      - title: API overview
+        output: web, pdf
+        
+        subfolderitems:
+        - title: Supported operations
+          url: /crs-operations.html
+          output: web, pdf  
+
+        - title: About authentication
+          url: /crs-authentication.html
+          output: web, pdf  
+
+        - title: About the SoftLayer API
+          url: /crs-sldn.html
+          output: web, pdf    
+
+      - title: Compatible tools and SDKs
+        output: web, pdf
+        
+        subfolderitems:
+        - title: Desktop clients
+          url: /crs-guis.html
+          output: web, pdf  
+
+        - title: Command line tools
+          url: /crs-cli.html
+          output: web, pdf  
+
+        - title: Using Python with IBM COS
+          url: /crs-python.html
+          output: web, pdf 
+
+    - title: Complete API reference
+      url: /crs-api-reference.html
+      output: web, pdf  
+
+    - title: Usage guidelines
+      url: /crs-usage-guidelines.html
+      output: web, pdf
+
+
