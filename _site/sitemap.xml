@@ -14,6 +14,36 @@
   
   
   <url>
+    <loc>/bx-access</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/bx-credentials</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/bx-dedicated</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/bx-objects</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/bx-unbinding</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>/crs-about-api.html</loc>
   </url>
   

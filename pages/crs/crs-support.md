@@ -10,6 +10,12 @@ folder: crs
 toc: false
 ---
 
+### Getting help
+
+For help with questions about IBM Cloud Object Storage and it's capabilities, please visit [dW Answers](https://developer.ibm.com/answers/smartspace/public-cloud-object-storage/) and tag questions with `objectstorage` and/or `standardcrossregion`.
+
+For technical questions about software integration with IBM COS, visit [StackOverflow](http://stackoverflow.com/questions/tagged/object-storage+ibm) and tag questions with `ibm` and `object-storage`.
+
 ### Creating support tickets
 Customers requiring support can open a ticket and check the status of an issue in the [customer portal](https://control.softlayer.com/){: new_window}.
 

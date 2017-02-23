@@ -4,6 +4,61 @@
 
 
 {
+"title": "Managing access",
+"tags": "",
+"keywords": "",
+"url": "bx-access",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Generating Service credentials",
+"tags": "",
+"keywords": "",
+"url": "bx-credentials",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Getting started with Object Storage for Bluemix Dedicated",
+"tags": "",
+"keywords": "",
+"url": "bx-dedicated",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Managing objects",
+"tags": "",
+"keywords": "",
+"url": "bx-objects",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Unbinding and deprovisioning",
+"tags": "",
+"keywords": "",
+"url": "bx-unbinding",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "About using SDKs and tools with IBM COS",
 "tags": "",
 "keywords": "",
