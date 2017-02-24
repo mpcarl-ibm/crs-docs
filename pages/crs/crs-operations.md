@@ -5,7 +5,7 @@ last_updated: November 18, 2016
 tags: 
 summary: 
 sidebar: crs_sidebar
-permalink: crs-operations.html
+permalink: crs-operations
 folder: crs
 ---
 
