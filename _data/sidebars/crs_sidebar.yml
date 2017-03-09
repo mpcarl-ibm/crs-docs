@@ -33,18 +33,6 @@ entries:
       url: /crs-create-account.html
       output: web, pdf
 
-    - title: Creating a new customer account
-      url: /crs-create-account.html
-      output: web, pdf
-
-    - title: About IBM COS API and SDKs
-      url: /crs-about-api.html
-      output: web, pdf
-
-    - title: Creating a new customer account
-      url: /crs-create-account.html
-      output: web, pdf
-
     - title: Creating a new storage account
       url: /crs-create-storage-account.html
       output: web, pdf
@@ -59,7 +47,11 @@ entries:
 
     - title: Billing information
       url: /crs-billing.html
-      output: web, pdf 
+      output: web, pdf
+
+    - title: About IBM COS API and SDKs
+      url: /crs-about-api.html
+      output: web, pdf
 
     - title: Getting support & FAQ
       url: /crs-support.html
@@ -78,7 +70,7 @@ entries:
       url: /crs-api-reference.html
       output: web, pdf  
 
-    - title: Service API
+    - title: SoftLayer API
       url: /crs-sldn.html
       output: web, pdf  
 
