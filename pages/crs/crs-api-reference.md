@@ -142,16 +142,6 @@ x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
 Content-Length: 0
 ```
 
-##### Providing a Location Constraint
-
-To specify a Location Constraint, provide an XML block that describes the configuration in the body of the request (as well as a `x-amz-content-sha256` header with the hashed request body).
-
-```xml
-<CreateBucketConfiguration> 
-  <LocationConstraint>us-standard</LocationConstraint>
-</CreateBucketConfiguration>
-```
-
 ---- 
 
 #### Retrieve a bucket's headers
