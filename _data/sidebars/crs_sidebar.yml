@@ -20,30 +20,26 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Overview
+  - title: Getting started
     output: web, pdf
     folderitems:
 
-    - title: IBM COS Standard Cross-Region
+    - title: About IBM Cloud Object Storage
       url: /index.html
       output: web, pdf
       type: homepage
 
-    - title: About IBM COS security
-      url: /crs-security.html
+    - title: Creating a new customer account
+      url: /crs-create-account.html
+      output: web, pdf
+
+    - title: Creating a new customer account
+      url: /crs-create-account.html
       output: web, pdf
 
     - title: About IBM COS API and SDKs
       url: /crs-about-api.html
       output: web, pdf
-
-    - title: Other IBM object storage options
-      url: /crs-other-offerings.html
-      output: web, pdf
-
-  - title: Getting started
-    output: web, pdf
-    folderitems:
 
     - title: Creating a new customer account
       url: /crs-create-account.html
@@ -53,9 +49,13 @@ entries:
       url: /crs-create-storage-account.html
       output: web, pdf
 
-    - title: Connecting to endpoints
-      url: /crs-endpoints.html
-      output: web, pdf  
+    - title: Creating and using buckets
+      url: /crs-control-buckets.html
+      output: web, pdf
+
+    - title: Creating and using objects
+      url: /crs-control-objects.html
+      output: web, pdf
 
     - title: Billing information
       url: /crs-billing.html
@@ -65,23 +65,40 @@ entries:
       url: /crs-support.html
       output: web, pdf 
 
-  - title: Using the Control portal
+
+  - title: API reference
     output: web, pdf
     folderitems:
 
-    - title: Creating and using buckets
-      url: /crs-control-buckets.html
+    - title: API overview
+      url: /crs-operations.html
       output: web, pdf
 
-    - title: Creating and using objects
-      url: /crs-control-objects.html
+    - title: API reference
+      url: /crs-api-reference.html
+      output: web, pdf  
+
+    - title: Service API
+      url: /crs-sldn.html
+      output: web, pdf  
+
+    - title: Command line tools
+      url: /crs-cli.html
       output: web, pdf
 
-    - title: Viewing credentials and endpoints
-      url: /crs-control-credentials.html
-      output: web, pdf
+    - title: Python
+      url: /crs-python.html
+      output: web, pdf 
 
-  - title: Using the API
+    - title: Java
+      url: /crs-java.html
+      output: web, pdf 
+
+    - title: Node.js
+      url: /crs-node.html
+      output: web, pdf 
+
+  - title: How-tos
     output: web, pdf
     folderitems:
 
@@ -89,50 +106,37 @@ entries:
       url: /crs-connecting.html
       output: web, pdf
 
-      subfolders:
-      - title: API overview
-        output: web, pdf
-        
-        subfolderitems:
-        - title: Supported operations
-          url: /crs-operations.html
-          output: web, pdf  
+    - title: Viewing credentials and endpoints
+      url: /crs-control-credentials.html
+      output: web, pdf
 
-        - title: About authentication
-          url: /crs-authentication.html
-          output: web, pdf  
+    - title: Connecting to endpoints
+      url: /crs-endpoints.html
+      output: web, pdf 
 
-        - title: About the SoftLayer API
-          url: /crs-sldn.html
-          output: web, pdf    
+    - title: About authentication
+      url: /crs-authentication.html
+      output: web, pdf
 
-      - title: Compatible tools and SDKs
-        output: web, pdf
-        
-        subfolderitems:
-        - title: Desktop clients
-          url: /crs-guis.html
-          output: web, pdf  
-
-        - title: Command line tools
-          url: /crs-cli.html
-          output: web, pdf  
-
-        - title: Using Python with IBM COS
-          url: /crs-python.html
-          output: web, pdf 
-
-    - title: Complete API reference
-      url: /crs-api-reference.html
-      output: web, pdf  
-
-    - title: Usage guidelines
-      url: /crs-usage-guidelines.html
+    - title: Desktop clients
+      url: /crs-guis.html
       output: web, pdf
 
   - title: Resources
     output: web, pdf
     folderitems:
+
+    - title: About IBM COS security
+      url: /crs-security.html
+      output: web, pdf
+
+    - title: Developer guidance
+      url: /crs-usage-guidelines.html
+      output: web, pdf
+
+    - title: Other IBM object storage options
+      url: /crs-other-offerings.html
+      output: web, pdf
 
     - title: Getting support
       url: /crs-support-resources.html
