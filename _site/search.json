@@ -1,0 +1,431 @@
+[
+
+
+
+
+{
+"title": "Managing access",
+"tags": "",
+"keywords": "",
+"url": "bx-access",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Generating Service credentials",
+"tags": "",
+"keywords": "",
+"url": "bx-credentials",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Getting started with Object Storage for Bluemix Dedicated",
+"tags": "",
+"keywords": "",
+"url": "bx-dedicated",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Managing objects",
+"tags": "",
+"keywords": "",
+"url": "bx-objects",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Unbinding and deprovisioning",
+"tags": "",
+"keywords": "",
+"url": "bx-unbinding",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "About using SDKs and tools with IBM COS",
+"tags": "",
+"keywords": "",
+"url": "crs-about-api.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "API reference",
+"tags": "",
+"keywords": "",
+"url": "crs-api-reference.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Authorization and authentication",
+"tags": "",
+"keywords": "",
+"url": "crs-authentication.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Billing information",
+"tags": "",
+"keywords": "",
+"url": "crs-billing.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Managing buckets and objects",
+"tags": "",
+"keywords": "",
+"url": "crs-buckets-objects.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Using the AWS CLI to connect to IBM COS",
+"tags": "",
+"keywords": "",
+"url": "crs-cli.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Connecting to IBM COS Cross-Region",
+"tags": "",
+"keywords": "",
+"url": "crs-connecting.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Creating and using buckets",
+"tags": "",
+"keywords": "",
+"url": "crs-control-buckets.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Viewing credentials and endpoints",
+"tags": "",
+"keywords": "",
+"url": "crs-control-credentials.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Creating and using objects",
+"tags": "",
+"keywords": "",
+"url": "crs-control-objects.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Creating a new customer account",
+"tags": "",
+"keywords": "",
+"url": "crs-create-account.html",
+"summary": "IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS."
+}
+,
+
+
+
+{
+"title": "Creating an IBM COS Cross-Region storage account",
+"tags": "",
+"keywords": "",
+"url": "crs-create-storage-account.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Endpoints",
+"tags": "",
+"keywords": "",
+"url": "crs-endpoints.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-example-workflow.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Using desktop clients",
+"tags": "",
+"keywords": "",
+"url": "crs-guis.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-java.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-node.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Supported API operations",
+"tags": "",
+"keywords": "",
+"url": "crs-operations.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Other IBM object storage options",
+"tags": "",
+"keywords": "",
+"url": "crs-other-offerings.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Using Python with IBM COS",
+"tags": "",
+"keywords": "",
+"url": "crs-python.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Data security and IBM COS",
+"tags": "",
+"keywords": "",
+"url": "crs-security.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Using the SoftLayer API",
+"tags": "",
+"keywords": "",
+"url": "crs-sldn.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-support-resources.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Support and FAQ",
+"tags": "",
+"keywords": "",
+"url": "crs-support.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Performance tips",
+"tags": "",
+"keywords": "",
+"url": "crs-usage-guidelines.html",
+"summary": ""
+}
+,
+
+
+
+
+
+{
+"title": "IBM COS Standard Cross-Region",
+"tags": "",
+"keywords": "",
+"url": "index.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Scroll layout",
+"tags": "special_layouts",
+"keywords": "json, scrolling, scrollto, jquery plugin",
+"url": "jsmydoc_scroll.html",
+"summary": "This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way."
+}
+,
+
+
+
+{
+"title": "News",
+"tags": "",
+"keywords": "news, blog, updates, release notes, announcements",
+"url": "news.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "News",
+"tags": "",
+"keywords": "news, blog, updates, release notes, announcements",
+"url": "news_archive.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Notices, trademarks, terms and conditions",
+"tags": "",
+"keywords": "",
+"url": "notices.html",
+"summary": ""
+}
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+"title": "Sample post",
+"tags": "newsgetting_started",
+"keywords": "",
+"url": "/samplepost.html",
+"summary": "This is some summary frontmatter for my sample post."
+}
+
+
+
+]
