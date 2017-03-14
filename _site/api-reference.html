@@ -552,6 +552,62 @@
 
 <hr />
 
+<h4 id="view-the-storage-class-of-buckets-belonging-to-an-account">View the storage class of buckets belonging to an account</h4>
+
+<p>A <code class="highlighter-rouge">GET</code> issued to the endpoint root with the <code class="highlighter-rouge">pagination</code> query parameter returns a list of buckets associated with the requesting account along with their storage class (shown as <code class="highlighter-rouge">LocationConstraint</code>).</p>
+
+<h5 id="syntax-1">Syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/?pagination<span class="o">=</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-1">Sample request</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/?pagination=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">X-Amz-Date</span><span class="p">:</span> <span class="s">20160822T030815Z</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-1">Sample response</h5>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+<span class="nt">&lt;ListAllMyBucketsResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Owner&gt;</span>
+        <span class="nt">&lt;ID&gt;</span>{account-id}<span class="nt">&lt;/ID&gt;</span>
+        <span class="nt">&lt;DisplayName&gt;</span>{account-id}<span class="nt">&lt;/DisplayName&gt;</span>
+    <span class="nt">&lt;/Owner&gt;</span>
+    <span class="nt">&lt;Buckets&gt;</span>
+        <span class="nt">&lt;Bucket&gt;</span>
+            <span class="nt">&lt;Name&gt;</span>bucket-27200-lwx4cfvcue<span class="nt">&lt;/Name&gt;</span>
+            <span class="nt">&lt;CreationDate&gt;</span>2016-08-18T14:21:36.593Z<span class="nt">&lt;/CreationDate&gt;</span>
+            <span class="nt">&lt;LocationConstraint&gt;</span>us-standard<span class="nt">&lt;/LocationConstraint&gt;</span>
+        <span class="nt">&lt;/Bucket&gt;</span>
+        <span class="nt">&lt;Bucket&gt;</span>
+            <span class="nt">&lt;Name&gt;</span>bucket-27590-drqmydpfdv<span class="nt">&lt;/Name&gt;</span>
+            <span class="nt">&lt;CreationDate&gt;</span>2016-08-18T14:22:32.366Z<span class="nt">&lt;/CreationDate&gt;</span>
+            <span class="nt">&lt;LocationConstraint&gt;</span>us-standard<span class="nt">&lt;/LocationConstraint&gt;</span>
+        <span class="nt">&lt;/Bucket&gt;</span>
+        <span class="nt">&lt;Bucket&gt;</span>
+            <span class="nt">&lt;Name&gt;</span>bucket-27852-290jtb0n2y<span class="nt">&lt;/Name&gt;</span>
+            <span class="nt">&lt;CreationDate&gt;</span>2016-08-18T14:23:03.141Z<span class="nt">&lt;/CreationDate&gt;</span>
+            <span class="nt">&lt;LocationConstraint&gt;</span>us-cold<span class="nt">&lt;/LocationConstraint&gt;</span>
+        <span class="nt">&lt;/Bucket&gt;</span>
+        <span class="nt">&lt;Bucket&gt;</span>
+            <span class="nt">&lt;Name&gt;</span>bucket-28731-k0o1gde2rm<span class="nt">&lt;/Name&gt;</span>
+            <span class="nt">&lt;CreationDate&gt;</span>2016-08-18T14:25:09.599Z<span class="nt">&lt;/CreationDate&gt;</span>
+            <span class="nt">&lt;LocationConstraint&gt;</span>us-vault<span class="nt">&lt;/LocationConstraint&gt;</span>
+        <span class="nt">&lt;/Bucket&gt;</span>
+    <span class="nt">&lt;/Buckets&gt;</span>
+<span class="nt">&lt;/ListAllMyBucketsResult&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
 <h3 id="operations-on-buckets">Operations on Buckets</h3>
 
 <h4 id="create-a-new-bucket">Create a new bucket</h4>
@@ -560,14 +616,14 @@
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Using third-party tools or SDKs may enforce setting a ‘Location Constraint’ when creating a bucket.  If required, this value must be set to ‘us-standard’.</div>
 
-<h5 id="syntax-1">Syntax</h5>
+<h5 id="syntax-2">Syntax</h5>
 
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span> <span class="c"># path style</span>
 PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-1">Sample request</h5>
+<h5 id="sample-request-2">Sample request</h5>
 
 <p>This is an example of creating a new bucket called ‘images’.</p>
 
@@ -579,7 +635,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-1">Sample response</h5>
+<h5 id="sample-response-2">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:45:25 GMT</span>
@@ -598,14 +654,14 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">HEAD</code> issued to a bucket will return the headers for that bucket.</p>
 
-<h5 id="syntax-2">Syntax</h5>
+<h5 id="syntax-3">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span> <span class="c"># path style</span>
 HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-2">Sample request</h5>
+<h5 id="sample-request-3">Sample request</h5>
 
 <p>This is an example of fetching the headers for the ‘images’ bucket.</p>
 
@@ -617,7 +673,7 @@ HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 </code></pre>
 </div>
 
-<h5 id="sample-response-2">Sample response</h5>
+<h5 id="sample-response-3">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:46:35 GMT</span>
@@ -636,14 +692,14 @@ HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 
 <p>When a <code class="highlighter-rouge">GET</code> request is given to a specific container, a list of the contents are returned.  This listing is limited to the first 1,000 objects.</p>
 
-<h5 id="syntax-3">Syntax</h5>
+<h5 id="syntax-4">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span> <span class="c"># path style</span>
 GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-3">Sample request</h5>
+<h5 id="sample-request-4">Sample request</h5>
 
 <p>This request lists the objects inside the “apiary” bucket.</p>
 
@@ -655,7 +711,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-3">Sample response</h5>
+<h5 id="sample-response-4">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 24 Aug 2016 17:36:24 GMT</span>
@@ -718,14 +774,14 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. <em>Only empty buckets can be deleted.</em></p>
 
-<h5 id="syntax-4">Syntax</h5>
+<h5 id="syntax-5">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span> <span class="c"># path style</span>
 DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-4">Sample request</h5>
+<h5 id="sample-request-5">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
@@ -738,7 +794,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 
 <p>If a non-empty bucket is requested for deletion, the server responds with <code class="highlighter-rouge">409 Conflict</code>.</p>
 
-<h5 id="sample-request-5">Sample request</h5>
+<h5 id="sample-request-6">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -747,7 +803,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 </code></pre>
 </div>
 
-<h5 id="sample-response-4">Sample response</h5>
+<h5 id="sample-response-5">Sample response</h5>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;Error&gt;</span>
   <span class="nt">&lt;Code&gt;</span>BucketNotEmpty<span class="nt">&lt;/Code&gt;</span>
@@ -769,7 +825,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 
 <p>ACLs can use pre-made permissions sets (or ‘canned ACLs’) or be customized in the body of the request. Pre-made ACLs are specified using the <code class="highlighter-rouge">x-amz-acl</code> header with <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">public-read</code>, or <code class="highlighter-rouge">public-read-write</code> as the value. Custom ACLs are specified using XML in the request body and can grant <code class="highlighter-rouge">READ</code>, <code class="highlighter-rouge">WRITE</code>, <code class="highlighter-rouge">READ_ACP</code> (read ACL), <code class="highlighter-rouge">WRITE_ACP</code> (write ACL), or <code class="highlighter-rouge">FULL_CONTROL</code> permissions to a given storage account.</p>
 
-<h5 id="syntax-5">Syntax</h5>
+<h5 id="syntax-6">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
 PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># virtual host style</span>
@@ -788,7 +844,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-5">Sample response</h5>
+<h5 id="sample-response-6">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 4 Oct 2016 19:03:55 GMT</span>
@@ -837,7 +893,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-6">Sample response</h5>
+<h5 id="sample-response-7">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 4 Oct 2016 19:03:55 GMT</span>
@@ -855,14 +911,14 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves the ACL for a bucket.</p>
 
-<h5 id="syntax-6">Syntax</h5>
+<h5 id="syntax-7">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
 GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-6">Sample request</h5>
+<h5 id="sample-request-7">Sample request</h5>
 
 <p>This is an example of retrieving a bucket ACL.</p>
 
@@ -873,7 +929,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-7">Sample response</h5>
+<h5 id="sample-response-8">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 14:14:34 GMT</span>
@@ -911,7 +967,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.</p>
 
-<h5 id="syntax-7">Syntax</h5>
+<h5 id="syntax-8">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?uploads<span class="o">=</span> <span class="c"># path style</span>
 GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?uploads<span class="o">=</span> <span class="c"># virtual host style</span>
@@ -962,7 +1018,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
   </tbody>
 </table>
 
-<h5 id="sample-request-7">Sample request</h5>
+<h5 id="sample-request-8">Sample request</h5>
 
 <p>This is an example of retrieving all current canceled and incomplete multipart uploads.</p>
 
@@ -1005,14 +1061,14 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">GET</code> issued to a bucket with the proper parameters retrieves information about cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-8">Syntax</h5>
+<h5 id="syntax-9">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># path style</span>
 GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-8">Sample request</h5>
+<h5 id="sample-request-9">Sample request</h5>
 
 <p>This is an example of listing a CORS configuration on the “apiary” bucket.</p>
 
@@ -1047,14 +1103,14 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">PUT</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-9">Syntax</h5>
+<h5 id="syntax-10">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># path style</span>
 PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-9">Sample request</h5>
+<h5 id="sample-request-10">Sample request</h5>
 
 <p>This is an example of adding a CORS configuration that allows requests from <code class="highlighter-rouge">www.ibm.com</code> to issue <code class="highlighter-rouge">GET</code>, <code class="highlighter-rouge">PUT</code>, and <code class="highlighter-rouge">POST</code> requests to the bucket.</p>
 
@@ -1080,7 +1136,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-8">Sample response</h5>
+<h5 id="sample-response-9">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 5 Oct 2016 15:39:38 GMT</span>
@@ -1099,14 +1155,14 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">DELETE</code> issued to a bucket with the proper parameters creates or replaces a cross-origin resource sharing (CORS) configuration for a bucket.</p>
 
-<h5 id="syntax-10">Syntax</h5>
+<h5 id="syntax-11">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># path style</span>
 DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>?cors<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-10">Sample request</h5>
+<h5 id="sample-request-11">Sample request</h5>
 
 <p>This is an example of deleting a CORS configuration for a bucket.</p>
 
@@ -1127,14 +1183,14 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 
 <p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.</p>
 
-<h5 id="syntax-11">Syntax</h5>
+<h5 id="syntax-12">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
 PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-11">Sample request</h5>
+<h5 id="sample-request-12">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1153,7 +1209,7 @@ Content-Length: 533
 </code></pre>
 </div>
 
-<h5 id="sample-response-9">Sample response</h5>
+<h5 id="sample-response-10">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:30:02 GMT</span>
@@ -1173,14 +1229,14 @@ Content-Length: 533
 
 <p>A <code class="highlighter-rouge">HEAD</code> given a path to an object retrieves that object’s headers.</p>
 
-<h5 id="syntax-12">Syntax</h5>
+<h5 id="syntax-13">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>HEAD https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
 HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-12">Sample request</h5>
+<h5 id="sample-request-13">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">HEAD</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1190,7 +1246,7 @@ HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 </code></pre>
 </div>
 
-<h5 id="sample-response-10">Sample response</h5>
+<h5 id="sample-response-11">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:32:44 GMT</span>
@@ -1212,14 +1268,14 @@ HEAD https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 
 <p>A <code class="highlighter-rouge">GET</code> given a path to an object downloads the object.</p>
 
-<h5 id="syntax-13">Syntax</h5>
+<h5 id="syntax-14">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
 GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-13">Sample request</h5>
+<h5 id="sample-request-14">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary/worker-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1229,7 +1285,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-11">Sample response</h5>
+<h5 id="sample-response-12">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 18:34:25 GMT</span>
@@ -1256,14 +1312,14 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">DELETE</code> given a path to an object deletes an object.</p>
 
-<h5 id="syntax-14">Syntax</h5>
+<h5 id="syntax-15">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
 DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-14">Sample request</h5>
+<h5 id="sample-request-15">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/apiary/soldier-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1272,7 +1328,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 </code></pre>
 </div>
 
-<h5 id="sample-response-12">Sample response</h5>
+<h5 id="sample-response-13">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 25 Aug 2016 17:44:57 GMT</span>
@@ -1290,14 +1346,14 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 
 <p>A <code class="highlighter-rouge">POST</code> given a path to an bucket and proper parameters will delete a specified set of objects.</p>
 
-<h5 id="syntax-15">Syntax</h5>
+<h5 id="syntax-16">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>POST https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?delete<span class="o">=</span> <span class="c"># path style</span>
 POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?delete<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-15">Sample request</h5>
+<h5 id="sample-request-16">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/apiary?delete=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1321,7 +1377,7 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 </code></pre>
 </div>
 
-<h5 id="sample-response-13">Sample response</h5>
+<h5 id="sample-response-14">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 30 Nov 2016 18:54:53 GMT</span>
@@ -1352,7 +1408,7 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 
 <p>A <code class="highlighter-rouge">PUT</code> given a path to a new object creates a new copy of another object specified by the <code class="highlighter-rouge">x-amz-copy-source</code> header. Unless otherwise altered the metadata remains the same, although any ACL is reset to <code class="highlighter-rouge">private</code> for the  account creating the copy.</p>
 
-<h5 id="syntax-16">Syntax</h5>
+<h5 id="syntax-17">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
 PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
@@ -1398,7 +1454,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
   </tbody>
 </table>
 
-<h5 id="sample-request-16">Sample request</h5>
+<h5 id="sample-request-17">Sample request</h5>
 
 <p>This basic example takes the <code class="highlighter-rouge">bee</code> object from the <code class="highlighter-rouge">garden</code> bucket, and creates a copy in the <code class="highlighter-rouge">apiary</code> bucket with the new key <code class="highlighter-rouge">wild-bee</code>.</p>
 
@@ -1410,7 +1466,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-14">Sample response</h5>
+<h5 id="sample-response-15">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 30 Nov 2016 19:52:52 GMT</span>
@@ -1438,14 +1494,14 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>A <code class="highlighter-rouge">GET</code> given a path to an object given the parameter <code class="highlighter-rouge">?acl=</code> retrieves the access control list for the object.</p>
 
-<h5 id="syntax-17">Syntax</h5>
+<h5 id="syntax-18">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>GET https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
 GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-17">Sample request</h5>
+<h5 id="sample-request-18">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/apiary/queen-bee?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1454,7 +1510,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-15">Sample response</h5>
+<h5 id="sample-response-16">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 15:59:46 GMT</span>
@@ -1498,7 +1554,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> It is not possible to grant granular <code class="highlighter-rouge">WRITE</code> access at the object level, only at the bucket level.</div>
 
-<h5 id="syntax-18">Syntax</h5>
+<h5 id="syntax-19">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
 PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># virtual host style</span>
@@ -1515,7 +1571,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-16">Sample response</h5>
+<h5 id="sample-response-17">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 16:28:42 GMT</span>
@@ -1567,7 +1623,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-17">Sample response</h5>
+<h5 id="sample-response-18">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 17:11:51 GMT</span>
@@ -1586,14 +1642,14 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <p>An <code class="highlighter-rouge">OPTIONS</code> given a path to an object along with an origin and request type checks to see if that object is accessible from that origin using that request type.  Unlike all other requests, an OPTIONS request does not require the <code class="highlighter-rouge">authorization</code> or <code class="highlighter-rouge">x-amx-date</code> headers.</p>
 
-<h5 id="syntax-19">Syntax</h5>
+<h5 id="syntax-20">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>OPTIONS https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># path style</span>
 OPTIONS https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
-<h5 id="sample-request-18">Sample request</h5>
+<h5 id="sample-request-19">Sample request</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">OPTIONS</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Access-Control-Request-Method</span><span class="p">:</span> <span class="s">PUT</span>
@@ -1603,7 +1659,7 @@ OPTIONS https://<span class="o">{</span>bucket-name<span class="o">}</span>.<spa
 </code></pre>
 </div>
 
-<h5 id="sample-response-18">Sample response</h5>
+<h5 id="sample-response-19">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 16:23:14 GMT</span>
