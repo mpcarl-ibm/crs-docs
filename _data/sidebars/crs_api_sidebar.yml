@@ -2,7 +2,7 @@
 
 entries:
 - title: sidebar
-  product: Standard Cross-Region
+  product: 
   version: 
   levels:
   folders:
@@ -25,11 +25,11 @@ entries:
     folderitems:
 
     - title: Back to main documentation <i class="fa fa-undo"></i>
-      url: /crs-operations.html
+      url: /about-compatibility-api
       output: web, pdf 
 
     - title: Overview
-      url: /crs-api-reference.html#overview
+      url: /api-reference
       output: web, pdf 
 
       subfolders:

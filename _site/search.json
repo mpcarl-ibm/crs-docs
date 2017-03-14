@@ -4,65 +4,10 @@
 
 
 {
-"title": "Managing access",
+"title": "Supported API operations",
 "tags": "",
 "keywords": "",
-"url": "bx-access",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Generating Service credentials",
-"tags": "",
-"keywords": "",
-"url": "bx-credentials",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Getting started with Object Storage for Bluemix Dedicated",
-"tags": "",
-"keywords": "",
-"url": "bx-dedicated",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Managing objects",
-"tags": "",
-"keywords": "",
-"url": "bx-objects",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Unbinding and deprovisioning",
-"tags": "",
-"keywords": "",
-"url": "bx-unbinding",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "About using SDKs and tools with IBM COS",
-"tags": "",
-"keywords": "",
-"url": "crs-about-api.html",
+"url": "about-compatibility-api",
 "summary": ""
 }
 ,
@@ -73,7 +18,18 @@
 "title": "API reference",
 "tags": "",
 "keywords": "",
-"url": "crs-api-reference.html",
+"url": "api-reference",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "API reference",
+"tags": "",
+"keywords": "",
+"url": "api-reference",
 "summary": ""
 }
 ,
@@ -249,7 +205,7 @@
 "title": "Supported API operations",
 "tags": "",
 "keywords": "",
-"url": "crs-operations.html",
+"url": "about-compatibility-api",
 "summary": ""
 }
 ,
@@ -336,6 +292,17 @@
 
 
 {
+"title": "Using the API",
+"tags": "",
+"keywords": "",
+"url": "using-the-api",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "IBM COS Standard Cross-Region",
 "tags": "",
 "keywords": "",
@@ -390,6 +357,29 @@
 
 
 
+{
+"title": "Ordering storage",
+"tags": "",
+"keywords": "",
+"url": "ordering-storage",
+"summary": "IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS."
+}
+,
+
+
+
+
+
+
+
+{
+"title": "Storing and retrieving objects",
+"tags": "",
+"keywords": "",
+"url": "storing-and-retrieving-objects",
+"summary": ""
+}
+,
 
 
 
@@ -413,6 +403,16 @@
 
 
 
+
+
+{
+"title": "Using the API",
+"tags": "",
+"keywords": "",
+"url": "using-the-api",
+"summary": ""
+}
+,
 
 
 

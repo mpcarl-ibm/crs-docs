@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title> | IBM COS Documentation</title>
+<title>Supported API operations | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
@@ -172,7 +172,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Supported API operations">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -260,7 +260,7 @@
             
             
             
-            <li><a href="about-compatibility-api">About the Compatibility API</a></li>
+            <li class="active"><a href="about-compatibility-api">About the Compatibility API</a></li>
             
             
             
@@ -431,7 +431,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main"></h1>
+   <h1 class="post-title-main">Supported API operations</h1>
 </div>
 
 
@@ -468,7 +468,169 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  
+  <p>IBM Cloud Object Storage provides two separate APIs for managing and using object storage:</p>
+
+<ul>
+  <li>Account and credential administration uses the SoftLayer API</li>
+  <li>Interacting with buckets and objects uses an implementation of the S3 API</li>
+</ul>
+
+<p>More information on using the SoftLayer API to create or delete credentials, check capacity usage, retrieve a UUID, and other account functions can be found at the <a href="http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account">SoftLayer Development Network</a>.</p>
+
+<p>The following tables describe the complete set of supported operations when using the S3 API to access IBM Cloud Object Storage.  For details on using the operations, including examples, see <a href="/crs-docs/crs-api-reference">the API reference page</a>.</p>
+
+<h3 id="operations-on-the-account">Operations on the account</h3>
+
+<p>The only operation that is performed directly at the account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.</p>
+
+<table class="opstable">
+  <thead>
+    <tr>
+      <th style="text-align: left">Account operation</th>
+      <th style="text-align: left">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> account</td>
+      <td style="text-align: left">Used to retrieve a list of all buckets belonging to an account.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="operations-on-buckets">Operations on buckets</h3>
+
+<p>These operations create, destroy, get information about, and control behavior of buckets.</p>
+
+<table class="opstable">
+  <thead>
+    <tr>
+      <th style="text-align: left">Bucket operation</th>
+      <th style="text-align: left">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Bucket</td>
+      <td style="text-align: left">Deletes an empty bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Bucket CORS</td>
+      <td style="text-align: left">Deletes any cross-origin resource sharing configuration set on a bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket</td>
+      <td style="text-align: left">Lists objects contained in a bucket.  Limited to listing 1,000 objects at once.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket ACL</td>
+      <td style="text-align: left">Retrieves the access control list for a bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket CORS</td>
+      <td style="text-align: left">Retrieves any cross-origin resource sharing configuration set on a bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">HEAD</code> Bucket</td>
+      <td style="text-align: left">Retrieves a bucket’s headers.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> multipart uploads</td>
+      <td style="text-align: left">Lists multipart uploads that have not completed or been canceled.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket</td>
+      <td style="text-align: left">Buckets have naming restrictions. Accounts are limited to 100 buckets.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket ACL</td>
+      <td style="text-align: left">Creates an access control list for a bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket CORS</td>
+      <td style="text-align: left">Creates a cross-origin resource sharing configuration for a bucket.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="operations-on-objects">Operations on objects</h3>
+
+<p>These operations create, destroy, get information about, and control behavior of objects.</p>
+
+<table class="opstable">
+  <thead>
+    <tr>
+      <th style="text-align: left">Object operation</th>
+      <th style="text-align: left">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Object</td>
+      <td style="text-align: left">Deletes an object from a bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Multiple Objects</td>
+      <td style="text-align: left">Deletes multiple objects from a bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Object</td>
+      <td style="text-align: left">Retrieves an object from a bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Object ACL</td>
+      <td style="text-align: left">Retrieves an object’s access control list.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">HEAD</code> Object</td>
+      <td style="text-align: left">Retrieves an object’s headers.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">OPTIONS</code> Object</td>
+      <td style="text-align: left">Checks CORS configuration to see if a specific request can be sent.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">POST</code> Object</td>
+      <td style="text-align: left">Adds an object to a bucket using HTML forms.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object</td>
+      <td style="text-align: left">Adds an object to a bucket.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object ACL</td>
+      <td style="text-align: left">Creates an access control list for an object.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object (Copy)</td>
+      <td style="text-align: left">Creates a copy of an object.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Initiate Multipart Upload</td>
+      <td style="text-align: left">Creates an upload ID for a given set of parts to be uploaded.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Upload Part</td>
+      <td style="text-align: left">Uploads a part of an object associated with an upload ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Upload Part (Copy)</td>
+      <td style="text-align: left">Uploads a part of an existing object associated with an upload ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Complete Multipart Upload</td>
+      <td style="text-align: left">Assembles an object from parts associated with an upload ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Abort Multipart Upload</td>
+      <td style="text-align: left">Aborts upload and deletes outstanding parts associated with an upload ID.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">List Parts</td>
+      <td style="text-align: left">Returns a list of parts associated with an upload ID</td>
+    </tr>
+  </tbody>
+</table>
 
 
     <div class="tags">

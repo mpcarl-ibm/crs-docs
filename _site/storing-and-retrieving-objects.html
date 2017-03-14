@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>Supported API operations | IBM COS Documentation</title>
+<title>Storing and retrieving objects | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
@@ -172,7 +172,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Supported API operations">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Storing and retrieving objects">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -205,7 +205,7 @@
 
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Standard Cross-Region </li>
+    <li class="sidebarTitle"> </li>
     
     
     
@@ -224,49 +224,28 @@
             
             
             
-            <li><a href="crs-create-account.html">Creating a new customer account</a></li>
+            <li><a href="ordering-storage">Ordering storage</a></li>
             
             
             
             
             
             
-            <li><a href="crs-create-storage-account.html">Creating a new storage account</a></li>
+            <li class="active"><a href="storing-and-retrieving-objects">Storing and retrieving objects</a></li>
             
             
             
             
             
             
-            <li><a href="crs-control-buckets.html">Creating and using buckets</a></li>
+            <li><a href="using-the-api">Using the APIs</a></li>
             
             
             
             
             
             
-            <li><a href="crs-control-objects.html">Creating and using objects</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-billing.html">Billing information</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-about-api.html">About IBM COS API and SDKs</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-support.html">Getting support & FAQ</a></li>
+            <li><a href="next-steps">Next steps</a></li>
             
             
             
@@ -281,49 +260,55 @@
             
             
             
-            <li class="active"><a href="crs-operations.html">API overview</a></li>
+            <li><a href="about-compatibility-api">About the Compatibility API</a></li>
             
             
             
             
             
             
-            <li><a href="crs-api-reference.html">API reference</a></li>
+            <li><a href="api-reference">Compatability API reference</a></li>
             
             
             
             
             
             
-            <li><a href="crs-sldn.html">SoftLayer API</a></li>
+            <li><a href="using-slapi">Using the SoftLayer API</a></li>
             
             
             
             
             
             
-            <li><a href="crs-cli.html">Command line tools</a></li>
+            <li><a href="">Using command line interfaces</a></li>
             
             
             
-            
-            
-            
-            <li><a href="crs-python.html">Python</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-java.html">Java</a></li>
-            
-            
-            
-            
-            
-            
-            <li><a href="crs-node.html">Node.js</a></li>
+            <li class="subfolders">
+                <a href="#">Libraries & SDKs</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="python">Python</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="java">Java</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="node">Node.js</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
             
             
             
@@ -338,35 +323,35 @@
             
             
             
-            <li><a href="crs-connecting.html">Connecting to IBM COS</a></li>
+            <li><a href="">Selecting endpoints</a></li>
             
             
             
             
             
             
-            <li><a href="crs-control-credentials.html">Viewing credentials and endpoints</a></li>
+            <li><a href="">Managing access</a></li>
             
             
             
             
             
             
-            <li><a href="crs-endpoints.html">Connecting to endpoints</a></li>
+            <li><a href="crs-endpoints.html">Using storage classes</a></li>
             
             
             
             
             
             
-            <li><a href="crs-authentication.html">About authentication</a></li>
+            <li><a href="">Storing very large objects</a></li>
             
             
             
             
             
             
-            <li><a href="crs-guis.html">Desktop clients</a></li>
+            <li><a href="desktop-clients">Desktop clients</a></li>
             
             
             
@@ -376,33 +361,40 @@
         
     
     <li>
-        <a href="#">Resources</a>
+        <a href="#">Help</a>
         <ul>
             
             
             
-            <li><a href="crs-security.html">About IBM COS security</a></li>
+            <li><a href="security">Data security</a></li>
             
             
             
             
             
             
-            <li><a href="crs-usage-guidelines.html">Developer guidance</a></li>
+            <li><a href="encryption">Encryption</a></li>
             
             
             
             
             
             
-            <li><a href="crs-other-offerings.html">Other IBM object storage options</a></li>
+            <li><a href="developer-guidance">Developer guidance</a></li>
             
             
             
             
             
             
-            <li><a href="crs-support-resources.html">Getting support</a></li>
+            <li><a href="faq">FAQ</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="support">Support</a></li>
             
             
             
@@ -410,6 +402,13 @@
             
             
             <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2" target="_blank">Pricing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="contact">Contact us</a></li>
             
             
             
@@ -432,7 +431,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">Supported API operations</h1>
+   <h1 class="post-title-main">Storing and retrieving objects</h1>
 </div>
 
 
@@ -469,169 +468,45 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p>IBM Cloud Object Storage provides two separate APIs for managing and using object storage:</p>
+  <p>The user interface portal provides a high level view of a storage account.  It is possible to create buckets and upload objects using the portal, but typically most interaction with the object store is done through the API by a client application.</p>
 
-<ul>
-  <li>Account and credential administration uses the SoftLayer API</li>
-  <li>Interacting with buckets and objects uses an implementation of the S3 API</li>
-</ul>
+<h4 id="using-buckets">Using buckets</h4>
+<ol>
+  <li>Click the Account Name in the above accounts list to open the details page for that account.</li>
+  <li>The details page shows the following info on the top header bar:
+    <ul>
+      <li>Name of the account currently being viewed</li>
+      <li>The current region being viewed</li>
+      <li>The total capacity usage in the current billing cycle</li>
+      <li>The total bandwidth usage in the current billing cycle</li>
+    </ul>
+  </li>
+  <li>The page also shows the list of buckets present in the account.</li>
+  <li>A new bucket can be added by clicking on the <strong>+</strong> button at the right of the first row.</li>
+  <li>The new bucket name can be entered and the new bucket added, by clicking the <strong>Add</strong> button. Bucket names must be DNS-compliant. Names must be between 3 and 63 characters long, must be made of lowercase letters, numbers, and dashes, must be globally unique, and cannot appear to be an IP address. A common approach to ensuring uniqueness is to append a UUID or other distinctive suffix to bucket names.</li>
+  <li>A bucket can be deleted, by clicking the red <strong>-</strong> button to the extreme right of the bucket name. This opens a confirmation window.</li>
+  <li><strong>Note: only empty buckets can be deleted</strong>.  Attempting to delete a non-empty bucket will result in an error.</li>
+  <li>Click the <strong>Delete</strong> button to remove the bucket from the account.</li>
+</ol>
 
-<p>More information on using the SoftLayer API to create or delete credentials, check capacity usage, retrieve a UUID, and other account functions can be found at the <a href="http://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage_Hub_Cleversafe_Account">SoftLayer Development Network</a>.</p>
-
-<p>The following tables describe the complete set of supported operations when using the S3 API to access IBM Cloud Object Storage.  For details on using the operations, including examples, see <a href="/crs-docs/crs-api-reference">the API reference page</a>.</p>
-
-<h3 id="operations-on-the-account">Operations on the account</h3>
-
-<p>The only operation that is performed directly at the account level is to get a list of buckets owned by that account. Accounts are limited to 100 buckets.</p>
-
-<table class="opstable">
-  <thead>
-    <tr>
-      <th style="text-align: left">Account operation</th>
-      <th style="text-align: left">Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> account</td>
-      <td style="text-align: left">Used to retrieve a list of all buckets belonging to an account.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="operations-on-buckets">Operations on buckets</h3>
-
-<p>These operations create, destroy, get information about, and control behavior of buckets.</p>
-
-<table class="opstable">
-  <thead>
-    <tr>
-      <th style="text-align: left">Bucket operation</th>
-      <th style="text-align: left">Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Bucket</td>
-      <td style="text-align: left">Deletes an empty bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Bucket CORS</td>
-      <td style="text-align: left">Deletes any cross-origin resource sharing configuration set on a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket</td>
-      <td style="text-align: left">Lists objects contained in a bucket.  Limited to listing 1,000 objects at once.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket ACL</td>
-      <td style="text-align: left">Retrieves the access control list for a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Bucket CORS</td>
-      <td style="text-align: left">Retrieves any cross-origin resource sharing configuration set on a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">HEAD</code> Bucket</td>
-      <td style="text-align: left">Retrieves a bucket’s headers.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> multipart uploads</td>
-      <td style="text-align: left">Lists multipart uploads that have not completed or been canceled.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket</td>
-      <td style="text-align: left">Buckets have naming restrictions. Accounts are limited to 100 buckets.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket ACL</td>
-      <td style="text-align: left">Creates an access control list for a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Bucket CORS</td>
-      <td style="text-align: left">Creates a cross-origin resource sharing configuration for a bucket.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="operations-on-objects">Operations on objects</h3>
-
-<p>These operations create, destroy, get information about, and control behavior of objects.</p>
-
-<table class="opstable">
-  <thead>
-    <tr>
-      <th style="text-align: left">Object operation</th>
-      <th style="text-align: left">Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Object</td>
-      <td style="text-align: left">Deletes an object from a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">DELETE</code> Multiple Objects</td>
-      <td style="text-align: left">Deletes multiple objects from a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Object</td>
-      <td style="text-align: left">Retrieves an object from a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">GET</code> Object ACL</td>
-      <td style="text-align: left">Retrieves an object’s access control list.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">HEAD</code> Object</td>
-      <td style="text-align: left">Retrieves an object’s headers.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">OPTIONS</code> Object</td>
-      <td style="text-align: left">Checks CORS configuration to see if a specific request can be sent.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">POST</code> Object</td>
-      <td style="text-align: left">Adds an object to a bucket using HTML forms.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object</td>
-      <td style="text-align: left">Adds an object to a bucket.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object ACL</td>
-      <td style="text-align: left">Creates an access control list for an object.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">PUT</code> Object (Copy)</td>
-      <td style="text-align: left">Creates a copy of an object.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Initiate Multipart Upload</td>
-      <td style="text-align: left">Creates an upload ID for a given set of parts to be uploaded.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Upload Part</td>
-      <td style="text-align: left">Uploads a part of an object associated with an upload ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Upload Part (Copy)</td>
-      <td style="text-align: left">Uploads a part of an existing object associated with an upload ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Complete Multipart Upload</td>
-      <td style="text-align: left">Assembles an object from parts associated with an upload ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Abort Multipart Upload</td>
-      <td style="text-align: left">Aborts upload and deletes outstanding parts associated with an upload ID.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">List Parts</td>
-      <td style="text-align: left">Returns a list of parts associated with an upload ID</td>
-    </tr>
-  </tbody>
-</table>
+<h4 id="using-objects">Using objects</h4>
+<ol>
+  <li>The objects present within a bucket can be viewed, by clicking the bucket name on the buckets list.</li>
+  <li>The header is updated to include the following info:
+    <ul>
+      <li>Name of the account currently being viewed</li>
+      <li>The current region being viewed</li>
+      <li>The name of the bucket whose objects are currently displayed</li>
+      <li>The type of the bucket whose objects are currently displayed</li>
+    </ul>
+  </li>
+  <li>Above the grid on the left is a link with the name of the bucket currently viewed. Click the link to show the list of buckets again.</li>
+  <li>The grid shows the list of objects in the bucket.</li>
+  <li>A new object can be added, by clicking the <strong>+</strong> button at the right of the first row.</li>
+  <li>The file can be selected from the file system, by clicking the <strong>select</strong> button and the new file uploaded, by clicking the <strong>Add</strong> button.  When using the portal to add an object, file size is limited to 20 megabytes. (When using the API, objects as large as 5 gigabytes can be uploaded in a single <code class="highlighter-rouge">PUT</code>, and as large as 5 terabytes when using a multi-part upload.)</li>
+  <li>An object can be deleted, by clicking on the red <strong>-</strong> button to the extreme right of the object name. This opens a confirmation window.</li>
+  <li>Click the <strong>Delete</strong> button to remove the object from the bucket.</li>
+</ol>
 
 
     <div class="tags">
@@ -648,7 +523,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Mar 9, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Mar 13, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

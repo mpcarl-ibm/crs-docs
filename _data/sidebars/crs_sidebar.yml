@@ -2,7 +2,7 @@
 
 entries:
 - title: sidebar
-  product: Standard Cross-Region
+  product: 
   version: 
   levels:
   folders:
@@ -29,32 +29,20 @@ entries:
       output: web, pdf
       type: homepage
 
-    - title: Creating a new customer account
-      url: /crs-create-account.html
+    - title: Ordering storage
+      url: /ordering-storage
       output: web, pdf
 
-    - title: Creating a new storage account
-      url: /crs-create-storage-account.html
+    - title: Storing and retrieving objects
+      url: /storing-and-retrieving-objects
       output: web, pdf
 
-    - title: Creating and using buckets
-      url: /crs-control-buckets.html
+    - title: Using the APIs
+      url: /using-the-api
       output: web, pdf
 
-    - title: Creating and using objects
-      url: /crs-control-objects.html
-      output: web, pdf
-
-    - title: Billing information
-      url: /crs-billing.html
-      output: web, pdf
-
-    - title: About IBM COS API and SDKs
-      url: /crs-about-api.html
-      output: web, pdf
-
-    - title: Getting support & FAQ
-      url: /crs-support.html
+    - title: Next steps
+      url: /next-steps
       output: web, pdf 
 
 
@@ -62,80 +50,92 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: API overview
-      url: /crs-operations.html
+    - title: About the Compatibility API
+      url: /about-compatibility-api
       output: web, pdf
 
-    - title: API reference
-      url: /crs-api-reference.html
+    - title: Compatability API reference
+      url: /api-reference
       output: web, pdf  
 
-    - title: SoftLayer API
-      url: /crs-sldn.html
-      output: web, pdf  
-
-    - title: Command line tools
-      url: /crs-cli.html
+    - title: Using the SoftLayer API
+      url: /using-slapi
       output: web, pdf
 
-    - title: Python
-      url: /crs-python.html
-      output: web, pdf 
+    - title: Using command line interfaces
+      output: web, pdf
 
-    - title: Java
-      url: /crs-java.html
-      output: web, pdf 
-
-    - title: Node.js
-      url: /crs-node.html
-      output: web, pdf 
+      subfolders:
+      - title: Libraries & SDKs
+        output: web, pdf
+        
+        subfolderitems:
+        - title: Python
+          url: /python
+          output: web, pdf 
+    
+        - title: Java
+          url: /java
+          output: web, pdf 
+    
+        - title: Node.js
+          url: /node
+          output: web, pdf 
 
   - title: How-tos
     output: web, pdf
     folderitems:
 
-    - title: Connecting to IBM COS
-      url: /crs-connecting.html
+    - title: Selecting endpoints
+      url: /
       output: web, pdf
 
-    - title: Viewing credentials and endpoints
-      url: /crs-control-credentials.html
+    - title: Managing access
+      url: /
       output: web, pdf
 
-    - title: Connecting to endpoints
+    - title: Using storage classes
       url: /crs-endpoints.html
       output: web, pdf 
 
-    - title: About authentication
-      url: /crs-authentication.html
+    - title: Storing very large objects
+      url: /
       output: web, pdf
 
     - title: Desktop clients
-      url: /crs-guis.html
+      url: /desktop-clients
       output: web, pdf
 
-  - title: Resources
+  - title: Help
     output: web, pdf
     folderitems:
 
-    - title: About IBM COS security
-      url: /crs-security.html
+    - title: Data security
+      url: /security
+      output: web, pdf
+
+    - title: Encryption
+      url: /encryption
       output: web, pdf
 
     - title: Developer guidance
-      url: /crs-usage-guidelines.html
+      url: /developer-guidance
       output: web, pdf
 
-    - title: Other IBM object storage options
-      url: /crs-other-offerings.html
+    - title: FAQ
+      url: /faq
       output: web, pdf
 
-    - title: Getting support
-      url: /crs-support-resources.html
+    - title: Support
+      url: /support
       output: web, pdf
 
     - title: Pricing
       external_url: https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2
+      output: web, pdf
+
+    - title: Contact us
+      url: /contact
       output: web, pdf
 
 

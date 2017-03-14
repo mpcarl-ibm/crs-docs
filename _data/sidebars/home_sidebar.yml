@@ -17,6 +17,3 @@ entries:
     - title: Object Storage for Bluemix
       external_url: https://console.ng.bluemix.net/docs/services/ObjectStorage/index.html
       output: web
-    - title: Object Storage for Bluemix (Dedicated)
-      url: /bx-dedicated
-      output: web
