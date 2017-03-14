@@ -101,6 +101,62 @@ Authorization: {authorization-string}
 
 ---- 
 
+#### View the storage class of buckets belonging to an account
+
+A `GET` issued to the endpoint root with the `pagination` query parameter returns a list of buckets associated with the requesting account along with their storage class (shown as `LocationConstraint`).
+
+##### Syntax
+
+```bash
+GET https://{endpoint}/?pagination=
+```
+
+##### Sample request
+
+```http
+GET /?pagination= HTTP/1.1
+Content-Type: text/plain
+Host: s3-api.us-geo.objectstorage.softlayer.net
+X-Amz-Date: 20160822T030815Z
+Authorization: {authorization-string}
+```
+
+##### Sample response
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ListAllMyBucketsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Owner>
+        <ID>{account-id}</ID>
+        <DisplayName>{account-id}</DisplayName>
+    </Owner>
+    <Buckets>
+        <Bucket>
+            <Name>bucket-27200-lwx4cfvcue</Name>
+            <CreationDate>2016-08-18T14:21:36.593Z</CreationDate>
+            <LocationConstraint>us-standard</LocationConstraint>
+        </Bucket>
+        <Bucket>
+            <Name>bucket-27590-drqmydpfdv</Name>
+            <CreationDate>2016-08-18T14:22:32.366Z</CreationDate>
+            <LocationConstraint>us-standard</LocationConstraint>
+        </Bucket>
+        <Bucket>
+            <Name>bucket-27852-290jtb0n2y</Name>
+            <CreationDate>2016-08-18T14:23:03.141Z</CreationDate>
+            <LocationConstraint>us-cold</LocationConstraint>
+        </Bucket>
+        <Bucket>
+            <Name>bucket-28731-k0o1gde2rm</Name>
+            <CreationDate>2016-08-18T14:25:09.599Z</CreationDate>
+            <LocationConstraint>us-vault</LocationConstraint>
+        </Bucket>
+    </Buckets>
+</ListAllMyBucketsResult>
+```
+
+---- 
+
 ### Operations on Buckets
 {: #operations-on-buckets}
 
