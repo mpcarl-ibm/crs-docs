@@ -122,12 +122,6 @@
   
   
   <url>
-    <loc>/crs-other-offerings.html</loc>
-  </url>
-  
-  
-  
-  <url>
     <loc>/crs-python.html</loc>
   </url>
   
@@ -166,7 +160,7 @@
   
   
   <url>
-    <loc>/using-the-api</loc>
+    <loc>/getting-started-with-cos</loc>
   </url>
   
   

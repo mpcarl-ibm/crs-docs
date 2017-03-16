@@ -202,17 +202,6 @@
 
 
 {
-"title": "Other IBM object storage options",
-"tags": "",
-"keywords": "",
-"url": "crs-other-offerings.html",
-"summary": ""
-}
-,
-
-
-
-{
 "title": "Using Python with IBM COS",
 "tags": "",
 "keywords": "",
@@ -281,10 +270,10 @@
 
 
 {
-"title": "Using the API",
+"title": "Quickstart guide",
 "tags": "",
 "keywords": "",
-"url": "using-the-api",
+"url": "getting-started-with-cos",
 "summary": ""
 }
 ,
@@ -292,7 +281,7 @@
 
 
 {
-"title": "IBM COS Standard Cross-Region",
+"title": "IBM Cloud Object Storage",
 "tags": "",
 "keywords": "",
 "url": "index.html",

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>IBM COS Standard Cross-Region | IBM COS Documentation</title>
+<title>IBM Cloud Object Storage | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
@@ -172,7 +172,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="IBM COS Standard Cross-Region">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="IBM Cloud Object Storage">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -218,6 +218,13 @@
             
             
             <li class="active"><a href="index.html">About IBM Cloud Object Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="getting-started-with-cos">Quickstart guide</a></li>
             
             
             
@@ -431,7 +438,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">IBM COS Standard Cross-Region</h1>
+   <h1 class="post-title-main">IBM Cloud Object Storage</h1>
 </div>
 
 
@@ -445,17 +452,54 @@
 
     
 
-  <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> IBM COS Standard Cross-Region is now offering a limited Free Tier for new and existing customers with promotional code <code class="highlighter-rouge">COSFREE</code>.</div>
+  <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> IBM Cloud Object Storage (US Cross Region) is now offering a limited Free Tier for new and existing customers with promotional code <code class="highlighter-rouge">COSFREE</code>.</div>
 
-<p>Information stored with IBM COS Cross-Region is encrypted and dispersed across three geographic regions (Dallas, San Jose, and Washington, DC) and accessed through an implementation of the S3 API. This is the first offering that makes use of the distributed storage technologies provided by IBM’s Cloud Object Storage System.</p>
+<p>Information stored with IBM COS Cross Region is encrypted and dispersed across three geographic regions (Dallas, San Jose, and Washington, DC) and accessed through an implementation of the S3 API. This is the first public cloud storage service that makes use of the distributed storage technologies provided by IBM’s Cloud Object Storage System.</p>
 
-<p>Standard Cross-Region service provides higher durability and availability than using a single region at the cost of slightly higher latency.  If a given data center is unavailable, the object store continues to function without impediment, and any missed changes are applied when the data center comes back online.</p>
+<p>Cross Region service provides higher durability and availability than using a single region at the cost of slightly higher latency.  If a given data center is unavailable, the object store continues to function without impediment, and any missed changes are applied when the data center comes back online.</p>
 
 <p>Developers use IBM COS’s implementation of the S3 API to interact with their storage accounts. This documentation provides support to get started with provisioning accounts, to create buckets, to upload objects, and to use a reference of common API interactions. This offering is managed through the IBM Bluemix Infrastructure (formerly SoftLayer) Control portal.</p>
 
+<p>In addition to COS Cross Region, IBM Cloud currently provides three unique object storage offerings for different user needs, all of which are accessible through a web-based portal and RESTful APIs.</p>
+
+<table class="overviewtable">
+  <thead>
+    <tr>
+      <th>Offering</th>
+      <th>Interface</th>
+      <th>Defining advantage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IBM COS Cross Region</td>
+      <td>S3 API</td>
+      <td>– Highest availability, durability and resiliency<br /> – Encryption at rest and in flight</td>
+    </tr>
+    <tr>
+      <td>Cloud Object Storage Regional</td>
+      <td>Swift API</td>
+      <td>– Native integration with OpenStack clouds <br /> – Choice of 20 geographic regions</td>
+    </tr>
+    <tr>
+      <td>Object Storage for IBM Bluemix Developer Services</td>
+      <td>Swift API</td>
+      <td>– Native integration with Bluemix services</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="cloud-object-storage-regional">Cloud Object Storage Regional</h4>
+
+<p>Information stored with IBM COS Standard Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure Control portal and does not provide encryption at-rest.</p>
+
+<h4 id="object-storage-for-ibm-bluemix-developer-services">Object Storage for IBM Bluemix Developer Services</h4>
+
+<p>Information stored with Object Storage for IBM Bluemix is located in either Dallas or London data centers, and storage accounts are available for binding to Bluemix services. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix console and does not provide encryption at-rest.</p>
+
 <h3 id="about-this-documentation">About this documentation</h3>
 
-<p>This documentation is for anyone interested in learning about how to use IBM COS Cross-Region to manage unstructured data IO in their applications.</p>
+<p>This documentation is for anyone interested in learning about how to use IBM COS Cross Region to manage unstructured data I/O in their applications. For more detailed documentation about the other two object storage services, please visit the links found under <strong>Documentation</strong> in the header of this site.</p>
 
 <p>Please contact <code class="highlighter-rouge">nicholas.lange@ibm.com</code> with questions or suggestions about the documentation itself.</p>
 
@@ -475,7 +519,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
- Site last generated: Mar 14, 2017 <br /><br />
+ Site last generated: Mar 16, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

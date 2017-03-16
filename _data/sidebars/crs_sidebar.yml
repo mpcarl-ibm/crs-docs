@@ -29,6 +29,10 @@ entries:
       output: web, pdf
       type: homepage
 
+    - title: Quickstart guide
+      url: /getting-started-with-cos
+      output: web, pdf      
+
     - title: Ordering storage
       url: /ordering-storage
       output: web, pdf
