@@ -6,7 +6,7 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: storing-and-retrieving-objects
-folder: crs
+folder: getting-started
 ---
 
 The user interface portal provides a high level view of a storage account.  It is possible to create buckets and upload objects using the portal, but typically most interaction with the object store is done through the API by a client application.

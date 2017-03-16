@@ -26,6 +26,12 @@
   
   
   <url>
+    <loc>/cli</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>/crs-authentication.html</loc>
   </url>
   
@@ -39,12 +45,6 @@
   
   <url>
     <loc>/crs-buckets-objects.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-cli.html</loc>
   </url>
   
   
@@ -122,7 +122,7 @@
   
   
   <url>
-    <loc>/crs-python.html</loc>
+    <loc>/python</loc>
   </url>
   
   
@@ -166,7 +166,7 @@
   
   
   <url>
-    <loc>/index.html</loc>
+    <loc>/home</loc>
   </url>
   
   
@@ -197,6 +197,12 @@
   
   <url>
     <loc>/ordering-storage</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/python</loc>
   </url>
   
   

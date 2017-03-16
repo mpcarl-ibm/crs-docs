@@ -6,13 +6,11 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: using-the-api
-folder: crs
+folder: getting-started
 toc: True
 ---
 
-## Connecting to COS 
-
-Connecting to IBM COS requires specifying two fundamental pieces of information: credentials and an endpoint. Many tools that are compatible with the S3 API default to connecting to AWS endpoints, and so it is necessary to explicitly declare the endpoint when using these tools.
+Connecting to IBM COS via the API requires specifying two fundamental pieces of information: credentials and an endpoint. Many tools that are compatible with the S3 API default to connecting to AWS endpoints, and so it is necessary to explicitly declare the endpoint when using these tools.
 
 Credentials consist of two strings: an access key, and a secret key.  The access key is somewhat like a temporary account ID, and the secret key is essentially a password.  It is important not to accidentally compromise your application's security by inadvertently checking your credentials into a code repository! The easiest way to keep track of your keys is to set them as environment variables in your development environment.  This allows them to be called within your code but doesn't require them to be explicitly declared.
 
@@ -29,7 +27,7 @@ Credentials consist of two strings: an access key, and a secret key.  The access
 
 IBM Cloud does not provide native libraries or SDKs for interacting with COS offerings at this time, instead 2stored data is accessed using an implementation of the S3 API. Compatibility with an established object storage API allows developers to make use of a large ecosystem of third-party tools and SDKs.  
 
-A full list of supported S3 API operations can be found in the [API Overview]( {{ site.baseurl }}/crs-operations.html).
+A full list of supported S3 API operations can be found in the [API Overview]( {{ site.baseurl }}/about-compatibility-api).
 
 This documentation provides basic introductions to using popular third-party S3 API [client applications]( {{ site.baseurl }}/crs-guis.html) and a [command line interface]( {{ site.baseurl }}/crs-cli.html), as well as a library for the [Python]( {{ site.baseurl }}/crs-python.html) programming language. 
  

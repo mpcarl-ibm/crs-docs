@@ -6,7 +6,7 @@ tags:
 summary: IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS.
 sidebar: crs_sidebar
 permalink: ordering-storage
-folder: crs
+folder: getting-started
 toc: true
 ---
 

@@ -26,6 +26,17 @@
 
 
 {
+"title": "Using the command line to connect to IBM COS",
+"tags": "",
+"keywords": "",
+"url": "cli",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "Authorization and authentication",
 "tags": "",
 "keywords": "",
@@ -52,17 +63,6 @@
 "tags": "",
 "keywords": "",
 "url": "crs-buckets-objects.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Using the AWS CLI to connect to IBM COS",
-"tags": "",
-"keywords": "",
-"url": "crs-cli.html",
 "summary": ""
 }
 ,
@@ -205,7 +205,7 @@
 "title": "Using Python with IBM COS",
 "tags": "",
 "keywords": "",
-"url": "crs-python.html",
+"url": "python",
 "summary": ""
 }
 ,
@@ -284,7 +284,7 @@
 "title": "IBM Cloud Object Storage",
 "tags": "",
 "keywords": "",
-"url": "index.html",
+"url": "home",
 "summary": ""
 }
 ,
@@ -341,6 +341,17 @@
 "keywords": "",
 "url": "ordering-storage",
 "summary": "IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS."
+}
+,
+
+
+
+{
+"title": "Using Python with IBM COS",
+"tags": "",
+"keywords": "",
+"url": "python",
+"summary": ""
 }
 ,
 

@@ -3,7 +3,7 @@ title: IBM Cloud Object Storage
 keywords: 
 tags:
 sidebar: crs_sidebar
-permalink: index.html
+permalink: home
 summary: 
 toc: false
 ---
@@ -28,7 +28,7 @@ In addition to COS Cross Region, IBM Cloud currently provides three unique objec
 
 #### Cloud Object Storage Regional
 
-Information stored with IBM COS Standard Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure Control portal and does not provide encryption at-rest.
+Information stored with IBM COS Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure Control portal and does not provide encryption at-rest.
 
 #### Object Storage for IBM Bluemix Developer Services
 
