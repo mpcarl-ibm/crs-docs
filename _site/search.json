@@ -4,10 +4,10 @@
 
 
 {
-"title": "About using SDKs and tools with IBM COS",
+"title": "Supported API operations",
 "tags": "",
 "keywords": "",
-"url": "crs-about-api.html",
+"url": "about-compatibility-api",
 "summary": ""
 }
 ,
@@ -18,18 +18,7 @@
 "title": "API reference",
 "tags": "",
 "keywords": "",
-"url": "crs-api-reference.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Authorization and authentication",
-"tags": "",
-"keywords": "",
-"url": "crs-authentication.html",
+"url": "api-reference",
 "summary": ""
 }
 ,
@@ -40,7 +29,7 @@
 "title": "Billing information",
 "tags": "",
 "keywords": "",
-"url": "crs-billing.html",
+"url": "billing",
 "summary": ""
 }
 ,
@@ -48,109 +37,10 @@
 
 
 {
-"title": "Managing buckets and objects",
+"title": "Using the command line to connect to IBM COS",
 "tags": "",
 "keywords": "",
-"url": "crs-buckets-objects.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Using the AWS CLI to connect to IBM COS",
-"tags": "",
-"keywords": "",
-"url": "crs-cli.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Connecting to IBM COS Cross-Region",
-"tags": "",
-"keywords": "",
-"url": "crs-connecting.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Creating and using buckets",
-"tags": "",
-"keywords": "",
-"url": "crs-control-buckets.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Viewing credentials and endpoints",
-"tags": "",
-"keywords": "",
-"url": "crs-control-credentials.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Creating and using objects",
-"tags": "",
-"keywords": "",
-"url": "crs-control-objects.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Creating a new customer account",
-"tags": "",
-"keywords": "",
-"url": "crs-create-account.html",
-"summary": "IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS."
-}
-,
-
-
-
-{
-"title": "Creating an IBM COS Cross-Region storage account",
-"tags": "",
-"keywords": "",
-"url": "crs-create-storage-account.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Endpoints",
-"tags": "",
-"keywords": "",
-"url": "crs-endpoints.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-example-workflow.html",
+"url": "cli",
 "summary": ""
 }
 ,
@@ -161,7 +51,7 @@
 "title": "Using desktop clients",
 "tags": "",
 "keywords": "",
-"url": "crs-guis.html",
+"url": "desktop-clients",
 "summary": ""
 }
 ,
@@ -169,10 +59,10 @@
 
 
 {
-"title": "",
+"title": "Developer guidance",
 "tags": "",
 "keywords": "",
-"url": "crs-java.html",
+"url": "developer-guidance",
 "summary": ""
 }
 ,
@@ -180,10 +70,10 @@
 
 
 {
-"title": "",
+"title": "Selecting endpoints",
 "tags": "",
 "keywords": "",
-"url": "crs-node.html",
+"url": "endpoints",
 "summary": ""
 }
 ,
@@ -191,87 +81,10 @@
 
 
 {
-"title": "Supported API operations",
+"title": "Frequently asked questions",
 "tags": "",
 "keywords": "",
-"url": "crs-operations",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Other IBM object storage options",
-"tags": "",
-"keywords": "",
-"url": "crs-other-offerings.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Using Python with IBM COS",
-"tags": "",
-"keywords": "",
-"url": "crs-python.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Data security and IBM COS",
-"tags": "",
-"keywords": "",
-"url": "crs-security.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Using the SoftLayer API",
-"tags": "",
-"keywords": "",
-"url": "crs-sldn.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "",
-"tags": "",
-"keywords": "",
-"url": "crs-support-resources.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Support and FAQ",
-"tags": "",
-"keywords": "",
-"url": "crs-support.html",
-"summary": ""
-}
-,
-
-
-
-{
-"title": "Performance tips",
-"tags": "",
-"keywords": "",
-"url": "crs-usage-guidelines.html",
+"url": "faq",
 "summary": ""
 }
 ,
@@ -281,10 +94,32 @@
 
 
 {
-"title": "IBM COS Standard Cross-Region",
+"title": "Quickstart guide",
 "tags": "",
 "keywords": "",
-"url": "index.html",
+"url": "getting-started-with-cos",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "IBM Cloud Object Storage",
+"tags": "",
+"keywords": "",
+"url": "index",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Managing Access",
+"tags": "",
+"keywords": "",
+"url": "manage-access",
 "summary": ""
 }
 ,
@@ -335,6 +170,84 @@
 
 
 
+{
+"title": "Introduction to object storage",
+"tags": "",
+"keywords": "",
+"url": "object-storage",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Ordering storage",
+"tags": "",
+"keywords": "",
+"url": "ordering-storage",
+"summary": "IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS."
+}
+,
+
+
+
+{
+"title": "Using Python with IBM COS",
+"tags": "",
+"keywords": "",
+"url": "python",
+"summary": ""
+}
+,
+
+
+
+
+
+{
+"title": "Data security and IBM COS",
+"tags": "",
+"keywords": "",
+"url": "security",
+"summary": ""
+}
+,
+
+
+
+
+
+{
+"title": "Using storage classes",
+"tags": "",
+"keywords": "",
+"url": "storage-classes",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Storing and retrieving objects",
+"tags": "",
+"keywords": "",
+"url": "storing-and-retrieving-objects",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Getting help",
+"tags": "",
+"keywords": "",
+"url": "support",
+"summary": ""
+}
+,
 
 
 
@@ -360,8 +273,25 @@
 
 
 
+{
+"title": "Using the SoftLayer API",
+"tags": "",
+"keywords": "",
+"url": "using-slapi",
+"summary": ""
+}
+,
 
 
+
+{
+"title": "Using the API",
+"tags": "",
+"keywords": "",
+"url": "using-the-api",
+"summary": ""
+}
+,
 
 
 

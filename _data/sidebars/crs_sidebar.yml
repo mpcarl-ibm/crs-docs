@@ -2,7 +2,7 @@
 
 entries:
 - title: sidebar
-  product: Standard Cross-Region
+  product: 
   version: 
   levels:
   folders:
@@ -20,126 +20,135 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Overview
+  - title: GETTING STARTED
     output: web, pdf
     folderitems:
 
-    - title: IBM COS Standard Cross-Region
-      url: /index.html
+    - title: About IBM Cloud Object Storage
+      url: /index
       output: web, pdf
       type: homepage
 
-    - title: About IBM COS security
-      url: /crs-security.html
+    - title: Quickstart guide
+      url: /getting-started-with-cos
+      output: web, pdf      
+
+    - title: Ordering storage
+      url: /ordering-storage
       output: web, pdf
 
-    - title: About IBM COS API and SDKs
-      url: /crs-about-api.html
+    - title: Storing and retrieving objects
+      url: /storing-and-retrieving-objects
       output: web, pdf
 
-    - title: Other IBM object storage options
-      url: /crs-other-offerings.html
-      output: web, pdf
+    - title: Using the APIs
+      url: /using-the-api
+      output: web, `pdf
 
-  - title: Getting started
+  #  - title: Next steps
+  #    url: /next-steps
+  #    output: web, pdf 
+
+
+  - title: API REFERENCE
     output: web, pdf
     folderitems:
 
-    - title: Creating a new customer account
-      url: /crs-create-account.html
+    - title: About the Compatibility API (S3)
+      url: /about-compatibility-api
       output: web, pdf
 
-    - title: Creating a new storage account
-      url: /crs-create-storage-account.html
-      output: web, pdf
-
-    - title: Connecting to endpoints
-      url: /crs-endpoints.html
+    - title: Compatibility API (S3) reference
+      url: /api-reference
       output: web, pdf  
 
-    - title: Billing information
-      url: /crs-billing.html
-      output: web, pdf 
-
-    - title: Getting support & FAQ
-      url: /crs-support.html
-      output: web, pdf 
-
-  - title: Using the Control portal
-    output: web, pdf
-    folderitems:
-
-    - title: Creating and using buckets
-      url: /crs-control-buckets.html
+    - title: Using the SoftLayer API
+      url: /using-slapi
       output: web, pdf
 
-    - title: Creating and using objects
-      url: /crs-control-objects.html
-      output: web, pdf
-
-    - title: Viewing credentials and endpoints
-      url: /crs-control-credentials.html
-      output: web, pdf
-
-  - title: Using the API
-    output: web, pdf
-    folderitems:
-
-    - title: Connecting to IBM COS
-      url: /crs-connecting.html
+    - title: Using command line interfaces
+      url: /cli
       output: web, pdf
 
       subfolders:
-      - title: API overview
+      - title: Libraries & SDKs
         output: web, pdf
         
         subfolderitems:
-        - title: Supported operations
-          url: /crs-operations.html
-          output: web, pdf  
-
-        - title: About authentication
-          url: /crs-authentication.html
-          output: web, pdf  
-
-        - title: About the SoftLayer API
-          url: /crs-sldn.html
-          output: web, pdf    
-
-      - title: Compatible tools and SDKs
-        output: web, pdf
-        
-        subfolderitems:
-        - title: Desktop clients
-          url: /crs-guis.html
-          output: web, pdf  
-
-        - title: Command line tools
-          url: /crs-cli.html
-          output: web, pdf  
-
-        - title: Using Python with IBM COS
-          url: /crs-python.html
+        - title: Python
+          url: /python
           output: web, pdf 
+    
+    #   - title: Java
+    #     url: /java
+    #     output: web, pdf 
+    
+    #   - title: Node.js
+    #     url: /node
+    #     output: web, pdf 
 
-    - title: Complete API reference
-      url: /crs-api-reference.html
-      output: web, pdf  
-
-    - title: Usage guidelines
-      url: /crs-usage-guidelines.html
-      output: web, pdf
-
-  - title: Resources
+  - title: HOW TO
     output: web, pdf
     folderitems:
 
-    - title: Getting support
-      url: /crs-support-resources.html
+    - title: Select endpoints
+      url: /endpoints
+      output: web, pdf
+
+    - title: Manage access
+      url: /manage-access
+      output: web, pdf
+
+    - title: Use storage classes
+      url: /storage-classes
+      output: web, pdf 
+
+  #  - title: Store very large objects
+  #    url: /large-objects
+  #    output: web, pdf
+
+    - title: Use desktop clients
+      url: /desktop-clients
+      output: web, pdf
+
+  - title: HELP
+    output: web, pdf
+    folderitems:
+
+    - title: About object storage 
+      url: /object-storage
+      output: web, pdf
+
+    - title: Data security
+      url: /security
+      output: web, pdf
+
+  # - title: Encryption
+  #   url: /encryption
+  #   output: web, pdf
+
+    - title: Developer guidance
+      url: /developer-guidance
+      output: web, pdf
+
+    - title: FAQ
+      url: /faq
+      output: web, pdf
+
+    - title: Support
+      url: /support
+      output: web, pdf
+
+    - title: Billing
+      url: /billing
       output: web, pdf
 
     - title: Pricing
       external_url: https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2
       output: web, pdf
+
+  #  - title: Contact us
+  #    url: /contact
+  #    output: web, pdf
 
 
