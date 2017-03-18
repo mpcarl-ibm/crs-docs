@@ -3,7 +3,7 @@ title: IBM Cloud Object Storage
 keywords: 
 tags:
 sidebar: crs_sidebar
-permalink: index
+permalink: index.html
 summary: 
 toc: false
 ---
