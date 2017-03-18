@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>IBM Cloud Object Storage | IBM COS Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 125,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg fa-home navbar-brand" href="index"><span class="projectTitle"> IBM Cloud Object Storage Documentation (Staging)</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">IBM Bluemix<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://bluemix.com" target="_blank">About IBM Bluemix</a></li>
+                        
+                        
+                        
+                        <li><a href="https://console.ng.bluemix.net/catalog/" target="_blank">Bluemix catalog</a></li>
+                        
+                        
+                        
+                        <li><a href="https://console.ng.bluemix.net/docs/" target="_blank">Bluemix documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/" target="_blank">IBM Cloud Object Storage</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="index.html">IBM COS Standard Cross-Region (S3 API)</a></li>
+                        
+                        
+                        
+                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional (Swift API)</a></li>
+                        
+                        
+                        
+                        <li><a href="https://console.ng.bluemix.net/docs/services/ObjectStorage/index.html" target="_blank">Object Storage for Bluemix</a></li>
+                        
+                        
+                        
+                        <li><a href="bx-dedicated">Object Storage for Bluemix (Dedicated)</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://developer.ibm.com/answers/smartspace/public-cloud-object-storage/" target="_blank">IBM devWorks</a></li>
+                        
+                        
+                        
+                        <li><a href="https://stackoverflow.com/questions/tagged/object-storage+softlayer/" target="_blank">StackOverflow</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="IBM Cloud Object Storage">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle"> </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Getting started</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="index">About IBM Cloud Object Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="getting-started-with-cos">Quickstart guide</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ordering-storage">Ordering storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="storing-and-retrieving-objects">Storing and retrieving objects</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="using-the-api">Using the APIs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="next-steps">Next steps</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API reference</a>
+        <ul>
+            
+            
+            
+            <li><a href="about-compatibility-api">About the Compatibility API (S3)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="api-reference">Compatibility API (S3) reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="using-slapi">Using the SoftLayer API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="">Using command line interfaces</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Libraries & SDKs</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="python">Python</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="java">Java</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="node">Node.js</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">How-tos</a>
+        <ul>
+            
+            
+            
+            <li><a href="">Selecting endpoints</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="">Managing access</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="crs-endpoints.html">Using storage classes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="">Storing very large objects</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="desktop-clients">Desktop clients</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Help</a>
+        <ul>
+            
+            
+            
+            <li><a href="security">Data security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="encryption">Encryption</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developer-guidance">Developer guidance</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="faq">FAQ</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="support">Support</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2" target="_blank">Pricing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="contact">Contact us</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block: -->
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">IBM Cloud Object Storage</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+
+    
+
+
+    
+
+  <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> IBM Cloud Object Storage (US Cross Region) is now offering a limited Free Tier for new and existing customers with <a href="https://www.ibm.com/cloud-computing/bluemix/cloud-object-storage">promotional code <code class="highlighter-rouge">COSFREE</code></a>.</div>
+
+<h3 id="ibm-cos-cross-region">IBM COS Cross Region</h3>
+<p>Information stored with IBM COS Cross Region is encrypted and dispersed across three geographic regions (Dallas, San Jose, and Washington, DC) and accessed through an implementation of the S3 API. This is the first public cloud storage service that makes use of the distributed storage technologies provided by IBM’s Cloud Object Storage System.</p>
+
+<p>Cross Region service provides higher durability and availability than using a single region at the cost of slightly higher latency.  If a given data center is unavailable, the object store continues to function without impediment, and any missed changes are applied when the data center comes back online.</p>
+
+<p>Developers use IBM COS’s implementation of the S3 API to interact with their storage accounts. This documentation provides support to get started with provisioning accounts, to create buckets, to upload objects, and to use a reference of common API interactions. This offering is managed through the IBM Bluemix Infrastructure (formerly SoftLayer) Control portal.</p>
+
+<h3 id="other-ibm-object-storage-services">Other IBM object storage services</h3>
+
+<p>In addition to COS Cross Region, IBM Cloud currently provides three unique object storage offerings for different user needs, all of which are accessible through a web-based portal and RESTful APIs.</p>
+
+<table class="overviewtable">
+  <thead>
+    <tr>
+      <th>Offering</th>
+      <th>Interface</th>
+      <th>Defining advantage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IBM COS Cross Region</td>
+      <td>S3 API</td>
+      <td>– Highest availability, durability and resiliency<br /> – Encryption at rest and in flight</td>
+    </tr>
+    <tr>
+      <td>Cloud Object Storage Regional</td>
+      <td>Swift API</td>
+      <td>– Native integration with OpenStack clouds <br /> – Choice of 20 geographic regions</td>
+    </tr>
+    <tr>
+      <td>Object Storage for IBM Bluemix Developer Services</td>
+      <td>Swift API</td>
+      <td>– Native integration with Bluemix services</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="cloud-object-storage-regional">Cloud Object Storage Regional</h4>
+
+<p>Information stored with IBM COS Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure Control portal and does not provide encryption at-rest.</p>
+
+<h4 id="object-storage-for-ibm-bluemix-developer-services">Object Storage for IBM Bluemix Developer Services</h4>
+
+<p>Information stored with Object Storage for IBM Bluemix is located in either Dallas or London data centers, and storage accounts are available for binding to Bluemix services. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix console and does not provide encryption at-rest.</p>
+
+<h3 id="about-this-documentation">About this documentation</h3>
+
+<p>This documentation is for anyone interested in learning about how to use IBM COS Cross Region to manage unstructured data I/O in their applications. For more detailed documentation about the other two object storage services, please visit the links found under <strong>Documentation</strong> in the header of this site.</p>
+
+<p>Please contact <code class="highlighter-rouge">nicholas.lange@ibm.com</code> with questions or suggestions about the documentation itself.</p>
+
+
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
+ Site last generated: Mar 17, 2017 <br /><br />
+<p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>
