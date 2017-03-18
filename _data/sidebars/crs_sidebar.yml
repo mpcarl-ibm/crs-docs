@@ -25,7 +25,7 @@ entries:
     folderitems:
 
     - title: About IBM Cloud Object Storage
-      url: /home
+      url: /index
       output: web, pdf
       type: homepage
 
