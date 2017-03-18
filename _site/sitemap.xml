@@ -26,133 +26,37 @@
   
   
   <url>
+    <loc>/billing</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>/cli</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-authentication.html</loc>
+    <loc>/desktop-clients</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-billing.html</loc>
+    <loc>/developer-guidance</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-buckets-objects.html</loc>
+    <loc>/endpoints</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-connecting.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-control-buckets.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-control-credentials.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-control-objects.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-create-account.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-create-storage-account.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-endpoints.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-example-workflow.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-guis.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-java.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-node.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/about-compatibility-api</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/python</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-security.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-sldn.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-support-resources.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-support.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>/crs-usage-guidelines.html</loc>
+    <loc>/faq</loc>
   </url>
   
   
@@ -167,6 +71,12 @@
   
   <url>
     <loc>/index</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/manage-access</loc>
   </url>
   
   
@@ -196,6 +106,12 @@
   
   
   <url>
+    <loc>/object-storage</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>/ordering-storage</loc>
   </url>
   
@@ -209,10 +125,28 @@
   
   
   
+  <url>
+    <loc>/security</loc>
+  </url>
+  
+  
+  
+  
+  
+  <url>
+    <loc>/storage-classes</loc>
+  </url>
+  
   
   
   <url>
     <loc>/storing-and-retrieving-objects</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/support</loc>
   </url>
   
   
@@ -236,6 +170,12 @@
   
   
   
+  
+  
+  
+  <url>
+    <loc>/using-slapi</loc>
+  </url>
   
   
   

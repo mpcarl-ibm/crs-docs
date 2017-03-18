@@ -13,7 +13,7 @@ toc: false
 ### Overview
 {: #overview}
 
-The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found in the [API overview]({{ site.baseurl }}/beta/api/overview/).
+The IBM Cloud Object Storage implementation of the S3 API supports the most commonly used subset of Amazon S3 API operations. A complete list of supported operations can be found in the [API overview]({{ site.baseurl }}/about-compatibility-api).
 
 {% include note.html content="This reference documentation is being continously improved. If you have technical questions about using the API in your application, please post them on StackOverflow using both `ibm-bluemix` and `object-storage` tags and we will do our best to answer promptly, and then improve this documentation thanks to your feedback." %}
 
@@ -21,7 +21,7 @@ The IBM Cloud Object Storage implementation of the S3 API supports the most comm
 {: #headers} 
 
 #### Common Request Headers
-The following table describes supported common request headers. Headers not listed here will be ignored if sent in a request.
+The following table describes supported common request headers. Headers not listed here will be ignored if sent in a request.  More information about creating the authorization header can be found in the ["Authentication"]({{ site.baseurl }}/managing-access#authentication)section
 
 | Header             | Note                               |
 |--------------------|-------------------------------------|
@@ -475,7 +475,7 @@ Host: s3-api.us-geo.objectstorage.softlayer.net
 
 A `PUT` issued to a bucket with the proper parameters creates an access control list (ACL) for that bucket.  Access control lists allow for granting different sets of permissions to different storage accounts using the account's ID, or by using a pre-made ACL.
 
-{% include important.html content="Credentials are generated for each storage account, not for individual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, `public-read-write` allows any other CRS storage account to access the resource, as well as the general public. " %}
+{% include important.html content="Credentials are generated for each storage account, not for individual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage account. However, `public-read-write` allows any other COS storage account to access the resource, as well as the general public. " %}
 
 ACLs can use pre-made permissions sets (or 'canned ACLs') or be customized in the body of the request. Pre-made ACLs are specified using the `x-amz-acl` header with `private`, `public-read`, or `public-read-write` as the value. Custom ACLs are specified using XML in the request body and can grant `READ`, `WRITE`, `READ_ACP` (read ACL), `WRITE_ACP` (write ACL), or `FULL_CONTROL` permissions to a given storage account.
 

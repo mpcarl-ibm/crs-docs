@@ -14,6 +14,8 @@ Connecting to IBM COS via the API requires specifying two fundamental pieces of 
 
 Credentials consist of two strings: an access key, and a secret key.  The access key is somewhat like a temporary account ID, and the secret key is essentially a password.  It is important not to accidentally compromise your application's security by inadvertently checking your credentials into a code repository! The easiest way to keep track of your keys is to set them as environment variables in your development environment.  This allows them to be called within your code but doesn't require them to be explicitly declared.
 
+At present two sets of credentials can be created per COS instance, allowing credentials to be rotated in applications without interruption.
+
 {% include note.html content="The user interface portal provides a high level view of a storage account.  It is possible to view credentials and endpoints using the portal as well as by using the Softlayer API." %}
 
 #### Using the control portal to view credentials and endpoints

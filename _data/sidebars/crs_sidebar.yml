@@ -20,7 +20,7 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Getting started
+  - title: GETTING STARTED
     output: web, pdf
     folderitems:
 
@@ -45,12 +45,12 @@ entries:
       url: /using-the-api
       output: web, `pdf
 
-    - title: Next steps
-      url: /next-steps
-      output: web, pdf 
+  #  - title: Next steps
+  #    url: /next-steps
+  #    output: web, pdf 
 
 
-  - title: API reference
+  - title: API REFERENCE
     output: web, pdf
     folderitems:
 
@@ -67,6 +67,7 @@ entries:
       output: web, pdf
 
     - title: Using command line interfaces
+      url: /cli
       output: web, pdf
 
       subfolders:
@@ -78,49 +79,53 @@ entries:
           url: /python
           output: web, pdf 
     
-        - title: Java
-          url: /java
-          output: web, pdf 
+    #   - title: Java
+    #     url: /java
+    #     output: web, pdf 
     
-        - title: Node.js
-          url: /node
-          output: web, pdf 
+    #   - title: Node.js
+    #     url: /node
+    #     output: web, pdf 
 
-  - title: How-tos
+  - title: HOW TO
     output: web, pdf
     folderitems:
 
-    - title: Selecting endpoints
-      url: /
+    - title: Select endpoints
+      url: /endpoints
       output: web, pdf
 
-    - title: Managing access
-      url: /
+    - title: Manage access
+      url: /manage-access
       output: web, pdf
 
-    - title: Using storage classes
-      url: /crs-endpoints.html
+    - title: Use storage classes
+      url: /storage-classes
       output: web, pdf 
 
-    - title: Storing very large objects
-      url: /
-      output: web, pdf
+  #  - title: Store very large objects
+  #    url: /large-objects
+  #    output: web, pdf
 
-    - title: Desktop clients
+    - title: Use desktop clients
       url: /desktop-clients
       output: web, pdf
 
-  - title: Help
+  - title: HELP
     output: web, pdf
     folderitems:
+
+    - title: About object storage 
+      url: /object-storage
+      output: web, pdf
 
     - title: Data security
       url: /security
       output: web, pdf
 
-    - title: Encryption
-      url: /encryption
-      output: web, pdf
+  # - title: Encryption
+  #   url: /encryption
+  #   output: web, pdf
 
     - title: Developer guidance
       url: /developer-guidance
@@ -134,12 +139,16 @@ entries:
       url: /support
       output: web, pdf
 
+    - title: Billing
+      url: /billing
+      output: web, pdf
+
     - title: Pricing
       external_url: https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2
       output: web, pdf
 
-    - title: Contact us
-      url: /contact
-      output: web, pdf
+  #  - title: Contact us
+  #    url: /contact
+  #    output: web, pdf
 
 
