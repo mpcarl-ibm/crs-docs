@@ -164,7 +164,7 @@ Authorization: {authorization-string}
 
 A `PUT` issued to the endpoint root will create a bucket when a string is provided.  Bucket names must be unique, and accounts are limited to 100 buckets each.  Bucket names must be DNS-compliant; names between 3 and 63 characters long must be made of lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number.  Bucket names resembling IP addresses are not allowed.
 
-{% include note.html content="Using third-party tools or SDKs may enforce setting a 'Location Constraint' when creating a bucket.  If required, this value must be set to 'us-standard'." %}
+{% include note.html content="Using third-party tools or SDKs may enforce setting a 'LocationConstraint' when creating a bucket. If required, this value must be set to 'us-standard'. Unlike AWS S3, IBM COS uses this value to indicate the storage class of an object. This field has no relation to physical geography or region - those values are provided within the endpoint used to connect to the service. Currently, the only permitted values for 'LocationCostraint' are 'us-standard', 'us-vault', and 'us-cold'." %}
 
 ##### Syntax
 
@@ -195,6 +195,110 @@ Accept-Ranges: bytes
 Server: Cleversafe/3.9.0.115
 X-Clv-S3-Version: 2.5
 x-amz-request-id: dca204eb-72b5-4e2a-a142-808d2a5c2a87
+Content-Length: 0
+```
+
+---- 
+
+#### Create a Vault bucket
+
+To create a Vault bucket, send an XML block specifying a bucket configuration with a `LocationConstraint` of `us-vault` in the body of a `PUT` request to a bucket endpoint.  Note that standard bucket [naming rules]({{ site.baseurl }}/api-reference#create-a-new-bucket) apply. 
+
+{% include note.html content="Unlike AWS S3, IBM COS uses the `LocationConstraint` value to indicate the storage class of an object. This field has no relation to physical geography or region - those values are provided within the endpoint used to connect to the service. Currently, the only permitted values for `LocationCostraint` are `us-standard`, `us-vault`, and `us-cold`." %}
+
+##### Syntax
+
+```shell
+PUT https://{endpoint}/{bucket-name} # path style
+PUT https://{bucket-name}.{endpoint} # virtual host style
+```
+
+```xml
+<CreateBucketConfiguration> 
+  <LocationConstraint>us-vault</LocationConstraint> 
+</CreateBucketConfiguration> 
+```
+
+##### Sample request
+
+This is an example of creating a new bucket called 'vault-images'.
+
+```http
+PUT /vault-images HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20170317T175217Z
+x-amz-content-sha256: {hashed-request-body}
+Content-Type: text/plain
+Host: s3-api.us-geo.objectstorage.softlayer.net
+Content-Length: 110
+```
+```xml
+<CreateBucketConfiguration> 
+  <LocationConstraint>us-vault</LocationConstraint> 
+</CreateBucketConfiguration> 
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Fri, 17 Mar 2017 17:52:17 GMT
+X-Clv-Request-Id: b6483b2c-24ae-488a-884c-db1a93b9a9a6
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.115
+X-Clv-S3-Version: 2.5
+Content-Length: 0
+```
+
+---- 
+
+#### Create a Cold Vault bucket
+
+To create a Vault bucket, send an XML block specifying a bucket configuration with a `LocationConstraint` of `us-cold` in the body of a `PUT` request to a bucket endpoint.  Note that standard bucket [naming rules]({{ site.baseurl }}/api-reference#create-a-new-bucket) apply. 
+
+{% include note.html content="Unlike AWS S3, IBM COS uses the `LocationConstraint` value to indicate the storage class of an object. This field has no relation to physical geography or region - those values are provided within the endpoint used to connect to the service. Currently, the only permitted values for `LocationCostraint` are `us-standard`, `us-vault`, and `us-cold`." %}
+
+##### Syntax
+
+```shell
+PUT https://{endpoint}/{bucket-name} # path style
+PUT https://{bucket-name}.{endpoint} # virtual host style
+```
+
+```xml
+<CreateBucketConfiguration> 
+  <LocationConstraint>us-cold</LocationConstraint> 
+</CreateBucketConfiguration> 
+```
+
+##### Sample request
+
+This is an example of creating a new bucket called 'cold-vault-images'.
+
+```http
+PUT /cold-vault-images HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20170317T175217Z
+x-amz-content-sha256: {hashed-request-body}
+Content-Type: text/plain
+Host: s3-api.us-geo.objectstorage.softlayer.net
+Content-Length: 110
+```
+```xml
+<CreateBucketConfiguration> 
+  <LocationConstraint>us-cold</LocationConstraint> 
+</CreateBucketConfiguration> 
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Fri, 17 Mar 2017 17:52:17 GMT
+X-Clv-Request-Id: b6483b2c-24ae-488a-884c-db1a93b9a9a6
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.115
+X-Clv-S3-Version: 2.5
 Content-Length: 0
 ```
 
@@ -515,7 +619,7 @@ Content-Length: 550
 
 #### List canceled/incomplete multipart uploads for a bucket
 
-A `GET` issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multi-part uploads for a bucket.
+A `GET` issued to a bucket with the proper parameters retrieves information about any canceled or incomplete multipart uploads for a bucket.
 
 ##### Syntax
 
@@ -546,7 +650,7 @@ x-amz-date: 20161011T190354Z
 Host: s3-api.us-geo.objectstorage.softlayer.net
 ```
 
-##### Sample response No multipart uploads in progress.
+##### Sample response (no multipart uploads in progress)
 
 ```http
 HTTP/1.1 200 OK
@@ -562,13 +666,41 @@ Content-Length: 374
 
 ```xml
 <ListMultipartUploadsResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-  <Bucket>bucket-1</Bucket>
+  <Bucket>apiary</Bucket>
   <KeyMarker/>
   <UploadIdMarker/>
-  <NextKeyMarker/>
-  <NextUploadIdMarker/>
+  <NextKeyMarker>multipart-object-123</NextKeyMarker>
+  <NextUploadIdMarker>0000015a-df89-51d0-2790-dee1ac994053</NextUploadIdMarker>
   <MaxUploads>1000</MaxUploads>
   <IsTruncated>false</IsTruncated>
+  <Upload>
+    <Key>file</Key>
+    <UploadId>0000015a-d92a-bc4a-c312-8c1c2a0e89db</UploadId>
+    <Initiator>
+      <ID>d4d11b981e6e489486a945d640d41c4d</ID>
+      <DisplayName>d4d11b981e6e489486a945d640d41c4d</DisplayName>
+    </Initiator>
+    <Owner>
+      <ID>d4d11b981e6e489486a945d640d41c4d</ID>
+      <DisplayName>d4d11b981e6e489486a945d640d41c4d</DisplayName>
+    </Owner>
+    <StorageClass>STANDARD</StorageClass>
+    <Initiated>2017-03-16T22:09:01.002Z</Initiated>
+  </Upload>
+  <Upload>
+    <Key>multipart-object-123</Key>
+    <UploadId>0000015a-df89-51d0-2790-dee1ac994053</UploadId>
+    <Initiator>
+      <ID>d4d11b981e6e489486a945d640d41c4d</ID>
+      <DisplayName>d4d11b981e6e489486a945d640d41c4d</DisplayName>
+    </Initiator>
+    <Owner>
+      <ID>d4d11b981e6e489486a945d640d41c4d</ID>
+      <DisplayName>d4d11b981e6e489486a945d640d41c4d</DisplayName>
+    </Owner>
+    <StorageClass>STANDARD</StorageClass>
+    <Initiated>2017-03-18T03:50:02.960Z</Initiated>
+  </Upload>
 </ListMultipartUploadsResult>
 ```
 
@@ -1171,5 +1303,100 @@ Content-Length: 0
 
 ---- 
 
+### Uploading objects in multiple parts
+
+When working with larger objects, multipart upload operations are recommended to write objects into IBM COS. An upload of a single object can be performed as a set of parts and these parts can be uploaded independently in any order and in parallel. Upon upload completion, IBM COS then presents all parts as a single object. This provides many benefits: network interruptions do not cause large uploads to fail, uploads can be paused and restarted over time, and objects can be uploaded as they are being created.
+
+Multipart uploads are only available for objects larger than 5MB. For objects smaller than 50GB, a part size of 20MB to 100MB is recommended for optimum performance. For larger objects, part size can be increased without significant performance impact.
+
+{% include tip.html content="Using more than 500 parts leads to inefficiencies in IBM COS and should be avoided when possible." %}
+
+Due to the additional complexity involved, it is recommended that developers make use of S3 API libraries that provide multipart upload support. 
+
+{% include important.html content="Incomplete multipart uploads do persist until the object is deleted or the multipart upload is aborted with `AbortIncompleteMultipartUpload`. If an incomplete multipart upload is not aborted, the partial upload continues to use resources.  Interfaces should be designed with this point in mind, and clean up incomplete multipart uploads.  " %}
+
+There are three phases to uploading an object in multiple parts:
+
+1. The upload is initiated and an `UploadId` is created.
+2. Individual parts are uploaded specifying their sequential part numbers and the `UploadId` for the object.
+3. When all parts are finished uploading, the upload is completed by sending a request with the `UploadId` and an XML block that lists each part number and it's respective `Etag` value.
+
+#### Initiate a multipart upload
+
+A `POST` issued to an object with the query parameter `upload` creates a new `UploadId` value, which is then be referenced by each part of the object being uploaded.
+
+##### Syntax
+
+```bash
+POST https://{endpoint}/{bucket-name}/{object-name}?uploads= # path style
+POST https://{bucket-name}.{endpoint}/{object-name}?uploads= # virtual host style
+```
+
+##### Sample request
+
+```http
+POST /some-bucket/multipart-object-123?uploads= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20170303T203411Z
+Host: s3-api.us-geo.objectstorage.softlayer.net
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Fri, 03 Mar 2017 20:34:12 GMT
+X-Clv-Request-Id: 258fdd5a-f9be-40f0-990f-5f4225e0c8e5
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.1.114
+X-Clv-S3-Version: 2.5
+Content-Type: application/xml
+Content-Length: 276
+```
+
+```xml
+<InitiateMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Bucket>zopse</Bucket>
+  <Key>multipart-object-123</Key>
+  <UploadId>0000015a-95e1-4326-654e-a1b57887784f</UploadId>
+</InitiateMultipartUploadResult>
+```
+
 ---- 
+
+#### Upload a part
+
+A `PUT` request issued to an object with query parameters `partNumber` and `uploadId` will upload one part of an object.  The parts may be uploaded serially or in parallel, but must be numbered in order.
+
+##### Syntax
+
+```bash
+POST https://{endpoint}/{bucket-name}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # path style
+POST https://{bucket-name}.{endpoint}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # virtual host style
+```
+
+##### Sample request
+
+```http
+PUT /some-bucket/multipart-object-123?partNumber=1&uploadId=0000015a-df89-51d0-2790-dee1ac994053 HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20170318T035641Z
+Content-Type: application/pdf
+Host: s3-api.us-geo.objectstorage.softlayer.net
+Content-Length: 13374550
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Sat, 18 Mar 2017 03:56:41 GMT
+X-Clv-Request-Id: 17ba921d-1c27-4f31-8396-2e6588be5c6d
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.1.114
+X-Clv-S3-Version: 2.5
+ETag: "7417ca8d45a71b692168f0419c17fe2f"
+Content-Length: 0
+```
+
 ---- 

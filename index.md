@@ -3,19 +3,22 @@ title: IBM Cloud Object Storage
 keywords: 
 tags:
 sidebar: crs_sidebar
-permalink: home
+permalink: index
 summary: 
 toc: false
 ---
 
 
-{% include tip.html content="IBM Cloud Object Storage (US Cross Region) is now offering a limited Free Tier for new and existing customers with promotional code `COSFREE`." %}
+{% include tip.html content="IBM Cloud Object Storage (US Cross Region) is now offering a limited Free Tier for new and existing customers with [promotional code `COSFREE`](https://www.ibm.com/cloud-computing/bluemix/cloud-object-storage)." %}
 
+### IBM COS Cross Region 
 Information stored with IBM COS Cross Region is encrypted and dispersed across three geographic regions (Dallas, San Jose, and Washington, DC) and accessed through an implementation of the S3 API. This is the first public cloud storage service that makes use of the distributed storage technologies provided by IBM's Cloud Object Storage System. 
 
 Cross Region service provides higher durability and availability than using a single region at the cost of slightly higher latency.  If a given data center is unavailable, the object store continues to function without impediment, and any missed changes are applied when the data center comes back online.
 
 Developers use IBM COS's implementation of the S3 API to interact with their storage accounts. This documentation provides support to get started with provisioning accounts, to create buckets, to upload objects, and to use a reference of common API interactions. This offering is managed through the IBM Bluemix Infrastructure (formerly SoftLayer) Control portal.
+
+### Other IBM object storage services
 
 In addition to COS Cross Region, IBM Cloud currently provides three unique object storage offerings for different user needs, all of which are accessible through a web-based portal and RESTful APIs.
 

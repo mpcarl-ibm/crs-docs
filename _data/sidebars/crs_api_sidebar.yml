@@ -32,100 +32,119 @@ entries:
       url: /api-reference
       output: web, pdf 
 
+  - title: Account operations
+    output: web, pdf
+    folderitems:
+
+    - title: Listing buckets
+      url: /api-reference#list-buckets-belonging-to-an-account
+      output: web, pdf  
+
+  - title: Bucket operations
+    output: web, pdf
+    folderitems:
+
+    - title: Creating buckets
+      url: /api-reference#create-a-new-bucket
+      output: web, pdf 
+
+    - title: Creating Vault buckets
+      url: /api-reference#create-a-vault-bucket
+      output: web, pdf 
+
+    - title: Creating Cold Vault buckets
+      url: /api-reference#create-a-cold-vault-bucket
+      output: web, pdf 
+    
+    - title: Retrieving bucket metadata
+      url: /api-reference#get-bucket-headers
+      output: web, pdf 
+    
+    - title: Deleting buckets
+      url: /api-reference#delete-a-bucket
+      output: web, pdf  
+    
+    - title: Listing objects within buckets
+      url: /api-reference#list-objects-in-a-given-bucket
+      output: web, pdf 
+    
+    - title: Retrieving bucket ACLs
+      url: /api-reference#retrieve-the-access-control-list-for-a-bucket
+      output: web, pdf  
+    
+    - title: Creating bucket ACLs
+      url: /api-reference#create-an-access-control-list-for-a-bucket
+      output: web, pdf 
+    
+    - title: Adding CORS configurations
+      url: /api-reference#create-a-cross-origin-resource-sharing-configuration-for-a-bucket
+      output: web, pdf 
+    
+    - title: Retrieving CORS configurations
+      url: /api-reference#list-any-cross-origin-resource-sharing-configuration-for-a-bucket
+      output: web, pdf 
+    
+    - title: Deleting CORS configurations
+      url: /api-reference#delete-any-cross-origin-resource-sharing-configuration-for-a-bucket
+      output: web, pdf 
+    
+    - title: Listing multipart uploads
+      url: /api-reference#list-canceledincomplete-multipart-uploads-for-a-bucket
+      output: web, pdf 
+
+  - title: Object operations
+    output: web, pdf
+    folderitems:
+        
+    - title: Uploading objects
+      url: /api-reference#upload-an-object
+      output: web, pdf
+
+    - title: Retrieving object metadata
+      url: /api-reference#get-an-objects-headers
+      output: web, pdf  
+
+    - title: Retrieving objects
+      url: /api-reference#download-an-object
+      output: web, pdf
+
+    - title: Deleting objects
+      url: /api-reference#delete-an-object
+      output: web, pdf 
+
+    - title: Deleting multiple objects
+      url: /api-reference#deleting-multiple-objects
+      output: web, pdf
+
+    - title: Creating a copy of an object
+      url: /api-reference#copy-an-object
+      output: web, pdf
+
+    - title: Retrieving object ACLs
+      url: /api-reference#retrieve-an-objects-acl
+      output: web, pdf
+
+    - title: Creating object ACLs
+      url: /api-reference#create-an-acl-for-an-object
+      output: web, pdf
+
+    - title: Checking CORS for an object
+      url: /api-reference#check-an-objects-cors-configuration
+      output: web, pdf
+      
       subfolders:
-      - title: Account operations
+      - title: Uploading multipart objects
         output: web, pdf
-        
         subfolderitems:
-        - title: Listing buckets
-          url: /crs-api-reference.html#list-buckets-belonging-to-an-account
-          output: web, pdf  
 
-      - title: Bucket operations
-        output: web, pdf
-        
-        subfolderitems:
-        - title: Creating buckets
-          url: /crs-api-reference.html#create-a-new-bucket
-          output: web, pdf 
-
-        - title: Retrieving bucket metadata
-          url: /crs-api-reference.html#get-bucket-headers
-          output: web, pdf  
+        - title: Initiate a multipart upload
+          url: /api-reference#uploading-objects-in-multiple-parts
+          output: web, pdf
   
-        - title: Deleting buckets
-          url: /crs-api-reference.html#delete-a-bucket
-          output: web, pdf  
-
-        - title: Listing objects within buckets
-          url: /crs-api-reference.html#list-objects-in-a-given-bucket
-          output: web, pdf 
-
-        - title: Retrieving bucket ACLs
-          url: /crs-api-reference.html#retrieve-the-access-control-list-for-a-bucket
-          output: web, pdf  
-
-        - title: Creating bucket ACLs
-          url: /crs-api-reference.html#create-an-access-control-list-for-a-bucket
-          output: web, pdf 
-
-        - title: Adding CORS configurations
-          url: /crs-api-reference.html#create-a-cross-origin-resource-sharing-configuration-for-a-bucket
-          output: web, pdf 
-
-        - title: Retrieving CORS configurations
-          url: /crs-api-reference.html#list-any-cross-origin-resource-sharing-configuration-for-a-bucket
-          output: web, pdf 
-
-        - title: Deleting CORS configurations
-          url: /crs-api-reference.html#delete-any-cross-origin-resource-sharing-configuration-for-a-bucket
-          output: web, pdf 
-
-        - title: Listing multipart uploads
-          url: /crs-api-reference.html#list-canceledincomplete-multipart-uploads-for-a-bucket
-          output: web, pdf 
-
-      - title: Object operations
-        output: web, pdf
-        
-        subfolderitems:
-        - title: Uploading objects
-          url: /crs-api-reference.html#upload-an-object
-          output: web, pdf 
-
-        - title: Retrieving object metadata
-          url: /crs-api-reference.html#get-an-objects-headers
-          output: web, pdf  
+        - title: Uploading a part
+          url: /api-reference#upload-a-part
+          output: web, pdf
   
-        - title: Retrieving objects
-          url: /crs-api-reference.html#download-an-object
-          output: web, pdf 
-
-        - title: Deleting objects
-          url: /crs-api-reference.html#delete-an-object
-          output: web, pdf  
-
-        - title: Deleting multiple objects
-          url: /crs-api-reference.html#deleting-multiple-objects
-          output: web, pdf 
-
-        - title: Creating a copy of an object
-          url: /crs-api-reference.html#copy-an-object
+        - title: Complete a multipart upload
+          url: /api-reference#completing-a-multipart-upload
           output: web, pdf
-
-        - title: Retrieving object ACLs
-          url: /crs-api-reference.html#retrieve-an-objects-acl
-          output: web, pdf
-
-        - title: Creating object ACLs
-          url: /crs-api-reference.html#create-an-acl-for-an-object
-          output: web, pdf
-
-        - title: Checking CORS for an object
-          url: /crs-api-reference.html#check-an-objects-cors-configuration
-          output: web, pdf
-
-        - title: Uploading multipart objects
-          url: /crs-api-reference.html#delete-an-object
-          output: web, pdf
-
