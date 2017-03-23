@@ -8,12 +8,12 @@ sidebar: crs_sidebar
 permalink: manage-access
 redirect_from:
   - /crs-authentication.html
+  - /crs-authentication
 folder: how-to
 toc: true
 ---
 
 ### Access control in IBM COS
-
 
 #### Using Access Contol Lists
 Credentials are generated for each storage instance, not for individual users.  As such, ACLs do not have the ability to restrict or grant access to a given user, only to a storage instance. However, `public-read-write` allows any other COS storage instance to access the resource, as well as the general public. 
