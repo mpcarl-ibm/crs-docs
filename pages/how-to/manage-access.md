@@ -6,6 +6,8 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: manage-access
+redirect_from:
+  - /crs-authentication.html/
 folder: how-to
 toc: true
 ---
