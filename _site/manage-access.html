@@ -468,7 +468,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>The date is provided in <code class="highlighter-rouge">YYYYMMDD</code> format, and for COS Cross-Region the region should be <code class="highlighter-rouge">us-standard</code>. The <code class="highlighter-rouge">host</code> and <code class="highlighter-rouge">x-amz-date</code> headers are always required, and depending on the request other headers may be required as well (e.g. <code class="highlighter-rouge">x-amz-content-sha256</code> in the case of requests with payloads).  Due to the need to recalculate the signature for every individual request, many developers prefer to use a tool or SDK that will produce the authorization header automatically.</p>
 
-<h3 id="creating-an-authorization-header">Creating an <code class="highlighter-rouge">authorization</code> header</h3>
+<h4 id="creating-an-authorization-header">Creating an <code class="highlighter-rouge">authorization</code> header</h4>
 
 <p>First we need to create a request in a standardized format.</p>
 
@@ -514,7 +514,7 @@ $('#toc').on('click', 'a', function() {
 </code></pre>
 </div>
 
-<h3 id="example-of-generating-an-authorization-header">Example of generating an <code class="highlighter-rouge">authorization</code> header</h3>
+<h4 id="example-of-generating-an-authorization-header">Example of generating an <code class="highlighter-rouge">authorization</code> header</h4>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
@@ -540,11 +540,13 @@ $('#toc').on('click', 'a', function() {
 <span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
 
+<span class="c"># anyString is a wildcard value that takes the place of the AWS region value</span>
+<span class="c"># as COS doen't use the same conventions for regions, this parameter can accept any string</span>
+<span class="k">def</span> <span class="nf">createSignatureKey</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">datestamp</span><span class="p">,</span> <span class="n">anyString</span><span class="p">,</span> <span class="n">service</span><span class="p">):</span>  
 
-<span class="k">def</span> <span class="nf">createSignatureKey</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">datestamp</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">service</span><span class="p">):</span>
     <span class="n">keyDate</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">((</span><span class="s">'AWS4'</span> <span class="o">+</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">datestamp</span><span class="p">)</span>
-    <span class="n">keyRegion</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyDate</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
-    <span class="n">keyService</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyRegion</span><span class="p">,</span> <span class="n">service</span><span class="p">)</span>
+    <span class="n">keyString</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyDate</span><span class="p">,</span> <span class="n">anyString</span><span class="p">)</span>
+    <span class="n">keyService</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyString</span><span class="p">,</span> <span class="n">service</span><span class="p">)</span>
     <span class="n">keySigning</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyService</span><span class="p">,</span> <span class="s">'aws4_request'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">keySigning</span>
 
