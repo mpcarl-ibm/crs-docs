@@ -108,3 +108,6 @@ description:
 
 # needed for sitemap.xml file only
 url:
+
+gems:
+  - jekyll-redirect-from
