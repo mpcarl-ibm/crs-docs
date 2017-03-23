@@ -186,6 +186,30 @@
   
   
   <url>
+    <loc>/crs-api-overview</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-api-overview.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-api-reference</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-api-reference.html</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>/crs-authentication.html</loc>
   </url>
   
@@ -193,6 +217,18 @@
   
   <url>
     <loc>/crs-authentication</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-python</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-python.html</loc>
   </url>
   
   

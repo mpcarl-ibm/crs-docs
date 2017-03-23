@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_api_sidebar
 permalink: api-reference
+redirect_from:
+  - /crs-api-reference
+  - /crs-api-reference.html
 folder: api-reference
 toc: false
 ---

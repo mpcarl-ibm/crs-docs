@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: python
+redirect_from:
+  - /crs-python
+  - /crs-python.html
 folder: api-reference
 ---
 

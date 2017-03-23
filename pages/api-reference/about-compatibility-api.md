@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: about-compatibility-api
+redirect_from:
+  - /crs-api-overview
+  - /crs-api-overview.html
 folder: api-reference
 ---
 
