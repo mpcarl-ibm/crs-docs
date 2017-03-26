@@ -1374,8 +1374,8 @@ A `PUT` request issued to an object with query parameters `partNumber` and `uplo
 ##### Syntax
 
 ```bash
-POST https://{endpoint}/{bucket-name}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # path style
-POST https://{bucket-name}.{endpoint}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # virtual host style
+PUT https://{endpoint}/{bucket-name}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # path style
+PUT https://{bucket-name}.{endpoint}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # virtual host style
 ```
 
 ##### Sample request
@@ -1406,37 +1406,100 @@ Content-Length: 0
 
 #### Complete a multipart upload
 
-A `POST` request issued to an object with query parameters `partNumber` and `uploadId` will upload one part of an object.  The parts may be uploaded serially or in parallel, but must be numbered in order.
+A `POST` request issued to an object with query parameter `uploadId` and the appropriate XML block in the body will complete a multipart upload. 
 
 ##### Syntax
 
 ```bash
-POST https://{endpoint}/{bucket-name}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # path style
-POST https://{bucket-name}.{endpoint}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # virtual host style
+POST https://{endpoint}/{bucket-name}/{object-name}?uploadId={uploadId}= # path style
+POST https://{bucket-name}.{endpoint}/{object-name}?uploadId={uploadId}= # virtual host style
+```
+
+```xml
+<CompleteMultipartUpload>
+  <Part>
+    <PartNumber>{sequential part number}</PartNumber>
+    <ETag>{ETag value from part upload response header}</ETag>
+  </Part>
+</CompleteMultipartUpload>
 ```
 
 ##### Sample request
 
 ```http
-PUT /some-bucket/multipart-object-123?partNumber=1&uploadId=0000015a-df89-51d0-2790-dee1ac994053 HTTP/1.1
+POST /some-bucket/multipart-object-123?uploadId=0000015a-df89-51d0-2790-dee1ac994053 HTTP/1.1
 Authorization: {authorization-string}
 x-amz-date: 20170318T035641Z
-Content-Type: application/pdf
+Content-Type: text/plain; charset=utf-8
 Host: s3-api.us-geo.objectstorage.softlayer.net
-Content-Length: 13374550
+Content-Length: 257
+```
+
+```xml
+<CompleteMultipartUpload>
+  <Part>
+    <PartNumber>1</PartNumber>
+    <ETag>"7417ca8d45a71b692168f0419c17fe2f"</ETag>
+  </Part>
+  <Part>
+    <PartNumber>2</PartNumber>
+    <ETag>"7417ca8d45a71b692168f0419c17fe2f"</ETag>
+  </Part>
+</CompleteMultipartUpload>
 ```
 
 ##### Sample response
 
 ```http
 HTTP/1.1 200 OK
-Date: Sat, 18 Mar 2017 03:56:41 GMT
-X-Clv-Request-Id: 17ba921d-1c27-4f31-8396-2e6588be5c6d
+Date: Fri, 03 Mar 2017 19:18:44 GMT
+X-Clv-Request-Id: c8be10e7-94c4-4c03-9960-6f242b42424d
 Accept-Ranges: bytes
 Server: Cleversafe/3.9.1.114
 X-Clv-S3-Version: 2.5
-ETag: "7417ca8d45a71b692168f0419c17fe2f"
-Content-Length: 0
+ETag: "765ba3df36cf24e49f67fc6f689dfc6e-2"
+Content-Type: application/xml
+Content-Length: 364
+```
+
+```xml
+<CompleteMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Location>http://s3-api.us-geo.objectstorage.softlayer.net/zopse/multipart-object-123</Location>
+  <Bucket>some-bucket</Bucket>
+  <Key>multipart-object-123</Key>
+  <ETag>"765ba3df36cf24e49f67fc6f689dfc6e-2"</ETag>
+</CompleteMultipartUploadResult>
 ```
 
 ---- 
+
+#### Abort incomplete multipart uploads
+
+A `DELETE` request issued to an object with query parameter `uploadId` will delete all unfinished parts of a multipart upload. 
+
+##### Syntax
+
+```bash
+DELETE https://{endpoint}/{bucket-name}/{object-name}?uploadId={uploadId}= # path style
+DELETE https://{bucket-name}.{endpoint}/{object-name}?uploadId={uploadId}= # virtual host style
+```
+
+##### Sample request
+
+```http
+DELETE /some-bucket/multipart-object-123?uploadId=0000015a-df89-51d0-2790-dee1ac994053 HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20170318T035641Z
+Host: s3-api.us-geo.objectstorage.softlayer.net
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 204 No Content
+Date: Thu, 16 Mar 2017 22:07:48 GMT
+X-Clv-Request-Id: 06d67542-6a3f-4616-be25-fc4dbdf242ad
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.1.114
+X-Clv-S3-Version: 2.5
+```
