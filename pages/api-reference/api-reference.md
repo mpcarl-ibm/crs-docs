@@ -429,7 +429,7 @@ Content-Length: 909
 
 #### Delete a bucket
 
-A `DELETE` issued to an empty bucket deletes the bucket. *Only empty buckets can be deleted.*
+A `DELETE` issued to an empty bucket deletes the bucket. After deleting a bucket the name will be held in reserve by the system for 10 minutes, after which it will be released for re-use.  *Only empty buckets can be deleted.*
 
 ##### Syntax
 
@@ -1359,7 +1359,7 @@ Content-Length: 276
 
 ```xml
 <InitiateMultipartUploadResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-  <Bucket>zopse</Bucket>
+  <Bucket>some-bucket</Bucket>
   <Key>multipart-object-123</Key>
   <UploadId>0000015a-95e1-4326-654e-a1b57887784f</UploadId>
 </InitiateMultipartUploadResult>
@@ -1370,6 +1370,43 @@ Content-Length: 276
 #### Upload a part
 
 A `PUT` request issued to an object with query parameters `partNumber` and `uploadId` will upload one part of an object.  The parts may be uploaded serially or in parallel, but must be numbered in order.
+
+##### Syntax
+
+```bash
+POST https://{endpoint}/{bucket-name}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # path style
+POST https://{bucket-name}.{endpoint}/{object-name}?partNumber={sequential-integer}&uploadId={uploadId}= # virtual host style
+```
+
+##### Sample request
+
+```http
+PUT /some-bucket/multipart-object-123?partNumber=1&uploadId=0000015a-df89-51d0-2790-dee1ac994053 HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20170318T035641Z
+Content-Type: application/pdf
+Host: s3-api.us-geo.objectstorage.softlayer.net
+Content-Length: 13374550
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Sat, 18 Mar 2017 03:56:41 GMT
+X-Clv-Request-Id: 17ba921d-1c27-4f31-8396-2e6588be5c6d
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.1.114
+X-Clv-S3-Version: 2.5
+ETag: "7417ca8d45a71b692168f0419c17fe2f"
+Content-Length: 0
+```
+
+---- 
+
+#### Complete a multipart upload
+
+A `POST` request issued to an object with query parameters `partNumber` and `uploadId` will upload one part of an object.  The parts may be uploaded serially or in parallel, but must be numbered in order.
 
 ##### Syntax
 

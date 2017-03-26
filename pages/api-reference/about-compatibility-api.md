@@ -7,8 +7,8 @@ summary:
 sidebar: crs_sidebar
 permalink: about-compatibility-api
 redirect_from:
-  - /crs-api-overview
-  - /crs-api-overview.html
+  - /crs-api-operations
+  - /crs-api-operations.html
 folder: api-reference
 ---
 

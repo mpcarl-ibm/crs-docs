@@ -186,13 +186,13 @@
   
   
   <url>
-    <loc>/crs-api-overview</loc>
+    <loc>/crs-api-operations</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-api-overview.html</loc>
+    <loc>/crs-api-operations.html</loc>
   </url>
   
   
@@ -205,6 +205,18 @@
   
   <url>
     <loc>/crs-api-reference.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-cli</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-cli.html</loc>
   </url>
   
   

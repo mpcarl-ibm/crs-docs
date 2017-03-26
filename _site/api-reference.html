@@ -928,7 +928,7 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <h4 id="delete-a-bucket">Delete a bucket</h4>
 
-<p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. <em>Only empty buckets can be deleted.</em></p>
+<p>A <code class="highlighter-rouge">DELETE</code> issued to an empty bucket deletes the bucket. After deleting a bucket the name will be held in reserve by the system for 10 minutes, after which it will be released for re-use.  <em>Only empty buckets can be deleted.</em></p>
 
 <h5 id="syntax-7">Syntax</h5>
 
@@ -1917,7 +1917,7 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 </div>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;InitiateMultipartUploadResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;Bucket&gt;</span>zopse<span class="nt">&lt;/Bucket&gt;</span>
+  <span class="nt">&lt;Bucket&gt;</span>some-bucket<span class="nt">&lt;/Bucket&gt;</span>
   <span class="nt">&lt;Key&gt;</span>multipart-object-123<span class="nt">&lt;/Key&gt;</span>
   <span class="nt">&lt;UploadId&gt;</span>0000015a-95e1-4326-654e-a1b57887784f<span class="nt">&lt;/UploadId&gt;</span>
 <span class="nt">&lt;/InitiateMultipartUploadResult&gt;</span>
@@ -1963,6 +1963,43 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 
 <hr />
 
+<h4 id="complete-a-multipart-upload">Complete a multipart upload</h4>
+
+<p>A <code class="highlighter-rouge">POST</code> request issued to an object with query parameters <code class="highlighter-rouge">partNumber</code> and <code class="highlighter-rouge">uploadId</code> will upload one part of an object.  The parts may be uploaded serially or in parallel, but must be numbered in order.</p>
+
+<h5 id="syntax-25">Syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>POST https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?partNumber<span class="o">={</span>sequential-integer<span class="o">}</span>&amp;uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># path style</span>
+POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?partNumber<span class="o">={</span>sequential-integer<span class="o">}</span>&amp;uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># virtual host style</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-24">Sample request</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/some-bucket/multipart-object-123?partNumber=1&amp;uploadId=0000015a-df89-51d0-2790-dee1ac994053</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20170318T035641Z</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/pdf</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">13374550</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-24">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Sat, 18 Mar 2017 03:56:41 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">17ba921d-1c27-4f31-8396-2e6588be5c6d</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.1.114</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">ETag</span><span class="p">:</span> <span class="s">"7417ca8d45a71b692168f0419c17fe2f"</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
+
+<hr />
+
 
     <div class="tags">
         
@@ -1978,7 +2015,7 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Mar 23, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Mar 26, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

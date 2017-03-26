@@ -299,7 +299,7 @@
 "title": "",
 "tags": "",
 "keywords": "",
-"url": "crs-api-overview",
+"url": "crs-api-operations",
 "summary": ""
 }
 ,
@@ -310,7 +310,7 @@
 "title": "",
 "tags": "",
 "keywords": "",
-"url": "crs-api-overview.html",
+"url": "crs-api-operations.html",
 "summary": ""
 }
 ,
@@ -333,6 +333,28 @@
 "tags": "",
 "keywords": "",
 "url": "crs-api-reference.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-cli",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-cli.html",
 "summary": ""
 }
 ,

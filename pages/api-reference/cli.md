@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: cli
+redirect_from:
+  - /crs-cli
+  - /crs-cli.html
 folder: api-reference
 toc: true
 ---
