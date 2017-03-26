@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: developer-guidance
+redirect_from:
+  - /crs-usage-guidelines
+  - /crs-usage-guidelines.html
 folder: help
 ---
 

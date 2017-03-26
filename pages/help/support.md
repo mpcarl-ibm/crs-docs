@@ -6,6 +6,11 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: support
+redirect_from:
+  - /crs-support
+  - /crs-support.html
+  - /crs-support-resources
+  - /crs-support-resources.html
 folder: help
 ---
  

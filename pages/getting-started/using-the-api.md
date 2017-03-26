@@ -6,6 +6,13 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: using-the-api
+redirect_from:
+  - /crs-about-api
+  - /crs-about-api.html
+  - /crs-control-endpoints
+  - /crs-control-endpoints.html
+  - /crs-connecting
+  - /crs-connecting.html
 folder: getting-started
 toc: True
 ---

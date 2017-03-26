@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: endpoints
+redirect_from:
+  - /crs-endpoints
+  - /crs-endpoints.html
 folder: how-to
 ---
 

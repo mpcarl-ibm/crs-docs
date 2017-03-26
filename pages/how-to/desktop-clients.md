@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: desktop-clients
+redirect_from:
+  - /crs-guis
+  - /crs-guis.html
 folder: how-to
 toc: false
 ---

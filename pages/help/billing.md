@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: billing
+redirect_from:
+  - /crs-billing
+  - /crs-billing.html
 folder: help
 toc: false
 ---

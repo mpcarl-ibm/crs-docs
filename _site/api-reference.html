@@ -428,6 +428,12 @@
                     
                     
                     
+                    
+                    
+                    <li><a href="api-reference#abort-incomplete-multipart-uploads">Abort incomplete multipart uploads</a></li>
+                    
+                    
+                    
                 </ul>
             </li>
             
@@ -1932,8 +1938,8 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 
 <h5 id="syntax-24">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>POST https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?partNumber<span class="o">={</span>sequential-integer<span class="o">}</span>&amp;uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># path style</span>
-POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?partNumber<span class="o">={</span>sequential-integer<span class="o">}</span>&amp;uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># virtual host style</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?partNumber<span class="o">={</span>sequential-integer<span class="o">}</span>&amp;uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># path style</span>
+PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?partNumber<span class="o">={</span>sequential-integer<span class="o">}</span>&amp;uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># virtual host style</span>
 </code></pre>
 </div>
 
@@ -1965,40 +1971,103 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 
 <h4 id="complete-a-multipart-upload">Complete a multipart upload</h4>
 
-<p>A <code class="highlighter-rouge">POST</code> request issued to an object with query parameters <code class="highlighter-rouge">partNumber</code> and <code class="highlighter-rouge">uploadId</code> will upload one part of an object.  The parts may be uploaded serially or in parallel, but must be numbered in order.</p>
+<p>A <code class="highlighter-rouge">POST</code> request issued to an object with query parameter <code class="highlighter-rouge">uploadId</code> and the appropriate XML block in the body will complete a multipart upload.</p>
 
 <h5 id="syntax-25">Syntax</h5>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>POST https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?partNumber<span class="o">={</span>sequential-integer<span class="o">}</span>&amp;uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># path style</span>
-POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?partNumber<span class="o">={</span>sequential-integer<span class="o">}</span>&amp;uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># virtual host style</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>POST https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># path style</span>
+POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># virtual host style</span>
+</code></pre>
+</div>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CompleteMultipartUpload&gt;</span>
+  <span class="nt">&lt;Part&gt;</span>
+    <span class="nt">&lt;PartNumber&gt;</span>{sequential part number}<span class="nt">&lt;/PartNumber&gt;</span>
+    <span class="nt">&lt;ETag&gt;</span>{ETag value from part upload response header}<span class="nt">&lt;/ETag&gt;</span>
+  <span class="nt">&lt;/Part&gt;</span>
+<span class="nt">&lt;/CompleteMultipartUpload&gt;</span>
 </code></pre>
 </div>
 
 <h5 id="sample-request-24">Sample request</h5>
 
-<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/some-bucket/multipart-object-123?partNumber=1&amp;uploadId=0000015a-df89-51d0-2790-dee1ac994053</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/some-bucket/multipart-object-123?uploadId=0000015a-df89-51d0-2790-dee1ac994053</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20170318T035641Z</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/pdf</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/plain; charset=utf-8</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">13374550</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">257</span>
+</code></pre>
+</div>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CompleteMultipartUpload&gt;</span>
+  <span class="nt">&lt;Part&gt;</span>
+    <span class="nt">&lt;PartNumber&gt;</span>1<span class="nt">&lt;/PartNumber&gt;</span>
+    <span class="nt">&lt;ETag&gt;</span>"7417ca8d45a71b692168f0419c17fe2f"<span class="nt">&lt;/ETag&gt;</span>
+  <span class="nt">&lt;/Part&gt;</span>
+  <span class="nt">&lt;Part&gt;</span>
+    <span class="nt">&lt;PartNumber&gt;</span>2<span class="nt">&lt;/PartNumber&gt;</span>
+    <span class="nt">&lt;ETag&gt;</span>"7417ca8d45a71b692168f0419c17fe2f"<span class="nt">&lt;/ETag&gt;</span>
+  <span class="nt">&lt;/Part&gt;</span>
+<span class="nt">&lt;/CompleteMultipartUpload&gt;</span>
 </code></pre>
 </div>
 
 <h5 id="sample-response-24">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Date</span><span class="p">:</span> <span class="s">Sat, 18 Mar 2017 03:56:41 GMT</span>
-<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">17ba921d-1c27-4f31-8396-2e6588be5c6d</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Fri, 03 Mar 2017 19:18:44 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">c8be10e7-94c4-4c03-9960-6f242b42424d</span>
 <span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
 <span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.1.114</span>
 <span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
-<span class="na">ETag</span><span class="p">:</span> <span class="s">"7417ca8d45a71b692168f0419c17fe2f"</span>
-<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+<span class="na">ETag</span><span class="p">:</span> <span class="s">"765ba3df36cf24e49f67fc6f689dfc6e-2"</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/xml</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">364</span>
+</code></pre>
+</div>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CompleteMultipartUploadResult</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Location&gt;</span>http://s3-api.us-geo.objectstorage.softlayer.net/zopse/multipart-object-123<span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;Bucket&gt;</span>some-bucket<span class="nt">&lt;/Bucket&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>multipart-object-123<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;ETag&gt;</span>"765ba3df36cf24e49f67fc6f689dfc6e-2"<span class="nt">&lt;/ETag&gt;</span>
+<span class="nt">&lt;/CompleteMultipartUploadResult&gt;</span>
 </code></pre>
 </div>
 
 <hr />
+
+<h4 id="abort-incomplete-multipart-uploads">Abort incomplete multipart uploads</h4>
+
+<p>A <code class="highlighter-rouge">DELETE</code> request issued to an object with query parameter <code class="highlighter-rouge">uploadId</code> will delete all unfinished parts of a multipart upload.</p>
+
+<h5 id="syntax-26">Syntax</h5>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>DELETE https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># path style</span>
+DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>object-name<span class="o">}</span>?uploadId<span class="o">={</span>uploadId<span class="o">}=</span> <span class="c"># virtual host style</span>
+</code></pre>
+</div>
+
+<h5 id="sample-request-25">Sample request</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">DELETE</span> <span class="nn">/some-bucket/multipart-object-123?uploadId=0000015a-df89-51d0-2790-dee1ac994053</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20170318T035641Z</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-25">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 16 Mar 2017 22:07:48 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">06d67542-6a3f-4616-be25-fc4dbdf242ad</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.1.114</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+</code></pre>
+</div>
 
 
     <div class="tags">

@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: using-slapi
+redirect_from:
+  - /crs-sldn
+  - /crs-sldn.html
 folder: api-reference
 ---
 

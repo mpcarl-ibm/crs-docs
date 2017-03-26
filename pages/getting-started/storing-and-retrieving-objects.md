@@ -6,6 +6,11 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: storing-and-retrieving-objects
+redirect_from:
+  - /crs-control-buckets
+  - /crs-control-buckets.html
+  - /crs-control-objects
+  - /crs-control-objects.html
 folder: getting-started
 ---
 

@@ -6,6 +6,9 @@ tags:
 summary: 
 sidebar: crs_sidebar
 permalink: security
+redirect_from:
+  - /crs-security
+  - /crs-security.html
 folder: help
 toc: false
 ---

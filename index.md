@@ -4,6 +4,9 @@ keywords:
 tags:
 sidebar: crs_sidebar
 permalink: index.html
+redirect_from:
+  - /crs-other-offerings
+  - /crs-other-offerings.html
 summary: 
 toc: false
 ---
