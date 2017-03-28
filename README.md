@@ -17,3 +17,5 @@ For help with questions about IBM Cloud Object Storage and it's capabilities, pl
 For technical questions about software integration with IBM COS, visit [StackOverflow](http://stackoverflow.com/questions/tagged/object-storage+ibm) and tag questions with `ibm` and `object-storage`.
 
 Please contact `nicholas.lange@ibm.com` with questions or suggestions about the documentation itself.
+
+Foo
