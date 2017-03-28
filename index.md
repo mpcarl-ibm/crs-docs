@@ -32,7 +32,7 @@ In addition to COS Cross Region, IBM Cloud currently provides three unique objec
 | Object Storage for IBM Bluemix Developer Services | Swift API | -- Native integration with Bluemix services |
 {:.overviewtable}
 
-#### Cloud Object Storage Regional
+#### Cloud Object Storage Regional 
 
 Information stored with IBM COS Regional is located in one of 20 global data centers. Based on the OpenStack Swift platform, developers use the community Swift API to interact with their storage accounts. This offering is managed through the IBM Bluemix Infrastructure Control portal and does not provide encryption at-rest.
 
@@ -42,7 +42,9 @@ Information stored with Object Storage for IBM Bluemix is located in either Dall
 
 ### About this documentation
 
-This documentation is for anyone interested in learning about how to use IBM COS Cross Region to manage unstructured data I/O in their applications. For more detailed documentation about the other two object storage services, please visit the links found under **Documentation** in the header of this site.
+This documentation is for anyone interested in learning about how to use IBM COS to manage unstructured data IO in their cloud applications, to store large files for machine learning and data analysis, or simply as a tool for backup and other IT services. For more detailed documentation about the other OpenStack Swift based IBM object storage services, please visit the links found under **Documentation** in the header of this site.
+
+The code examples throughout assume a basic comfortability with a Linux-like shell interface (such as the [OSX Terminal](http://www.imore.com/how-use-terminal-mac-when-you-have-no-idea-where-start) or the [Windows 10 WSL](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).  For more information on getting started with a Bash shell, visit [this primer on shell programming fundamentals](https://www.ibm.com/developerworks/library/l-bash/). Any example code is intended merely as an educational demonstration and is in no way intended to serve as a template or boilerplate for production code.  
 
 Please contact `nicholas.lange@ibm.com` with questions or suggestions about the documentation itself.
 
