@@ -2,7 +2,7 @@
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: IBM Cloud Object Storage Documentation
+topnav_title: IBM Cloud Object Storage Documentation (Staging)
 # this appears on the top navigation bar next to the home button
 
 site_title: IBM COS Documentation
@@ -28,7 +28,7 @@ repository: ibm-public-cos/crs-docs
 host: 127.0.0.1
 # the preview server used. Leave as is.
 
-port: 8080
+port: 8081
 # the port where the preview is rendered. You can leave this as is unless you have other Jekyll builds using this same port that might cause conflicts. in that case, use another port such as 4006.
 
 exclude:
