@@ -41,6 +41,6 @@ The user interface portal provides a high level view of a storage account.  It i
 3. Above the grid on the left is a link with the name of the bucket currently viewed. Click the link to show the list of buckets again.
 4. The grid shows the list of objects in the bucket.
 5. A new object can be added, by clicking the **+** button at the right of the first row. 
-6. The file can be selected from the file system, by clicking the **select** button and the new file uploaded, by clicking the **Add** button.  When using the portal to add an object, file size is limited to 20 megabytes. (When using the API, objects as large as 5 gigabytes can be uploaded in a single `PUT`, and there is no known maximum object size when using a multi-part upload, although it is estimated to be 50TB.)
+6. The file can be selected from the file system, by clicking the **select** button and the new file uploaded, by clicking the **Add** button.  When using the portal to add an object, file size is limited to 20 megabytes. (When using the API, there is no known maximum object size when using a single streaming `PUT` upload, although it is estimated to be 50TB. Multipart uploads are capped at 10k parts of no larger than 5GB each for a maximum object size of 5TB.)
 7. An object can be deleted, by clicking on the red **-** button to the extreme right of the object name. This opens a confirmation window.
 8. Click the **Delete** button to remove the object from the bucket.
