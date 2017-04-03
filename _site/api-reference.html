@@ -420,7 +420,7 @@
                     
                     
                     
-                    <li><a href="api-reference#completing-a-multipart-upload">Complete a multipart upload</a></li>
+                    <li><a href="api-reference#complete-a-multipart-upload">Complete a multipart upload</a></li>
                     
                     
                     
@@ -1367,7 +1367,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 
 <h4 id="upload-an-object">Upload an object</h4>
 
-<p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.</p>
+<p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.  There is no maximum object size when using a single streaming <code class="highlighter-rouge">PUT</code> upload, although it is estimated to be 50TB.</p>
 
 <h5 id="syntax-14">Syntax</h5>
 
@@ -1869,7 +1869,7 @@ OPTIONS https://<span class="o">{</span>bucket-name<span class="o">}</span>.<spa
 
 <p>When working with larger objects, multipart upload operations are recommended to write objects into IBM COS. An upload of a single object can be performed as a set of parts and these parts can be uploaded independently in any order and in parallel. Upon upload completion, IBM COS then presents all parts as a single object. This provides many benefits: network interruptions do not cause large uploads to fail, uploads can be paused and restarted over time, and objects can be uploaded as they are being created.</p>
 
-<p>Multipart uploads are only available for objects larger than 5MB. For objects smaller than 50GB, a part size of 20MB to 100MB is recommended for optimum performance. For larger objects, part size can be increased without significant performance impact.</p>
+<p>Multipart uploads are only available for objects larger than 5MB. For objects smaller than 50GB, a part size of 20MB to 100MB is recommended for optimum performance. For larger objects, part size can be increased without significant performance impact.  Multipart uploads are limited to no more than 10,000 parts.</p>
 
 <div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Using more than 500 parts leads to inefficiencies in IBM COS and should be avoided when possible.</div>
 
@@ -2080,7 +2080,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Mar 28, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 3, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
