@@ -473,9 +473,9 @@ aws_secret_access_key = {Secret Access Key}
 
 <span class="n">endpoint</span> <span class="o">=</span> <span class="s">'https://s3-api.us-geo.objectstorage.softlayer.net'</span>
 
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
+<span class="n">cos</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">s3</span><span class="o">.</span><span class="n">buckets</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
+<span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">cos</span><span class="o">.</span><span class="n">buckets</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="n">bucket</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">bucket</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
         <span class="k">print</span><span class="p">(</span><span class="s">"  - </span><span class="si">%</span><span class="s">s"</span><span class="p">)</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span>
@@ -503,16 +503,16 @@ bucket-2
 
 <span class="n">endpoint</span> <span class="o">=</span> <span class="s">'https://s3-api.us-geo.objectstorage.softlayer.net'</span>
 
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
+<span class="n">cos</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'These are the buckets in this service account:'</span><span class="p">)</span>
-<span class="n">buckets</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
+<span class="n">buckets</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
 <span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">buckets</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">buckets</span><span class="p">[</span><span class="s">'Buckets'</span><span class="p">]:</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">bucket</span><span class="p">[</span><span class="s">'Name'</span><span class="p">]</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"Raw output from 'list_buckets()' in </span><span class="si">%</span><span class="s">s:"</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">objects</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_objects</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="n">list_objects</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
     <span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">objects</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -671,7 +671,7 @@ Raw output from 'list_buckets()' in bucket-2:
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Mar 28, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Mar 31, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
