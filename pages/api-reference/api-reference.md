@@ -834,7 +834,7 @@ The server responds with `204 No Content`.
 
 #### Upload an object
 
-A `PUT` given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.  There is no maximum object size for a single `PUT` request.
+A `PUT` given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.  There is no maximum object size when using a single streaming `PUT` upload, although it is estimated to be 50TB.
 
 
 ##### Syntax
