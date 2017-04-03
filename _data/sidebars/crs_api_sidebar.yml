@@ -146,7 +146,7 @@ entries:
           output: web, pdf
   
         - title: Complete a multipart upload
-          url: /api-reference#completing-a-multipart-upload
+          url: /api-reference#complete-a-multipart-upload
           output: web, pdf
 
         - title: Abort incomplete multipart uploads
