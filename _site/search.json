@@ -1,0 +1,805 @@
+[
+
+
+
+
+{
+"title": "Supported API operations",
+"tags": "",
+"keywords": "",
+"url": "about-compatibility-api",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "API reference",
+"tags": "",
+"keywords": "",
+"url": "api-reference",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Billing information",
+"tags": "",
+"keywords": "",
+"url": "billing",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Using the command line to connect to IBM COS",
+"tags": "",
+"keywords": "",
+"url": "cli",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Using desktop clients",
+"tags": "",
+"keywords": "",
+"url": "desktop-clients",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Developer guidance",
+"tags": "",
+"keywords": "",
+"url": "developer-guidance",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Selecting endpoints",
+"tags": "",
+"keywords": "",
+"url": "endpoints",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Frequently asked questions",
+"tags": "",
+"keywords": "",
+"url": "faq",
+"summary": ""
+}
+,
+
+
+
+
+
+{
+"title": "Quickstart guide",
+"tags": "",
+"keywords": "",
+"url": "getting-started-with-cos",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "IBM Cloud Object Storage",
+"tags": "",
+"keywords": "",
+"url": "index.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Using Java with IBM COS",
+"tags": "",
+"keywords": "",
+"url": "java",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Managing Access",
+"tags": "",
+"keywords": "",
+"url": "manage-access",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Scroll layout",
+"tags": "special_layouts",
+"keywords": "json, scrolling, scrollto, jquery plugin",
+"url": "jsmydoc_scroll.html",
+"summary": "This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way."
+}
+,
+
+
+
+{
+"title": "News",
+"tags": "",
+"keywords": "news, blog, updates, release notes, announcements",
+"url": "news.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "News",
+"tags": "",
+"keywords": "news, blog, updates, release notes, announcements",
+"url": "news_archive.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Notices, trademarks, terms and conditions",
+"tags": "",
+"keywords": "",
+"url": "notices.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Introduction to object storage",
+"tags": "",
+"keywords": "",
+"url": "object-storage",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Ordering storage",
+"tags": "",
+"keywords": "",
+"url": "ordering-storage",
+"summary": "IBM Cloud is unifiying PaaS and IaaS under Bluemix, and there are  multiple ways to create accounts that can order IBM COS."
+}
+,
+
+
+
+{
+"title": "Using Python with IBM COS",
+"tags": "",
+"keywords": "",
+"url": "python",
+"summary": ""
+}
+,
+
+
+
+
+
+{
+"title": "Data security and IBM COS",
+"tags": "",
+"keywords": "",
+"url": "security",
+"summary": ""
+}
+,
+
+
+
+
+
+{
+"title": "Using storage classes",
+"tags": "",
+"keywords": "",
+"url": "storage-classes",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Storing and retrieving objects",
+"tags": "",
+"keywords": "",
+"url": "storing-and-retrieving-objects",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Getting help",
+"tags": "",
+"keywords": "",
+"url": "support",
+"summary": ""
+}
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+"title": "Using the SoftLayer API",
+"tags": "",
+"keywords": "",
+"url": "using-slapi",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Using the API",
+"tags": "",
+"keywords": "",
+"url": "using-the-api",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-api-operations",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-api-operations.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-api-reference",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-api-reference.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-billing",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-billing.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-cli",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-cli.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-guis",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-guis.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-usage-guidelines",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-usage-guidelines.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-endpoints",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-endpoints.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-other-offerings",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-other-offerings.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-java",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-java.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-authentication.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-authentication",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-create-account",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-create-account.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-create-storage-account",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-create-storage-account.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-python",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-python.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-security",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-security.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-control-buckets",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-control-buckets.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-control-objects",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-control-objects.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-support",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-support.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-support-resources",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-support-resources.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-sldn",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-sldn.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-about-api",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-about-api.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-control-endpoints",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-control-endpoints.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-connecting",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "crs-connecting.html",
+"summary": ""
+}
+,
+
+
+
+
+
+{
+"title": "Sample post",
+"tags": "newsgetting_started",
+"keywords": "",
+"url": "/samplepost.html",
+"summary": "This is some summary frontmatter for my sample post."
+}
+
+
+
+]
