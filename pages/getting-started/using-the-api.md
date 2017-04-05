@@ -41,5 +41,7 @@ IBM Cloud does not provide native libraries or SDKs for interacting with COS off
 A full list of supported S3 API operations can be found in the [API Overview]( {{ site.baseurl }}/about-compatibility-api).
 
 This documentation provides basic introductions to using popular third-party S3 API [client applications]( {{ site.baseurl }}/desktop-clients) and a [command line interface]( {{ site.baseurl }}/cli), as well as a library for the [Python]( {{ site.baseurl }}/crs-python.html) programming language. 
+
+{% include custom/prereqs.md %}
  
 

@@ -10,7 +10,7 @@ folder: getting-started
 toc: False
 ---
 
-{% include tip.html content="IBM Cloud Object Storage (US Cross Region) is now offering a limited Free Tier for new and existing customers with [promotional code `COSFREE`](https://www.ibm.com/cloud-computing/bluemix/cloud-object-storage)." %}
+{% include custom/promo.html %}
 
 1.  [Create an upgraded Bluemix account]({{ site.baseurl }}/ordering-storage) from the [Bluemix catalog](https://console.ng.bluemix.net/catalog/infrastructure/cloud_object_storage/){: new_window} by clicking on the **Create a Free Account** button, then head over to the Bluemix catalog and follow the link for **Cloud Object Storage**. Follow the **Upgrade** link. 
 2.  [Order a storage instance]({{ site.baseurl }}/ordering-storage#creating-a-new-storage-account) from the Infrastructure portal by clicking **Storage** > **Object Storage** in the Navigation menu and selecting "IBM COS - S3 API" from the order form.

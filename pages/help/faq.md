@@ -10,7 +10,6 @@ folder: help
 toc: false
 ---
 
-
 #### What is the maximum number of buckets per storage account?  What if I need more?
 
 Currently each storage account is limited to 100 buckets.  If more buckets are required, and creating another storage account is not a workable solution, please contact customer support.
