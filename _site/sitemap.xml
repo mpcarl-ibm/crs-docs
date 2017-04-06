@@ -76,6 +76,12 @@
   
   
   <url>
+    <loc>/java</loc>
+  </url>
+  
+  
+  
+  <url>
     <loc>/manage-access</loc>
   </url>
   
@@ -277,6 +283,18 @@
   
   <url>
     <loc>/crs-other-offerings.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-java</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>/crs-java.html</loc>
   </url>
   
   

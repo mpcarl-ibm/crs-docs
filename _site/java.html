@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Using Java with IBM COS | IBM COS Documentation</title>
+<link rel="stylesheet" href="css/syntax.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: false,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 125,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">IBM Bluemix<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://bluemix.com" target="_blank">About IBM Bluemix</a></li>
+                        
+                        
+                        
+                        <li><a href="https://console.ng.bluemix.net/catalog/" target="_blank">Bluemix catalog</a></li>
+                        
+                        
+                        
+                        <li><a href="https://console.ng.bluemix.net/docs/" target="_blank">Bluemix documentation</a></li>
+                        
+                        
+                        
+                        <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/" target="_blank">IBM Cloud Object Storage</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="index.html">IBM COS Standard Cross-Region (S3 API)</a></li>
+                        
+                        
+                        
+                        <li><a href="http://sldn.softlayer.com/reference/objectstorageapi" target="_blank">IBM COS Standard Regional (Swift API)</a></li>
+                        
+                        
+                        
+                        <li><a href="https://console.ng.bluemix.net/docs/services/ObjectStorage/index.html" target="_blank">Object Storage for Bluemix</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Community<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://developer.ibm.com/answers/smartspace/public-cloud-object-storage/" target="_blank">IBM devWorks</a></li>
+                        
+                        
+                        
+                        <li><a href="https://stackoverflow.com/questions/tagged/object-storage+softlayer/" target="_blank">StackOverflow</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Using Java with IBM COS">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle"> </li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">GETTING STARTED</a>
+        <ul>
+            
+            
+            
+            <li><a href="index.html">About IBM Cloud Object Storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="getting-started-with-cos">Quickstart guide</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="ordering-storage">Ordering storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="storing-and-retrieving-objects">Storing and retrieving objects</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="using-the-api">Using the APIs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API REFERENCE</a>
+        <ul>
+            
+            
+            
+            <li><a href="about-compatibility-api">About the Compatibility API (S3)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="api-reference">Compatibility API (S3) reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="using-slapi">Using the SoftLayer API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="cli">Using command line interfaces</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Libraries & SDKs</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="python">Python</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">HOW TO</a>
+        <ul>
+            
+            
+            
+            <li><a href="endpoints">Select endpoints</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="manage-access">Manage access</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="storage-classes">Use storage classes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="desktop-clients">Use desktop clients</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">HELP</a>
+        <ul>
+            
+            
+            
+            <li><a href="object-storage">About object storage</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="security">Data security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="developer-guidance">Developer guidance</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="faq">FAQ</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="support">Support</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="billing">Billing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="https://www.ibm.com/cloud-computing/products/storage/object-storage/public-service/#othertab2" target="_blank">Pricing</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block: -->
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Using Java with IBM COS</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+  <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS SDK for Java is comprehensive, and has many features and capabilities not described in this guide.  For detailed class and method documentation, as well as the source code, see the <a href="https://github.com/aws/aws-sdk-java">GitHub repository</a>.</div>
+
+<h3 id="getting-the-sdk">Getting the SDK</h3>
+<p>The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren’t familiar with Maven, you get can get up and running very quickly using the <a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">Maven in 5 Minutes</a> guide.</p>
+
+<p>Maven uses a file called <code class="highlighter-rouge">pom.xml</code> to specify the libraries (and their versions) needed for a Java project.  Here is an example <code class="highlighter-rouge">pom.xml</code> file for using the AWS S3 Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts).</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> Please note that recent versions of the AWS SDK for Java may have introduced incompatibilities.  The most recent recommended version is <strong>1.11.5</strong></div>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.cos<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>docs<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;name&gt;</span>docs<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url&gt;</span>http://maven.apache.org<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.amazonaws<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>aws-java-sdk-s3<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.11.5<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.softlayer.api<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>softlayer-api-client<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>0.2.3<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>4.8.2<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+  <span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-shade-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>2.4.3<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+          <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+              <span class="nt">&lt;goal&gt;</span>shade<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+          <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+  <span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="creating-a-client-and-setting-the-endpoint">Creating a client and setting the endpoint</h3>
+
+<h5 id="create-an-aws-java-sdk-connection-using-the-default-credentials">Create an AWS Java SDK connection using the default credentials</h5>
+
+<p>Use default credentials using the first credentials found in this order of precedence:</p>
+
+<ol>
+  <li>Environment variables</li>
+  <li>System properties</li>
+  <li>Default profile in <code class="highlighter-rouge">~/.aws/credentials</code></li>
+</ol>
+
+<p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from one of these locations. They do not need to be provided explicitly.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS Java SDK sends all requests to <code class="highlighter-rouge">s3.amazonaws.com</code> by default. To send requests to IBM COS, the new <code class="highlighter-rouge">AmazonS3Client</code> instance needs the correct <code class="highlighter-rouge">setEndpoint</code> parameter. The SDK interprets the http(s) portion of this endpoint and infers encrypted or plain text from the URL.</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h6 id="example-setting-the-endpoint-to-point-to-cos-us-cross-region">Example: Setting the endpoint to point to COS US Cross Region</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndPoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>The COS implementation of the S3 API supports both resource path and virtual host addressing.</p>
+
+<h5 id="use-virtual-host-addressing">Use virtual host addressing</h5>
+<p>This S3 implementation supports virtual host addressing of storage buckets. The AWS Java SDK uses virtual host addressing by default.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndPoint</span><span class="o">(</span><span class="s">"http://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h5 id="use-resource-path-addressing">Use resource path addressing</h5>
+<p>To configure the AWS Java SDK to use resource path addressing instead of virtual host addressing, either:</p>
+
+<p>Set the <code class="highlighter-rouge">disableDNSBuckets</code> system property to True:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"com.amazonaws.sdk.disableDNSBuckets"</span><span class="o">,</span> <span class="s">"True"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>Set the <code class="highlighter-rouge">withPathStyleAccess</code> property of the <code class="highlighter-rouge">AmazonS3Client.S3ClientOptions</code> to <code class="highlighter-rouge">True</code>:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span>
+
+<span class="n">S3ClientOptions</span> <span class="n">opts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">S3ClientOptions</span><span class="o">().</span><span class="na">withPathStyleAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setS3ClientOptions</span><span class="o">(</span><span class="n">opts</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h4 id="configure-optional-parameters">Configure optional parameters</h4>
+
+<h5 id="set-the-connection-timeout-duration">Set the connection timeout duration</h5>
+<p>To increase the connection timeout for longer running operations, change the <code class="highlighter-rouge">withSocketTimeout</code> property of the <code class="highlighter-rouge">ClientConfiguration</code> object when the connection is created.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClientConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientConfiguration</span><span class="o">().</span><span class="na">withSocketTimeout</span><span class="o">(</span><span class="mi">15</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">);</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h5 id="set-the-maximum-retry-limit">Set the maximum retry limit</h5>
+
+<p>If AWS Java SDK receives an error from the system, it retries the request. The default number of times it retries the request is five. The default retry limit can be changed in the client application.</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> The client reports the final error and not the initial failure, which can mask the details of the underlying issue.</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Set the <code class="highlighter-rouge">maxErrorRetry</code> property of the <code class="highlighter-rouge">ClientConfiguration</code> object to <code class="highlighter-rouge">0</code> to disable the default retry policy.</div>
+
+<h6 id="example-changing-the-maximum-retry-value">Example: Changing the Maximum Retry Value</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClientConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientConfiguration</span><span class="o">().</span><span class="na">withMaxErrorRetry</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h3 id="managing-credentials">Managing credentials</h3>
+
+<p>The order of precedence using for access credentials is:</p>
+
+<ol>
+  <li>Credentials passed as <code class="highlighter-rouge">BasicAWSCredentials</code> instance parameters</li>
+  <li>Credentials set as environment variables</li>
+  <li>Credentials set as JVM system properties</li>
+  <li>Credentials set in <code class="highlighter-rouge">AwsCredentials.properties</code> file</li>
+  <li>Credentials set in the shared credentials file</li>
+</ol>
+
+<h5 id="credentials-passed-as-basicawscredentials-instance-parameters">Credentials passed as <code class="highlighter-rouge">BasicAWSCredentials</code> instance parameters</h5>
+
+<p>Credentials can be supplied as parameters of the <code class="highlighter-rouge">BasicAWSCredentials</code> object. This object is then passed to the <code class="highlighter-rouge">AmazonS3Client</code> as a constructor parameter.</p>
+
+<h6 id="example-create-an-aws-java-sdk-connection-specifying-credentials-provided-as-strings-in-code">Example: Create an AWS Java SDK connection specifying credentials provided as strings in code</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">final</span> <span class="n">String</span> <span class="n">accessKey</span> <span class="o">=</span> <span class="s">"lDrDjH0D45hQivu6FNlwQ"</span><span class="o">;</span> 
+<span class="kd">final</span> <span class="n">String</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="s">"bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6"</span><span class="o">;</span>
+
+<span class="n">BasicAWSCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicAWSCredentials</span><span class="o">(</span><span class="n">accessKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span> <span class="c1">// declare a new set of basic credentials that includes the Access Key ID and the Secret Access Key</span>
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span> <span class="c1">// create a constructor for the client using the declared credentials.</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span> <span class="c1">// set the desired endpoint</span>
+</code></pre>
+</div>
+
+<h5 id="credentials-set-as-environment-variables">Credentials set as environment variables</h5>
+
+<p>Set the environment variables <code class="highlighter-rouge">AWS_ACCESS_KEY_ID</code> to define the access key and <code class="highlighter-rouge">AWS_SECRET_ACCESS_KEY</code> to define the secret key.</p>
+
+<p>If these variables are defined when the <code class="highlighter-rouge">AmazonS3Client</code> is created, the default constructor can be used.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Setting environment variables varies by operating system. Refer to this <a href="http://www.schrodinger.com/kb/1842">Knowledge Base Article</a> for more information.</div>
+
+<table class="opstable">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">AWS_ACCESS_KEY</code></td>
+      <td>AWS access key.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">AWS_SECRET_ACCESS_KEY</code></td>
+      <td>AWS secret key. Access and secret key variables override credentials that are stored in both credential and config files.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">AWS_PROFILE</code></td>
+      <td>Name of the profile to use, such as the name of a profile that is stored in a credential or a config file. The default is to use the default profile.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="example-setting-and-loading-credentials-using-system-environment-variables">Example: Setting and loading credentials using system Environment Variables</h6>
+
+<p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from the Environment Variables. They do not need to be provided explicitly.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span> 
+</code></pre>
+</div>
+
+<h5 id="credentials-set-as-jvm-system-properties">Credentials set as JVM system properties</h5>
+
+<p>Set the JVM system properties <code class="highlighter-rouge">aws.accessKeyId</code> to define the access key and <code class="highlighter-rouge">aws.secretKey</code> to define the secret key.</p>
+
+<p>These properties may be set on start up or programmatically and will be used by the <code class="highlighter-rouge">AmazonS3Client</code> when the default constructor is used.</p>
+
+<h6 id="example-set-system-properties-then-open-an-s3-connection-using-those-properties">Example: Set system properties then open an S3 connection using those properties</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"aws.accessKeyId"</span><span class="o">,</span> <span class="s">"lDrDjH0D45hQivu6FNlwQ"</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"aws.secretKey"</span><span class="o">,</span> <span class="s">"bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6"</span><span class="o">);</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+</code></pre>
+</div>
+
+<h5 id="credentials-set-in-awscredentialsproperties-file">Credentials set in <code class="highlighter-rouge">AwsCredentials.properties</code> file</h5>
+
+<p>An <code class="highlighter-rouge">AmazonS3Client</code> constructor can use a credentials file called <code class="highlighter-rouge">AwsCredentials.properties</code>, which is found on the Java classpath.</p>
+
+<p>To create an S3 client that uses <code class="highlighter-rouge">AwsCredentials.properties</code>, the <code class="highlighter-rouge">AmazonS3Client</code> object is created by passing a <code class="highlighter-rouge">ClasspathPropertiesFileCredentialsProvider</code> as a constructor parameter.</p>
+
+<h6 id="example-awscredentialsproperties-file-format">Example: <code class="highlighter-rouge">AwsCredentials.properties</code> File Format</h6>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>accessKey=lDrDjH0D45hQivu6FNlwQ
+secretKey=bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6
+</code></pre>
+</div>
+
+<h6 id="example-use-an-awscredentialsproperties-file-on-the-classpath">Example: Use an <code class="highlighter-rouge">AWSCredentials.properties</code> file on the classpath</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClasspathPropertiesFileCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClasspathPropertiesFileCredentialsProvider</span><span class="o">();</span> <span class="c1">// declare a new set of basic credentials that use the AWSCredentials.properties file</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span> <span class="c1">// create a constructor for an S3 compatible client using the credentials from the AWSCredentials.properties file</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span> <span class="c1">// set the endpoint for the new S3 compatible client</span>
+</code></pre>
+</div>
+
+<p>Credentials can be put in a different file and location. The credentials can be accessed passing the <code class="highlighter-rouge">PropertiesFileCredentialsProvider</code> constructor parameter when creating an <code class="highlighter-rouge">AmazonS3Client</code> instance.</p>
+
+<h6 id="example-creating-a-client-using-a-awscredentialsproperties-in-another-location">Example: Creating a client using a <code class="highlighter-rouge">AwsCredentials.properties</code> in another location</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AWSCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PropertiesFileCredentialsProvider</span><span class="o">(</span><span class="s">"/path/to/alternative/credentials/file.properties"</span><span class="o">);</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h5 id="credentials-set-in-the-shared-credentials-file">Credentials set in the shared credentials file</h5>
+
+<h6 id="create-aws-shared-credentials">Create AWS shared credentials</h6>
+
+<p>Use <code class="highlighter-rouge">aws configure</code> to create an access credentials file with the default profile. For more information about using the AWS CLI, see the documentation on [using command line interfaces].</p>
+
+<h6 id="example-command-output-of-aws-configure">Example: Command output of <code class="highlighter-rouge">aws configure</code></h6>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ aws configure
+AWS Access Key ID [None]: #AKIAIOSFODNN7EXAMPLE# // stored in ~/.aws/credentials
+AWS Secret Access Key [None]: #wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY# // stored in ~/.aws/credentials
+Default region name [None]: // the region does not need to be set
+Default output format [None]: #json# // the output format will be stored in ~/.aws/config
+</code></pre>
+</div>
+
+<p>To support multiple identities, AWS credential files have named profiles.</p>
+
+<p>Use <code class="highlighter-rouge">aws configure — profile {profileName}</code> to create an access credentials file with a named profile. Additional named profiles are appended to the <code class="highlighter-rouge">~/.aws/credentials</code> file.</p>
+
+<h6 id="example-command-output-of-aws-configure---profile-pool2">Example: Command output of <code class="highlighter-rouge">aws configure --profile pool2</code></h6>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ aws configure --profile pool2
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]:
+Default output format [None]: text
+</code></pre>
+</div>
+
+<h6 id="example-contents-of-the-aws-credentials-file-awscredentials">Example: Contents of the AWS credentials file (<code class="highlighter-rouge">~/.aws/credentials</code>)</h6>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[default]
+aws_access_key_id = AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+[profile pool2]
+aws_access_key_id = N67W90RKLCWOLPSKN8W8
+aws_secret_access_key = RlfTDyqPg0WnY/PWdxMEe/gjuG7QRckynofRMwwR
+
+</code></pre>
+</div>
+
+<h6 id="example-contents-of-the-aws-configuration-file-awsconfig">Example: Contents of the AWS configuration file (<code class="highlighter-rouge">~/.aws/config</code>)</h6>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[default]
+output=json
+
+[profile pool2]
+output=text
+</code></pre>
+</div>
+
+<h5 id="use-a-named-profile-in-a-aws-shared-credentials-file">Use a named profile in a AWS shared credentials file</h5>
+
+<p>To use the name profile credentials in this file:</p>
+
+<ol>
+  <li>Provide the profile name as a parameter of the <code class="highlighter-rouge">ProfileCredentialsProvider</code> Object.</li>
+  <li>Provide the resulting object to the <code class="highlighter-rouge">AmazonS3Client</code> as a constructor parameter.</li>
+</ol>
+
+<h6 id="example-using-an-aws-credential-named-profile-in-an-aws-java-sdk-connection-method">Example: Using an AWS Credential Named Profile in an AWS Java SDK connection method</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AWSCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProfileCredentialsProvider</span><span class="o">(</span><span class="s">"ibm"</span><span class="o">);</span> <span class="c1">// specify the Named Profile to use</span>
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span> <span class="c1">// specify which set of credentials to use</span>
+</code></pre>
+</div>
+
+<h3 id="code-examples">Code examples</h3>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> These are examples and assume a strong grasp of Java programming fundamentals. They should be used to assist developers in programming their own solutions and not be copied and pasted directly into their applications. Import declarations and try/catch blocks have been omitted for readability. IBM cannot be held accountable for developers using this code verbatim.</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The following examples assume the use of default credentials</div>
+
+<h4 id="create-a-standard-bucket">Create a standard bucket</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">cos</span><span class="o">.</span><span class="na">createBucket</span><span class="o">(</span><span class="s">"sample"</span><span class="o">,</span> <span class="s">"us-standard"</span><span class="o">);</span> <span class="c1">// the name of the bucket, and the storage class (LocationConstraint)</span>
+</code></pre>
+</div>
+
+<h4 id="create-a-vault-bucket">Create a Vault bucket</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">cos</span><span class="o">.</span><span class="na">createBucket</span><span class="o">(</span><span class="s">"sample"</span><span class="o">,</span> <span class="s">"us-vault"</span><span class="o">);</span> <span class="c1">// the name of the bucket, and the storage class (LocationConstraint)</span>
+</code></pre>
+</div>
+
+<h4 id="create-a-cold-vault-bucket">Create a Cold Vault bucket</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">cos</span><span class="o">.</span><span class="na">createBucket</span><span class="o">(</span><span class="s">"sample"</span><span class="o">,</span> <span class="s">"us-cold"</span><span class="o">);</span> <span class="c1">// the name of the bucket, and the storage class (LocationConstraint)</span>
+</code></pre>
+</div>
+
+<h4 id="upload-object-from-a-file">Upload object from a file</h4>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This example assumes that the bucket ‘sample’ already exists.</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">cos</span><span class="o">.</span><span class="na">putObject</span><span class="o">(</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the destination bucket</span>
+<span class="s">"myfile"</span><span class="o">,</span> <span class="c1">// the object key</span>
+<span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="s">"/home/user/test.txt"</span><span class="o">)</span> <span class="c1">// the file name and path of the object to be uploaded</span>
+<span class="o">);</span>
+</code></pre>
+</div>
+
+<h4 id="upload-object-using-a-stream">Upload object using a stream</h4>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This example assumes that the bucket ‘sample’ already exists.</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">obj</span> <span class="o">=</span> <span class="s">"An example"</span><span class="o">;</span> <span class="c1">// the object to be stored</span>
+<span class="n">ByteArrayOutputStream</span> <span class="n">theBytes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span> <span class="c1">// create a new output stream to store the object data</span>
+<span class="n">ObjectOutputStream</span> <span class="n">serializer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="o">(</span><span class="n">theBytes</span><span class="o">);</span> <span class="c1">// set the object data to be serialized</span>
+<span class="n">serializer</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span> <span class="c1">// serialize the object data</span>
+<span class="n">serializer</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+<span class="n">serializer</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">InputStream</span> <span class="n">stream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="o">(</span><span class="n">theBytes</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">());</span> <span class="c1">// convert the serialized data to a new input stream to store</span>
+<span class="n">ObjectMetadata</span> <span class="n">metadata</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMetadata</span><span class="o">();</span> <span class="c1">// define the metadata</span>
+<span class="n">metadata</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"application/x-java-serialized-object"</span><span class="o">);</span> <span class="c1">// set the metadata</span>
+<span class="n">metadata</span><span class="o">.</span><span class="na">setContentLength</span><span class="o">(</span><span class="n">theBytes</span><span class="o">.</span><span class="na">size</span><span class="o">());</span> <span class="c1">// set metadata for the length of the data stream</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">putObject</span><span class="o">(</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the bucket to which the object is being written</span>
+<span class="s">"serialized-object"</span><span class="o">,</span> <span class="c1">// the name of the object being written</span>
+<span class="n">stream</span><span class="o">,</span> <span class="c1">// the name of the data stream writing the object</span>
+<span class="n">metadata</span> <span class="c1">// the metadata for the object being written</span>
+<span class="o">);</span>
+</code></pre>
+</div>
+
+<h4 id="download-object-to-a-file">Download object to a file</h4>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This example assumes that the bucket ‘sample’ already exists.</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">GetObjectRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="c1">// create a new request to get an object</span>
+<span class="n">GetObjectRequest</span><span class="o">(</span> <span class="c1">// request the new object by identifying</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the bucket</span>
+<span class="s">"myFile"</span> <span class="c1">// the name of the object</span>
+<span class="o">);</span>
+
+<span class="n">s3Client</span><span class="o">.</span><span class="na">getObject</span><span class="o">(</span> <span class="c1">// write the contents of the object</span>
+<span class="n">request</span><span class="o">,</span> <span class="c1">// using the request that was just created</span>
+<span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="s">"retrieved.txt"</span><span class="o">)</span> <span class="c1">// to write to a new file</span>
+<span class="o">);</span>
+</code></pre>
+</div>
+
+<h4 id="download-object-using-a-stream">Download object using a stream</h4>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This example assumes that the bucket ‘sample’ already exists.</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+<span class="n">S3Object</span> <span class="n">returned</span> <span class="o">=</span> <span class="n">CLIENT</span><span class="o">.</span><span class="na">getObject</span><span class="o">(</span> <span class="c1">// request the object by identifying</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the bucket  </span>
+<span class="s">"serialized-object"</span> <span class="c1">// the name of the serialized object</span>
+<span class="o">);</span>
+<span class="n">S3ObjectInputStream</span> <span class="n">s3Input</span> <span class="o">=</span> <span class="n">s3Response</span><span class="o">.</span><span class="na">getObjectContent</span><span class="o">();</span> <span class="c1">// set the object stream</span>
+</code></pre>
+</div>
+
+<h4 id="copy-objects">Copy objects</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="c1">// copy an object within the same Bucket</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">copyObject</span><span class="o">(</span> <span class="c1">// copy the Object, passing…</span>
+<span class="s">"sample"</span><span class="o">,</span>  <span class="c1">// the name of the Bucket in which the Object to be copied is stored,</span>
+<span class="s">"myFile.txt"</span><span class="o">,</span>  <span class="c1">// the name of the Object being copied from the source Bucket,</span>
+<span class="s">"sample"</span><span class="o">,</span>  <span class="c1">// the name of the Bucket in which the Object to be copied is stored,</span>
+<span class="s">"myFile.txt.backup"</span>    <span class="c1">// and the new name of the copy of the Object to be copied</span>
+<span class="o">);</span>
+</code></pre>
+</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="c1">// copy an object between two Buckets</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">copyObject</span><span class="o">(</span> <span class="c1">// copy the Object, passing…</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the Bucket from which the Object will be copied,</span>
+<span class="s">"myFile.txt"</span><span class="o">,</span> <span class="c1">// the name of the Object being copied from the source Bucket,</span>
+<span class="s">"backup"</span><span class="o">,</span> <span class="c1">// the name of the Bucket to which the Object will be copied,</span>
+<span class="s">"myFile.txt"</span> <span class="c1">// and the name of the copied Object in the destination Bucket</span>
+<span class="o">);</span>
+</code></pre>
+</div>
+
+<h4 id="list-buckets">List buckets</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="err">`</span><span class="nl">https:</span><span class="c1">//s3-api.us-geo.objectstorage.softlayer.net`);</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Bucket</span><span class="o">&gt;</span> <span class="n">Buckets</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="na">listBuckets</span><span class="o">();</span> <span class="c1">// get a list of buckets</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">Bucket</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Buckets</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// for each bucket...</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">`</span><span class="nl">Found:</span> <span class="err">`</span><span class="o">+</span><span class="n">b</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">// display 'Found: ' and then the name of the bucket</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h4 id="list-objects">List objects</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="err">`</span><span class="nl">https:</span><span class="c1">//s3-api.us-geo.objectstorage.softlayer.net`);</span>
+
+<span class="n">ObjectListing</span> <span class="n">listing</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="na">listObjects</span><span class="o">(</span><span class="err">`</span><span class="n">sample</span><span class="err">`</span><span class="o">);</span> <span class="c1">// get the list of objects in the 'sample' bucket</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">S3ObjectSummary</span><span class="o">&gt;</span> <span class="n">summaries</span> <span class="o">=</span> <span class="n">listing</span><span class="o">.</span><span class="na">getObjectSummaries</span><span class="o">();</span> <span class="c1">// create a list of object summaries</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">S3ObjectSummary</span> <span class="n">obj</span> <span class="o">:</span> <span class="n">summaries</span><span class="o">){</span> <span class="c1">// for each object...</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">`</span><span class="nl">found:</span> <span class="err">`</span><span class="o">+</span><span class="n">obj</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span> <span class="c1">// display 'found: ' and then the name of the object</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h4 id="delete-object">Delete object</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">cos</span><span class="o">.</span><span class="na">deleteObject</span><span class="o">(</span> <span class="c1">// delete the Object, passing…</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the Bucket that stores the Object,</span>
+<span class="s">"myFile.txt"</span> <span class="c1">// and he name of the Object to be deleted</span>
+<span class="o">);</span>
+</code></pre>
+</div>
+
+<h3 id="api-reference">API reference</h3>
+
+<p>This list summarizes the AWS Java SDK methods that are supported with a system. More detailed documentation on individual classes and methods can be found in the <a href="https://github.com/aws/aws-sdk-java">GitHub repository</a>.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">abortMultipartUpload</span><span class="o">(</span><span class="n">AbortMultipartUploadRequest</span> <span class="n">request</span><span class="o">)</span>
+<span class="n">completeMultipartUpload</span><span class="o">(</span><span class="n">CompleteMultipartUploadRequest</span> <span class="n">request</span><span class="o">)</span>
+<span class="n">copyObject</span><span class="o">(</span><span class="n">CopyObjectRequest</span> <span class="n">copyObjectRequest</span><span class="o">)</span>
+<span class="n">copyObject</span><span class="o">(</span><span class="n">String</span> <span class="n">sourceBucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">sourceKey</span><span class="o">,</span> <span class="n">String</span> <span class="n">destinationBucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">destinationKey</span><span class="o">)</span>
+<span class="n">copyPart</span><span class="o">(</span><span class="n">CopyPartRequest</span> <span class="n">copyPartRequest</span><span class="o">)</span>
+<span class="n">createBucket</span><span class="o">(</span><span class="n">CreateBucketRequest</span> <span class="n">createBucketRequest</span><span class="o">)</span>
+<span class="n">createBucket</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">)</span>
+<span class="n">createBucket</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">LocationConstraint</span><span class="o">)</span>
+<span class="n">deleteBucket</span><span class="o">(</span><span class="n">DeleteBucketRequest</span> <span class="n">deleteBucketRequest</span><span class="o">)</span>
+<span class="n">deleteBucket</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">)</span>
+<span class="n">deleteBucketCrossOriginConfiguration</span><span class="o">(</span><span class="n">DeleteBucketCrossOriginConfigurationRequest</span> <span class="n">deleteBucketCrossOriginConfigurationRequest</span><span class="o">)</span>
+<span class="n">deleteBucketCrossOriginConfiguration</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">)</span>
+<span class="n">deleteObject</span><span class="o">(</span><span class="n">DeleteObjectRequest</span> <span class="n">deleteObjectRequest</span><span class="o">)</span>
+<span class="n">deleteObject</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">)</span>
+<span class="n">deleteObjects</span><span class="o">(</span><span class="n">DeleteObjectsRequest</span> <span class="n">deleteObjectsRequest</span><span class="o">)</span>
+<span class="n">doesBucketExist</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">)</span>
+<span class="n">generatePresignedUrl</span><span class="o">(</span><span class="n">GeneratePresignedUrlRequest</span> <span class="n">generatePresignedUrlRequest</span><span class="o">)</span>
+<span class="n">generatePresignedUrl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Date</span> <span class="n">expiration</span><span class="o">)</span>
+<span class="n">generatePresignedUrl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Date</span> <span class="n">expiration</span><span class="o">,</span> <span class="n">HttpMethod</span> <span class="n">method</span><span class="o">)</span>
+<span class="n">getBucketAcl</span><span class="o">(</span><span class="n">GetBucketAclRequest</span> <span class="n">getBucketAclRequest</span><span class="o">)</span>
+<span class="n">getBucketAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">)</span>
+<span class="n">getBucketCrossOriginConfiguration</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">)</span>
+<span class="n">getBucketLocation</span><span class="o">(</span><span class="n">GetBucketLocationRequest</span> <span class="n">getBucketLocationRequest</span><span class="o">)</span>
+<span class="n">getBucketLocation</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">)</span>
+<span class="n">getCachedResponseMetadata</span><span class="o">(</span><span class="n">AmazonWebServiceRequest</span> <span class="n">request</span><span class="o">)</span>
+<span class="n">getObject</span><span class="o">(</span><span class="n">GetObjectRequest</span> <span class="n">getObjectRequest</span><span class="o">)</span>
+<span class="n">getObject</span><span class="o">(</span><span class="n">GetObjectRequest</span> <span class="n">getObjectRequest</span><span class="o">,</span> <span class="n">File</span> <span class="n">destinationFile</span><span class="o">)</span>
+<span class="n">getObject</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">)</span>
+<span class="n">getObjectAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">)</span>
+<span class="n">getObjectAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">String</span> <span class="n">versionId</span><span class="o">)</span>
+<span class="n">getObjectMetadata</span><span class="o">(</span><span class="n">GetObjectMetadataRequest</span> <span class="n">getObjectMetadataRequest</span><span class="o">)</span>
+<span class="n">getObjectMetadata</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">)</span>
+<span class="n">initiateMultipartUpload</span><span class="o">(</span><span class="n">InitiateMultipartUploadRequest</span> <span class="n">request</span><span class="o">)</span>
+<span class="n">listBuckets</span><span class="o">()</span>
+<span class="n">listBuckets</span><span class="o">(</span><span class="n">ListBucketsRequest</span> <span class="n">listBucketsRequest</span><span class="o">)</span>
+<span class="n">listMultipartUploads</span><span class="o">(</span><span class="n">ListMultipartUploadsRequest</span> <span class="n">request</span><span class="o">)</span>
+<span class="n">listNextBatchOfObjects</span><span class="o">(</span><span class="n">ObjectListing</span> <span class="n">previousObjectListing</span><span class="o">)</span>
+<span class="n">listNextBatchOfVersions</span><span class="o">(</span><span class="n">VersionListing</span> <span class="n">previousVersionListing</span><span class="o">)</span>
+<span class="n">listObjects</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">)</span>
+<span class="n">listObjects</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">prefix</span><span class="o">)</span>
+<span class="n">listObjects</span><span class="o">(</span><span class="n">ListObjectsRequest</span> <span class="n">listObjectsRequest</span><span class="o">)</span>
+<span class="n">listParts</span><span class="o">(</span><span class="n">ListPartsRequest</span> <span class="n">request</span><span class="o">)</span>
+<span class="n">putObject</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">File</span> <span class="n">file</span><span class="o">)</span>
+<span class="n">putObject</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">InputStream</span> <span class="n">input</span><span class="o">,</span> <span class="n">ObjectMetadata</span> <span class="n">metadata</span><span class="o">)</span>
+<span class="n">putObject</span><span class="o">(</span><span class="n">PutObjectRequest</span> <span class="n">putObjectRequest</span><span class="o">)</span>
+<span class="n">setBucketAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">AccessControlList</span> <span class="n">acl</span><span class="o">)</span>
+<span class="n">setBucketAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">CannedAccessControlList</span> <span class="n">acl</span><span class="o">)</span>
+<span class="n">setBucketAcl</span><span class="o">(</span><span class="n">SetBucketAclRequest</span> <span class="n">setBucketAclRequest</span><span class="o">)</span>
+<span class="n">setBucketCrossOriginConfiguration</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">BucketCrossOriginConfiguration</span> <span class="n">bucketCrossOriginConfiguration</span><span class="o">)</span>
+<span class="n">setBucketCrossOriginConfiguration</span><span class="o">(</span><span class="n">SetBucketCrossOriginConfigurationRequest</span> <span class="n">setBucketCrossOriginConfigurationRequest</span><span class="o">)</span>
+<span class="n">setEndpoint</span><span class="o">(</span><span class="n">String</span> <span class="n">endpoint</span><span class="o">)</span>
+<span class="n">setObjectAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">AccessControlList</span> <span class="n">acl</span><span class="o">)</span>
+<span class="n">setObjectAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">CannedAccessControlList</span> <span class="n">acl</span><span class="o">)</span>
+<span class="n">setObjectAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">String</span> <span class="n">versionId</span><span class="o">,</span> <span class="n">AccessControlList</span> <span class="n">acl</span><span class="o">)</span>
+<span class="n">setObjectAcl</span><span class="o">(</span><span class="n">String</span> <span class="n">bucketName</span><span class="o">,</span> <span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">String</span> <span class="n">versionId</span><span class="o">,</span> <span class="n">CannedAccessControlList</span> <span class="n">acl</span><span class="o">)</span>
+<span class="n">setObjectAcl</span><span class="o">(</span><span class="n">SetObjectAclRequest</span> <span class="n">setObjectAclRequest</span><span class="o">)</span>
+<span class="n">setS3ClientOptions</span><span class="o">(</span><span class="n">S3ClientOptions</span> <span class="n">clientOptions</span><span class="o">)</span>
+<span class="n">uploadPart</span><span class="o">(</span><span class="n">UploadPartRequest</span> <span class="n">request</span><span class="o">)</span>
+</code></pre>
+</div>
+
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 6, 2017 <br /><br />
+<p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
+                </div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>
