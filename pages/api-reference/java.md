@@ -494,7 +494,7 @@ cos.deleteObject( // delete the Object, passing…
 
 ### API reference
 
-This list summarizes the AWS Java SDK methods that are supported with a system. More detailed documentation on individual classes and methods can be found in the [GitHub repository](https://github.com/aws/aws-sdk-java).
+This list summarizes the AWS Java SDK methods that are supported by IBM COS. More detailed documentation on individual classes and methods can be found in the [GitHub repository](https://github.com/aws/aws-sdk-java).
 
 ```java
 abortMultipartUpload(AbortMultipartUploadRequest request)
