@@ -23,5 +23,4 @@ Congratulations - that file is now encrpyted and dispersed across North America 
 * [CLI options]({{ site.baseurl }}/cli)
 * [Python]({{ site.baseurl }}/python)
 * [Java]({{ site.baseurl }}/java)
-* [Node.js]({{ site.baseurl }}/node)
 
