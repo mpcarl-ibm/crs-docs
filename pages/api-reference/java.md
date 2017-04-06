@@ -1,7 +1,7 @@
 ---
 title: Using Java with IBM COS
 keywords: 
-last_updated: November 18, 2016
+last_updated: April 4, 2017
 tags: 
 summary: 
 sidebar: crs_sidebar
