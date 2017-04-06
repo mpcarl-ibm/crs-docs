@@ -451,10 +451,14 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h3 id="getting-the-sdk">Getting the SDK</h3>
+  <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS SDK for Java is comprehensive, and has many features and capabilities not described in this guide.  For detailed class and method documentation, as well as the source code, see the <a href="https://github.com/aws/aws-sdk-java">GitHub repository</a>.</div>
+
+<h3 id="getting-the-sdk">Getting the SDK</h3>
 <p>The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren’t familiar with Maven, you get can get up and running very quickly using the <a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">Maven in 5 Minutes</a> guide.</p>
 
 <p>Maven uses a file called <code class="highlighter-rouge">pom.xml</code> to specify the libraries (and their versions) needed for a Java project.  Here is an example <code class="highlighter-rouge">pom.xml</code> file for using the AWS S3 Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts).</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> Please note that recent versions of the AWS SDK for Java may have introduced incompatibilities.  The most recent recommended version is <strong>1.11.5</strong></div>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>

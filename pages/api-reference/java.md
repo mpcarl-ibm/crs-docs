@@ -13,10 +13,14 @@ folder: api-reference
 toc: true
 ---
 
+{% include note.html content="The AWS SDK for Java is comprehensive, and has many features and capabilities not described in this guide.  For detailed class and method documentation, as well as the source code, see the [GitHub repository](https://github.com/aws/aws-sdk-java)." %}
+
 ### Getting the SDK
 The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren't familiar with Maven, you get can get up and running very quickly using the [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) guide.
 
 Maven uses a file called `pom.xml` to specify the libraries (and their versions) needed for a Java project.  Here is an example `pom.xml` file for using the AWS S3 Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts). 
+
+{% include important.html content="Please note that recent versions of the AWS SDK for Java may have introduced incompatibilities.  The most recent recommended version is **1.11.5**" %}
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
