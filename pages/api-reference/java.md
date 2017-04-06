@@ -319,7 +319,7 @@ AmazonS3 cos = new AmazonS3Client(provider); // specify which set of credentials
 
 ### Code examples
 
-{% include warning.html content="These are examples. They should be used to assist developers in programming their own solutions and not be copied and pasted directly into their applications. IBM cannot be held accountable for developers using this code verbatim." %}
+{% include important.html content="These are examples and assume a strong grasp of Java programming fundamentals. They should be used to assist developers in programming their own solutions and not be copied and pasted directly into their applications. Import declarations and try/catch blocks have been omitted for readability.  IBM cannot be held accountable for developers using this code verbatim." %}
 
 {% include note.html content="The following examples assume the use of default credentials" %}
 
