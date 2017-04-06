@@ -291,6 +291,12 @@
                     
                     
                     
+                    
+                    
+                    <li class="active"><a href="java">Java</a></li>
+                    
+                    
+                    
                 </ul>
             </li>
             
@@ -446,7 +452,139 @@ $('#toc').on('click', 'a', function() {
     
 
   <h3 id="getting-the-sdk">Getting the SDK</h3>
-<p>The easiest way to consume the AWS Java SDK is to use Maven to manage depencies.</p>
+<p>The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren’t familiar with Maven, you get can get up and running very quickly using their <a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">Maven in 5 Minutes</a> guide.</p>
+
+<p>Maven uses a file called <code class="highlighter-rouge">pom.xml</code> to specify the libraries (and their versions) needed for a Java project.  Here is an example <code class="highlighter-rouge">pom.xml</code> file for using the AWS Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts).</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.cos<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>docs<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;name&gt;</span>docs<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url&gt;</span>http://maven.apache.org<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.amazonaws<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>aws-java-sdk-s3<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.11.5<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.softlayer.api<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>softlayer-api-client<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>0.2.3<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>4.8.2<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+  <span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+      <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-shade-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>2.4.3<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+          <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+              <span class="nt">&lt;goal&gt;</span>shade<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+          <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
+      <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+  <span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="creating-a-client-and-setting-the-endpoint">Creating a client and setting the endpoint</h3>
+
+<h5 id="create-an-aws-java-sdk-connection-using-the-default-credentials">Create an AWS Java SDK connection using the default credentials</h5>
+
+<p>Use default credentials using the first credentials found in this order of precedence:</p>
+
+<ol>
+  <li>Environment variables</li>
+  <li>System properties</li>
+  <li>Default profile in <code class="highlighter-rouge">~/.aws/credentials</code></li>
+</ol>
+
+<p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from one of these locations. They do not need to be provided explicitly.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS Java SDK sends all requests to <code class="highlighter-rouge">s3.amazonaws.com</code> by default. To send requests to IBM COS, the new <code class="highlighter-rouge">AmazonS3Client</code> instance needs the correct <code class="highlighter-rouge">setEndpoint</code> parameter. The SDK interprets the http(s) portion of this endpoint and infers encrypted or plain text from the URL.</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h6 id="example-setting-the-endpoint-to-point-to-cos-us-cross-region">Example: Setting the endpoint to point to COS US Cross Region</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndPoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>The COS implementation of the S3 API supports both resource path and virtual host addressing.</p>
+
+<h5 id="use-virtual-host-addressing">Use virtual host addressing</h5>
+<p>This S3 implementation supports virtual host addressing of storage buckets. The AWS Java SDK uses virtual host addressing by default.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndPoint</span><span class="o">(</span><span class="s">"http://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h5 id="use-resource-path-addressing">Use resource path addressing</h5>
+<p>To configure the AWS Java SDK to use resource path addressing instead of virtual host addressing, either:</p>
+
+<p>Set the <code class="highlighter-rouge">disableDNSBuckets</code> system property to True:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"com.amazonaws.sdk.disableDNSBuckets"</span><span class="o">,</span> <span class="s">"True"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>Set the <code class="highlighter-rouge">withPathStyleAccess</code> property of the <code class="highlighter-rouge">AmazonS3Client.S3ClientOptions</code> to <code class="highlighter-rouge">True</code>:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span>
+
+<span class="n">S3ClientOptions</span> <span class="n">opts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">S3ClientOptions</span><span class="o">().</span><span class="na">withPathStyleAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setS3ClientOptions</span><span class="o">(</span><span class="n">opts</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h4 id="configure-optional-parameters">Configure optional parameters</h4>
+
+<h5 id="set-the-connection-timeout-duration">Set the connection timeout duration</h5>
+<p>To increase the connection timeout for longer running operations, change the <code class="highlighter-rouge">withSocketTimeout</code> property of the <code class="highlighter-rouge">ClientConfiguration</code> object when the connection is created.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClientConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientConfiguration</span><span class="o">().</span><span class="na">withSocketTimeout</span><span class="o">(</span><span class="mi">15</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">);</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h5 id="set-the-maximum-retry-limit">Set the maximum retry limit</h5>
+
+<p>If AWS Java SDK receives an error from the system, it retries the request. The default number of times it retries the request is five. The default retry limit can be changed in the client application.</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> The client reports the final error and not the initial failure, which can mask the details of the underlying issue.</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Set the <code class="highlighter-rouge">maxErrorRetry</code> property of the <code class="highlighter-rouge">ClientConfiguration</code> object to <code class="highlighter-rouge">0</code> to disable the default retry policy.</div>
+
+<h6 id="example-changing-the-maximum-retry-value">Example: Changing the Maximum Retry Value</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClientConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientConfiguration</span><span class="o">().</span><span class="na">withMaxErrorRetry</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
+</code></pre>
+</div>
 
 <h3 id="managing-credentials">Managing credentials</h3>
 
@@ -464,13 +602,14 @@ $('#toc').on('click', 'a', function() {
 
 <p>Credentials can be supplied as parameters of the <code class="highlighter-rouge">BasicAWSCredentials</code> object. This object is then passed to the <code class="highlighter-rouge">AmazonS3Client</code> as a constructor parameter.</p>
 
-<p>Example: Setting and loading credentials using <code class="highlighter-rouge">BasicAWSCredentials</code> instance parameters</p>
+<h6 id="example-create-an-aws-java-sdk-connection-specifying-credentials-provided-as-strings-in-code">Example: Create an AWS Java SDK connection specifying credentials provided as strings in code</h6>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">final</span> <span class="n">String</span> <span class="n">accessKey</span> <span class="o">=</span> <span class="s">"lDrDjH0D45hQivu6FNlwQ"</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">final</span> <span class="n">String</span> <span class="n">accessKey</span> <span class="o">=</span> <span class="s">"lDrDjH0D45hQivu6FNlwQ"</span><span class="o">;</span> 
 <span class="kd">final</span> <span class="n">String</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="s">"bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6"</span><span class="o">;</span>
 
-<span class="n">BasicAWSCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicAWSCredentials</span><span class="o">(</span><span class="n">accessKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
-<span class="n">AmazonS3Client</span> <span class="n">cosClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span>
+<span class="n">BasicAWSCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicAWSCredentials</span><span class="o">(</span><span class="n">accessKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span> <span class="c1">// declare a new set of basic credentials that includes the Access Key ID and the Secret Access Key</span>
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span> <span class="c1">// create a constructor for the client using the declared credentials.</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span> <span class="c1">// set the desired endpoint</span>
 </code></pre>
 </div>
 
@@ -509,7 +648,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from the Environment Variables. They do not need to be provided explicitly.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">s3Client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span> 
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span> 
 </code></pre>
 </div>
 
@@ -524,7 +663,7 @@ $('#toc').on('click', 'a', function() {
 <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"aws.accessKeyId"</span><span class="o">,</span> <span class="s">"lDrDjH0D45hQivu6FNlwQ"</span><span class="o">);</span>
 <span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"aws.secretKey"</span><span class="o">,</span> <span class="s">"bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6"</span><span class="o">);</span>
 
-<span class="n">AmazonS3</span> <span class="n">cosClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
 </code></pre>
 </div>
 
@@ -541,11 +680,12 @@ secretKey=bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6
 </code></pre>
 </div>
 
-<h6 id="example-creating-a-client-using-awscredentialsproperties-in-the-java-classpath">Example: Creating a client using <code class="highlighter-rouge">AwsCredentials.properties</code> in the Java Classpath</h6>
+<h6 id="example-use-an-awscredentialsproperties-file-on-the-classpath">Example: Use an <code class="highlighter-rouge">AWSCredentials.properties</code> file on the classpath</h6>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AWSCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClasspathPropertiesFileCredentialsProvider</span><span class="o">();</span>
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClasspathPropertiesFileCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClasspathPropertiesFileCredentialsProvider</span><span class="o">();</span> <span class="c1">// declare a new set of basic credentials that use the AWSCredentials.properties file</span>
 
-<span class="n">AmazonS3</span> <span class="n">cosClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span>
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span> <span class="c1">// create a constructor for an S3 compatible client using the credentials from the AWSCredentials.properties file</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span> <span class="c1">// set the endpoint for the new S3 compatible client</span>
 </code></pre>
 </div>
 
@@ -555,7 +695,7 @@ secretKey=bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6
 
 <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AWSCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PropertiesFileCredentialsProvider</span><span class="o">(</span><span class="s">"/path/to/alternative/credentials/file.properties"</span><span class="o">);</span>
 
-<span class="n">AmazonS3</span> <span class="n">cosClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span>
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span>
 </code></pre>
 </div>
 
@@ -611,114 +751,7 @@ output=json
 output=text
 </code></pre>
 </div>
-
-<h3 id="creating-a-client-and-setting-the-endpoint">Creating a client and setting the endpoint</h3>
-
-<h5 id="create-an-aws-java-sdk-connection-using-the-default-credentials">Create an AWS Java SDK connection using the default credentials</h5>
-
-<p>Use default credentials using the first credentials found in this order of precedence:</p>
-
-<ol>
-  <li>Environment variables</li>
-  <li>System properties</li>
-  <li>Default profile in <code class="highlighter-rouge">~/.aws/credentials</code></li>
-</ol>
-
-<p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from one of these locations. They do not need to be provided explicitly.</p>
-
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS Java SDK sends all requests to <code class="highlighter-rouge">s3.amazonaws.com</code> by default. To send requests to IBM COS, the new <code class="highlighter-rouge">AmazonS3Client</code> instance needs the correct <code class="highlighter-rouge">setEndpoint</code> parameter. The SDK interprets the http(s) portion of this endpoint and infers encrypted or plain text from the URL.</div>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cosClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
-<span class="n">cosClient</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
-</code></pre>
-</div>
-
-<p>Example: Create an AWS Java SDK connection specifying credentials provided as strings in code</p>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">BasicAWSCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicAWSCredentials</span><span class="o">(</span> <span class="c1">// declare a new set of basic credentials that...</span>
-<span class="s">"ACCESS_KEY"</span><span class="o">,</span> <span class="c1">// includes the Access Key ID ...</span>
-<span class="s">"SECRET_KEY"</span> <span class="c1">// and the Secret Access Key</span>
-<span class="o">);</span>
-<span class="n">AmazonS3</span> <span class="n">s3Client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span> <span class="c1">// create a constructor for the client using the declared credentials.</span>
-<span class="n">s3Client</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span> <span class="c1">// set the desired endpoint</span>
-</code></pre>
-</div>
-
-<h6 id="example-use-an-awscredentialsproperties-file-on-the-classpath">Example: Use an <code class="highlighter-rouge">AWSCredentials.properties</code> file on the classpath</h6>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClasspathPropertiesFileCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span>
-<span class="n">ClasspathPropertiesFileCredentialsProvider</span><span class="o">();</span> <span class="c1">// declare a new set of basic credentials that use the AWSCredentials.properties file</span>
-
-<span class="n">AmazonS3</span> <span class="n">s3Client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span> <span class="c1">// create a constructor for an S3 compatible client using the credentials from the AWSCredentials.properties file</span>
-<span class="n">s3Client</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span> <span class="c1">// set the endpoint for the new S3 compatible client</span>
-</code></pre>
-</div>
-
-<p>The AWS Java SDK sends all requests to <code class="highlighter-rouge">s3.amazonaws.com</code> by default. To send requests to a system, create a new <code class="highlighter-rouge">AmazonS3Client</code> instance that uses a different <code class="highlighter-rouge">setEndpoint</code> parameter with a different hostname or IP address.</p>
-
-<h6 id="example-setting-the-endpoint-to-point-to-cos-us-cross-region">Example: Setting the endpoint to point to COS US Cross Region</h6>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>AmazonS3 cos = new AmazonS3Client();
-cos.setEndPoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-</code></pre>
-</div>
-
-<p>The COS implementation of the S3 API supports both resource path and virtual host addressing.</p>
-
-<h5 id="use-virtual-host-addressing">Use virtual host addressing</h5>
-<p>This S3 implementation supports virtual host addressing of storage buckets. The AWS Java SDK uses virtual host addressing by default.</p>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
-<span class="n">cos</span><span class="o">.</span><span class="na">setEndPoint</span><span class="o">(</span><span class="s">"http://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
-</code></pre>
-</div>
-
-<h5 id="use-resource-path-addressing">Use resource path addressing</h5>
-<p>To configure the AWS Java SDK to use resource path addressing instead of virtual host addressing, either:</p>
-
-<p>Set the <code class="highlighter-rouge">disableDNSBuckets</code> system property to True:</p>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"com.amazonaws.sdk.disableDNSBuckets"</span><span class="o">,</span> <span class="s">"True"</span><span class="o">);</span>
-</code></pre>
-</div>
-
-<p>Set the <code class="highlighter-rouge">withPathStyleAccess</code> property of the <code class="highlighter-rouge">AmazonS3Client.S3ClientOptions</code> to <code class="highlighter-rouge">True</code>:</p>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span>
-
-<span class="n">S3ClientOptions</span> <span class="n">opts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">S3ClientOptions</span><span class="o">().</span><span class="na">withPathStyleAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-<span class="n">cos</span><span class="o">.</span><span class="na">setS3ClientOptions</span><span class="o">(</span><span class="n">opts</span><span class="o">);</span>
-</code></pre>
-</div>
-
-<h4 id="configure-optional-parameters">Configure optional parameters</h4>
-
-<h5 id="set-the-connection-timeout-duration">Set the connection timeout duration</h5>
-<p>To increase the connection timeout for longer running operations, change the <code class="highlighter-rouge">withSocketTimeout</code> property of the <code class="highlighter-rouge">ClientConfiguration</code> object when the connection is created.</p>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClientConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientConfiguration</span><span class="o">().</span><span class="na">withSocketTimeout</span><span class="o">(</span><span class="mi">15</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">);</span>
-
-<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
-</code></pre>
-</div>
-
-<h5 id="set-the-maximum-retry-limit">Set the maximum retry limit</h5>
-
-<p>If AWS Java SDK receives an error from the system, it retries the request. The default number of times it retries the request is five. The default retry limit can be changed in the client application.</p>
-
-<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> The client reports the final error and not the initial failure, which can mask the details of the underlying issue.</div>
-
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Set the <code class="highlighter-rouge">maxErrorRetry</code> property of the <code class="highlighter-rouge">ClientConfiguration</code> object to <code class="highlighter-rouge">0</code> to disable the default retry policy.</div>
-
-<h6 id="example-changing-the-maximum-retry-value">Example: Changing the Maximum Retry Value</h6>
-
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClientConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientConfiguration</span><span class="o">().</span><span class="na">withMaxErrorRetry</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-
-<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
-</code></pre>
-</div>
-
-<h4 id="use-a-named-profile-in-a-aws-shared-credentials-file">Use a named profile in a AWS shared credentials file</h4>
+<p>##### Use a named profile in a AWS shared credentials file</p>
 
 <p>To use the name profile credentials in this file:</p>
 
@@ -729,8 +762,8 @@ cos.setEndPoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 
 <h6 id="example-using-an-aws-credential-named-profile-in-an-aws-java-sdk-connection-method">Example: Using an AWS Credential Named Profile in an AWS Java SDK connection method</h6>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>AWSCredentialsProvider provider = new ProfileCredentialsProvider("ibm"); // specify the Named Profile to use
-AmazonS3 cos = new AmazonS3Client(provider); // specify which set of credentials to use
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AWSCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProfileCredentialsProvider</span><span class="o">(</span><span class="s">"ibm"</span><span class="o">);</span> <span class="c1">// specify the Named Profile to use</span>
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span> <span class="c1">// specify which set of credentials to use</span>
 </code></pre>
 </div>
 
@@ -1031,12 +1064,6 @@ for (Bucket b : Buckets) { 2
 <span class="n">uploadPart</span><span class="o">(</span><span class="n">UploadPartRequest</span> <span class="n">request</span><span class="o">)</span>
 </code></pre>
 </div>
-
-<h1 id="java-methods">Java Methods</h1>
-
-<h2 id="supported-methods">Supported methods</h2>
-
-<h3 id="examples">Examples</h3>
 
 
     <div class="tags">
