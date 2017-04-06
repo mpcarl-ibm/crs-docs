@@ -454,7 +454,7 @@ $('#toc').on('click', 'a', function() {
   <h3 id="getting-the-sdk">Getting the SDK</h3>
 <p>The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren’t familiar with Maven, you get can get up and running very quickly using the <a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">Maven in 5 Minutes</a> guide.</p>
 
-<p>Maven uses a file called <code class="highlighter-rouge">pom.xml</code> to specify the libraries (and their versions) needed for a Java project.  Here is an example <code class="highlighter-rouge">pom.xml</code> file for using the AWS Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts).</p>
+<p>Maven uses a file called <code class="highlighter-rouge">pom.xml</code> to specify the libraries (and their versions) needed for a Java project.  Here is an example <code class="highlighter-rouge">pom.xml</code> file for using the AWS S3 Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts).</p>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
@@ -751,7 +751,8 @@ output=json
 output=text
 </code></pre>
 </div>
-<p>##### Use a named profile in a AWS shared credentials file</p>
+
+<h5 id="use-a-named-profile-in-a-aws-shared-credentials-file">Use a named profile in a AWS shared credentials file</h5>
 
 <p>To use the name profile credentials in this file:</p>
 
@@ -771,232 +772,173 @@ output=text
 
 <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> These are examples. They should be used to assist developers in programming their own solutions and not be copied and pasted directly into their applications. IBM cannot be held accountable for developers using this code verbatim.</div>
 
-<p>Note: The remaining examples assume the use of default credentials.</p>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The following examples assume the use of default credentials</div>
 
-<h4 id="create-a-bucket">Create a bucket</h4>
+<h4 id="create-a-standard-bucket">Create a standard bucket</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Create a Bucket in a system using the s3Client.createBucket() method
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+<span class="n">cos</span><span class="o">.</span><span class="na">createBucket</span><span class="o">(</span><span class="s">"sample"</span><span class="o">,</span> <span class="s">"us-standard"</span><span class="o">);</span> <span class="c1">// the name of the bucket, and the storage class (LocationConstraint)</span>
+</code></pre>
+</div>
 
-s3Client.createBucket("sample", "us-standard"); 1
+<h4 id="create-a-vault-bucket">Create a Vault bucket</h4>
 
-1 The name of the Bucket to be created.
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">cos</span><span class="o">.</span><span class="na">createBucket</span><span class="o">(</span><span class="s">"sample"</span><span class="o">,</span> <span class="s">"us-vault"</span><span class="o">);</span> <span class="c1">// the name of the bucket, and the storage class (LocationConstraint)</span>
+</code></pre>
+</div>
+
+<h4 id="create-a-cold-vault-bucket">Create a Cold Vault bucket</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">cos</span><span class="o">.</span><span class="na">createBucket</span><span class="o">(</span><span class="s">"sample"</span><span class="o">,</span> <span class="s">"us-cold"</span><span class="o">);</span> <span class="c1">// the name of the bucket, and the storage class (LocationConstraint)</span>
 </code></pre>
 </div>
 
 <h4 id="upload-object-from-a-file">Upload object from a file</h4>
 
-<p>Note: This example assumes that the Bucket sample already exists.</p>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This example assumes that the bucket ‘sample’ already exists.</div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Upload an Object from a File to a Bucket in a system using the s3Client.putObject() method
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-s3Client.putObject(
-"sample", 1
-"myfile", 2
-new File("/home/user/test.txt") 3
-);
-
-1 The name of the Bucket into which the Object will be placed.
-2 The name of the Object once it has been uploaded.
-3 The file name and path of the file to be uploaded.
+<span class="n">cos</span><span class="o">.</span><span class="na">putObject</span><span class="o">(</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the destination bucket</span>
+<span class="s">"myfile"</span><span class="o">,</span> <span class="c1">// the object key</span>
+<span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="s">"/home/user/test.txt"</span><span class="o">)</span> <span class="c1">// the file name and path of the object to be uploaded</span>
+<span class="o">);</span>
 </code></pre>
 </div>
 
 <h4 id="upload-object-using-a-stream">Upload object using a stream</h4>
 
-<p>Note: This example assumes that the Bucket sample already exists.</p>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This example assumes that the bucket ‘sample’ already exists.</div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Upload an Object from an I/O Stream to a Bucket in a system using the s3Client.putObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-String obj = "An example"; 1
-ByteArrayOutputStream theBytes = new ByteArrayOutputStream(); 2
-ObjectOutputStream serializer = new ObjectOutputStream(theBytes); 3
-serializer.writeObject(obj); 4
-serializer.flush();
-serializer.close();
-InputStream stream = new ByteArrayInputStream(theBytes.toByteArray()); 5
-ObjectMetadata metadata = new ObjectMetadata(); 6
-metadata.setContentType("application/x-java-serialized-object"); 7
-metadata.setContentLength(theBytes.size()); 8
-s3Client.putObject(
-"sample", 9
-"serialized-object", 10
-stream, 11
-metadata 12
-);
-
-1 An object to be stored.
-2 Create a new output stream to store the object data.
-3 Set the object data to be serialized.
-4 Serialize the object data.
-5 Convert the serialized object data into a new input stream to store.
-6 Define the metadata about this object to be stored with it.
-7 Set the metadata for the object being written.
-8 Set metadata for the length of the data stream.
-9 The name of the Bucket to which the Object is being written.
-10 The name of the Object being written.
-11 The name of the data stream writing the Object.
-12 The metadata for the Object being written.
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">obj</span> <span class="o">=</span> <span class="s">"An example"</span><span class="o">;</span> <span class="c1">// the object to be stored</span>
+<span class="n">ByteArrayOutputStream</span> <span class="n">theBytes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span> <span class="c1">// create a new output stream to store the object data</span>
+<span class="n">ObjectOutputStream</span> <span class="n">serializer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="o">(</span><span class="n">theBytes</span><span class="o">);</span> <span class="c1">// set the object data to be serialized</span>
+<span class="n">serializer</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span> <span class="c1">// serialize the object data</span>
+<span class="n">serializer</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+<span class="n">serializer</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">InputStream</span> <span class="n">stream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="o">(</span><span class="n">theBytes</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">());</span> <span class="c1">// convert the serialized data to a new input stream to store</span>
+<span class="n">ObjectMetadata</span> <span class="n">metadata</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectMetadata</span><span class="o">();</span> <span class="c1">// define the metadata</span>
+<span class="n">metadata</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">"application/x-java-serialized-object"</span><span class="o">);</span> <span class="c1">// set the metadata</span>
+<span class="n">metadata</span><span class="o">.</span><span class="na">setContentLength</span><span class="o">(</span><span class="n">theBytes</span><span class="o">.</span><span class="na">size</span><span class="o">());</span> <span class="c1">// set metadata for the length of the data stream</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">putObject</span><span class="o">(</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the bucket to which the object is being written</span>
+<span class="s">"serialized-object"</span><span class="o">,</span> <span class="c1">// the name of the object being written</span>
+<span class="n">stream</span><span class="o">,</span> <span class="c1">// the name of the data stream writing the object</span>
+<span class="n">metadata</span> <span class="c1">// the metadata for the object being written</span>
+<span class="o">);</span>
 </code></pre>
 </div>
 
 <h4 id="download-object-to-a-file">Download object to a file</h4>
 
-<p>Note: This example assumes the Bucket sample already exists.</p>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This example assumes that the bucket ‘sample’ already exists.</div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Download an Object from a Bucket to a File using the s3Client.getObject() method
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+<span class="n">GetObjectRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="c1">// create a new request to get an object</span>
+<span class="n">GetObjectRequest</span><span class="o">(</span> <span class="c1">// request the new object by identifying</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the bucket</span>
+<span class="s">"myFile"</span> <span class="c1">// the name of the object</span>
+<span class="o">);</span>
 
-GetObjectRequest request = new 1
-GetObjectRequest( 2
-"sample", 3
-"myFile" 4
-);
-
-s3Client.getObject( 5
-request, 6
-new File("retrieved.txt") 7
-);
-
-1 Create a new request to get an object.
-2 Request the object by identifying…
-3 The sample Bucket
-4 The myFile Object
-5 Write the contents of the Object…
-6 Using the request that was just created
-7 To write to a new file called retrieved.txt
+<span class="n">s3Client</span><span class="o">.</span><span class="na">getObject</span><span class="o">(</span> <span class="c1">// write the contents of the object</span>
+<span class="n">request</span><span class="o">,</span> <span class="c1">// using the request that was just created</span>
+<span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="s">"retrieved.txt"</span><span class="o">)</span> <span class="c1">// to write to a new file</span>
+<span class="o">);</span>
 </code></pre>
 </div>
 
 <h4 id="download-object-using-a-stream">Download object using a stream</h4>
 
-<p>Note: This example assumes that the Bucket sample already exists.</p>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This example assumes that the bucket ‘sample’ already exists.</div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Download an object using a stream
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-S3Object returned = CLIENT.getObject( 1
-"sample", 2
-"serialized-object" 3
-);
-S3ObjectInputStream s3Input = s3Response.getObjectContent(); 4
-
-1 Request the object by identifying…
-2 The sample Bucket
-3 The serialized-object Object
-4 Set the object stream.
-</code></pre>
-</div>
-
-<h4 id="delete-object">Delete object</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Delete an Object from a Bucket using the s3Client.deleteObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-s3Client.deleteObject( 1
-"sample", 2
-"myFile.txt" 3
-);
-
-1 Delete the Object, passing…
-2 The name of the Bucket that stores the Object.
-3 The name of the Object to be deleted.
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+<span class="n">S3Object</span> <span class="n">returned</span> <span class="o">=</span> <span class="n">CLIENT</span><span class="o">.</span><span class="na">getObject</span><span class="o">(</span> <span class="c1">// request the object by identifying</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the bucket  </span>
+<span class="s">"serialized-object"</span> <span class="c1">// the name of the serialized object</span>
+<span class="o">);</span>
+<span class="n">S3ObjectInputStream</span> <span class="n">s3Input</span> <span class="o">=</span> <span class="n">s3Response</span><span class="o">.</span><span class="na">getObjectContent</span><span class="o">();</span> <span class="c1">// set the object stream</span>
 </code></pre>
 </div>
 
 <h4 id="copy-objects">Copy objects</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Copy an Object within the Same Bucket using the s3Client.copyObject() method
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-// Copy an object within the same Bucket
-s3Client.copyObject( 1
-"sample", 2
-"myFile.txt", 3
-"sample", 4
-"myFile.txt.backup" 5
-);
-
-1 Copy the Object, passing…
-2 The name of the Bucket in which the Object to be copied is stored.
-3 The name of the Object being copied from the source Bucket.
-4 The name of the Bucket in which the Object to be copied is stored.
-5 The new name of the copy of the Object to be copied.
+<span class="c1">// copy an object within the same Bucket</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">copyObject</span><span class="o">(</span> <span class="c1">// copy the Object, passing…</span>
+<span class="s">"sample"</span><span class="o">,</span>  <span class="c1">// the name of the Bucket in which the Object to be copied is stored,</span>
+<span class="s">"myFile.txt"</span><span class="o">,</span>  <span class="c1">// the name of the Object being copied from the source Bucket,</span>
+<span class="s">"sample"</span><span class="o">,</span>  <span class="c1">// the name of the Bucket in which the Object to be copied is stored,</span>
+<span class="s">"myFile.txt.backup"</span>    <span class="c1">// and the new name of the copy of the Object to be copied</span>
+<span class="o">);</span>
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Copy an Object between Two Buckets using the s3Client.copyObject() method
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-// Copy an object between two Buckets
-s3Client.copyObject( 1
-"sample", 2
-"myFile.txt", 3
-"backup", 4
-"myFile.txt" 5
-);
-
-1 Copy the Object, passing…
-2 The name of the Bucket from which the Object will be copied.
-3 The name of the Object being copied from the source Bucket.
-4 The name of the Bucket to which the Object will be copied.
-5 The name of the copied Object in the destination Bucket.
-</code></pre>
-</div>
-
-<h4 id="list-objects">List objects</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Listing Buckets using the s3Client.listObjects() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
-
-ObjectListing listing = s3Client.listObjects(`sample`); 1
-List&lt;S3ObjectSummary&gt; summaries = listing.getObjectSummaries(); 2
-
-for (S3ObjectSummary obj : summaries){ 3
-  System.out.println(`found: `+obj.getKey()); 4
-}
-
-1 Get the list of Objects in the sample Bucket.
-2 Create a list of Object Summaries.
-3 For each Object…
-4 Display `found: ` then the name of the Object.
+<span class="c1">// copy an object between two Buckets</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">copyObject</span><span class="o">(</span> <span class="c1">// copy the Object, passing…</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the Bucket from which the Object will be copied,</span>
+<span class="s">"myFile.txt"</span><span class="o">,</span> <span class="c1">// the name of the Object being copied from the source Bucket,</span>
+<span class="s">"backup"</span><span class="o">,</span> <span class="c1">// the name of the Bucket to which the Object will be copied,</span>
+<span class="s">"myFile.txt"</span> <span class="c1">// and the name of the copied Object in the destination Bucket</span>
+<span class="o">);</span>
 </code></pre>
 </div>
 
 <h4 id="list-buckets">List buckets</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Listing Buckets using the s3Client.listBuckets() method
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="err">`</span><span class="nl">https:</span><span class="c1">//s3-api.us-geo.objectstorage.softlayer.net`);</span>
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Bucket</span><span class="o">&gt;</span> <span class="n">Buckets</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="na">listBuckets</span><span class="o">();</span> <span class="c1">// get a list of buckets</span>
 
-List&lt;Bucket&gt; Buckets = s3Client.listBuckets(); 1
+<span class="k">for</span> <span class="o">(</span><span class="n">Bucket</span> <span class="n">b</span> <span class="o">:</span> <span class="n">Buckets</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// for each bucket...</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">`</span><span class="nl">Found:</span> <span class="err">`</span><span class="o">+</span><span class="n">b</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span> <span class="c1">// display 'Found: ' and then the name of the bucket</span>
+<span class="o">}</span>
+</code></pre>
+</div>
 
-for (Bucket b : Buckets) { 2
-  System.out.println(`Found: `+b.getName()); 3
-}
+<h4 id="list-objects">List objects</h4>
 
-1 Get a list of Buckets.
-2 For each bucket…
-3 Display `Found: ` then the name of the Bucket.
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="err">`</span><span class="nl">https:</span><span class="c1">//s3-api.us-geo.objectstorage.softlayer.net`);</span>
+
+<span class="n">ObjectListing</span> <span class="n">listing</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="na">listObjects</span><span class="o">(</span><span class="err">`</span><span class="n">sample</span><span class="err">`</span><span class="o">);</span> <span class="c1">// get the list of objects in the 'sample' bucket</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">S3ObjectSummary</span><span class="o">&gt;</span> <span class="n">summaries</span> <span class="o">=</span> <span class="n">listing</span><span class="o">.</span><span class="na">getObjectSummaries</span><span class="o">();</span> <span class="c1">// create a list of object summaries</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">S3ObjectSummary</span> <span class="n">obj</span> <span class="o">:</span> <span class="n">summaries</span><span class="o">){</span> <span class="c1">// for each object...</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">`</span><span class="nl">found:</span> <span class="err">`</span><span class="o">+</span><span class="n">obj</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span> <span class="c1">// display 'found: ' and then the name of the object</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<h4 id="delete-object">Delete object</h4>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+
+<span class="n">cos</span><span class="o">.</span><span class="na">deleteObject</span><span class="o">(</span> <span class="c1">// delete the Object, passing…</span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the Bucket that stores the Object,</span>
+<span class="s">"myFile.txt"</span> <span class="c1">// and he name of the Object to be deleted</span>
+<span class="o">);</span>
 </code></pre>
 </div>
 

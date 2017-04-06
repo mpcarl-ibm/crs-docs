@@ -16,7 +16,7 @@ toc: true
 ### Getting the SDK
 The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren't familiar with Maven, you get can get up and running very quickly using the [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) guide.
 
-Maven uses a file called `pom.xml` to specify the libraries (and their versions) needed for a Java project.  Here is an example `pom.xml` file for using the AWS Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts). 
+Maven uses a file called `pom.xml` to specify the libraries (and their versions) needed for a Java project.  Here is an example `pom.xml` file for using the AWS S3 Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts). 
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -298,6 +298,7 @@ output=json
 [profile pool2]
 output=text
 ```
+
 ##### Use a named profile in a AWS shared credentials file
 
 To use the name profile credentials in this file:
@@ -316,237 +317,175 @@ AmazonS3 cos = new AmazonS3Client(provider); // specify which set of credentials
 
 {% include warning.html content="These are examples. They should be used to assist developers in programming their own solutions and not be copied and pasted directly into their applications. IBM cannot be held accountable for developers using this code verbatim." %}
 
-Note: The remaining examples assume the use of default credentials.
+{% include note.html content="The following examples assume the use of default credentials" %}
 
+#### Create a standard bucket
 
-#### Create a bucket
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 
-``` 
-Example: Create a Bucket in a system using the s3Client.createBucket() method
+cos.createBucket("sample", "us-standard"); // the name of the bucket, and the storage class (LocationConstraint)
+```
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+#### Create a Vault bucket
 
-s3Client.createBucket("sample", "us-standard"); 1
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 
-1 The name of the Bucket to be created.
+cos.createBucket("sample", "us-vault"); // the name of the bucket, and the storage class (LocationConstraint)
+```
+
+#### Create a Cold Vault bucket
+
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+
+cos.createBucket("sample", "us-cold"); // the name of the bucket, and the storage class (LocationConstraint)
 ```
 
 #### Upload object from a file
 
-Note: This example assumes that the Bucket sample already exists.
+{% include note.html content="This example assumes that the bucket 'sample' already exists." %}
 
-```
-Example: Upload an Object from a File to a Bucket in a system using the s3Client.putObject() method
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-s3Client.putObject(
-"sample", 1
-"myfile", 2
-new File("/home/user/test.txt") 3
+cos.putObject(
+"sample", // the name of the destination bucket
+"myfile", // the object key
+new File("/home/user/test.txt") // the file name and path of the object to be uploaded
 );
-
-1 The name of the Bucket into which the Object will be placed.
-2 The name of the Object once it has been uploaded.
-3 The file name and path of the file to be uploaded.
 ```
 
 #### Upload object using a stream
 
-Note: This example assumes that the Bucket sample already exists.
+{% include note.html content="This example assumes that the bucket 'sample' already exists." %}
 
-```
-Example: Upload an Object from an I/O Stream to a Bucket in a system using the s3Client.putObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-String obj = "An example"; 1
-ByteArrayOutputStream theBytes = new ByteArrayOutputStream(); 2
-ObjectOutputStream serializer = new ObjectOutputStream(theBytes); 3
-serializer.writeObject(obj); 4
+```java 
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+String obj = "An example"; // the object to be stored
+ByteArrayOutputStream theBytes = new ByteArrayOutputStream(); // create a new output stream to store the object data
+ObjectOutputStream serializer = new ObjectOutputStream(theBytes); // set the object data to be serialized
+serializer.writeObject(obj); // serialize the object data
 serializer.flush();
 serializer.close();
-InputStream stream = new ByteArrayInputStream(theBytes.toByteArray()); 5
-ObjectMetadata metadata = new ObjectMetadata(); 6
-metadata.setContentType("application/x-java-serialized-object"); 7
-metadata.setContentLength(theBytes.size()); 8
-s3Client.putObject(
-"sample", 9
-"serialized-object", 10
-stream, 11
-metadata 12
+InputStream stream = new ByteArrayInputStream(theBytes.toByteArray()); // convert the serialized data to a new input stream to store
+ObjectMetadata metadata = new ObjectMetadata(); // define the metadata
+metadata.setContentType("application/x-java-serialized-object"); // set the metadata
+metadata.setContentLength(theBytes.size()); // set metadata for the length of the data stream
+cos.putObject(
+"sample", // the name of the bucket to which the object is being written
+"serialized-object", // the name of the object being written
+stream, // the name of the data stream writing the object
+metadata // the metadata for the object being written
 );
-
-1 An object to be stored.
-2 Create a new output stream to store the object data.
-3 Set the object data to be serialized.
-4 Serialize the object data.
-5 Convert the serialized object data into a new input stream to store.
-6 Define the metadata about this object to be stored with it.
-7 Set the metadata for the object being written.
-8 Set metadata for the length of the data stream.
-9 The name of the Bucket to which the Object is being written.
-10 The name of the Object being written.
-11 The name of the data stream writing the Object.
-12 The metadata for the Object being written.
 ```
 
 #### Download object to a file
 
-Note: This example assumes the Bucket sample already exists.
+{% include note.html content="This example assumes that the bucket 'sample' already exists." %}
 
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 
-```
-Example: Download an Object from a Bucket to a File using the s3Client.getObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-GetObjectRequest request = new 1
-GetObjectRequest( 2
-"sample", 3
-"myFile" 4
+GetObjectRequest request = new // create a new request to get an object
+GetObjectRequest( // request the new object by identifying
+"sample", // the name of the bucket
+"myFile" // the name of the object
 );
 
-s3Client.getObject( 5
-request, 6
-new File("retrieved.txt") 7
+s3Client.getObject( // write the contents of the object
+request, // using the request that was just created
+new File("retrieved.txt") // to write to a new file
 );
-
-1 Create a new request to get an object.
-2 Request the object by identifying…
-3 The sample Bucket
-4 The myFile Object
-5 Write the contents of the Object…
-6 Using the request that was just created
-7 To write to a new file called retrieved.txt
 ```
 
 
 #### Download object using a stream
 
-Note: This example assumes that the Bucket sample already exists.
+{% include note.html content="This example assumes that the bucket 'sample' already exists." %}
 
-``` 
-Example: Download an object using a stream
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-S3Object returned = CLIENT.getObject( 1
-"sample", 2
-"serialized-object" 3
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+S3Object returned = CLIENT.getObject( // request the object by identifying
+"sample", // the name of the bucket  
+"serialized-object" // the name of the serialized object
 );
-S3ObjectInputStream s3Input = s3Response.getObjectContent(); 4
-
-1 Request the object by identifying…
-2 The sample Bucket
-3 The serialized-object Object
-4 Set the object stream.
-```
-
-#### Delete object
-
-``` 
-Example: Delete an Object from a Bucket using the s3Client.deleteObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-s3Client.deleteObject( 1
-"sample", 2
-"myFile.txt" 3
-);
-
-1 Delete the Object, passing…
-2 The name of the Bucket that stores the Object.
-3 The name of the Object to be deleted.
+S3ObjectInputStream s3Input = s3Response.getObjectContent(); // set the object stream
 ```
 
 #### Copy objects
 
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 
-```
-Example: Copy an Object within the Same Bucket using the s3Client.copyObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-// Copy an object within the same Bucket
-s3Client.copyObject( 1
-"sample", 2
-"myFile.txt", 3
-"sample", 4
-"myFile.txt.backup" 5
+// copy an object within the same Bucket
+cos.copyObject( // copy the Object, passing…
+"sample",  // the name of the Bucket in which the Object to be copied is stored,
+"myFile.txt",  // the name of the Object being copied from the source Bucket,
+"sample",  // the name of the Bucket in which the Object to be copied is stored,
+"myFile.txt.backup"    // and the new name of the copy of the Object to be copied
 );
-
-1 Copy the Object, passing…
-2 The name of the Bucket in which the Object to be copied is stored.
-3 The name of the Object being copied from the source Bucket.
-4 The name of the Bucket in which the Object to be copied is stored.
-5 The new name of the copy of the Object to be copied.
 ```
 
-```
-Example: Copy an Object between Two Buckets using the s3Client.copyObject() method
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-// Copy an object between two Buckets
-s3Client.copyObject( 1
-"sample", 2
-"myFile.txt", 3
-"backup", 4
-"myFile.txt" 5
+// copy an object between two Buckets
+cos.copyObject( // copy the Object, passing…
+"sample", // the name of the Bucket from which the Object will be copied,
+"myFile.txt", // the name of the Object being copied from the source Bucket,
+"backup", // the name of the Bucket to which the Object will be copied,
+"myFile.txt" // and the name of the copied Object in the destination Bucket
 );
-
-1 Copy the Object, passing…
-2 The name of the Bucket from which the Object will be copied.
-3 The name of the Object being copied from the source Bucket.
-4 The name of the Bucket to which the Object will be copied.
-5 The name of the copied Object in the destination Bucket.
-```
-
-#### List objects 
-
-``` 
-Example: Listing Buckets using the s3Client.listObjects() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
-
-ObjectListing listing = s3Client.listObjects(`sample`); 1
-List<S3ObjectSummary> summaries = listing.getObjectSummaries(); 2
-
-for (S3ObjectSummary obj : summaries){ 3
-  System.out.println(`found: `+obj.getKey()); 4
-}
-
-1 Get the list of Objects in the sample Bucket.
-2 Create a list of Object Summaries.
-3 For each Object…
-4 Display `found: ` then the name of the Object.
 ```
 
 #### List buckets 
 
-```
-Example: Listing Buckets using the s3Client.listBuckets() method
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
 
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
+List<Bucket> Buckets = cos.listBuckets(); // get a list of buckets
 
-List<Bucket> Buckets = s3Client.listBuckets(); 1
-
-for (Bucket b : Buckets) { 2
-  System.out.println(`Found: `+b.getName()); 3
+for (Bucket b : Buckets) { // for each bucket...
+  System.out.println(`Found: `+b.getName()); // display 'Found: ' and then the name of the bucket
 }
+```
 
-1 Get a list of Buckets.
-2 For each bucket…
-3 Display `Found: ` then the name of the Bucket.
+#### List objects 
+
+```java 
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
+
+ObjectListing listing = cos.listObjects(`sample`); // get the list of objects in the 'sample' bucket
+List<S3ObjectSummary> summaries = listing.getObjectSummaries(); // create a list of object summaries
+
+for (S3ObjectSummary obj : summaries){ // for each object...
+  System.out.println(`found: `+obj.getKey()); // display 'found: ' and then the name of the object
+}
+```
+
+#### Delete object
+
+```java
+AmazonS3 cos = new AmazonS3Client();
+cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+
+cos.deleteObject( // delete the Object, passing…
+"sample", // the name of the Bucket that stores the Object,
+"myFile.txt" // and he name of the Object to be deleted
+);
 ```
 
 ### API reference
