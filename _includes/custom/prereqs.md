@@ -1,0 +1,3 @@
+
+#### Prerequisites
+The code examples throughout assume a basic comfortability with a Linux-like shell interface (such as [bash](https://www.gnu.org/software/bash/), the [OSX Terminal](http://www.imore.com/how-use-terminal-mac-when-you-have-no-idea-where-start), or the [Windows 10 WSL](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).  For more information on getting started with shell environments, visit [this primer on shell programming fundamentals](https://www.ibm.com/developerworks/library/l-bash/). Any example code is intended merely as an educational demonstration and is in no way intended to serve as a template or boilerplate for production code. 

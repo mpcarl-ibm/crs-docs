@@ -24,7 +24,7 @@
 <script src="js/toc.js"></script>
 <script src="js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="images/favicon.png">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation (Staging)</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -291,6 +291,12 @@
                     
                     
                     
+                    
+                    
+                    <li><a href="java">Java</a></li>
+                    
+                    
+                    
                 </ul>
             </li>
             
@@ -469,9 +475,9 @@ aws_secret_access_key = {Secret Access Key}
 
 <span class="n">endpoint</span> <span class="o">=</span> <span class="s">'https://s3-api.us-geo.objectstorage.softlayer.net'</span>
 
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
+<span class="n">cos</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">s3</span><span class="o">.</span><span class="n">buckets</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
+<span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">cos</span><span class="o">.</span><span class="n">buckets</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="n">bucket</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">bucket</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">():</span>
         <span class="k">print</span><span class="p">(</span><span class="s">"  - </span><span class="si">%</span><span class="s">s"</span><span class="p">)</span> <span class="o">%</span> <span class="n">obj</span><span class="o">.</span><span class="n">key</span>
@@ -499,16 +505,16 @@ bucket-2
 
 <span class="n">endpoint</span> <span class="o">=</span> <span class="s">'https://s3-api.us-geo.objectstorage.softlayer.net'</span>
 
-<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
+<span class="n">cos</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s">'s3'</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'These are the buckets in this service account:'</span><span class="p">)</span>
-<span class="n">buckets</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
+<span class="n">buckets</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
 <span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">buckets</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">buckets</span><span class="p">[</span><span class="s">'Buckets'</span><span class="p">]:</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">bucket</span><span class="p">[</span><span class="s">'Name'</span><span class="p">]</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"Raw output from 'list_buckets()' in </span><span class="si">%</span><span class="s">s:"</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">objects</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">list_objects</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="n">list_objects</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
     <span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">objects</span><span class="p">)</span>
 </code></pre>
 </div>

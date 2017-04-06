@@ -24,7 +24,7 @@
 <script src="js/toc.js"></script>
 <script src="js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="images/favicon.png">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation</span></a>
+            <a class="fa fa-lg fa-home navbar-brand" href="index.html"><span class="projectTitle"> IBM Cloud Object Storage Documentation (Staging)</span></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -291,6 +291,12 @@
                     
                     
                     
+                    
+                    
+                    <li><a href="java">Java</a></li>
+                    
+                    
+                    
                 </ul>
             </li>
             
@@ -451,9 +457,11 @@ $('#toc').on('click', 'a', function() {
 
 <p>At present two sets of credentials can be created per COS instance, allowing credentials to be rotated in applications without interruption.</p>
 
+<p>For more detail on authentication and authorization, see the <a href="/crs-docs/manage-access">Managing access</a> section.</p>
+
 <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The user interface portal provides a high level view of a storage account.  It is possible to view credentials and endpoints using the portal as well as by using the Softlayer API.</div>
 
-<h4 id="using-the-control-portal-to-view-credentials-and-endpoints">Using the control portal to view credentials and endpoints</h4>
+<h3 id="using-the-control-portal-to-view-credentials-and-endpoints">Using the control portal to view credentials and endpoints</h3>
 <ol>
   <li>Credentials and available endpoints can be viewed, by clicking the  <strong>View Credentials</strong> link on the left side of an Account Details page (the view that shows a list of buckets in the account).</li>
   <li>Click the credentials header to expand and show the credentials.</li>
@@ -462,13 +470,16 @@ $('#toc').on('click', 'a', function() {
   <li>The page also shows the various authentication endpoints that can be used to access the account.</li>
 </ol>
 
-<h4 id="using-libraries-and-sdks">Using libraries and SDKs</h4>
+<h3 id="using-libraries-and-sdks">Using libraries and SDKs</h3>
 
 <p>IBM Cloud does not provide native libraries or SDKs for interacting with COS offerings at this time, instead 2stored data is accessed using an implementation of the S3 API. Compatibility with an established object storage API allows developers to make use of a large ecosystem of third-party tools and SDKs.</p>
 
 <p>A full list of supported S3 API operations can be found in the <a href="/crs-docs/about-compatibility-api">API Overview</a>.</p>
 
 <p>This documentation provides basic introductions to using popular third-party S3 API <a href="/crs-docs/desktop-clients">client applications</a> and a <a href="/crs-docs/cli">command line interface</a>, as well as a library for the <a href="/crs-docs/crs-python.html">Python</a> programming language.</p>
+
+<h4 id="prerequisites">Prerequisites</h4>
+<p>The code examples throughout assume a basic comfortability with a Linux-like shell interface (such as <a href="https://www.gnu.org/software/bash/">bash</a>, the <a href="http://www.imore.com/how-use-terminal-mac-when-you-have-no-idea-where-start">OSX Terminal</a>, or the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Windows 10 WSL</a>.  For more information on getting started with shell environments, visit <a href="https://www.ibm.com/developerworks/library/l-bash/">this primer on shell programming fundamentals</a>. Any example code is intended merely as an educational demonstration and is in no way intended to serve as a template or boilerplate for production code.</p>
 
 
 

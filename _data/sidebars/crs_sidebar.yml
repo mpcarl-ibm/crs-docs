@@ -79,9 +79,9 @@ entries:
           url: /python
           output: web, pdf 
     
-    #   - title: Java
-    #     url: /java
-    #     output: web, pdf 
+        - title: Java
+          url: /java
+          output: web, pdf 
     
     #   - title: Node.js
     #     url: /node

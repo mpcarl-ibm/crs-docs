@@ -38,9 +38,9 @@ import boto3
 
 endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 
-s3 = boto3.resource('s3', endpoint_url=endpoint)
+cos = boto3.resource('s3', endpoint_url=endpoint)
 
-for bucket in s3.buckets.all():
+for bucket in cos.buckets.all():
     print(bucket.name)
     for obj in bucket.objects.all():
         print("  - %s") % obj.key
@@ -68,16 +68,16 @@ import pprint as pp
 
 endpoint = 'https://s3-api.us-geo.objectstorage.softlayer.net'
 
-s3 = boto3.client('s3', endpoint_url=endpoint)
+cos = boto3.client('s3', endpoint_url=endpoint)
 
 print('These are the buckets in this service account:')
-buckets = s3.list_buckets()
+buckets = cos.list_buckets()
 pp.pprint(buckets, width=180)
 
 for bucket in buckets['Buckets']:
     name = bucket['Name']
     print("Raw output from 'list_buckets()' in %s:" % name)
-    objects = s3.list_objects(Bucket=name)
+    objects = cos.list_objects(Bucket=name)
     pp.pprint(objects)
 ```
 

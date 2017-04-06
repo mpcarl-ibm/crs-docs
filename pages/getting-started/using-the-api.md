@@ -23,20 +23,25 @@ Credentials consist of two strings: an access key, and a secret key.  The access
 
 At present two sets of credentials can be created per COS instance, allowing credentials to be rotated in applications without interruption.
 
+For more detail on authentication and authorization, see the [Managing access]( {{ site.baseurl }}/manage-access) section.
+
 {% include note.html content="The user interface portal provides a high level view of a storage account.  It is possible to view credentials and endpoints using the portal as well as by using the Softlayer API." %}
 
-#### Using the control portal to view credentials and endpoints
+### Using the control portal to view credentials and endpoints
 1. Credentials and available endpoints can be viewed, by clicking the  **View Credentials** link on the left side of an Account Details page (the view that shows a list of buckets in the account).
 2. Click the credentials header to expand and show the credentials.
 3. An account can have a maximum of two credentials at once. This allows for credentials to be rotated in applications without interruption. A new credential can be created, by clicking the **Add credential** button just below the Credentials header.
 4. A credential can also be deleted, by clicking the **-** button to the right of the credential. A confirmation dialog will pop-up for confirmation before the credential is deleted.
 5. The page also shows the various authentication endpoints that can be used to access the account. 
 
-#### Using libraries and SDKs
+### Using libraries and SDKs
 
 IBM Cloud does not provide native libraries or SDKs for interacting with COS offerings at this time, instead 2stored data is accessed using an implementation of the S3 API. Compatibility with an established object storage API allows developers to make use of a large ecosystem of third-party tools and SDKs.  
 
 A full list of supported S3 API operations can be found in the [API Overview]( {{ site.baseurl }}/about-compatibility-api).
 
 This documentation provides basic introductions to using popular third-party S3 API [client applications]( {{ site.baseurl }}/desktop-clients) and a [command line interface]( {{ site.baseurl }}/cli), as well as a library for the [Python]( {{ site.baseurl }}/crs-python.html) programming language. 
+
+{% include custom/prereqs.md %}
  
+
