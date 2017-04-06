@@ -445,10 +445,8 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p>foo</p>
-
-<h3 id="getting-the-sdk">Getting the SDK</h3>
-<p>foo</p>
+  <h3 id="getting-the-sdk">Getting the SDK</h3>
+<p>The easiest way to consume the AWS Java SDK is to use Maven to manage depencies.</p>
 
 <h3 id="managing-credentials">Managing credentials</h3>
 
@@ -555,10 +553,9 @@ secretKey=bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6
 
 <h6 id="example-creating-a-client-using-a-awscredentialsproperties-in-another-location">Example: Creating a client using a <code class="highlighter-rouge">AwsCredentials.properties</code> in another location</h6>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>AWSCredentialsProvider provider = new PropertiesFileCredentialsProvider(
-"/path/to/alternative/credentials/file.properties");
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AWSCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PropertiesFileCredentialsProvider</span><span class="o">(</span><span class="s">"/path/to/alternative/credentials/file.properties"</span><span class="o">);</span>
 
-AmazonS3 cosClient = new AmazonS3Client(provider);
+<span class="n">AmazonS3</span> <span class="n">cosClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span>
 </code></pre>
 </div>
 
@@ -569,6 +566,7 @@ AmazonS3 cosClient = new AmazonS3Client(provider);
 <p>Use <code class="highlighter-rouge">aws configure</code> to create an access credentials file with the default profile. For more information about using the AWS CLI, see the documentation on [using command line interfaces].</p>
 
 <h6 id="example-command-output-of-aws-configure">Example: Command output of <code class="highlighter-rouge">aws configure</code></h6>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>$ aws configure
 AWS Access Key ID [None]: #AKIAIOSFODNN7EXAMPLE# // stored in ~/.aws/credentials
 AWS Secret Access Key [None]: #wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY# // stored in ~/.aws/credentials
@@ -579,45 +577,144 @@ Default output format [None]: #json# // the output format will be stored in ~/.a
 
 <p>To support multiple identities, AWS credential files have named profiles.</p>
 
-<p>Use aws configure — profile {profileName} to create an access credentials file with a named profile. Additional named profiles are appended to the ~/.aws/credentials file.</p>
+<p>Use <code class="highlighter-rouge">aws configure — profile {profileName}</code> to create an access credentials file with a named profile. Additional named profiles are appended to the <code class="highlighter-rouge">~/.aws/credentials</code> file.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Command output of aws configure --profile pool2
+<h6 id="example-command-output-of-aws-configure---profile-pool2">Example: Command output of <code class="highlighter-rouge">aws configure --profile pool2</code></h6>
 
-$ aws configure --profile pool2
-AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE 1
-AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY 2
-Default region name [None]: 3
-Default output format [None]: json 4
-
-1 The Access Key will be stored in ~/.aws/credentials.
-2 The Secret Key will be stored in ~/.aws/credentials.
-3 The Region does not need to be set. The user can press the Return key 
-  to skip this. The Region will be stored in ~/.aws/config.
-4 The Output Format will be stored in ~/.aws/config.
+<div class="highlighter-rouge"><pre class="highlight"><code>$ aws configure --profile pool2
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]:
+Default output format [None]: text
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Contents of the AWS credentials file (~/.aws/credentials)
+<h6 id="example-contents-of-the-aws-credentials-file-awscredentials">Example: Contents of the AWS credentials file (<code class="highlighter-rouge">~/.aws/credentials</code>)</h6>
 
-[default]
+<div class="highlighter-rouge"><pre class="highlight"><code>[default]
 aws_access_key_id = AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
-[profile pool2] 1
+[profile pool2]
 aws_access_key_id = N67W90RKLCWOLPSKN8W8
 aws_secret_access_key = RlfTDyqPg0WnY/PWdxMEe/gjuG7QRckynofRMwwR
 
-1 The pool2 profile offers another set of Access Credentials for an S3 connection.
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Contents of the AWS configuration file (~/.aws/config)
+<h6 id="example-contents-of-the-aws-configuration-file-awsconfig">Example: Contents of the AWS configuration file (<code class="highlighter-rouge">~/.aws/config</code>)</h6>
 
-[default]
+<div class="highlighter-rouge"><pre class="highlight"><code>[default]
 output=json
 
 [profile pool2]
 output=text
+</code></pre>
+</div>
+
+<h3 id="creating-a-client-and-setting-the-endpoint">Creating a client and setting the endpoint</h3>
+
+<h5 id="create-an-aws-java-sdk-connection-using-the-default-credentials">Create an AWS Java SDK connection using the default credentials</h5>
+
+<p>Use default credentials using the first credentials found in this order of precedence:</p>
+
+<ol>
+  <li>Environment variables</li>
+  <li>System properties</li>
+  <li>Default profile in <code class="highlighter-rouge">~/.aws/credentials</code></li>
+</ol>
+
+<p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from one of these locations. They do not need to be provided explicitly.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS Java SDK sends all requests to <code class="highlighter-rouge">s3.amazonaws.com</code> by default. To send requests to IBM COS, the new <code class="highlighter-rouge">AmazonS3Client</code> instance needs the correct <code class="highlighter-rouge">setEndpoint</code> parameter. The SDK interprets the http(s) portion of this endpoint and infers encrypted or plain text from the URL.</div>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cosClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cosClient</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>Example: Create an AWS Java SDK connection specifying credentials provided as strings in code</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">BasicAWSCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicAWSCredentials</span><span class="o">(</span> <span class="c1">// declare a new set of basic credentials that...</span>
+<span class="s">"ACCESS_KEY"</span><span class="o">,</span> <span class="c1">// includes the Access Key ID ...</span>
+<span class="s">"SECRET_KEY"</span> <span class="c1">// and the Secret Access Key</span>
+<span class="o">);</span>
+<span class="n">AmazonS3</span> <span class="n">s3Client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span> <span class="c1">// create a constructor for the client using the declared credentials.</span>
+<span class="n">s3Client</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span> <span class="c1">// set the desired endpoint</span>
+</code></pre>
+</div>
+
+<h6 id="example-use-an-awscredentialsproperties-file-on-the-classpath">Example: Use an <code class="highlighter-rouge">AWSCredentials.properties</code> file on the classpath</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClasspathPropertiesFileCredentialsProvider</span> <span class="n">provider</span> <span class="o">=</span> <span class="k">new</span>
+<span class="n">ClasspathPropertiesFileCredentialsProvider</span><span class="o">();</span> <span class="c1">// declare a new set of basic credentials that use the AWSCredentials.properties file</span>
+
+<span class="n">AmazonS3</span> <span class="n">s3Client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">provider</span><span class="o">);</span> <span class="c1">// create a constructor for an S3 compatible client using the credentials from the AWSCredentials.properties file</span>
+<span class="n">s3Client</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span> <span class="c1">// set the endpoint for the new S3 compatible client</span>
+</code></pre>
+</div>
+
+<p>The AWS Java SDK sends all requests to <code class="highlighter-rouge">s3.amazonaws.com</code> by default. To send requests to a system, create a new <code class="highlighter-rouge">AmazonS3Client</code> instance that uses a different <code class="highlighter-rouge">setEndpoint</code> parameter with a different hostname or IP address.</p>
+
+<h6 id="example-setting-the-endpoint-to-point-to-cos-us-cross-region">Example: Setting the endpoint to point to COS US Cross Region</h6>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>AmazonS3 cos = new AmazonS3Client();
+cos.setEndPoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+</code></pre>
+</div>
+
+<p>The COS implementation of the S3 API supports both resource path and virtual host addressing.</p>
+
+<h5 id="use-virtual-host-addressing">Use virtual host addressing</h5>
+<p>This S3 implementation supports virtual host addressing of storage buckets. The AWS Java SDK uses virtual host addressing by default.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setEndPoint</span><span class="o">(</span><span class="s">"http://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h5 id="use-resource-path-addressing">Use resource path addressing</h5>
+<p>To configure the AWS Java SDK to use resource path addressing instead of virtual host addressing, either:</p>
+
+<p>Set the <code class="highlighter-rouge">disableDNSBuckets</code> system property to True:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code>    <span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">"com.amazonaws.sdk.disableDNSBuckets"</span><span class="o">,</span> <span class="s">"True"</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<p>Set the <code class="highlighter-rouge">withPathStyleAccess</code> property of the <code class="highlighter-rouge">AmazonS3Client.S3ClientOptions</code> to <code class="highlighter-rouge">True</code>:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">);</span>
+
+<span class="n">S3ClientOptions</span> <span class="n">opts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">S3ClientOptions</span><span class="o">().</span><span class="na">withPathStyleAccess</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">cos</span><span class="o">.</span><span class="na">setS3ClientOptions</span><span class="o">(</span><span class="n">opts</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h4 id="configure-optional-parameters">Configure optional parameters</h4>
+
+<h5 id="set-the-connection-timeout-duration">Set the connection timeout duration</h5>
+<p>To increase the connection timeout for longer running operations, change the <code class="highlighter-rouge">withSocketTimeout</code> property of the <code class="highlighter-rouge">ClientConfiguration</code> object when the connection is created.</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClientConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientConfiguration</span><span class="o">().</span><span class="na">withSocketTimeout</span><span class="o">(</span><span class="mi">15</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">);</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
+</code></pre>
+</div>
+
+<h5 id="set-the-maximum-retry-limit">Set the maximum retry limit</h5>
+
+<p>If AWS Java SDK receives an error from the system, it retries the request. The default number of times it retries the request is five. The default retry limit can be changed in the client application.</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> The client reports the final error and not the initial failure, which can mask the details of the underlying issue.</div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Set the <code class="highlighter-rouge">maxErrorRetry</code> property of the <code class="highlighter-rouge">ClientConfiguration</code> object to <code class="highlighter-rouge">0</code> to disable the default retry policy.</div>
+
+<h6 id="example-changing-the-maximum-retry-value">Example: Changing the Maximum Retry Value</h6>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">ClientConfiguration</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientConfiguration</span><span class="o">().</span><span class="na">withMaxErrorRetry</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+<span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">);</span>
 </code></pre>
 </div>
 
@@ -633,15 +730,242 @@ output=text
 <h6 id="example-using-an-aws-credential-named-profile-in-an-aws-java-sdk-connection-method">Example: Using an AWS Credential Named Profile in an AWS Java SDK connection method</h6>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>AWSCredentialsProvider provider = new ProfileCredentialsProvider("ibm"); // specify the Named Profile to use
-AmazonS3 s3Client = new AmazonS3Client(provider); // pecify which set of credentials to use
+AmazonS3 cos = new AmazonS3Client(provider); // specify which set of credentials to use
 </code></pre>
 </div>
 
-<h3 id="creating-a-client-and-setting-the-endpoint">Creating a client and setting the endpoint</h3>
-<p>foo</p>
+<h3 id="code-examples">Code examples</h3>
 
-<h3 id="example-code">Example code</h3>
-<p>foo</p>
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> These are examples. They should be used to assist developers in programming their own solutions and not be copied and pasted directly into their applications. IBM cannot be held accountable for developers using this code verbatim.</div>
+
+<p>Note: The remaining examples assume the use of default credentials.</p>
+
+<h4 id="create-a-bucket">Create a bucket</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Create a Bucket in a system using the s3Client.createBucket() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+
+s3Client.createBucket("sample", "us-standard"); 1
+
+1 The name of the Bucket to be created.
+</code></pre>
+</div>
+
+<h4 id="upload-object-from-a-file">Upload object from a file</h4>
+
+<p>Note: This example assumes that the Bucket sample already exists.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Upload an Object from a File to a Bucket in a system using the s3Client.putObject() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+
+s3Client.putObject(
+"sample", 1
+"myfile", 2
+new File("/home/user/test.txt") 3
+);
+
+1 The name of the Bucket into which the Object will be placed.
+2 The name of the Object once it has been uploaded.
+3 The file name and path of the file to be uploaded.
+</code></pre>
+</div>
+
+<h4 id="upload-object-using-a-stream">Upload object using a stream</h4>
+
+<p>Note: This example assumes that the Bucket sample already exists.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Upload an Object from an I/O Stream to a Bucket in a system using the s3Client.putObject() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+String obj = "An example"; 1
+ByteArrayOutputStream theBytes = new ByteArrayOutputStream(); 2
+ObjectOutputStream serializer = new ObjectOutputStream(theBytes); 3
+serializer.writeObject(obj); 4
+serializer.flush();
+serializer.close();
+InputStream stream = new ByteArrayInputStream(theBytes.toByteArray()); 5
+ObjectMetadata metadata = new ObjectMetadata(); 6
+metadata.setContentType("application/x-java-serialized-object"); 7
+metadata.setContentLength(theBytes.size()); 8
+s3Client.putObject(
+"sample", 9
+"serialized-object", 10
+stream, 11
+metadata 12
+);
+
+1 An object to be stored.
+2 Create a new output stream to store the object data.
+3 Set the object data to be serialized.
+4 Serialize the object data.
+5 Convert the serialized object data into a new input stream to store.
+6 Define the metadata about this object to be stored with it.
+7 Set the metadata for the object being written.
+8 Set metadata for the length of the data stream.
+9 The name of the Bucket to which the Object is being written.
+10 The name of the Object being written.
+11 The name of the data stream writing the Object.
+12 The metadata for the Object being written.
+</code></pre>
+</div>
+
+<h4 id="download-object-to-a-file">Download object to a file</h4>
+
+<p>Note: This example assumes the Bucket sample already exists.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Download an Object from a Bucket to a File using the s3Client.getObject() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+
+GetObjectRequest request = new 1
+GetObjectRequest( 2
+"sample", 3
+"myFile" 4
+);
+
+s3Client.getObject( 5
+request, 6
+new File("retrieved.txt") 7
+);
+
+1 Create a new request to get an object.
+2 Request the object by identifying…
+3 The sample Bucket
+4 The myFile Object
+5 Write the contents of the Object…
+6 Using the request that was just created
+7 To write to a new file called retrieved.txt
+</code></pre>
+</div>
+
+<h4 id="download-object-using-a-stream">Download object using a stream</h4>
+
+<p>Note: This example assumes that the Bucket sample already exists.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Download an object using a stream
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+S3Object returned = CLIENT.getObject( 1
+"sample", 2
+"serialized-object" 3
+);
+S3ObjectInputStream s3Input = s3Response.getObjectContent(); 4
+
+1 Request the object by identifying…
+2 The sample Bucket
+3 The serialized-object Object
+4 Set the object stream.
+</code></pre>
+</div>
+
+<h4 id="delete-object">Delete object</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Delete an Object from a Bucket using the s3Client.deleteObject() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+
+s3Client.deleteObject( 1
+"sample", 2
+"myFile.txt" 3
+);
+
+1 Delete the Object, passing…
+2 The name of the Bucket that stores the Object.
+3 The name of the Object to be deleted.
+</code></pre>
+</div>
+
+<h4 id="copy-objects">Copy objects</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Copy an Object within the Same Bucket using the s3Client.copyObject() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+
+// Copy an object within the same Bucket
+s3Client.copyObject( 1
+"sample", 2
+"myFile.txt", 3
+"sample", 4
+"myFile.txt.backup" 5
+);
+
+1 Copy the Object, passing…
+2 The name of the Bucket in which the Object to be copied is stored.
+3 The name of the Object being copied from the source Bucket.
+4 The name of the Bucket in which the Object to be copied is stored.
+5 The new name of the copy of the Object to be copied.
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Copy an Object between Two Buckets using the s3Client.copyObject() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
+
+// Copy an object between two Buckets
+s3Client.copyObject( 1
+"sample", 2
+"myFile.txt", 3
+"backup", 4
+"myFile.txt" 5
+);
+
+1 Copy the Object, passing…
+2 The name of the Bucket from which the Object will be copied.
+3 The name of the Object being copied from the source Bucket.
+4 The name of the Bucket to which the Object will be copied.
+5 The name of the copied Object in the destination Bucket.
+</code></pre>
+</div>
+
+<h4 id="list-objects">List objects</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Listing Buckets using the s3Client.listObjects() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
+
+ObjectListing listing = s3Client.listObjects(`sample`); 1
+List&lt;S3ObjectSummary&gt; summaries = listing.getObjectSummaries(); 2
+
+for (S3ObjectSummary obj : summaries){ 3
+  System.out.println(`found: `+obj.getKey()); 4
+}
+
+1 Get the list of Objects in the sample Bucket.
+2 Create a list of Object Summaries.
+3 For each Object…
+4 Display `found: ` then the name of the Object.
+</code></pre>
+</div>
+
+<h4 id="list-buckets">List buckets</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Example: Listing Buckets using the s3Client.listBuckets() method
+
+AmazonS3 s3Client = new AmazonS3Client();
+s3Client.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
+
+List&lt;Bucket&gt; Buckets = s3Client.listBuckets(); 1
+
+for (Bucket b : Buckets) { 2
+  System.out.println(`Found: `+b.getName()); 3
+}
+
+1 Get a list of Buckets.
+2 For each bucket…
+3 Display `Found: ` then the name of the Bucket.
+</code></pre>
+</div>
 
 <h3 id="api-reference">API reference</h3>
 
@@ -708,409 +1032,11 @@ AmazonS3 s3Client = new AmazonS3Client(provider); // pecify which set of credent
 </code></pre>
 </div>
 
-<h3 id="configure-the-storage-endpoint-and-host-addressing-scheme">Configure the storage endpoint and host addressing scheme</h3>
-
-<p>The AWS Java SDK sends all requests to s3.amazonaws.com by default.</p>
-
-<p>To send requests to a system, change the AmazonS3Client to use a different address.</p>
-
-<p>To send requests to a system, create a new AmazonS3Client instance that uses a different setEndpoint parameter with a different hostname or IP address.</p>
-
-<p>Note: The AWS Java SDK interprets the http(s) portion of this endpoint and infers encrypted or plain text from the URL.</p>
-
-<p>The CSO API supports both resource path and virtual host addressing.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Setting a system as an S3 endpoint in .Java
-
-The setEndpoint method can be used to point to a Accesser node that is assigned IP address
-192.168.9.230:
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndPoint("http://192.168.9.230");
-</code></pre>
-</div>
-
-<h4 id="use-virtual-host-addressing">Use Virtual Host Addressing</h4>
-
-<p>This S3 implementation supports virtual host addressing of storage buckets. The AWS Java SDK uses virtual host addressing by default.</p>
-
-<p>The CSO API supports virtual host addressing of buckets. To provide access, use a domain name and not an IP address for the Accesser node.</p>
-
-<p>The bucket name is determined by the virtual subdomain that is used to connect to the service.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Using a Domain Name for Virtual Host Addressing
-
-The Virtual Subdomain is determined by the bucket name.
-
-A User can use http://bucketname.somedomain.com/ to access the 'bucket' named 'bucketname'. 
-'bucketname' is the S3 Virtual Host Suffix.
-</code></pre>
-</div>
-
-<p>To use virtual-host addressing with a system:
-1.  Configure their DNS servers properly to perform proper routing of virtual host style addresses to the appropriate Accesser node or load balancer IP address.
-2.  Configure an <span class="ph uicontrol">S3 Virtual Host Suffix in the Manager Web Interface for each access pool that is used to service virtual host addressed requests.</span></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Note: See Create Access Pool in the Manager Administration Guide for more details on setting this parameter in a storage pool.
-</code></pre>
-</div>
-
-<ol>
-  <li>Set a domain name and not an IP address for the endpoint.</li>
-</ol>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndPoint("http://s3-api.us-geo.objectstorage.softlayer.net");
-</code></pre>
-</div>
-
-<h4 id="use-resource-path-addressing-use-resource-path-addressing">Use resource path addressing {#use-resource-path-addressing</h4>
-
-<p>To configure the AWS Java SDK to use resource path addressing instead of virtual host addressing, either:</p>
-
-<p>Set the disableDNSBuckets system property to True:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>``` 
-Example: Setting the disableDNSBuckets System Property Separately
-
-System.setProperty("com.amazonaws.sdk.disableDNSBuckets", "True");
-```
-</code></pre>
-</div>
-
-<p>Set the withPathStyleAccess property of the AmazonS3Client.S3ClientOptions to True:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>``` 
-Example: Setting the withPathStyleAccess Property when Opening the Connection
-
-AmazonS3 s3 = new AmazonS3Client(credentials);
-
-S3ClientOptions opts = new S3ClientOptions().withPathStyleAccess(true);
-s3.setS3ClientOptions(opts);
-```
-</code></pre>
-</div>
-
-<h3 id="configure-optional-parameters">Configure optional parameters</h3>
-
-<h4 id="set-the-connection-timeout-duration">Set the connection timeout duration</h4>
-
-<p>To increase the connection timeout for longer running operations, change the withSocketTimeout property of the ClientConfiguration object when the connection is created.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ClientConfiguration config = new ClientConfiguration().withSocketTimeout(15 * 60 * 1000);
-
-AmazonS3 s3 = new AmazonS3Client(credentials, config);
-</code></pre>
-</div>
-
-<h4 id="set-the-maximum-retry-limit">Set the Maximum Retry Limit</h4>
-
-<p>If AWS Java SDK receives an error from the system, it retries the request. The default number of times it retries the request is five. The default retry limit can be changed in the client application.</p>
-
-<p>CAUTION:</p>
-
-<p>The client reports the final error and not the initial failure, which can mask the details of the underlying issue.</p>
-
-<p>Note: Set the maxErrorRetry property of the ClientConfiguration object to 0 to disable the default retry policy.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Changing the Maximum Retry Value
-
-ClientConfiguration config = new ClientConfiguration().withMaxErrorRetry(0);
-
-AmazonS3 s3 = new AmazonS3Client(credentials, config);
-</code></pre>
-</div>
-
 <h1 id="java-methods">Java Methods</h1>
 
 <h2 id="supported-methods">Supported methods</h2>
 
 <h3 id="examples">Examples</h3>
-
-<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> These are examples. They should be used to assist developers in programming their own solutions and not be copied and pasted directly into their applications. IBM cannot be held accountable for developers using this code verbatim.</div>
-
-<h4 id="create-an-aws-java-sdk-connection">Create an AWS Java SDK connection</h4>
-
-<h5 id="create-an-aws-java-sdk-connection-using-the-default-credentials">Create an AWS Java SDK Connection Using the Default Credentials</h5>
-
-<p>Use default credentials using the first credentials found in this order of precedence:</p>
-
-<ol>
-  <li>Environment Variables</li>
-  <li>System Properties</li>
-  <li>Default Profile in ~/.aws/credentials</li>
-</ol>
-
-<p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from one of these locations. They do not need to be provided explicitly.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>AmazonS3 cosClient = new AmazonS3Client();
-cosClient.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Create an AWS Java SDK Connection Specifying Credentials 
-         Provided as Strings in Code
-
-BasicAWSCredentials credentials = new BasicAWSCredentials( 1
-"ACCESS_KEY", 2
-"SECRET_KEY" 3
-);
-AmazonS3 s3Client = new AmazonS3Client(credentials); 4
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net"); 5
-
-1 Declare a new set of basic credentials that…
-2 Include the AWS Access Key ID.
-3 Include the Secret Access Key.
-4 Create a constructor for an S3-compatible client using the declared credentials.
-5 Set the endpoint for the new S3 compatible system to 'https://s3-api.us-geo.objectstorage.softlayer.net'.
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Use an AWSCredentials.properties file on the classpath
-
-Credentials are loaded from the AWSCredentials.properties File
-
-ClasspathPropertiesFileCredentialsProvider provider = new
-ClasspathPropertiesFileCredentialsProvider(); 1
-
-AmazonS3 s3Client = new AmazonS3Client(provider); 2
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net"); 3
-
-1 Declare a new set of basic credentials that use the AWSCredentials.properties file.
-2 Create a constructor for an S3 compatible client using the credentials from the
-  AWSCredentials.properties file.
-3 Set the endpoint for the new S3 compatible client to 'https://s3-api.us-geo.objectstorage.softlayer.net'.
-</code></pre>
-</div>
-
-<p>Note: The remaining examples assume the use of default credentials.</p>
-
-<h2 id="create-a-bucket">Create a bucket</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Create a Bucket in a system using the s3Client.createBucket() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-s3Client.createBucket("sample"); 1
-
-1 The name of the Bucket to be created.
-</code></pre>
-</div>
-
-<h2 id="upload-object-from-a-file">Upload object from a file</h2>
-
-<p>Note: This example assumes that the Bucket sample already exists.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Upload an Object from a File to a Bucket in a system using the s3Client.putObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-s3Client.putObject(
-"sample", 1
-"myfile", 2
-new File("/home/user/test.txt") 3
-);
-
-1 The name of the Bucket into which the Object will be placed.
-2 The name of the Object once it has been uploaded.
-3 The file name and path of the file to be uploaded.
-</code></pre>
-</div>
-
-<h2 id="upload-object-using-a-stream">Upload object using a stream</h2>
-
-<p>Note: This example assumes that the Bucket sample already exists.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Upload an Object from an I/O Stream to a Bucket in a system using the s3Client.putObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-String obj = "An example"; 1
-ByteArrayOutputStream theBytes = new ByteArrayOutputStream(); 2
-ObjectOutputStream serializer = new ObjectOutputStream(theBytes); 3
-serializer.writeObject(obj); 4
-serializer.flush();
-serializer.close();
-InputStream stream = new ByteArrayInputStream(theBytes.toByteArray()); 5
-ObjectMetadata metadata = new ObjectMetadata(); 6
-metadata.setContentType("application/x-java-serialized-object"); 7
-metadata.setContentLength(theBytes.size()); 8
-s3Client.putObject(
-"sample", 9
-"serialized-object", 10
-stream, 11
-metadata 12
-);
-
-1 An object to be stored.
-2 Create a new output stream to store the object data.
-3 Set the object data to be serialized.
-4 Serialize the object data.
-5 Convert the serialized object data into a new input stream to store.
-6 Define the metadata about this object to be stored with it.
-7 Set the metadata for the object being written.
-8 Set metadata for the length of the data stream.
-9 The name of the Bucket to which the Object is being written.
-10 The name of the Object being written.
-11 The name of the data stream writing the Object.
-12 The metadata for the Object being written.
-</code></pre>
-</div>
-
-<h2 id="download-object-to-a-file-download-object-to-a-file-title-topictitle2">Download object to a file {#download-object-to-a-file .title .topictitle2}</h2>
-
-<p>Note: This example assumes the Bucket sample already exists.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Download an Object from a Bucket to a File using the s3Client.getObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-GetObjectRequest request = new 1
-GetObjectRequest( 2
-"sample", 3
-"myFile" 4
-);
-
-s3Client.getObject( 5
-request, 6
-new File("retrieved.txt") 7
-);
-
-1 Create a new request to get an object.
-2 Request the object by identifying…
-3 The sample Bucket
-4 The myFile Object
-5 Write the contents of the Object…
-6 Using the request that was just created
-7 To write to a new file called retrieved.txt
-</code></pre>
-</div>
-
-<h2 id="download-object-using-a-stream-download-object-using-a-stream-title-topictitle2">Download object using a stream {#download-object-using-a-stream .title .topictitle2}</h2>
-
-<p>Note: This example assumes that the Bucket sample already exists.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Download an object using a stream
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-S3Object returned = CLIENT.getObject( 1
-"sample", 2
-"serialized-object" 3
-);
-S3ObjectInputStream s3Input = s3Response.getObjectContent(); 4
-
-1 Request the object by identifying…
-2 The sample Bucket
-3 The serialized-object Object
-4 Set the object stream.
-</code></pre>
-</div>
-
-<h2 id="delete-object-delete-object-title-topictitle2">Delete object {#delete-object .title .topictitle2}</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Delete an Object from a Bucket using the s3Client.deleteObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-s3Client.deleteObject( 1
-"sample", 2
-"myFile.txt" 3
-);
-
-1 Delete the Object, passing…
-2 The name of the Bucket that stores the Object.
-3 The name of the Object to be deleted.
-</code></pre>
-</div>
-
-<h2 id="copy-objects-copy-objects-title-topictitle2">Copy objects {#copy-objects .title .topictitle2}</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Copy an Object within the Same Bucket using the s3Client.copyObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-// Copy an object within the same Bucket
-s3Client.copyObject( 1
-"sample", 2
-"myFile.txt", 3
-"sample", 4
-"myFile.txt.backup" 5
-);
-
-1 Copy the Object, passing…
-2 The name of the Bucket in which the Object to be copied is stored.
-3 The name of the Object being copied from the source Bucket.
-4 The name of the Bucket in which the Object to be copied is stored.
-5 The new name of the copy of the Object to be copied.
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Copy an Object between Two Buckets using the s3Client.copyObject() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
-
-// Copy an object between two Buckets
-s3Client.copyObject( 1
-"sample", 2
-"myFile.txt", 3
-"backup", 4
-"myFile.txt" 5
-);
-
-1 Copy the Object, passing…
-2 The name of the Bucket from which the Object will be copied.
-3 The name of the Object being copied from the source Bucket.
-4 The name of the Bucket to which the Object will be copied.
-5 The name of the copied Object in the destination Bucket.
-</code></pre>
-</div>
-
-<h2 id="list-objects">List objects</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Listing Buckets using the s3Client.listObjects() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
-
-ObjectListing listing = s3Client.listObjects(`sample`); 1
-List&lt;S3ObjectSummary&gt; summaries = listing.getObjectSummaries(); 2
-
-for (S3ObjectSummary obj : summaries){ 3
-  System.out.println(`found: `+obj.getKey()); 4
-}
-
-1 Get the list of Objects in the sample Bucket.
-2 Create a list of Object Summaries.
-3 For each Object…
-4 Display `found: ` then the name of the Object.
-</code></pre>
-</div>
-
-<h2 id="list-buckets">List buckets</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Example: Listing Buckets using the s3Client.listBuckets() method
-
-AmazonS3 s3Client = new AmazonS3Client();
-s3Client.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
-
-List&lt;Bucket&gt; Buckets = s3Client.listBuckets(); 1
-
-for (Bucket b : Buckets) { 2
-  System.out.println(`Found: `+b.getName()); 3
-}
-
-1 Get a list of Buckets.
-2 For each bucket…
-3 Display `Found: ` then the name of the Bucket.
-</code></pre>
-</div>
 
 
     <div class="tags">
@@ -1127,7 +1053,7 @@ for (Bucket b : Buckets) { 2
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 5, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 6, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
