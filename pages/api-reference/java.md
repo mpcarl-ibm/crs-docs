@@ -14,7 +14,7 @@ toc: true
 ---
 
 ### Getting the SDK
-The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren't familiar with Maven, you get can get up and running very quickly using their [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) guide.
+The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren't familiar with Maven, you get can get up and running very quickly using the [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) guide.
 
 Maven uses a file called `pom.xml` to specify the libraries (and their versions) needed for a Java project.  Here is an example `pom.xml` file for using the AWS Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts). 
 
