@@ -71,3 +71,6 @@ These operations create, destroy, get information about, and control behavior of
 | Abort Multipart Upload | Aborts upload and deletes outstanding parts associated with an upload ID.
 | List Parts | Returns a list of parts associated with an upload ID
 {:.opstable}
+
+{% include note.html content="Some additional operations, such as tagging and versioning, are supported in private cloud implementations of IBM COS, but not in the public cloud at this time. More information custom object storage solutions can be found at [ibm.com](https://www.ibm.com/cloud-computing/products/storage/object-storage/cloud/)." %}
+
