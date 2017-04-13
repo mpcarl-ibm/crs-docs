@@ -49,7 +49,7 @@ Next we need to assemble a 'string-to-sign' which will be combined with the sign
 ```
 AWS4-HMAC-SHA256
 {time}
-{date}/{region}/s3/aws4_request
+{date}/{string}/s3/aws4_request
 {hashed-standardized-request}
 ```
 
@@ -99,12 +99,12 @@ request_parameters = ''
 def hash(key, msg):
     return hmac.new(key, msg.encode('utf-8'), hashlib.sha256).digest()
 
-# anyString is a wildcard value that takes the place of the AWS region value
+# region is a wildcard value that takes the place of the AWS region value
 # as COS doen't use the same conventions for regions, this parameter can accept any string
-def createSignatureKey(key, datestamp, anyString, service):  
+def createSignatureKey(key, datestamp, region, service):  
 
     keyDate = hash(('AWS4' + key).encode('utf-8'), datestamp)
-    keyString = hash(keyDate, anyString)
+    keyString = hash(keyDate, region)
     keyService = hash(keyString, service)
     keySigning = hash(keyService, 'aws4_request')
     return keySigning

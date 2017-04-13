@@ -488,7 +488,7 @@ $('#toc').on('click', 'a', function() {
 
 <div class="highlighter-rouge"><pre class="highlight"><code>AWS4-HMAC-SHA256
 {time}
-{date}/{region}/s3/aws4_request
+{date}/{string}/s3/aws4_request
 {hashed-standardized-request}
 </code></pre>
 </div>
@@ -542,12 +542,12 @@ $('#toc').on('click', 'a', function() {
 <span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
 
-<span class="c"># anyString is a wildcard value that takes the place of the AWS region value</span>
+<span class="c"># region is a wildcard value that takes the place of the AWS region value</span>
 <span class="c"># as COS doen't use the same conventions for regions, this parameter can accept any string</span>
-<span class="k">def</span> <span class="nf">createSignatureKey</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">datestamp</span><span class="p">,</span> <span class="n">anyString</span><span class="p">,</span> <span class="n">service</span><span class="p">):</span>  
+<span class="k">def</span> <span class="nf">createSignatureKey</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">datestamp</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">service</span><span class="p">):</span>  
 
     <span class="n">keyDate</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">((</span><span class="s">'AWS4'</span> <span class="o">+</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">),</span> <span class="n">datestamp</span><span class="p">)</span>
-    <span class="n">keyString</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyDate</span><span class="p">,</span> <span class="n">anyString</span><span class="p">)</span>
+    <span class="n">keyString</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyDate</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
     <span class="n">keyService</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyString</span><span class="p">,</span> <span class="n">service</span><span class="p">)</span>
     <span class="n">keySigning</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">keyService</span><span class="p">,</span> <span class="s">'aws4_request'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">keySigning</span>
@@ -625,7 +625,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 6, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 13, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
