@@ -983,6 +983,8 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 
 <p>ACLs can use pre-made permissions sets (or ‘canned ACLs’) or be customized in the body of the request. Pre-made ACLs are specified using the <code class="highlighter-rouge">x-amz-acl</code> header with <code class="highlighter-rouge">private</code>, <code class="highlighter-rouge">public-read</code>, or <code class="highlighter-rouge">public-read-write</code> as the value. Custom ACLs are specified using XML in the request body and can grant <code class="highlighter-rouge">READ</code>, <code class="highlighter-rouge">WRITE</code>, <code class="highlighter-rouge">READ_ACP</code> (read ACL), <code class="highlighter-rouge">WRITE_ACP</code> (write ACL), or <code class="highlighter-rouge">FULL_CONTROL</code> permissions to a given storage account.</p>
 
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> <code class="highlighter-rouge">READ</code> access, including <code class="highlighter-rouge">public-read</code>, when granted on a bucket does not allow for the actual access of objects themselves, only the ability to list them.</div>
+
 <h5 id="syntax-8">Syntax</h5>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PUT https://<span class="o">{</span>endpoint<span class="o">}</span>/<span class="o">{</span>bucket-name<span class="o">}</span>?acl<span class="o">=</span> <span class="c"># path style</span>
@@ -992,7 +994,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <h5 id="sample-request-basic-pre-made-acl">Sample request Basic pre-made ACL</h5>
 
-<p>This is an example of specifying a pre-made ACL to allow for <code class="highlighter-rouge">public-read</code> access to the “apiary” bucket. This allows any storage account to view the bucket’s contents and ACL, and to access objects.</p>
+<p>This is an example of specifying a pre-made ACL to allow for <code class="highlighter-rouge">public-read</code> access to the “apiary” bucket. This allows any storage account to view the bucket’s contents and ACL details.</p>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1017,7 +1019,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 <h5 id="sample-request-custom-acl">Sample request Custom ACL</h5>
 
-<p>This is an example of specifying a custom ACL to allow for another account to view the ACL for the “apiary” bucket, but not to view or access objects stored inside the bucket. Additionally, a third account is given full access to the same bucket as another element of the same ACL.</p>
+<p>This is an example of specifying a custom ACL to allow for another account to view the ACL for the “apiary” bucket, but not to list objects stored inside the bucket. Additionally, a third account is given full access to the same bucket as another element of the same ACL.</p>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary?acl=</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
@@ -1770,6 +1772,31 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
+<h5 id="sample-request-canned-acl-in-header">Sample request (canned ACL in header)</h5>
+
+<p>It is also possible to assign a canned ACL directly when uploading an object by passing the <code class="highlighter-rouge">x-amz-acl</code> header and a canned ACL value.  This example makes the <code class="highlighter-rouge">queen-bee</code> object publicly and anonymously accessible.</p>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/apiary/queen-bee</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
+<span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20161207T162842Z</span>
+<span class="na">x-amz-acl</span><span class="p">:</span> <span class="s">public-read</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">s3-api.us-geo.objectstorage.softlayer.net</span>
+</code></pre>
+</div>
+
+<h5 id="sample-response-20">Sample response</h5>
+
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 16:28:42 GMT</span>
+<span class="na">X-Clv-Request-Id</span><span class="p">:</span> <span class="s">b8dea44f-af20-466d-83ec-2a8563f1617b</span>
+<span class="na">Accept-Ranges</span><span class="p">:</span> <span class="s">bytes</span>
+<span class="na">Server</span><span class="p">:</span> <span class="s">Cleversafe/3.9.0.137</span>
+<span class="na">X-Clv-S3-Version</span><span class="p">:</span> <span class="s">2.5</span>
+<span class="na">x-amz-request-id</span><span class="p">:</span> <span class="s">b8dea44f-af20-466d-83ec-2a8563f1617b</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">0</span>
+</code></pre>
+</div>
+
 <h5 id="sample-request-custom-acl-1">Sample request (custom ACL)</h5>
 
 <p>This is an example of specifying a custom ACL to allow for another account to view the ACL for the “queen-bee” object, but not to access object itself. Additionally, a third account is given full access to the same object as another element of the same ACL.</p>
@@ -1809,7 +1836,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-20">Sample response</h5>
+<h5 id="sample-response-21">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 17:11:51 GMT</span>
@@ -1845,7 +1872,7 @@ OPTIONS https://<span class="o">{</span>bucket-name<span class="o">}</span>.<spa
 </code></pre>
 </div>
 
-<h5 id="sample-response-21">Sample response</h5>
+<h5 id="sample-response-22">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Wed, 07 Dec 2016 16:23:14 GMT</span>
@@ -1905,7 +1932,7 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 </code></pre>
 </div>
 
-<h5 id="sample-response-22">Sample response</h5>
+<h5 id="sample-response-23">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Fri, 03 Mar 2017 20:34:12 GMT</span>
@@ -1950,7 +1977,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<h5 id="sample-response-23">Sample response</h5>
+<h5 id="sample-response-24">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Sat, 18 Mar 2017 03:56:41 GMT</span>
@@ -2009,7 +2036,7 @@ POST https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span c
 </code></pre>
 </div>
 
-<h5 id="sample-response-24">Sample response</h5>
+<h5 id="sample-response-25">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Fri, 03 Mar 2017 19:18:44 GMT</span>
@@ -2054,7 +2081,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 </code></pre>
 </div>
 
-<h5 id="sample-response-25">Sample response</h5>
+<h5 id="sample-response-26">Sample response</h5>
 
 <div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 <span class="na">Date</span><span class="p">:</span> <span class="s">Thu, 16 Mar 2017 22:07:48 GMT</span>

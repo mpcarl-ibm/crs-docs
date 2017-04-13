@@ -480,6 +480,8 @@ A `PUT` issued to a bucket with the proper parameters creates an access control 
 
 ACLs can use pre-made permissions sets (or 'canned ACLs') or be customized in the body of the request. Pre-made ACLs are specified using the `x-amz-acl` header with `private`, `public-read`, or `public-read-write` as the value. Custom ACLs are specified using XML in the request body and can grant `READ`, `WRITE`, `READ_ACP` (read ACL), `WRITE_ACP` (write ACL), or `FULL_CONTROL` permissions to a given storage account.
 
+{% include note.html content="`READ` access, including `public-read`, when granted on a bucket does not allow for the actual access of objects themselves, only the ability to list them." %}
+
 ##### Syntax
 
 ```bash
@@ -489,7 +491,7 @@ PUT https://{bucket-name}.{endpoint}?acl= # virtual host style
 
 ##### Sample request Basic pre-made ACL
 
-This is an example of specifying a pre-made ACL to allow for `public-read` access to the "apiary" bucket. This allows any storage account to view the bucket's contents and ACL, and to access objects.
+This is an example of specifying a pre-made ACL to allow for `public-read` access to the "apiary" bucket. This allows any storage account to view the bucket's contents and ACL details.
 
 ```http
 PUT /apiary?acl= HTTP/1.1
@@ -514,7 +516,7 @@ Content-Length: 0
 
 ##### Sample request Custom ACL
 
-This is an example of specifying a custom ACL to allow for another account to view the ACL for the "apiary" bucket, but not to view or access objects stored inside the bucket. Additionally, a third account is given full access to the same bucket as another element of the same ACL.
+This is an example of specifying a custom ACL to allow for another account to view the ACL for the "apiary" bucket, but not to list objects stored inside the bucket. Additionally, a third account is given full access to the same bucket as another element of the same ACL.
 
 ```http
 PUT /apiary?acl= HTTP/1.1
@@ -1190,6 +1192,31 @@ PUT https://{bucket-name}.{endpoint}/{object-name}?acl= # virtual host style
 
 ```http
 PUT /apiary/queen-bee?acl= HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20161207T162842Z
+x-amz-acl: public-read
+Host: s3-api.us-geo.objectstorage.softlayer.net
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Wed, 07 Dec 2016 16:28:42 GMT
+X-Clv-Request-Id: b8dea44f-af20-466d-83ec-2a8563f1617b
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.137
+X-Clv-S3-Version: 2.5
+x-amz-request-id: b8dea44f-af20-466d-83ec-2a8563f1617b
+Content-Length: 0
+```
+
+##### Sample request (canned ACL in header)
+
+It is also possible to assign a canned ACL directly when uploading an object by passing the `x-amz-acl` header and a canned ACL value.  This example makes the `queen-bee` object publicly and anonymously accessible.
+
+```http
+PUT /apiary/queen-bee HTTP/1.1
 Authorization: {authorization-string}
 x-amz-date: 20161207T162842Z
 x-amz-acl: public-read
