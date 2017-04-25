@@ -1,9 +1,9 @@
 ---
 title: Using Java with IBM COS
-keywords: 
+keywords:
 last_updated: April 4, 2017
-tags: 
-summary: 
+tags:
+summary:
 sidebar: crs_sidebar
 permalink: java
 redirect_from:
@@ -13,12 +13,12 @@ folder: api-reference
 toc: true
 ---
 
-{% include note.html content="The AWS SDK for Java is comprehensive, and has many features and capabilities not described in this guide.  For detailed class and method documentation, as well as the source code, see the [GitHub repository](https://github.com/aws/aws-sdk-java)." %}
+{% include note.html content="The AWS SDK for Java is comprehensive, and has features and capabilities not described in this guide.  For detailed class and method documentation, as well as the source code, see the [GitHub repository](https://github.com/aws/aws-sdk-java)." %}
 
 ### Getting the SDK
-The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren't familiar with Maven, you get can get up and running very quickly using the [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) guide.
+The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren't familiar with Maven, you get can get up and running using the [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) guide.
 
-Maven uses a file called `pom.xml` to specify the libraries (and their versions) needed for a Java project.  Here is an example `pom.xml` file for using the AWS S3 Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts). 
+Maven uses a file called `pom.xml` to specify the libraries (and their versions) needed for a Java project.  Here is an example `pom.xml` file for using the AWS S3 Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts).
 
 {% include important.html content="Please note that recent versions of the AWS SDK for Java may have introduced incompatibilities.  The most recent recommended version is **1.11.5**" %}
 
@@ -82,7 +82,7 @@ Use default credentials using the first credentials found in this order of prece
 
 The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from one of these locations. They do not need to be provided explicitly.
 
-{% include note.html content="The AWS Java SDK sends all requests to `s3.amazonaws.com` by default. To send requests to IBM COS, the new `AmazonS3Client` instance needs the correct `setEndpoint` parameter. The SDK interprets the http(s) portion of this endpoint and infers encrypted or plain text from the URL." %}
+{% include note.html content="The AWS Java SDK sends all requests to `s3.amazonaws.com` by default. To send requests to IBM COS, the new `AmazonS3Client` instance needs the correct `setEndpoint` parameter. The SDK interprets the http(s) from the endpoint and infers encrypted or plain text from the URL." %}
 
 ```java
 AmazonS3 cos = new AmazonS3Client();
@@ -91,14 +91,14 @@ cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 
 ###### Example: Setting the endpoint to point to COS US Cross Region
 
-```java 
+```java
 AmazonS3 cos = new AmazonS3Client();
 cos.setEndPoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 ```
 
 The COS implementation of the S3 API supports both resource path and virtual host addressing.
 
-##### Use virtual host addressing 
+##### Use virtual host addressing
 This S3 implementation supports virtual host addressing of storage buckets. The AWS Java SDK uses virtual host addressing by default.
 
 ```java
@@ -106,7 +106,7 @@ AmazonS3 cos = new AmazonS3Client();
 cos.setEndPoint("http://s3-api.us-geo.objectstorage.softlayer.net");
 ```
 
-##### Use resource path addressing 
+##### Use resource path addressing
 To configure the AWS Java SDK to use resource path addressing instead of virtual host addressing, either:
 
 Set the `disableDNSBuckets` system property to True:
@@ -116,7 +116,7 @@ System.setProperty("com.amazonaws.sdk.disableDNSBuckets", "True");
 ```
 
 Set the `withPathStyleAccess` property of the `AmazonS3Client.S3ClientOptions` to `True`:
-    
+
 ```java
 AmazonS3 cos = new AmazonS3Client(credentials);
 
@@ -124,9 +124,9 @@ S3ClientOptions opts = new S3ClientOptions().withPathStyleAccess(true);
 cos.setS3ClientOptions(opts);
 ```
 
-#### Configure optional parameters 
+#### Configure optional parameters
 
-##### Set the connection timeout duration 
+##### Set the connection timeout duration
 To increase the connection timeout for longer running operations, change the `withSocketTimeout` property of the `ClientConfiguration` object when the connection is created.
 
 ```java
@@ -135,7 +135,7 @@ ClientConfiguration config = new ClientConfiguration().withSocketTimeout(15 * 60
 AmazonS3 cos = new AmazonS3Client(credentials, config);
 ```
 
-##### Set the maximum retry limit 
+##### Set the maximum retry limit
 
 If AWS Java SDK receives an error from the system, it retries the request. The default number of times it retries the request is five. The default retry limit can be changed in the client application.
 
@@ -161,14 +161,14 @@ The order of precedence using for access credentials is:
 4. Credentials set in `AwsCredentials.properties` file
 5. Credentials set in the shared credentials file
 
-##### Credentials passed as `BasicAWSCredentials` instance parameters 
+##### Credentials passed as `BasicAWSCredentials` instance parameters
 
 Credentials can be supplied as parameters of the `BasicAWSCredentials` object. This object is then passed to the `AmazonS3Client` as a constructor parameter.
 
 ###### Example: Create an AWS Java SDK connection specifying credentials provided as strings in code
 
 ```java
-final String accessKey = "lDrDjH0D45hQivu6FNlwQ"; 
+final String accessKey = "lDrDjH0D45hQivu6FNlwQ";
 final String secretKey = "bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6";
 
 BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey); // declare a new set of basic credentials that includes the Access Key ID and the Secret Access Key
@@ -176,7 +176,7 @@ AmazonS3 cos = new AmazonS3Client(credentials); // create a constructor for the 
 cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net"); // set the desired endpoint
 ```
 
-##### Credentials set as environment variables 
+##### Credentials set as environment variables
 
 Set the environment variables `AWS_ACCESS_KEY_ID` to define the access key and `AWS_SECRET_ACCESS_KEY` to define the secret key.
 
@@ -197,16 +197,16 @@ If these variables are defined when the `AmazonS3Client` is created, the default
 The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from the Environment Variables. They do not need to be provided explicitly.
 
 ```java
-AmazonS3 cos = new AmazonS3Client(); 
+AmazonS3 cos = new AmazonS3Client();
 ```
 
-##### Credentials set as JVM system properties 
+##### Credentials set as JVM system properties
 
 Set the JVM system properties `aws.accessKeyId` to define the access key and `aws.secretKey` to define the secret key.
 
 These properties may be set on start up or programmatically and will be used by the `AmazonS3Client` when the default constructor is used.
 
-###### Example: Set system properties then open an S3 connection using those properties 
+###### Example: Set system properties then open an S3 connection using those properties
 
 ```java
 System.setProperty("aws.accessKeyId", "lDrDjH0D45hQivu6FNlwQ");
@@ -215,7 +215,7 @@ System.setProperty("aws.secretKey", "bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6");
 AmazonS3 cos = new AmazonS3Client();
 ```
 
-##### Credentials set in `AwsCredentials.properties` file 
+##### Credentials set in `AwsCredentials.properties` file
 
 An `AmazonS3Client` constructor can use a credentials file called `AwsCredentials.properties`, which is found on the Java classpath.
 
@@ -223,7 +223,7 @@ To create an S3 client that uses `AwsCredentials.properties`, the `AmazonS3Clien
 
 ###### Example: `AwsCredentials.properties` File Format
 
-``` 
+```
 accessKey=lDrDjH0D45hQivu6FNlwQ
 secretKey=bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6
 ```
@@ -243,22 +243,22 @@ Credentials can be put in a different file and location. The credentials can be 
 
 ###### Example: Creating a client using a `AwsCredentials.properties` in another location
 
-```java 
+```java
 AWSCredentialsProvider provider = new PropertiesFileCredentialsProvider("/path/to/alternative/credentials/file.properties");
 
 AmazonS3 cos = new AmazonS3Client(provider);
 ```
 
 
-##### Credentials set in the shared credentials file 
+##### Credentials set in the shared credentials file
 
-###### Create AWS shared credentials 
+###### Create AWS shared credentials
 
 Use `aws configure` to create an access credentials file with the default profile. For more information about using the AWS CLI, see the documentation on [using command line interfaces].
 
 ###### Example: Command output of `aws configure`
 
-``` 
+```
 $ aws configure
 AWS Access Key ID [None]: #AKIAIOSFODNN7EXAMPLE# // stored in ~/.aws/credentials
 AWS Secret Access Key [None]: #wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY# // stored in ~/.aws/credentials
@@ -272,7 +272,7 @@ Use `aws configure — profile {profileName}` to create an access credentials fi
 
 ###### Example: Command output of `aws configure --profile pool2`
 
-``` 
+```
 $ aws configure --profile pool2
 AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
 AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -295,7 +295,7 @@ aws_secret_access_key = RlfTDyqPg0WnY/PWdxMEe/gjuG7QRckynofRMwwR
 
 ###### Example: Contents of the AWS configuration file (`~/.aws/config`)
 
-``` 
+```
 [default]
 output=json
 
@@ -369,7 +369,7 @@ new File("/home/user/test.txt") // the file name and path of the object to be up
 
 {% include note.html content="This example assumes that the bucket 'sample' already exists." %}
 
-```java 
+```java
 AmazonS3 cos = new AmazonS3Client();
 cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 String obj = "An example"; // the object to be stored
@@ -419,7 +419,7 @@ new File("retrieved.txt") // to write to a new file
 AmazonS3 cos = new AmazonS3Client();
 cos.setEndpoint("https://s3-api.us-geo.objectstorage.softlayer.net");
 S3Object returned = CLIENT.getObject( // request the object by identifying
-"sample", // the name of the bucket  
+"sample", // the name of the bucket
 "serialized-object" // the name of the serialized object
 );
 S3ObjectInputStream s3Input = s3Response.getObjectContent(); // set the object stream
@@ -453,7 +453,7 @@ cos.copyObject( // copy the Object, passing…
 );
 ```
 
-#### List buckets 
+#### List buckets
 
 ```java
 AmazonS3 cos = new AmazonS3Client();
@@ -466,9 +466,9 @@ for (Bucket b : Buckets) { // for each bucket...
 }
 ```
 
-#### List objects 
+#### List objects
 
-```java 
+```java
 AmazonS3 cos = new AmazonS3Client();
 cos.setEndpoint(`https://s3-api.us-geo.objectstorage.softlayer.net`);
 

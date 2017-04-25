@@ -453,13 +453,16 @@ $('#toc').on('click', 'a', function() {
 
   <p>Not all data that is stored needs to be accessed frequently, and some archival data might be rarely accessed if at all.  For less active workloads, buckets can be created in a different storage class and objects stored in these buckets will incur charges on a different schedule than standard storage.</p>
 
-<p>There are three storage classes:</p>
+<p>There are four storage classes:</p>
 
 <ul>
   <li><strong>Standard</strong>: Used for active workloads - there is no charge for data retrieved (besides the cost of the operational request itself).</li>
-  <li><strong>Vault</strong>: Used for cool workloads - an additional retrieval charge is applied each time data is read. The service includes a minimum threshold for object size and storage period consistent with the intended use of this service for cooler, less-active data.</li>
-  <li><strong>Cold Vault</strong>: Used for cold workloads - an larger additional retrieval charge is applied each time data is read. The service includes a longer minimum threshold for object size and storage period consistent with the intended use of this service for cold, inactive data.</li>
+  <li><strong>Vault</strong>: Used for cool workloads where data is accessed less than once a month - an additional retrieval charge is applied each time data is read. The service includes a minimum threshold for object size and storage period consistent with the intended use of this service for cooler, less-active data.</li>
+  <li><strong>Cold Vault</strong>: Used for cold workloads where data is accessed every 90 days or less - an larger additional retrieval charge is applied each time data is read. The service includes a longer minimum threshold for object size and storage period consistent with the intended use of this service for cold, inactive data.</li>
+  <li><strong>Flex</strong>: Used for dynamic workloads where access patterns are more difficult to predict. Depending on usage, if the cost of storage combined with retrieval charges exceeds a cap value, then retrieval charges are dropped and a new capacity charge is applied instead. If the data isn’t accessed frequently, it is more cost effective than Standard storage, and if access usage patterns unexpectedly become more active it is more cost effective than Vault or Cold Vault storage. There is no minimum object size or storage period.</li>
 </ul>
+
+<p>For pricing details please see <a href="https://www.ibm.com/cloud-computing/bluemix/cloud-object-storage">the pricing table at ibm.com</a>.</p>
 
 <p>For information on how to create buckets with different storage classes, please see the <a href="https://ibm-public-cos.github.io/crs-docs/api-reference#create-a-vault-bucket">API reference</a>.</p>
 
@@ -478,7 +481,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 13, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 25, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

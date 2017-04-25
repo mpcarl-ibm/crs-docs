@@ -451,10 +451,10 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS SDK for Java is comprehensive, and has many features and capabilities not described in this guide.  For detailed class and method documentation, as well as the source code, see the <a href="https://github.com/aws/aws-sdk-java">GitHub repository</a>.</div>
+  <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS SDK for Java is comprehensive, and has features and capabilities not described in this guide.  For detailed class and method documentation, as well as the source code, see the <a href="https://github.com/aws/aws-sdk-java">GitHub repository</a>.</div>
 
 <h3 id="getting-the-sdk">Getting the SDK</h3>
-<p>The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren’t familiar with Maven, you get can get up and running very quickly using the <a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">Maven in 5 Minutes</a> guide.</p>
+<p>The easiest way to consume the AWS Java SDK is to use Maven to manage dependencies. If you aren’t familiar with Maven, you get can get up and running using the <a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">Maven in 5 Minutes</a> guide.</p>
 
 <p>Maven uses a file called <code class="highlighter-rouge">pom.xml</code> to specify the libraries (and their versions) needed for a Java project.  Here is an example <code class="highlighter-rouge">pom.xml</code> file for using the AWS S3 Java SDK to connect to IBM COS (it also includes the SoftLayer library for provisioning credentials and new accounts).</p>
 
@@ -521,7 +521,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from one of these locations. They do not need to be provided explicitly.</p>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS Java SDK sends all requests to <code class="highlighter-rouge">s3.amazonaws.com</code> by default. To send requests to IBM COS, the new <code class="highlighter-rouge">AmazonS3Client</code> instance needs the correct <code class="highlighter-rouge">setEndpoint</code> parameter. The SDK interprets the http(s) portion of this endpoint and infers encrypted or plain text from the URL.</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The AWS Java SDK sends all requests to <code class="highlighter-rouge">s3.amazonaws.com</code> by default. To send requests to IBM COS, the new <code class="highlighter-rouge">AmazonS3Client</code> instance needs the correct <code class="highlighter-rouge">setEndpoint</code> parameter. The SDK interprets the http(s) from the endpoint and infers encrypted or plain text from the URL.</div>
 
 <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
 <span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
@@ -608,7 +608,7 @@ $('#toc').on('click', 'a', function() {
 
 <h6 id="example-create-an-aws-java-sdk-connection-specifying-credentials-provided-as-strings-in-code">Example: Create an AWS Java SDK connection specifying credentials provided as strings in code</h6>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">final</span> <span class="n">String</span> <span class="n">accessKey</span> <span class="o">=</span> <span class="s">"lDrDjH0D45hQivu6FNlwQ"</span><span class="o">;</span> 
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">final</span> <span class="n">String</span> <span class="n">accessKey</span> <span class="o">=</span> <span class="s">"lDrDjH0D45hQivu6FNlwQ"</span><span class="o">;</span>
 <span class="kd">final</span> <span class="n">String</span> <span class="n">secretKey</span> <span class="o">=</span> <span class="s">"bHp5DOjg0HHJrGK7h3ejEqRDnVmWZK03T4lstel6"</span><span class="o">;</span>
 
 <span class="n">BasicAWSCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BasicAWSCredentials</span><span class="o">(</span><span class="n">accessKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span> <span class="c1">// declare a new set of basic credentials that includes the Access Key ID and the Secret Access Key</span>
@@ -652,7 +652,7 @@ $('#toc').on('click', 'a', function() {
 
 <p>The AWS Java SDK automatically reads the Access Key ID and Secret Access Key from the Environment Variables. They do not need to be provided explicitly.</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span> 
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
 </code></pre>
 </div>
 
@@ -872,7 +872,7 @@ output=text
 <div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">AmazonS3</span> <span class="n">cos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AmazonS3Client</span><span class="o">();</span>
 <span class="n">cos</span><span class="o">.</span><span class="na">setEndpoint</span><span class="o">(</span><span class="s">"https://s3-api.us-geo.objectstorage.softlayer.net"</span><span class="o">);</span>
 <span class="n">S3Object</span> <span class="n">returned</span> <span class="o">=</span> <span class="n">CLIENT</span><span class="o">.</span><span class="na">getObject</span><span class="o">(</span> <span class="c1">// request the object by identifying</span>
-<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the bucket  </span>
+<span class="s">"sample"</span><span class="o">,</span> <span class="c1">// the name of the bucket</span>
 <span class="s">"serialized-object"</span> <span class="c1">// the name of the serialized object</span>
 <span class="o">);</span>
 <span class="n">S3ObjectInputStream</span> <span class="n">s3Input</span> <span class="o">=</span> <span class="n">s3Response</span><span class="o">.</span><span class="na">getObjectContent</span><span class="o">();</span> <span class="c1">// set the object stream</span>
@@ -1026,7 +1026,7 @@ output=text
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> April 4, 2017<br/> Site last generated: Apr 13, 2017 <br /><br />
+<span>Page last updated:</span> April 4, 2017<br/> Site last generated: Apr 25, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

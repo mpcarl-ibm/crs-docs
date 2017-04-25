@@ -1,0 +1,2 @@
+
+{% include note.html content="Unlike AWS S3, IBM COS uses the `LocationConstraint` value to indicate the storage class of an object. This field has no relation to physical geography or region - those values are provided within the endpoint used to connect to the service. Currently, the only permitted values for `LocationCostraint` are `us-standard`, `us-vault`, `us-cold`, and `us-flex`." %}

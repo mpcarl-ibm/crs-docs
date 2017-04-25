@@ -97,6 +97,8 @@ $ aws --endpoint-url=https://{endpoint} s3api list-buckets
 
 Creating a new bucket:
 
+{% include custom/locations.md %}
+
 ```bash
 $ aws --endpoint-url=https://{endpoint} s3api create-bucket --bucket {bucket-name} [--region us-standard]
 ```

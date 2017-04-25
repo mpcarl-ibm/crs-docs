@@ -205,7 +205,7 @@ Content-Length: 0
 
 To create a Vault bucket, send an XML block specifying a bucket configuration with a `LocationConstraint` of `us-vault` in the body of a `PUT` request to a bucket endpoint.  Note that standard bucket [naming rules]({{ site.baseurl }}/api-reference#create-a-new-bucket) apply. 
 
-{% include note.html content="Unlike AWS S3, IBM COS uses the `LocationConstraint` value to indicate the storage class of an object. This field has no relation to physical geography or region - those values are provided within the endpoint used to connect to the service. Currently, the only permitted values for `LocationCostraint` are `us-standard`, `us-vault`, and `us-cold`." %}
+{% include custom/locations.md %}
 
 ##### Syntax
 
@@ -257,7 +257,7 @@ Content-Length: 0
 
 To create a Vault bucket, send an XML block specifying a bucket configuration with a `LocationConstraint` of `us-cold` in the body of a `PUT` request to a bucket endpoint.  Note that standard bucket [naming rules]({{ site.baseurl }}/api-reference#create-a-new-bucket) apply. 
 
-{% include note.html content="Unlike AWS S3, IBM COS uses the `LocationConstraint` value to indicate the storage class of an object. This field has no relation to physical geography or region - those values are provided within the endpoint used to connect to the service. Currently, the only permitted values for `LocationCostraint` are `us-standard`, `us-vault`, and `us-cold`." %}
+{% include custom/locations.md %}
 
 ##### Syntax
 
@@ -288,6 +288,58 @@ Content-Length: 110
 ```xml
 <CreateBucketConfiguration> 
   <LocationConstraint>us-cold</LocationConstraint> 
+</CreateBucketConfiguration> 
+```
+
+##### Sample response
+
+```http
+HTTP/1.1 200 OK
+Date: Fri, 17 Mar 2017 17:52:17 GMT
+X-Clv-Request-Id: b6483b2c-24ae-488a-884c-db1a93b9a9a6
+Accept-Ranges: bytes
+Server: Cleversafe/3.9.0.115
+X-Clv-S3-Version: 2.5
+Content-Length: 0
+```
+
+---- 
+
+#### Create a Flex bucket
+
+To create a Flex bucket, send an XML block specifying a bucket configuration with a `LocationConstraint` of `us-flex` in the body of a `PUT` request to a bucket endpoint.  Note that standard bucket [naming rules]({{ site.baseurl }}/api-reference#create-a-new-bucket) apply. 
+
+{% include custom/locations.md %}
+
+##### Syntax
+
+```shell
+PUT https://{endpoint}/{bucket-name} # path style
+PUT https://{bucket-name}.{endpoint} # virtual host style
+```
+
+```xml
+<CreateBucketConfiguration> 
+  <LocationConstraint>us-flex</LocationConstraint> 
+</CreateBucketConfiguration> 
+```
+
+##### Sample request
+
+This is an example of creating a new bucket called 'flex-images'.
+
+```http
+PUT /flex-images HTTP/1.1
+Authorization: {authorization-string}
+x-amz-date: 20170317T175217Z
+x-amz-content-sha256: {hashed-request-body}
+Content-Type: text/plain
+Host: s3-api.us-geo.objectstorage.softlayer.net
+Content-Length: 110
+```
+```xml
+<CreateBucketConfiguration> 
+  <LocationConstraint>us-flex</LocationConstraint> 
 </CreateBucketConfiguration> 
 ```
 
