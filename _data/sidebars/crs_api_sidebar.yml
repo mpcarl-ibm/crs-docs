@@ -55,6 +55,10 @@ entries:
     - title: Creating Cold Vault buckets
       url: /api-reference#create-a-cold-vault-bucket
       output: web, pdf 
+
+    - title: Creating Flex buckets
+      url: /api-reference#create-a-flex-bucket
+      output: web, pdf 
     
     - title: Retrieving bucket metadata
       url: /api-reference#get-bucket-headers

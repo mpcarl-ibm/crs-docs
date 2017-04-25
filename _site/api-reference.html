@@ -271,6 +271,13 @@
             
             
             
+            <li><a href="api-reference#create-a-flex-bucket">Creating Flex buckets</a></li>
+            
+            
+            
+            
+            
+            
             <li><a href="api-reference#get-bucket-headers">Retrieving bucket metadata</a></li>
             
             
@@ -822,16 +829,16 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </div>
 
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
-  <span class="nt">&lt;LocationConstraint&gt;</span>us-cold<span class="nt">&lt;/LocationConstraint&gt;</span> 
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-flex<span class="nt">&lt;/LocationConstraint&gt;</span> 
 <span class="nt">&lt;/CreateBucketConfiguration&gt;</span> 
 </code></pre>
 </div>
 
 <h5 id="sample-request-5">Sample request</h5>
 
-<p>This is an example of creating a new bucket called ‘cold-vault-images’.</p>
+<p>This is an example of creating a new bucket called ‘flex-images’.</p>
 
-<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/cold-vault-images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="language-http highlighter-rouge"><pre class="highlight"><code><span class="nf">PUT</span> <span class="nn">/flex-images</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">{authorization-string}</span>
 <span class="na">x-amz-date</span><span class="p">:</span> <span class="s">20170317T175217Z</span>
 <span class="na">x-amz-content-sha256</span><span class="p">:</span> <span class="s">{hashed-request-body}</span>
@@ -841,7 +848,7 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 <div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
-  <span class="nt">&lt;LocationConstraint&gt;</span>us-cold<span class="nt">&lt;/LocationConstraint&gt;</span> 
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-flex<span class="nt">&lt;/LocationConstraint&gt;</span> 
 <span class="nt">&lt;/CreateBucketConfiguration&gt;</span> 
 </code></pre>
 </div>
