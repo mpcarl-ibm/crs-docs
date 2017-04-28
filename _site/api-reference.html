@@ -724,9 +724,9 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
-  <span class="nt">&lt;LocationConstraint&gt;</span>us-vault<span class="nt">&lt;/LocationConstraint&gt;</span> 
-<span class="nt">&lt;/CreateBucketConfiguration&gt;</span> 
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span>
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-vault<span class="nt">&lt;/LocationConstraint&gt;</span>
+<span class="nt">&lt;/CreateBucketConfiguration&gt;</span>
 </code></pre>
 </div>
 
@@ -743,9 +743,9 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">110</span>
 </code></pre>
 </div>
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
-  <span class="nt">&lt;LocationConstraint&gt;</span>us-vault<span class="nt">&lt;/LocationConstraint&gt;</span> 
-<span class="nt">&lt;/CreateBucketConfiguration&gt;</span> 
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span>
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-vault<span class="nt">&lt;/LocationConstraint&gt;</span>
+<span class="nt">&lt;/CreateBucketConfiguration&gt;</span>
 </code></pre>
 </div>
 
@@ -776,9 +776,9 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
-  <span class="nt">&lt;LocationConstraint&gt;</span>us-cold<span class="nt">&lt;/LocationConstraint&gt;</span> 
-<span class="nt">&lt;/CreateBucketConfiguration&gt;</span> 
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span>
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-cold<span class="nt">&lt;/LocationConstraint&gt;</span>
+<span class="nt">&lt;/CreateBucketConfiguration&gt;</span>
 </code></pre>
 </div>
 
@@ -795,9 +795,9 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">110</span>
 </code></pre>
 </div>
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
-  <span class="nt">&lt;LocationConstraint&gt;</span>us-cold<span class="nt">&lt;/LocationConstraint&gt;</span> 
-<span class="nt">&lt;/CreateBucketConfiguration&gt;</span> 
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span>
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-cold<span class="nt">&lt;/LocationConstraint&gt;</span>
+<span class="nt">&lt;/CreateBucketConfiguration&gt;</span>
 </code></pre>
 </div>
 
@@ -828,9 +828,9 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 </code></pre>
 </div>
 
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
-  <span class="nt">&lt;LocationConstraint&gt;</span>us-flex<span class="nt">&lt;/LocationConstraint&gt;</span> 
-<span class="nt">&lt;/CreateBucketConfiguration&gt;</span> 
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span>
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-flex<span class="nt">&lt;/LocationConstraint&gt;</span>
+<span class="nt">&lt;/CreateBucketConfiguration&gt;</span>
 </code></pre>
 </div>
 
@@ -847,9 +847,9 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">110</span>
 </code></pre>
 </div>
-<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span> 
-  <span class="nt">&lt;LocationConstraint&gt;</span>us-flex<span class="nt">&lt;/LocationConstraint&gt;</span> 
-<span class="nt">&lt;/CreateBucketConfiguration&gt;</span> 
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;CreateBucketConfiguration&gt;</span>
+  <span class="nt">&lt;LocationConstraint&gt;</span>us-flex<span class="nt">&lt;/LocationConstraint&gt;</span>
+<span class="nt">&lt;/CreateBucketConfiguration&gt;</span>
 </code></pre>
 </div>
 
@@ -1428,7 +1428,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
 
 <h4 id="upload-an-object">Upload an object</h4>
 
-<p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.  There is no maximum object size when using a single streaming <code class="highlighter-rouge">PUT</code> upload, although it is estimated to be 50TB.</p>
+<p>A <code class="highlighter-rouge">PUT</code> given a path to an object uploads the request body as an object. A SHA256 hash of the object is a required header.  All objects are limited to 5TB in size.</p>
 
 <h5 id="syntax-15">Syntax</h5>
 
@@ -1448,10 +1448,10 @@ PUT https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 
 Content-Length: 533
 
- The 'queen' bee is developed from larvae selected by worker bees and fed a 
- substance referred to as 'royal jelly' to accelerate sexual maturity. After a 
- short while the 'queen' is the mother of nearly every bee in the hive, and 
- the colony will fight fiercely to protect her. 
+ The 'queen' bee is developed from larvae selected by worker bees and fed a
+ substance referred to as 'royal jelly' to accelerate sexual maturity. After a
+ short while the 'queen' is the mother of nearly every bee in the hive, and
+ the colony will fight fiercely to protect her.
 
 </code></pre>
 </div>
@@ -1547,8 +1547,8 @@ GET https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span cl
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">467</span>
 
  Female bees that are not fortunate enough to be selected to be the 'queen'
- while they were still larvae become known as 'worker' bees. These bees lack 
- the ability to reproduce and instead ensure that the hive functions smoothly, 
+ while they were still larvae become known as 'worker' bees. These bees lack
+ the ability to reproduce and instead ensure that the hive functions smoothly,
  acting almost as a single organism in fulfilling their purpose.
 </code></pre>
 </div>
@@ -2166,7 +2166,7 @@ DELETE https://<span class="o">{</span>bucket-name<span class="o">}</span>.<span
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 25, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 28, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

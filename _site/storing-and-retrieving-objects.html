@@ -486,7 +486,7 @@ $('#toc').on('click', 'a', function() {
   <li>Above the grid on the left is a link with the name of the bucket currently viewed. Click the link to show the list of buckets again.</li>
   <li>The grid shows the list of objects in the bucket.</li>
   <li>A new object can be added, by clicking the <strong>+</strong> button at the right of the first row.</li>
-  <li>The file can be selected from the file system, by clicking the <strong>select</strong> button and the new file uploaded, by clicking the <strong>Add</strong> button.  When using the portal to add an object, file size is limited to 20 megabytes. (When using the API, there is no known maximum object size when using a single streaming <code class="highlighter-rouge">PUT</code> upload, although it is estimated to be 50TB. Multipart uploads are capped at 10k parts of no larger than 5GB each for a maximum object size of 5TB.)</li>
+  <li>The file can be selected from the file system, by clicking the <strong>select</strong> button and the new file uploaded, by clicking the <strong>Add</strong> button.  When using the portal to add an object, file size is limited to 20 megabytes. (All objects are limited to 5TB when using the API, including multipart uploads which are capped at 10k parts of no larger than 5GB each.)</li>
   <li>An object can be deleted, by clicking on the red <strong>-</strong> button to the extreme right of the object name. This opens a confirmation window.</li>
   <li>Click the <strong>Delete</strong> button to remove the object from the bucket.</li>
 </ol>
@@ -506,7 +506,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 25, 2017 <br /><br />
+<span>Page last updated:</span> November 18, 2016<br/> Site last generated: Apr 28, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>
