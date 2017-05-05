@@ -3,7 +3,7 @@
   
   
   <url>
-    <loc>/samplepost.html</loc>
+    <loc>http://localhost:8081/samplepost.html</loc>
   </url>
   
   
@@ -14,49 +14,49 @@
   
   
   <url>
-    <loc>/about-compatibility-api</loc>
+    <loc>http://localhost:8081/about-compatibility-api</loc>
   </url>
   
   
   
   <url>
-    <loc>/api-reference</loc>
+    <loc>http://localhost:8081/api-reference</loc>
   </url>
   
   
   
   <url>
-    <loc>/billing</loc>
+    <loc>http://localhost:8081/billing</loc>
   </url>
   
   
   
   <url>
-    <loc>/cli</loc>
+    <loc>http://localhost:8081/cli</loc>
   </url>
   
   
   
   <url>
-    <loc>/desktop-clients</loc>
+    <loc>http://localhost:8081/desktop-clients</loc>
   </url>
   
   
   
   <url>
-    <loc>/developer-guidance</loc>
+    <loc>http://localhost:8081/developer-guidance</loc>
   </url>
   
   
   
   <url>
-    <loc>/endpoints</loc>
+    <loc>http://localhost:8081/endpoints</loc>
   </url>
   
   
   
   <url>
-    <loc>/faq</loc>
+    <loc>http://localhost:8081/faq</loc>
   </url>
   
   
@@ -64,67 +64,67 @@
   
   
   <url>
-    <loc>/getting-started-with-cos</loc>
+    <loc>http://localhost:8081/getting-started-with-cos</loc>
   </url>
   
   
   
   <url>
-    <loc>/index.html</loc>
+    <loc>http://localhost:8081/index.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/java</loc>
+    <loc>http://localhost:8081/java</loc>
   </url>
   
   
   
   <url>
-    <loc>/manage-access</loc>
+    <loc>http://localhost:8081/manage-access</loc>
   </url>
   
   
   
   <url>
-    <loc>/js/mydoc_scroll.html</loc>
+    <loc>http://localhost:8081/js/mydoc_scroll.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/news.html</loc>
+    <loc>http://localhost:8081/news.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/news_archive.html</loc>
+    <loc>http://localhost:8081/news_archive.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/notices.html</loc>
+    <loc>http://localhost:8081/notices.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/object-storage</loc>
+    <loc>http://localhost:8081/object-storage</loc>
   </url>
   
   
   
   <url>
-    <loc>/ordering-storage</loc>
+    <loc>http://localhost:8081/ordering-storage</loc>
   </url>
   
   
   
   <url>
-    <loc>/python</loc>
+    <loc>http://localhost:8081/python</loc>
   </url>
   
   
@@ -132,7 +132,7 @@
   
   
   <url>
-    <loc>/security</loc>
+    <loc>http://localhost:8081/security</loc>
   </url>
   
   
@@ -140,23 +140,29 @@
   
   
   <url>
-    <loc>/storage-classes</loc>
+    <loc>http://localhost:8081/storage-classes</loc>
   </url>
   
   
   
   <url>
-    <loc>/storing-and-retrieving-objects</loc>
+    <loc>http://localhost:8081/storing-and-retrieving-objects</loc>
   </url>
   
   
   
   <url>
-    <loc>/support</loc>
+    <loc>http://localhost:8081/support</loc>
   </url>
   
   
   
+  <url>
+    <loc>http://localhost:8081/swift-migration</loc>
+  </url>
+  
+  
+  
   
   
   
@@ -176,281 +182,287 @@
   
   
   
+  
+  
+  
+  <url>
+    <loc>http://localhost:8081/using-slapi</loc>
+  </url>
   
   
   
   <url>
-    <loc>/using-slapi</loc>
+    <loc>http://localhost:8081/using-the-api</loc>
   </url>
   
   
   
   <url>
-    <loc>/using-the-api</loc>
+    <loc>http://localhost:8081/crs-api-operations</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-api-operations</loc>
+    <loc>http://localhost:8081/crs-api-operations.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-api-operations.html</loc>
+    <loc>http://localhost:8081/crs-api-reference</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-api-reference</loc>
+    <loc>http://localhost:8081/crs-api-reference.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-api-reference.html</loc>
+    <loc>http://localhost:8081/crs-billing</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-billing</loc>
+    <loc>http://localhost:8081/crs-billing.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-billing.html</loc>
+    <loc>http://localhost:8081/crs-cli</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-cli</loc>
+    <loc>http://localhost:8081/crs-cli.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-cli.html</loc>
+    <loc>http://localhost:8081/crs-guis</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-guis</loc>
+    <loc>http://localhost:8081/crs-guis.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-guis.html</loc>
+    <loc>http://localhost:8081/crs-usage-guidelines</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-usage-guidelines</loc>
+    <loc>http://localhost:8081/crs-usage-guidelines.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-usage-guidelines.html</loc>
+    <loc>http://localhost:8081/crs-endpoints</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-endpoints</loc>
+    <loc>http://localhost:8081/crs-endpoints.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-endpoints.html</loc>
+    <loc>http://localhost:8081/crs-other-offerings</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-other-offerings</loc>
+    <loc>http://localhost:8081/crs-other-offerings.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-other-offerings.html</loc>
+    <loc>http://localhost:8081/crs-java</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-java</loc>
+    <loc>http://localhost:8081/crs-java.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-java.html</loc>
+    <loc>http://localhost:8081/crs-authentication.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-authentication.html</loc>
+    <loc>http://localhost:8081/crs-authentication</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-authentication</loc>
+    <loc>http://localhost:8081/crs-create-account</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-create-account</loc>
+    <loc>http://localhost:8081/crs-create-account.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-create-account.html</loc>
+    <loc>http://localhost:8081/crs-create-storage-account</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-create-storage-account</loc>
+    <loc>http://localhost:8081/crs-create-storage-account.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-create-storage-account.html</loc>
+    <loc>http://localhost:8081/crs-python</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-python</loc>
+    <loc>http://localhost:8081/crs-python.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-python.html</loc>
+    <loc>http://localhost:8081/crs-security</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-security</loc>
+    <loc>http://localhost:8081/crs-security.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-security.html</loc>
+    <loc>http://localhost:8081/crs-control-buckets</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-control-buckets</loc>
+    <loc>http://localhost:8081/crs-control-buckets.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-control-buckets.html</loc>
+    <loc>http://localhost:8081/crs-control-objects</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-control-objects</loc>
+    <loc>http://localhost:8081/crs-control-objects.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-control-objects.html</loc>
+    <loc>http://localhost:8081/crs-support</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-support</loc>
+    <loc>http://localhost:8081/crs-support.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-support.html</loc>
+    <loc>http://localhost:8081/crs-support-resources</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-support-resources</loc>
+    <loc>http://localhost:8081/crs-support-resources.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-support-resources.html</loc>
+    <loc>http://localhost:8081/swift</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-sldn</loc>
+    <loc>http://localhost:8081/crs-sldn</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-sldn.html</loc>
+    <loc>http://localhost:8081/crs-sldn.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-about-api</loc>
+    <loc>http://localhost:8081/crs-about-api</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-about-api.html</loc>
+    <loc>http://localhost:8081/crs-about-api.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-control-endpoints</loc>
+    <loc>http://localhost:8081/crs-control-endpoints</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-control-endpoints.html</loc>
+    <loc>http://localhost:8081/crs-control-endpoints.html</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-connecting</loc>
+    <loc>http://localhost:8081/crs-connecting</loc>
   </url>
   
   
   
   <url>
-    <loc>/crs-connecting.html</loc>
+    <loc>http://localhost:8081/crs-connecting.html</loc>
   </url>
   
   

@@ -2,8 +2,8 @@
 
 entries:
 - title: sidebar
-  product: 
-  version: 
+  product:
+  version:
   levels:
   folders:
 
@@ -31,7 +31,7 @@ entries:
 
     - title: Quickstart guide
       url: /getting-started-with-cos
-      output: web, pdf      
+      output: web, pdf
 
     - title: Ordering storage
       url: /ordering-storage
@@ -43,11 +43,15 @@ entries:
 
     - title: Using the APIs
       url: /using-the-api
-      output: web, `pdf
+      output: web, pdf
+
+    - title: Swift migration
+      url: /swift-migration
+      output: web, pdf
 
   #  - title: Next steps
   #    url: /next-steps
-  #    output: web, pdf 
+  #    output: web, pdf
 
 
   - title: API REFERENCE
@@ -60,7 +64,7 @@ entries:
 
     - title: Compatibility API (S3) reference
       url: /api-reference
-      output: web, pdf  
+      output: web, pdf
 
     - title: Using the SoftLayer API
       url: /using-slapi
@@ -73,19 +77,19 @@ entries:
       subfolders:
       - title: Libraries & SDKs
         output: web, pdf
-        
+
         subfolderitems:
         - title: Python
           url: /python
-          output: web, pdf 
-    
+          output: web, pdf
+
         - title: Java
           url: /java
-          output: web, pdf 
-    
+          output: web, pdf
+
     #   - title: Node.js
     #     url: /node
-    #     output: web, pdf 
+    #     output: web, pdf
 
   - title: HOW TO
     output: web, pdf
@@ -101,7 +105,7 @@ entries:
 
     - title: Use storage classes
       url: /storage-classes
-      output: web, pdf 
+      output: web, pdf
 
   #  - title: Store very large objects
   #    url: /large-objects
@@ -115,7 +119,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: About object storage 
+    - title: About object storage
       url: /object-storage
       output: web, pdf
 
@@ -150,5 +154,3 @@ entries:
   #  - title: Contact us
   #    url: /contact
   #    output: web, pdf
-
-

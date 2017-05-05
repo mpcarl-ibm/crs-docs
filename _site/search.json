@@ -262,6 +262,17 @@
 
 
 
+{
+"title": "Swift migration considerations",
+"tags": "",
+"keywords": "",
+"url": "swift-migration",
+"summary": "Current customers of Softlayer Object Storage on Swift can see benefits moving to IBM COS"
+}
+,
+
+
+
 
 
 
@@ -696,6 +707,17 @@
 "tags": "",
 "keywords": "",
 "url": "crs-support-resources.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "swift",
 "summary": ""
 }
 ,
