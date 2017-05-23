@@ -45,10 +45,6 @@ entries:
       url: /using-the-api
       output: web, pdf
 
-    - title: Swift migration
-      url: /swift-migration
-      output: web, pdf
-
   #  - title: Next steps
   #    url: /next-steps
   #    output: web, pdf
@@ -113,6 +109,18 @@ entries:
 
     - title: Use desktop clients
       url: /desktop-clients
+      output: web, pdf
+
+  - title: SWIFT MIGRATION
+    output: web, pdf
+    folderitems:
+
+    - title: Swift
+      url: /swift-migration
+      output: web, pdf
+
+    - title: Feature comparison
+      url: /feature-compare
       output: web, pdf
 
   - title: HELP

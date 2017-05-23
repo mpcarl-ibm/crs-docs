@@ -3,9 +3,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Current customers of Softlayer Object Storage on Swift can see benefits moving to IBM COS">
+<meta name="description" content="Current customers of Softlayer Object Storage based on OpenStack Swift can see benefits moving to IBM COS">
 <meta name="keywords" content=" ">
-<title>Swift migration | IBM COS Documentation</title>
+<title>Swift | IBM COS Documentation</title>
 <link rel="stylesheet" href="css/syntax.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
@@ -168,7 +168,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Swift migration">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Swift">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -242,13 +242,6 @@
             
             
             <li><a href="using-the-api">Using the APIs</a></li>
-            
-            
-            
-            
-            
-            
-            <li class="active"><a href="swift-migration">Swift migration</a></li>
             
             
             
@@ -351,6 +344,28 @@
         
     
     <li>
+        <a href="#">SWIFT MIGRATION</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="swift-migration">Swift</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="feature-compare">Feature comparison</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
         <a href="#">HELP</a>
         <ul>
             
@@ -421,7 +436,7 @@
     <!-- Content Column -->
     <div class="col-md-9">
         <div class="post-header">
-   <h1 class="post-title-main">Swift migration</h1>
+   <h1 class="post-title-main">Swift</h1>
 </div>
 
 
@@ -429,7 +444,7 @@
 <div class="post-content">
 
    
-    <div class="summary">Current customers of Softlayer Object Storage on Swift can see benefits moving to IBM COS</div>
+    <div class="summary">Current customers of Softlayer Object Storage based on OpenStack Swift can see benefits moving to IBM COS</div>
    
 
     
@@ -460,16 +475,56 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <h2 id="swift-migration-considerations">Swift migration considerations</h2>
+  <h2 id="benefits">Benefits</h2>
+<h3 id="cross-region-or-availability-zone">Cross region or availability zone</h3>
+<p>IBM Cloud ObjectStorage (COS) provides two …</p>
+
+<h3 id="s3-compatible-api">S3 compatible API</h3>
+<p>IBM Cloud ObjectStorage (COS) provides an Amazon S3 <a href="api-reference">compatible API</a></p>
+
+<p>Openstack Swift provides a <a href="https://wiki.openstack.org/wiki/Swift/APIFeatureComparison">Swift/APIFeatureComparison</a> document to help understand the high level similarities and differences between the APIs.</p>
+
+<h2 id="swift-migration-considerations">Swift migration considerations</h2>
+<p>Migration from Swift to IBM Cloud ObjectStorage (COS)</p>
+
+<h2 id="amazon-s3-migration-considerations">Amazon S3 migration considerations</h2>
 
 <h3 id="use-cases">Use cases</h3>
 <h4 id="archive-workloads">Archive workloads</h4>
 
-<h4 id="static-web-hosting">Static web hosting</h4>
+<h4 id="static-web-hosting--cdn-future">Static web hosting / CDN (future)</h4>
 
 <h3 id="api-differences">API differences</h3>
+<p>Enabling public access to objects and containers/buckets</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Swift</th>
+      <th>COS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Publicly readable object</td>
+      <td>Oranges</td>
+      <td>Pears</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="data-migration">Data migration</h3>
+<p>Tools of interest</p>
+
+<p>####Swift virtual file system (svfs)
+The <a href="https://github.com/ovh/svfs">Swift virtual file system</a> can be used to mount a swift container as a file system on Linux and MacOS systems. Once mounted, the objects in the container can be interacted with like standard files on the system.</p>
+
+<p>####s3fs-fuse
+Similarly, the [S3fs-fuse][4] utility can be use to mount a COS bucket as a files system on Linux or MacOS systems. The objects in the bucket can be</p>
+
+<p>####Swift command line Tool</p>
+
 
 
     <div class="tags">
@@ -486,7 +541,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2017 IBM. <a href="/crs-docs/notices.html">Notices.</a> All rights reserved. <br />
-<span>Page last updated:</span> May 5, 2017<br/> Site last generated: May 5, 2017 <br /><br />
+<span>Page last updated:</span> May 5, 2017<br/> Site last generated: May 22, 2017 <br /><br />
 <p> &nbsp; <img src="images/cos_logo.svg" alt="Company logo" style="width:100px;"/></p>
                 </div>
             </div>

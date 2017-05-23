@@ -61,6 +61,12 @@
   
   
   
+  <url>
+    <loc>http://localhost:8081/feature-compare</loc>
+  </url>
+  
+  
+  
   
   
   <url>
@@ -409,12 +415,6 @@
   
   <url>
     <loc>http://localhost:8081/crs-support-resources.html</loc>
-  </url>
-  
-  
-  
-  <url>
-    <loc>http://localhost:8081/swift</loc>
   </url>
   
   
